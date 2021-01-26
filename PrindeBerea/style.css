@@ -1,0 +1,25 @@
+@font-face
+{
+	font-family : chalk;
+	src : url(fonts/DJBChalkItUp.ttf);
+
+}
+
+body
+{
+	background-image : url('bg.png');
+}
+
+.logo
+{
+	max-width : 65%;
+	margin : 0 auto;
+}
+
+p
+{
+	font-family : chalk;
+	text-align : center;
+	color : black;
+	font-size : 48;
+}
