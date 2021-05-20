@@ -12,8 +12,11 @@ body
 
 .logo
 {
-	max-width : 65%;
-	margin : 0 auto;
+	display: block;
+	max-width : 60%;
+	height : auto;
+	margin-left: auto;
+  margin-right: auto;
 }
 
 p
@@ -22,4 +25,11 @@ p
 	text-align : center;
 	color : black;
 	font-size : 48;
+}
+
+@media screen and (max-width: 768px) {
+	p
+	{
+		visibility: hidden;
+	}
 }
