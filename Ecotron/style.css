@@ -1,7 +1,7 @@
 @font-face
 {
-	font-family : chalk;
-	src : url(fonts/DJBChalkItUp.ttf);
+	font-family : Raleway;
+	src : url(img/Raleway-VariableFont_wght.ttf);
 
 }
 
@@ -23,6 +23,18 @@ body
 
 .descarca
 {
+	margin-top: -100px;
+	margin-left: 10px;
+	display: block;
+	max-width : 60%;
+	height : auto;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.informatii
+{
+	margin-top: 100px;
 	display: block;
 	max-width : 60%;
 	height : auto;
@@ -32,9 +44,9 @@ body
 
 p
 {
-	font-family : chalk;
+	font-family : Raleway;
 	text-align : center;
-	color : black;
+	color : white;
 	font-size : 48;
 }
 
