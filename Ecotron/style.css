@@ -1,24 +1,24 @@
 @font-face
 {
 	font-family : Raleway;
-	src : url(img/Raleway-VariableFont_wght.ttf);
+	src : url(Raleway-VariableFont_wght.ttf);
 
 }
 
 body
 {
-	background-image : url('img/bg.png');
+	margin: 0;
+	background-image: url('img/bg.png');
 	background-size: cover;
 	background-size: 100%;
+	text-align: center;
+	color : white;
 }
 
-.logo
+#logo
 {
-	display: block;
-	max-width : 60%;
-	height : auto;
-	margin-left: auto;
-    margin-right: auto;
+	max-width: 60%;
+	height: auto;
 }
 
 .descarca
@@ -42,12 +42,31 @@ body
     margin-right: auto;
 }
 
-p
-{
+header {
+	padding: 1px;
+	font-size: 50px;
+}
+
+#main {
+	max-width: 60%;
+	margin: 0 auto 100px;
+	line-height: 1.5;
+}
+
+.img_level {
+	max-width: 100%;
+}
+
+p {
+	margin-top: 200px;
 	font-family : Raleway;
 	text-align : center;
 	color : white;
 	font-size : 48;
+}
+
+h1 {
+	font-family: Raleway;
 }
 
 @media screen and (max-width: 768px) {
