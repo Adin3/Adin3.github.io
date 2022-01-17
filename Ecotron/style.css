@@ -7,13 +7,21 @@
 
 body
 {
-	background-image : url('bg.png');
-	background-repeat: no-repeat;
-	background-repeat: repeat-y;
+	background-image : url('img/bg.png');
+	background-size: cover;
 	background-size: 100%;
 }
 
 .logo
+{
+	display: block;
+	max-width : 60%;
+	height : auto;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.descarca
 {
 	display: block;
 	max-width : 60%;
