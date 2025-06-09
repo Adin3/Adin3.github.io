@@ -1,0 +1,54 @@
+@font-face
+{
+	font-family : chalk;
+	src : url(../fonts/DJBChalkItUp.ttf);
+}
+
+body
+{
+   background-image : url('img/bg.png');
+}
+
+.scris
+{
+  width:1000px;
+  padding-left : 40px;
+  padding-top: 20px;
+}
+
+p
+{
+	font-family : chalk;
+	color : black;
+	font-size : 48;
+}
+
+img
+{
+  width:40%;
+  position: absolute;
+  right:0;
+  top : 60;
+}
+
+@media screen and (max-width: 1536px) {
+	.scris
+	{
+		width:700px;
+	}
+	img
+	{
+		width : 50%;
+	}
+}
+
+@media screen and (max-width: 1366px) {
+	.scris
+	{
+		width:700px;
+	}
+	img
+	{
+		width : 45%;
+	}
+}
