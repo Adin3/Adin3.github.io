@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyberpunk RED — Weapons, Armor &amp; Cyberware (ATR Pricing)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// SOURCE: CYBERPUNK RED CORE RULEBOOK //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .flavor-quote .attribution { display:block; margin-top:0.2rem; font-size:0.75rem; color:var(--text-dim); font-style:normal; }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM / ATR NOTE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.45rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .price-orig { color:var(--text-dim); font-size:0.7rem; font-family:'Share Tech Mono',monospace; display:block; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-melee { background:rgba(255,106,0,0.15); color:var(--orange); }
+  .tag-ranged { background:rgba(255,7,58,0.15); color:var(--red); }
+  .tag-exotic { background:rgba(180,100,255,0.15); color:var(--purple); }
+  .tag-armor { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-cyber { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-gear { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; }
+  .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); }
+  .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>CYBERPUNK RED &mdash; GEAR CATALOG</h1>
+  <div class="subtitle">Weapons, Armor &amp; Cyberware from the RED Core Rulebook &mdash; ATR Pricing</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="dm-note">
+  <strong>Pricing Note:</strong> All prices in this document have been multiplied by &times;10 from the original Cyberpunk RED values to match the ATR campaign economy. Original RED prices are shown in parentheses for reference.
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Melee Weapons</li>
+    <li><span>02</span> Ranged Weapons</li>
+    <li><span>03</span> Exotic Weapons</li>
+    <li><span>04</span> Ammunition</li>
+    <li><span>05</span> Armor</li>
+    <li><span>06</span> Cyberware &mdash; Fashionware</li>
+    <li><span>07</span> Cyberware &mdash; Neuralware</li>
+    <li><span>08</span> Cyberware &mdash; Cyberoptics</li>
+    <li><span>09</span> Cyberware &mdash; Cyberaudio</li>
+    <li><span>10</span> Cyberware &mdash; Internal Body</li>
+    <li><span>11</span> Cyberware &mdash; External Body</li>
+    <li><span>12</span> Cyberware &mdash; Cyberlimbs</li>
+    <li><span>13</span> Cyberware &mdash; Borgware</li>
+  </ul>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> MELEE WEAPONS <span class="tag tag-melee">MELEE</span></h2>
+
+<p>Things you swing or stab at someone. Linked to the DEX stat. ROF = how many times you can swing per Attack Action.</p>
+
+<table>
+  <thead>
+    <tr><th>Type</th><th>Examples</th><th>Hands</th><th>Damage</th><th>ROF</th><th>Conceal?</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Light Melee</span></td><td>Combat Knife, Tomahawk</td><td>Varies</td><td>1d6</td><td>2</td><td>Yes</td><td><span class="price-atr">500eb</span><span class="price-orig">(RED: 50eb)</span></td></tr>
+    <tr><td><span class="model-name">Medium Melee</span></td><td>Baseball Bat, Crowbar, Machete</td><td>Varies</td><td>2d6</td><td>2</td><td>No</td><td><span class="price-atr">500eb</span><span class="price-orig">(RED: 50eb)</span></td></tr>
+    <tr><td><span class="model-name">Heavy Melee</span></td><td>Lead Pipe, Sword, Spiked Bat</td><td>Varies</td><td>3d6</td><td>2</td><td>No</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Very Heavy Melee</span></td><td>Chainsaw, Sledgehammer, Naginata</td><td>Varies</td><td>4d6</td><td>1</td><td>No</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> RANGED WEAPONS <span class="tag tag-ranged">RANGED</span></h2>
+
+<p>Things that shoot. Linked to the REF stat. All weapons are effective at different ranges &mdash; see the Range Table (RED pg. 173) for details.</p>
+
+<table>
+  <thead>
+    <tr><th>Type</th><th>Skill</th><th>Damage</th><th>Magazine</th><th>ROF</th><th>Hands</th><th>Conceal?</th><th>Special</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Medium Pistol</span></td><td>Handgun</td><td>2d6</td><td>12 (M Pistol)</td><td>2</td><td>1</td><td>Yes</td><td>&mdash;</td><td><span class="price-atr">500eb</span><span class="price-orig">(RED: 50eb)</span></td></tr>
+    <tr><td><span class="model-name">Heavy Pistol</span></td><td>Handgun</td><td>3d6</td><td>8 (H Pistol)</td><td>2</td><td>1</td><td>Yes</td><td>&mdash;</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Very Heavy Pistol</span></td><td>Handgun</td><td>4d6</td><td>8 (VH Pistol)</td><td>1</td><td>1</td><td>No</td><td>&mdash;</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">SMG</span></td><td>Handgun</td><td>2d6</td><td>30 (M Pistol)</td><td>1</td><td>1</td><td>Yes</td><td>Autofire (3), Suppressive Fire</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Heavy SMG</span></td><td>Handgun</td><td>3d6</td><td>40 (H Pistol)</td><td>1</td><td>1</td><td>No</td><td>Autofire (3), Suppressive Fire</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Shotgun</span></td><td>Shoulder Arms</td><td>5d6</td><td>4 (Slug)</td><td>1</td><td>2</td><td>No</td><td>Shotgun Shell</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Assault Rifle</span></td><td>Shoulder Arms</td><td>5d6</td><td>25 (Rifle)</td><td>1</td><td>2</td><td>No</td><td>Autofire (4), Suppressive Fire</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Sniper Rifle</span></td><td>Shoulder Arms</td><td>5d6</td><td>4 (Rifle)</td><td>1</td><td>2</td><td>No</td><td>&mdash;</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Bows &amp; Crossbows</span></td><td>Archery</td><td>4d6</td><td>N/A (Arrow)</td><td>1</td><td>2</td><td>No</td><td>Arrows</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Grenade Launcher</span></td><td>Heavy Weapons</td><td>6d6</td><td>2 (Grenade)</td><td>1</td><td>2</td><td>No</td><td>Explosive</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Rocket Launcher</span></td><td>Heavy Weapons</td><td>8d6</td><td>1 (Rocket)</td><td>1</td><td>2</td><td>No</td><td>Explosive</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+  </tbody>
+</table>
+
+<div class="mechanic-box">
+  <h4>Basic Ammunition</h4>
+  <p><span class="price-atr">100eb</span> per 10 units <span class="price-orig">(RED: 10eb)</span>. Standard ammo with no special features. Comes in Bullet (Pistol, Slug, or Rifle), Shotgun Shell, and Arrow. Grenades and Rockets must be purchased separately.</p>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> EXOTIC WEAPONS <span class="tag tag-exotic">EXOTIC</span></h2>
+
+<p>Specialized or unique weapons. All are Average Quality and incompatible with Weapon Attachments and Non-Basic Ammo unless stated otherwise.</p>
+
+<table>
+  <thead>
+    <tr><th>Weapon</th><th>Description</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Air Pistol</span></td><td>VH Pistol that fires paint (and acid) balls.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Battleglove</span></td><td>Heavy gauntlet. Contains 3 Cyberarm option slots.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(RED: 1,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Constitution Arms Hurricane</span></td><td>Shotgun w/ 2 ROF. Requires BODY 11+.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(RED: 5,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Dartgun</span></td><td>VH Pistol that fires Non-Basic Arrows.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Flamethrower</span></td><td>Shotgun firing incendiary shells. Uses Heavy Weapons skill.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Kendachi Mono-Three</span></td><td>Two-Handed VH Melee Weapon. Ignores armor below SP11.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(RED: 5,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Malorian Arms 3516</span></td><td>Excellent Quality VH Pistol. 5d6 damage. Johnny Silverhand&rsquo;s iconic weapon.</td><td><span class="price-atr">100,000eb</span><span class="price-orig">(RED: 10,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Microwaver</span></td><td>VH Pistol that shuts down cyberware and electronics.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Militech &ldquo;Cowboy&rdquo; U-56</span></td><td>Grenade Launcher w/ 2 ROF. Requires BODY 11+.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(RED: 5,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Rhinemetall EMG-86 Railgun</span></td><td>Assault Rifle. Ignores armor below SP11. Heavy Weapons skill. BODY 11+.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(RED: 5,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Shrieker</span></td><td>VH Pistol that causes the Damaged Ear Critical Injury.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Stun Baton</span></td><td>A &ldquo;less lethal&rdquo; Medium Melee Weapon.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Stun Gun</span></td><td>A &ldquo;less lethal&rdquo; Heavy Pistol.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Tsunami Arms Helix</span></td><td>Assault Rifle, Autofire only (higher multiplier). BODY 11+.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(RED: 5,000eb)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> AMMUNITION <span class="tag tag-ranged">AMMO</span></h2>
+
+<div class="mechanic-box">
+  <h4>Ammo Note</h4>
+  <p>Non-Basic ammo and individual grenades are found in the Night Market section (RED pg. 344). Includes Incendiary Shells, Poisoned Arrows, Armor-Piercing Bullets, Smoke Grenades, and more. Apply the &times;10 multiplier to those prices as well.</p>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> ARMOR <span class="tag tag-armor">ARMOR</span></h2>
+
+<p>Armor must be purchased individually for head or body. Only your highest SP in a location applies (no stacking). Wearing heavier armor lowers REF, DEX, and MOVE by the listed penalty.</p>
+
+<table>
+  <thead>
+    <tr><th>Type</th><th>Description</th><th>SP</th><th>Penalty</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Leathers</span></td><td>Favored by Nomads and bikers.</td><td>4</td><td>None</td><td><span class="price-atr">200eb</span><span class="price-orig">(RED: 20eb)</span></td></tr>
+    <tr><td><span class="model-name">Kevlar</span></td><td>Clothes, vests, jackets, suits, even bikinis.</td><td>7</td><td>None</td><td><span class="price-atr">500eb</span><span class="price-orig">(RED: 50eb)</span></td></tr>
+    <tr><td><span class="model-name">Light Armorjack</span></td><td>Kevlar and plastic mesh woven into fabric.</td><td>11</td><td>None</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Bodyweight Suit</span></td><td>Sintered armorgel skinsuit. Stores cyberdeck, supports interface plugs.</td><td>11</td><td>None</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(RED: 1,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Medium Armorjack</span></td><td>Heavier Armorjack with solid plastic plating.</td><td>12</td><td>&minus;2 REF/DEX/MOVE</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Heavy Armorjack</span></td><td>Dense Kevlar with layered plastic and mesh.</td><td>13</td><td>&minus;2 REF/DEX/MOVE</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Flak</span></td><td>21st century flak vest and pants.</td><td>15</td><td>&minus;4 REF/DEX/MOVE</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+    <tr><td><span class="model-name">Metalgear</span></td><td>Stops almost anything. You&rsquo;re a walking tank.</td><td>18</td><td>&minus;4 REF/DEX/MOVE</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(RED: 5,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Bulletproof Shield</span></td><td>Polycarbonate shield. 10 HP, ablates. Takes up one arm.</td><td>10 HP</td><td>None (1 arm)</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> CYBERWARE &mdash; FASHIONWARE <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>7 Option Slots available. Cosmetic implants &mdash; no Humanity Loss.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Biomonitor</span></td><td>Mall</td><td>Subdermal vitals readout. Links to Agent.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Chemskin</span></td><td>Mall</td><td>Permanent skin color change. +2 Personal Grooming w/ Techhair.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">EMP Threading</span></td><td>Mall</td><td>Silver circuit-pattern lines across the body.</td><td><span class="price-atr">100eb</span><span class="price-orig">(10eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Light Tattoo</span></td><td>Mall</td><td>Subdermal glowing tattoos. +2 Wardrobe &amp; Style w/ 3+ tattoos.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Shift Tacts</span></td><td>Mall</td><td>Color-changing eye lenses.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Skinwatch</span></td><td>Mall</td><td>Subdermal LED watch.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Techhair</span></td><td>Mall</td><td>Color-light-emitting hair. +2 Personal Grooming w/ Chemskin.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>0</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> CYBERWARE &mdash; NEURALWARE <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Foundational cyberware: <strong>Neural Link</strong> (required for all Neuralware, has 5 Option Slots).</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Neural Link</span></td><td>Clinic</td><td>Wired artificial nervous system. Required for all Neuralware and Subdermal Grip. 5 Option Slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Braindance Recorder</span></td><td>Clinic</td><td>Records experiences to memory chip. Requires Neural Link.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Chipware Socket</span></td><td>Clinic</td><td>Socket in neck for chipware. Required for all Chipware. Requires Neural Link.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Interface Plugs</span></td><td>Clinic</td><td>Wrist/head plugs for machine connection. Requires Neural Link.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Kerenzikov</span></td><td>Clinic</td><td>Speedware. +2 Initiative. Only 1 Speedware at a time. Requires Neural Link.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Sandevistan</span></td><td>Clinic</td><td>Speedware. Activate as Action: +3 Initiative for 1 min, 1hr cooldown. Only 1 Speedware. Requires Neural Link.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Chemical Analyzer</span></td><td>N/A</td><td>Chipware. Tests chemical composition vs database. Requires Chipware Socket.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Memory Chip</span></td><td>N/A</td><td>Data storage for cyberware.</td><td><span class="price-atr">100eb</span><span class="price-orig">(10eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Olfactory Boost</span></td><td>N/A</td><td>Chipware. Track via scent (Tracking Skill). Requires Chipware Socket.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Pain Editor</span></td><td>N/A</td><td>Chipware. Ignore Seriously Wounded penalties. Requires Chipware Socket.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Skill Chip</span></td><td>N/A</td><td>Chipware. Specific Skill at Level 3 (unless already 3+). Requires Chipware Socket.</td><td><span class="price-atr">5,000 / 10,000eb</span><span class="price-orig">(500/1,000eb for x2 Skills)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Tactile Boost</span></td><td>N/A</td><td>Chipware. Detect motion within 20m via touch. Requires Chipware Socket.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">08</span> CYBERWARE &mdash; CYBEROPTICS <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Foundational: <strong>Cybereye</strong> (3 Option Slots each). Some options must be paired (2 eyes).</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cybereye</span></td><td>Clinic</td><td>Artificial eye. 3 Option Slots. Some options require pairing.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Anti-Dazzle</span></td><td>Mall</td><td>Immune to flash effects. Must be paired.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Chyron</span></td><td>Mall</td><td>Projects subscreen into field of vision.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Color Shift</span></td><td>Mall</td><td>Unlimited color/pattern changes for the eye.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Dartgun</span></td><td>Clinic</td><td>Single-shot Dartgun concealed in eye. Takes 3 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Image Enhance</span></td><td>Mall</td><td>+2 Perception, Lip Reading, Conceal/Reveal. Must be paired.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Low Light / IR / UV</span></td><td>Mall</td><td>Ignore darkness/smoke/fog penalties. Must be paired, 2 slots each.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">MicroOptics</span></td><td>Clinic</td><td>400x magnification.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">MicroVideo</span></td><td>Clinic</td><td>Eye camera. Records to chip or Agent. Takes 2 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Radiation Detector</span></td><td>Clinic</td><td>Radiation readings within 100m as blue glow.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Targeting Scope</span></td><td>Clinic</td><td>+1 to Aimed Shot checks.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">TeleOptics</span></td><td>Clinic</td><td>Detail up to 800m. +1 Aimed Shot at 51m+.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Virtuality</span></td><td>Mall</td><td>Projects cyberspace over real world view. Must be paired.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">09</span> CYBERWARE &mdash; CYBERAUDIO <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Foundational: <strong>Cyberaudio Suite</strong> (3 Option Slots, max 1 suite).</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cyberaudio Suite</span></td><td>Clinic</td><td>3 Option Slots. Cannot install more than 1.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Amplified Hearing</span></td><td>Mall</td><td>+2 Perception (hearing).</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Audio Recorder</span></td><td>Clinic</td><td>Records audio to chip or Agent.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Bug Detector</span></td><td>Mall</td><td>Beeps within 2m of listening devices.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Homing Tracer</span></td><td>Clinic</td><td>Follow linked tracer up to 1 mile.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Internal Agent</span></td><td>Mall</td><td>Internal smartphone. Audio only (or Chyron display via Cybereye).</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Level Damper</span></td><td>Mall</td><td>Immune to loud noise effects.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Radio Communicator</span></td><td>Mall</td><td>Radio comms. 1 mile range.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Radio Scanner / Music Player</span></td><td>Clinic</td><td>Plays music or tunes into radio within 1 mile.</td><td><span class="price-atr">500eb</span><span class="price-orig">(50eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Radar Detector</span></td><td>Clinic</td><td>Beeps if active radar within 100m.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Scrambler / Descrambler</span></td><td>Mall</td><td>Scramble outgoing / descramble incoming comms.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Voice Stress Analyzer</span></td><td>Mall</td><td>+2 Human Perception and Interrogation.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">10</span> CYBERWARE &mdash; INTERNAL BODY <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>7 Option Slots available. No foundational cyberware required.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">AudioVox</span></td><td>Clinic</td><td>Voice synth. +2 Acting and Play Instrument (singing).</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Contraceptive Implant</span></td><td>Mall</td><td>Prevents pregnancy.</td><td><span class="price-atr">100eb</span><span class="price-orig">(10eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Enhanced Antibodies</span></td><td>Mall</td><td>After stabilization, heal BODY &times;2 per day resting.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Cybersnake</span></td><td>Hospital</td><td>Esophagus-mounted VH Melee Weapon. Concealable. Poison compatible.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Gills</span></td><td>Hospital</td><td>Breathe underwater.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Grafted Muscle &amp; Bone Lace</span></td><td>Hospital</td><td>+2 BODY (changes HP, Wound Threshold, Death Save). Max BODY 10.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Independent Air Supply</span></td><td>Hospital</td><td>30 min oxygen. 1 hour refill from ambient.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Nasal Filters</span></td><td>Clinic</td><td>Immune to toxic gases, fumes, and similar.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Radar / Sonar Implant</span></td><td>Clinic</td><td>Scans terrain within 50m. Cannot scan through cover.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Toxin Binders</span></td><td>Clinic</td><td>+2 Resist Torture/Drugs.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Vampyres</span></td><td>Clinic</td><td>Excellent Quality Light Melee in mouth. Concealable. Poison compatible.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">11</span> CYBERWARE &mdash; EXTERNAL BODY <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>7 Option Slots available. No foundational cyberware required.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Hidden Holster</span></td><td>Clinic</td><td>Store a concealable weapon inside your body.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Skin Weave</span></td><td>Hospital</td><td>Body + head armored at SP7. Doesn&rsquo;t stack with worn armor. Ablates. Recovers 1 SP/day rest.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Subdermal Armor</span></td><td>Hospital</td><td>Body + head armored at SP11. Doesn&rsquo;t stack. Ablates. Recovers 1 SP/day rest.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Subdermal Pocket</span></td><td>Clinic</td><td>2&Prime;&times;4&Prime; under-skin storage with RealSkinn zipper.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">12</span> CYBERWARE &mdash; CYBERLIMBS <span class="tag tag-cyber">CYBERWARE</span></h2>
+
+<h3>Cyberarm (4 Option Slots)</h3>
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cyberarm</span></td><td>Hospital</td><td>Replacement arm. 4 Option Slots. Comes with Standard Hand (free).</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Standard Hand</span></td><td>Clinic</td><td>Cybernetic hand. Can install in meat arm.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Big Knucks</span></td><td>Clinic</td><td>Armored knuckles. Medium Melee. Concealable. Works in meat arm.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Cyberdeck (arm)</span></td><td>Clinic</td><td>Deck installed in Cyberarm. Takes 3 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Grapple Hand</span></td><td>Clinic</td><td>Fires hand on grapple line (30m). Not a weapon.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Medscanner (arm)</span></td><td>Clinic</td><td>+2 First Aid &amp; Paramedic. Takes 2 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Grenade Launcher</span></td><td>Clinic</td><td>Single-shot launcher in arm. Concealable. Takes 2 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Melee Weapon</span></td><td>Clinic</td><td>Any L/M/H Melee in arm. Concealable. Takes 2 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Shield</span></td><td>Clinic</td><td>Bulletproof Shield in arm. Concealable. Replaceable. Takes 3 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Ranged Weapon</span></td><td>Clinic</td><td>Any 1-handed Ranged in arm. Concealable. Takes 2 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Quick Change Mount</span></td><td>Clinic</td><td>Remove/install Cyberarm as an Action.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Rippers</span></td><td>Clinic</td><td>Carbo-glass claws. Medium Melee. Concealable. Works in meat arm.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Scratchers</span></td><td>Mall</td><td>Carbo-glass fingernails. Light Melee. Concealable. Works in meat arm.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Shoulder Cam</span></td><td>Clinic</td><td>Video camera in shoulder. Concealable. Takes 2 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Slice &rsquo;N Dice</span></td><td>Clinic</td><td>Monofilament whip in thumb. Medium Melee. Concealable. Works in meat arm.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Subdermal Grip</span></td><td>Clinic</td><td>Use Smartgun without Interface Plugs. Works in meat arm. Requires Neural Link.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Techscanner (arm)</span></td><td>Clinic</td><td>+2 to multiple TECH Skills. Takes 2 slots.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Tool Hand</span></td><td>Clinic</td><td>Screwdriver, wrench, drill, etc in fingers. Works in meat arm.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Wolvers</span></td><td>Clinic</td><td>Long knuckle claws. Heavy Melee. Concealable. Works in meat arm.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-mid">7 (2d6)</td></tr>
+  </tbody>
+</table>
+
+<h3>Cyberleg (3 Option Slots)</h3>
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cyberleg</span></td><td>Hospital</td><td>Replacement leg. 3 Option Slots. Comes with Standard Foot (free). Most options must be paired.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Standard Foot</span></td><td>Clinic</td><td>Cybernetic foot. Can install in meat leg.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Grip Foot</span></td><td>Clinic</td><td>Negates climbing movement penalty. Must be paired.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Jump Booster</span></td><td>Clinic</td><td>Negates jumping movement penalty. Takes 2 slots. Must be paired.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Skate Foot</span></td><td>Clinic</td><td>Inline skates. +6m when Running. Concealable. Must be paired.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Talon Foot</span></td><td>Clinic</td><td>Blade in foot. Light Melee. Concealable. Works in meat leg.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Web Foot</span></td><td>Clinic</td><td>Negates swimming movement penalty. Must be paired.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+  </tbody>
+</table>
+
+<h3>Cyberlimb Upgrades (Arm or Leg)</h3>
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Hardened Shielding</span></td><td>Clinic</td><td>Limb and options immune to EMP and Non-Black ICE effects.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Plastic Covering</span></td><td>Mall</td><td>Cosmetic coating. No slot cost.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(100eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">RealSkinn Covering</span></td><td>Mall</td><td>Artificial skin coating. No slot cost.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(500eb)</span></td><td>0</td></tr>
+    <tr><td><span class="model-name">Superchrome Covering</span></td><td>Mall</td><td>Shiny metallic coating. +2 Wardrobe &amp; Style. No slot cost.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td>0</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">13</span> CYBERWARE &mdash; BORGWARE <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Full body replacement territory. Here be cyberpsychosis.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Artificial Shoulder Mount</span></td><td>Hospital</td><td>Mount 2 additional Cyberarms under first set.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Implanted Linear Frame &beta;</span></td><td>Hospital</td><td>Skeleton upgrade. BODY becomes 14. Requires BODY 8 + 2&times; Grafted Muscle &amp; Bone Lace.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(5,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Implanted Linear Frame &sigma;</span></td><td>Hospital</td><td>Skeleton upgrade. BODY becomes 12. Requires BODY 6 + Grafted Muscle &amp; Bone Lace.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">MultiOptic Mount</span></td><td>Hospital</td><td>Mount up to 5 additional Cybereyes.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Sensor Array</span></td><td>Clinic</td><td>5 additional Cyberaudio option slots. Requires Cyberaudio Suite (no slot cost).</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(1,000eb)</span></td><td class="hl-high">14 (4d6)</td></tr>
+  </tbody>
+</table>
+
+<div class="footer-bar">
+  // SOURCE: CYBERPUNK RED CORE RULEBOOK // PRICES &times;10 FOR ATR CAMPAIGN //<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
