@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humanity, Sanity &amp; Pharmacy — All That Remains</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// YOUR MENTAL HEALTH MATTERS TOO, CHOOM //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .flavor-quote .attribution { display:block; margin-top:0.2rem; font-size:0.75rem; color:var(--text-dim); font-style:normal; }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM GUIDANCE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .warning-box { border:1px solid var(--red); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,7,58,0.05); }
+  .warning-box::before { content:"⚠ DANGER"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .recovery-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); border-left:4px solid var(--green); }
+  .recovery-box::before { content:"✦ RECOVERY"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.45rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .price-orig { color:var(--text-dim); font-size:0.7rem; font-family:'Share Tech Mono',monospace; display:block; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-humanity { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-drug { background:rgba(255,45,111,0.15); color:var(--magenta); }
+  .tag-med { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-chem { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .tag-cyber { background:rgba(180,100,255,0.15); color:var(--purple); }
+  .drug-card { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel); padding:1.2rem 1.4rem; margin:1rem 0; }
+  .drug-card h4 { font-family:'Orbitron',sans-serif; font-size:0.95rem; margin-bottom:0.2rem; }
+  .drug-card .drug-meta { font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--text-dim); margin-bottom:0.6rem; }
+  .drug-card .drug-flavor { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem; }
+  .drug-card .effect-label { font-family:'Share Tech Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; margin:0.6rem 0 0.3rem; }
+  .drug-card .effect-label.primary { color:var(--green); }
+  .drug-card .effect-label.secondary { color:var(--red); }
+  .drug-card ul { padding-left:1.2rem; margin-bottom:0.5rem; }
+  .drug-card li { font-size:0.88rem; margin-bottom:0.25rem; }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>HUMANITY, SANITY &amp; PHARMACY</h1>
+  <div class="subtitle">The Cyberpsychosis System, Recovery, Street Drugs &amp; Medical Supplies</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Humanity &amp; Empathy &mdash; Core Rules</li>
+    <li><span>02</span> Starting Humanity by Class</li>
+    <li><span>03</span> Humanity Loss</li>
+    <li><span>04</span> Cyberpsychosis &amp; Saving Throws</li>
+    <li><span>05</span> Humanity Recovery</li>
+    <li><span>06</span> Roleplay at Low Humanity</li>
+    <li><span>07</span> Street Drugs</li>
+    <li><span>08</span> Additive Compounds</li>
+    <li><span>09</span> Pharmaceuticals</li>
+    <li><span>10</span> Drug-Related Cyberware</li>
+    <li><span>11</span> Medical Supplies &amp; Services</li>
+  </ul>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PART 1: HUMANITY SYSTEM                                          -->
+<!-- ================================================================ -->
+
+<h2><span class="section-num">01</span> HUMANITY &amp; EMPATHY &mdash; CORE RULES <span class="tag tag-humanity">HUMANITY</span></h2>
+
+<div class="flavor-quote">
+  "Chrome don't make you less human. Losing yourself in it does."
+</div>
+
+<p>Humanity is a pool that represents a character's connection to their emotions, relationships, and sanity. Every piece of cyberware, every traumatic event, and every line crossed chips away at it. When it's gone, so are you.</p>
+
+<div class="mechanic-box">
+  <h4>Core Concepts</h4>
+  <p><strong>Humanity (HUM):</strong> A numerical pool representing your emotional and psychological stability.</p>
+  <p><strong>Empathy (EMP):</strong> Derived stat, same as Cyberpunk RED. <strong>Every 10 Humanity = 1 EMP.</strong></p>
+  <p><strong>Cyberpsychosis Threshold:</strong> When Humanity reaches <strong>0</strong>, the character is lost. The DM decides what happens to them.</p>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> STARTING HUMANITY BY CLASS <span class="tag tag-humanity">HUMANITY</span></h2>
+
+<p>Instead of Cyberpunk RED's role-specific EMP values, ATR maps starting Humanity to 5e class archetypes. This keeps the RED flavor: social and cerebral characters tend to hold onto more humanity, while combat operatives who are often already implanted before play begins start with less to spare.</p>
+
+<table>
+  <thead>
+    <tr><th>Archetype</th><th>5e Classes</th><th>Starting Humanity</th><th>Avg. HUM</th><th>EMP Range</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Solos / Frontliners</span></td>
+      <td>Fighters, Barbarians, Monks, Paladins</td>
+      <td class="hl-extreme">6d6</td>
+      <td>~21</td>
+      <td>1&ndash;3</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Support / Specialists</span></td>
+      <td>Rogues, Rangers, Artificers, Clerics (non-Knowledge)</td>
+      <td class="hl-mid">6d8</td>
+      <td>~27</td>
+      <td>1&ndash;4</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Brains / Netrunners</span></td>
+      <td>Wizards, Warlocks, Sorcerers, Bards, Knowledge Clerics</td>
+      <td class="hl-low">6d10</td>
+      <td>~33</td>
+      <td>1&ndash;6</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  Frontliners tend to already have implants before the campaign starts, meaning their lower pool is partially accounted for. A Solo who's been in the field for years and already has a Sandevistan and Subdermal Armor is starting at a realistic place. A freshly chromed Wizard hasn't been through that grinder yet.
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> HUMANITY LOSS <span class="tag tag-humanity">HUMANITY</span></h2>
+
+<h3>From Cyberware</h3>
+<p>Each implant has a Humanity Cost &mdash; either a flat value or a dice roll. Refer to the cyberware entries in the RED Gear Catalog and Homebrew Cyberware Compendium for specific HL values per item.</p>
+
+<h3>From Trauma &amp; Stress</h3>
+<p>The DM can call for Humanity loss in response to severe psychological events. These are usually small (1&ndash;3 points) but can stack over time.</p>
+
+<div class="mechanic-box">
+  <h4>Trauma Examples</h4>
+  <p><strong>1 HL:</strong> Witnessing a particularly brutal death, being forced to harm an innocent, minor betrayal.</p>
+  <p><strong>2 HL:</strong> Torture (giving or receiving), killing someone you know, a close call with cyberpsychosis.</p>
+  <p><strong>3 HL:</strong> Death of a loved one, major personal betrayal, committing an atrocity.</p>
+</div>
+
+<h3>From Street Drugs</h3>
+<p>Several combat drugs inflict Humanity Loss as part of their effects. See the Street Drugs section below for specifics.</p>
+
+<div class="warning-box">
+  <strong>Cumulative Burnout:</strong> Once your EMP drops a tier (e.g., from EMP 3 to EMP 2), all Humanity in that tier is gone for good &mdash; unless recovered through roleplay, therapy, or life goals. You can't buy it back with eddies.
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> CYBERPSYCHOSIS &amp; SAVING THROWS <span class="tag tag-humanity">HUMANITY</span></h2>
+
+<p>When a character's Humanity is under pressure &mdash; taking a big HL hit, witnessing something horrifying while already low, or being pushed past their limits &mdash; the DM can call for a <strong>Cyberpsychosis Saving Throw</strong>.</p>
+
+<div class="ruling-box">
+  <strong>Saving Throw Ability:</strong> Use the ability score most tied to the character's coping mechanism:
+  <br><br>
+  <strong>WIS</strong> &mdash; Meditation, faith, discipline. The monk who centers themselves.
+  <br>
+  <strong>CHA</strong> &mdash; Music, performance, social bonding. The rockerboy who plays through the pain.
+  <br>
+  <strong>INT</strong> &mdash; Rationalization, technical tinkering, problem-solving. The netrunner who thinks their way through it.
+  <br>
+  <strong>CON</strong> &mdash; Pure grit, endurance, "push it down and keep moving." The solo who just doesn't stop.
+</div>
+
+<div class="mechanic-box">
+  <h4>Failure Consequences</h4>
+  <p>Failing a Cyberpsychosis save doesn't immediately mean full psychosis. It triggers <strong>episodes</strong> proportional to how low your Humanity is:</p>
+  <p><strong>EMP 3+:</strong> Momentary detachment. Cold response to something that should matter. A flicker.</p>
+  <p><strong>EMP 2:</strong> Paranoia, sudden violent impulses, brief hallucinations. You snap back, but it takes a second.</p>
+  <p><strong>EMP 1:</strong> Full episodes &mdash; intrusive thoughts, sustained paranoia, hallucinations, sudden violence. The DM can introduce these unprompted.</p>
+  <p><strong>EMP 0:</strong> Cyberpsychotic Break. The character is no longer playable.</p>
+</div>
+
+<div class="dm-note">
+  At the DM's discretion, a character at EMP 0 could become a temporary enemy combatant for one final, memorable scene rather than simply being removed. Your table, your call.
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> HUMANITY RECOVERY <span class="tag tag-humanity">HUMANITY</span></h2>
+
+<p>Humanity isn't a one-way street. Characters can claw their way back from the edge &mdash; but it takes effort, time, and genuine connection. You can't shortcut this with chrome or eddies.</p>
+
+<div class="recovery-box">
+  <strong>Positive Relationships:</strong> Deep friendships, romances, or meaningful trust-building moments. <strong>+1d4 Humanity</strong> at the DM's discretion. This can't be farmed &mdash; it has to feel earned.
+</div>
+
+<div class="recovery-box">
+  <strong>Life Goals Achieved:</strong> Completing something central to your character's identity &mdash; a personal quest, a promise fulfilled, a long-term objective reached. <strong>+1&ndash;2 EMP</strong> (that's 10&ndash;20 Humanity).
+</div>
+
+<div class="recovery-box">
+  <strong>Therapy / Long Downtime:</strong> A full rest season with a therapist, mentor, or safe community. Requires actual downtime in a safe environment &mdash; not a weekend at a coffin hotel. <strong>Regain 1d6 Humanity.</strong>
+</div>
+
+<div class="warning-box">
+  <strong>Major Losses:</strong> The death of a loved one, betrayal by someone in your core bonds, or the destruction of something you built your identity around causes an immediate <strong>&minus;1 EMP</strong> (10 Humanity), no save. Think David Martinez going over the edge when he thought Lucy was dead.
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> ROLEPLAY AT LOW HUMANITY <span class="tag tag-humanity">HUMANITY</span></h2>
+
+<p>Humanity isn't just a number &mdash; it should change how a character feels at the table.</p>
+
+<table>
+  <thead>
+    <tr><th>EMP Level</th><th>Behavioral Profile</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="hl-low"><strong>EMP 4+</strong></td><td>Empathetic, social, capable of strong bonds. Feels like a person.</td></tr>
+    <tr><td class="hl-mid"><strong>EMP 3</strong></td><td>Functional but emotionally blunted. Relationships feel more transactional. Harder to connect.</td></tr>
+    <tr><td class="hl-high"><strong>EMP 2</strong></td><td>Detached, cold. Violent impulses surface. Paranoia creeps in. Others notice you're "off."</td></tr>
+    <tr><td class="hl-extreme"><strong>EMP 1</strong></td><td>Teetering on the edge. DM introduces intrusive thoughts, paranoia, hallucinations. Every chrome installation is a gamble.</td></tr>
+    <tr><td class="hl-psycho"><strong>EMP 0</strong></td><td>Cyberpsycho. No longer playable. The character is gone.</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<!-- PART 2: PHARMACY                                                 -->
+<!-- ================================================================ -->
+
+<h2><span class="section-num">07</span> STREET DRUGS <span class="tag tag-drug">STREET DRUGS</span></h2>
+
+<div class="flavor-quote">
+  "Stims? Combat drugs? Something to make a Friday Night Firefight a little more fun? I've got what you need."
+  <span class="attribution">&mdash; Hornet, Fixer of Heywood</span>
+</div>
+
+<p>Street Drugs have a Primary Effect (automatic) and a Secondary Effect that triggers on a failed check (DV listed per drug). All ATR prices are &times;10 from RED source values.</p>
+
+<div class="drug-card">
+  <h4 style="color: var(--red);">BERSERKER</h4>
+  <div class="drug-meta">ATR PRICE: 1,000eb per dose (RED: 100eb) &bull; SECONDARY DV: 17</div>
+  <div class="drug-flavor">"I've seen a Solo on Berserker shrug off a rifle shot that blew off her leg, and proceed to strangle the shooter to death with her bare hands."</div>
+  <div class="effect-label primary">PRIMARY EFFECT (10 Minutes)</div>
+  <ul>
+    <li>Critical Injuries deal no Bonus Damage.</li>
+    <li>Penalties from Seriously/Mortally Wounded states are halved.</li>
+    <li>Penalties from losing a Facedown are halved.</li>
+    <li>User becomes highly aggressive. Roleplay accordingly.</li>
+  </ul>
+  <div class="effect-label secondary">SECONDARY EFFECT (DV17 FAIL)</div>
+  <ul>
+    <li>2 points of Humanity Loss.</li>
+    <li>Addiction: Base Death Save Penalty permanently increased by 1.</li>
+  </ul>
+</div>
+
+<div class="drug-card">
+  <h4 style="color: var(--purple);">PRIME TIME</h4>
+  <div class="drug-meta">ATR PRICE: 500eb per dose (RED: 50eb) &bull; SECONDARY DV: 17</div>
+  <div class="drug-flavor">"Used to make you a cold, calculated killer on the battlefield. Now it makes you a cold, calculated killer in the office."</div>
+  <div class="effect-label primary">PRIMARY EFFECT (4 Hours)</div>
+  <ul>
+    <li>Take 4d6 Humanity Loss on use (returned after the effect ends). Cannot reduce below 0 HUM.</li>
+    <li>COOL and WILL increased by 2 (WILL increase does not affect HP).</li>
+    <li>Emotions are repressed. Roleplay accordingly.</li>
+  </ul>
+  <div class="effect-label secondary">SECONDARY EFFECT (DV17 FAIL)</div>
+  <ul>
+    <li>1 point of permanent Humanity Loss.</li>
+    <li>Addiction: COOL lowered by 2 unless currently on Prime Time.</li>
+  </ul>
+</div>
+
+<div class="drug-card">
+  <h4 style="color: var(--cyan);">SIXGUN</h4>
+  <div class="drug-meta">ATR PRICE: 1,000eb per dose (RED: 100eb) &bull; SECONDARY DV: 17</div>
+  <div class="drug-flavor">"When you need someone to dive into a palace of military-grade Black ICE and burn a paper trail, you gotta give them the best tools."</div>
+  <div class="effect-label primary">PRIMARY EFFECT (4 Hours)</div>
+  <ul>
+    <li>MOVE and REF reduced by 2 (minimum 1).</li>
+    <li>+2 to Speed while Jacked In.</li>
+    <li>Unsafe Jack Outs (not caused by programs) are treated as Safe.</li>
+    <li>Once per turn: spend 1 Humanity to gain 1 additional NET Action.</li>
+  </ul>
+  <div class="effect-label secondary">SECONDARY EFFECT (DV17 FAIL)</div>
+  <ul>
+    <li>Addiction: &minus;2 to Speed while Jacked In unless currently on Sixgun.</li>
+  </ul>
+</div>
+
+<div class="drug-card">
+  <h4 style="color: var(--yellow);">TIMEWARP</h4>
+  <div class="drug-meta">ATR PRICE: 1,000eb per dose (RED: 100eb) &bull; SECONDARY DV: 17</div>
+  <div class="drug-flavor">"Plenty of Solos stock this stuff in bulk so they can get even faster on the draw."</div>
+  <div class="effect-label primary">PRIMARY EFFECT (1 Minute)</div>
+  <ul>
+    <li>+3 to any Initiative Roll. If already in initiative, current initiative increases by 3.</li>
+  </ul>
+  <div class="effect-label secondary">SECONDARY EFFECT (DV17 FAIL)</div>
+  <ul>
+    <li>Addiction: &minus;2 to Initiative unless currently on Timewarp.</li>
+  </ul>
+</div>
+
+<div class="drug-card">
+  <h4 style="color: var(--green);">PIRANHA SMASH</h4>
+  <div class="drug-meta">ATR PRICE: 100eb per dose (RED: 10eb) &bull; SECONDARY DV: 9</div>
+  <div class="drug-flavor">"Like regular Smash but with a twist of lime and 40% less chance of addiction!"</div>
+  <div class="effect-label primary">PRIMARY EFFECT (4 Hours)</div>
+  <ul>
+    <li>User feels euphoric, loose, happy, and ready to party.</li>
+    <li>+2 to Dance, Contortionist, Conversation, Human Perception, Persuasion, and Acting.</li>
+  </ul>
+  <div class="effect-label secondary">SECONDARY EFFECT (DV9 FAIL)</div>
+  <ul>
+    <li>Addiction: &minus;2 to Dance, Contortionist, Conversation, Human Perception, Persuasion, and Acting. Loss of interest in normally enjoyable activities.</li>
+  </ul>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">08</span> ADDITIVE COMPOUNDS <span class="tag tag-chem">CHEMISTRY</span></h2>
+
+<div class="flavor-quote">
+  "A real chemist knows how to get the most out of their nasty little liquids."
+  <span class="attribution">&mdash; Hornet</span>
+</div>
+
+<p>Compounds are mixed with Vials of Poison or Biotoxin as an Action. Multiple applications of the same compound do not stack.</p>
+
+<table>
+  <thead>
+    <tr><th>Compound</th><th>Effect</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Delaying Compound</span></td>
+      <td>Delay a poison/biotoxin's effects by 1 minute or 1 hour after ingestion/absorption.</td>
+      <td><span class="price-atr">500eb</span><span class="price-orig">(RED: 50eb)</span></td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Distilling Compound</span></td>
+      <td>Increase Resist Torture/Drugs DV of a poison/biotoxin by 2.</td>
+      <td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Osmosis Compound</span></td>
+      <td>Allows poison/biotoxin to enter through skin contact. Can coat a surface (2 sq ft). Lasts 1 hour. DV17 Perception to notice. Washes off with water.</td>
+      <td><span class="price-atr">500eb</span><span class="price-orig">(RED: 50eb)</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">09</span> PHARMACEUTICALS <span class="tag tag-med">MEDICAL</span></h2>
+
+<p>Pharmaceuticals are available to Medtechs through the Medicine Specialty. These follow the same rules as standard Pharmaceuticals in RED.</p>
+
+<table>
+  <thead>
+    <tr><th>Name</th><th>Effect</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Sedative</span></td>
+      <td>Willing target falls unconscious for 4 hours. Medtech gains +2 to Surgery Check during this time. Unwilling target: DV15 Resist Torture/Drugs or unconscious for 1 minute (or until damaged/roused).</td>
+      <td>Medtech-administered only.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Veritas</span></td>
+      <td>Target must beat DV17 Resist Torture/Drugs or enter a hazy, suggestive state for 10 minutes. &minus;5 to Acting, Concentration, Conversation, Deduction, Human Perception, and Persuasion.</td>
+      <td>Medtech-administered only. The interrogator's best friend.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Standard Medical Supplies (from RED Core)</h3>
+
+<table>
+  <thead>
+    <tr><th>Item</th><th>Effect</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Airhypo</span></td><td>Easy-to-use drug delivery platform. The 5e "health potion" equivalent when loaded with appropriate pharma.</td><td><span class="price-atr">500eb</span><span class="price-orig">(RED: 50eb)</span></td></tr>
+    <tr><td><span class="model-name">Medtech Bag</span></td><td>Full medical toolkit in a bag. Required for field medicine.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Medscanner</span></td><td>Diagnoses illness and injury. +2 to First Aid and Paramedic checks.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(RED: 1,000eb)</span></td></tr>
+    <tr><td><span class="model-name">Vial of Poison</span></td><td>2d6 damage. Resisted by Resist Torture/Drugs. Not affected by armor.</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(RED: 100eb)</span></td></tr>
+    <tr><td><span class="model-name">Vial of Biotoxin</span></td><td>3d6 damage. Resisted by Resist Torture/Drugs. Not affected by armor.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(RED: 500eb)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">10</span> DRUG-RELATED CYBERWARE <span class="tag tag-cyber">CYBERWARE</span></h2>
+
+<div class="drug-card">
+  <h4 style="color: var(--purple);">BODYWEIGHT AUTOINJECTOR</h4>
+  <div class="drug-meta">ATR PRICE: 1,000eb (RED: 100eb) &bull; HL: 3 (1d6) &bull; INSTALL: Clinic &bull; TYPE: Internal Body Cyberware</div>
+  <div class="drug-flavor">"No need to stop to shoot up when the shooting starts, and no one's gonna clock an autoinjector in a pat down."</div>
+  <ul>
+    <li>Load one dose of a Street Drug into a subdermal reservoir (Action).</li>
+    <li>Inject as an Action on command.</li>
+    <li>With a Biomonitor: can auto-inject when rolling Initiative, receiving a Critical Injury, or entering a chosen Wound State.</li>
+  </ul>
+</div>
+
+<div class="drug-card">
+  <h4 style="color: var(--orange);">PURSUIT SECURITY INC. GAS JET</h4>
+  <div class="drug-meta">ATR PRICE: 5,000eb (RED: 500eb) &bull; HL: 7 (2d6) &bull; INSTALL: Clinic &bull; TYPE: Cyberarm Option (2 slots)</div>
+  <div class="drug-flavor">"Load an experimental toxin, blast a crowd of rentacops, and just watch. Perfect sample size!"</div>
+  <ul>
+    <li>Aerosol gas launcher loaded with 3 doses of a Street Drug, or 3 vials of Poison/Biotoxin.</li>
+    <li>Concealable without a check.</li>
+    <li>Mechanically acts as a One-Handed Exotic Shotgun (Shotgun Shell spread mode only).</li>
+    <li>Instead of damage, applies loaded substance effects to all vulnerable targets in the spread.</li>
+    <li>Nasal Filters and similar gas-nullifying items negate the attack.</li>
+    <li>Each shot fully drains the weapon. Requires full reload.</li>
+  </ul>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">11</span> MEDICAL SERVICES &amp; THERAPY <span class="tag tag-med">MEDICAL</span></h2>
+
+<p>Not everything can be fixed with chrome and chems. Sometimes you need a person, not a product.</p>
+
+<table>
+  <thead>
+    <tr><th>Service</th><th>Effect</th><th>ATR Price</th><th>Availability</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Ripperdoc Visit</span><span class="model-desc">Standard cyberware installation/removal</span></td>
+      <td>Install or remove cyberware. Surgery included in cyberware cost.</td>
+      <td>Included</td>
+      <td>Common</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Trauma Team Response</span><span class="model-desc">Emergency medical extraction</span></td>
+      <td>Armed medical team extracts and stabilizes you. Response time depends on your plan tier.</td>
+      <td><span class="price-atr">1,000&ndash;50,000eb</span></td>
+      <td>Subscription</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Therapy Session</span><span class="model-desc">Licensed psychotherapist</span></td>
+      <td>Part of the Humanity recovery path. Requires downtime. Contributes toward the 1d6 Humanity recovery from Long Downtime.</td>
+      <td><span class="price-atr">500&ndash;2,000eb</span></td>
+      <td>Uncommon</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Street Doc Patch-Up</span><span class="model-desc">No-questions-asked medical care</span></td>
+      <td>Stabilization and basic treatment. No records. Quality varies wildly.</td>
+      <td><span class="price-atr">200&ndash;1,000eb</span></td>
+      <td>Common</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Humanity Restoration Program</span><span class="model-desc">Corpo-run rehabilitation</span></td>
+      <td>Intensive multi-week program for near-cyberpsychotic individuals. Regain up to 2d6 Humanity. Requires full commitment &mdash; no jobs, no runs, no street life.</td>
+      <td><span class="price-atr">25,000&ndash;100,000eb</span></td>
+      <td>Rare</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  Therapy and Humanity restoration services are deliberately expensive and time-consuming. The point is that losing Humanity should have weight &mdash; getting it back shouldn't be as easy as buying a new arm. The most meaningful recoveries come from roleplay, not eddies.
+</div>
+
+
+<div class="footer-bar">
+  // HUMANITY, SANITY &amp; PHARMACY //<br>
+  HOMEBREW RULES + SOURCES: CYBERPUNK RED, HORNET'S PHARMACY, BLACK CHROME+<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
