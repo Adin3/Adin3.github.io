@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon 2185 — Weapons, Armor &amp; Augmentations (ATR Pricing)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// SOURCE: CARBON 2185 CORE RULEBOOK //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM / ATR NOTE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .warning-box { border:1px solid var(--red); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,7,58,0.05); }
+  .warning-box::before { content:"⚠ RESTRICTED"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.45rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .price-orig { color:var(--text-dim); font-size:0.7rem; font-family:'Share Tech Mono',monospace; display:block; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-melee { background:rgba(255,106,0,0.15); color:var(--orange); }
+  .tag-ranged { background:rgba(255,7,58,0.15); color:var(--red); }
+  .tag-armor { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-aug { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-mod { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .tag-ammo { background:rgba(180,100,255,0.15); color:var(--purple); }
+  .tag-drug { background:rgba(255,45,111,0.15); color:var(--magenta); }
+  .tier-badge { font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.05em; display:inline-block; padding:0.1rem 0.4rem; border-radius:2px; }
+  .tier-0 { background:rgba(255,255,255,0.08); color:var(--text-muted); border:1px solid var(--text-dim); }
+  .tier-1 { background:rgba(57,255,20,0.12); color:var(--green); border:1px solid var(--green); }
+  .tier-2 { background:rgba(0,240,255,0.12); color:var(--cyan); border:1px solid var(--cyan); }
+  .tier-3 { background:rgba(247,224,24,0.12); color:var(--yellow); border:1px solid var(--yellow); }
+  .tier-4 { background:rgba(255,106,0,0.12); color:var(--orange); border:1px solid var(--orange); }
+  .tier-5 { background:rgba(255,7,58,0.12); color:var(--red); border:1px solid var(--red); }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>CARBON 2185 &mdash; GEAR CATALOG</h1>
+  <div class="subtitle">Weapons, Armor &amp; Augmentations from Carbon 2185 &mdash; ATR Pricing</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="dm-note">
+  <strong>Pricing Note:</strong> Carbon 2185 uses wonlongs (&won;). For ATR, prices have been converted to eddies (eb) at a ratio that keeps them proportional to the RED &times;10 economy. Roughly: 10&won; &asymp; 1eb. Original wonlong prices shown in parentheses. DM has final say on all pricing.
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Melee Weapons</li>
+    <li><span>02</span> Ranged Weapons</li>
+    <li><span>03</span> Armor &amp; Helmets</li>
+    <li><span>04</span> Ammunition &amp; Black Market Ammo</li>
+    <li><span>05</span> Weapon Attachments</li>
+    <li><span>06</span> Augmentations &mdash; Tier 0 (Universal)</li>
+    <li><span>07</span> Augmentations &mdash; Tier 1 (Civilian)</li>
+    <li><span>08</span> Augmentations &mdash; Tier 2 (Security)</li>
+    <li><span>09</span> Augmentations &mdash; Tier 3 (Specialist)</li>
+    <li><span>10</span> Augmentations &mdash; Tier 4 (Military)</li>
+    <li><span>11</span> Augmentations &mdash; Tier 5 (Illegal)</li>
+    <li><span>12</span> Blood Toxicity &amp; Medication</li>
+  </ul>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> MELEE WEAPONS <span class="tag tag-melee">MELEE</span></h2>
+
+<table>
+  <thead><tr><th>Weapon</th><th>Damage</th><th>Properties</th><th>Weight</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Baton</span></td><td>1d4 Bludgeoning</td><td>Light</td><td>2lb</td><td><span class="price-atr">100eb</span><span class="price-orig">(&won;1,000)</span></td></tr>
+    <tr><td><span class="model-name">Fireaxe</span></td><td>1d6 Fire</td><td>Light, Thrown (20/60)</td><td>3lb</td><td><span class="price-atr">500eb</span><span class="price-orig">(&won;5,000)</span></td></tr>
+    <tr><td><span class="model-name">Hammer</span></td><td>1d4 Bludgeoning</td><td>Finesse, Light, Thrown (20/60)</td><td>1lb</td><td><span class="price-atr">200eb</span><span class="price-orig">(&won;2,000)</span></td></tr>
+    <tr><td><span class="model-name">Knife</span></td><td>1d4 Piercing</td><td>Finesse, Light, Thrown (20/60)</td><td>1lb</td><td><span class="price-atr">200eb</span><span class="price-orig">(&won;2,000)</span></td></tr>
+    <tr><td><span class="model-name">Monoedged Katana</span></td><td>1d8 Slashing</td><td>Finesse, Light</td><td>1lb</td><td><span class="price-atr">2,000eb</span><span class="price-orig">(&won;20,000)</span></td></tr>
+    <tr><td><span class="model-name">Phase Shift Knife</span></td><td>1d6 Slashing</td><td>Versatile (1d10)</td><td>3lb</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(&won;10,000)</span></td></tr>
+    <tr><td><span class="model-name">Phase Shift Sword</span></td><td>1d8 Slashing</td><td>Finesse, Ignores Resistance</td><td>4lb</td><td><span class="price-atr">1,500eb</span><span class="price-orig">(&won;15,000)</span></td></tr>
+    <tr><td><span class="model-name">Cobra Retractable Baton</span></td><td>1d6 Bludgeoning</td><td>Light</td><td>2lb</td><td><span class="price-atr">600eb</span><span class="price-orig">(&won;6,000)</span></td></tr>
+    <tr><td><span class="model-name">Stun Baton</span></td><td>1d6 Electric</td><td>Light</td><td>2lb</td><td><span class="price-atr">700eb</span><span class="price-orig">(&won;7,000)</span></td></tr>
+    <tr><td><span class="model-name">Vibro Knife</span></td><td>1d6 Piercing</td><td>Finesse, Light</td><td>1lb</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(&won;10,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> RANGED WEAPONS <span class="tag tag-ranged">RANGED</span></h2>
+
+<p>Weapons marked with * are unlocked (not biolocked). All others are biolocked to their owner. Unlocking a weapon illegally costs approximately 10,000eb (&won;100,000).</p>
+
+<table>
+  <thead><tr><th>Weapon</th><th>Damage</th><th>Range</th><th>Ammo / Properties</th><th>Wt</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">PISTOLS</td></tr>
+    <tr><td><span class="model-name">21st Century Pistol*</span></td><td>2d4 Ballistic</td><td>40/100</td><td>9mm, 17 shots, Light</td><td>3lb</td><td><span class="price-atr">8,000eb</span><span class="price-orig">(&won;80,000)</span></td></tr>
+    <tr><td><span class="model-name">Heavy Pistol</span></td><td>2d6 Ballistic</td><td>50/150</td><td>10mm, 15 shots</td><td>4lb</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">KHMA Heavy Pistol</span></td><td>2d6 Ballistic</td><td>60/180</td><td>10mm, 15 shots</td><td>4lb</td><td><span class="price-atr">12,000eb</span><span class="price-orig">(&won;120,000)</span></td></tr>
+    <tr><td><span class="model-name">Revolver</span></td><td>2d8 Ballistic</td><td>40/120</td><td>10mm, 6 shots, Light</td><td>3lb</td><td><span class="price-atr">12,000eb</span><span class="price-orig">(&won;120,000)</span></td></tr>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">SUBMACHINE GUNS</td></tr>
+    <tr><td><span class="model-name">Black Market SMG*</span></td><td>2d4 Ballistic</td><td>30/90</td><td>10mm, 20 shots, Spray, Light</td><td>3lb</td><td><span class="price-atr">8,000eb</span><span class="price-orig">(&won;80,000)</span></td></tr>
+    <tr><td><span class="model-name">Kasai Corporation SMG</span></td><td>3d4 Ballistic</td><td>40/120</td><td>10mm, 40 shots, Spray, Light</td><td>3lb</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Detroit Industries SMG</span></td><td>4d4 Ballistic</td><td>40/120</td><td>10mm, 40 shots, Spray</td><td>3lb</td><td><span class="price-atr">12,000eb</span><span class="price-orig">(&won;120,000)</span></td></tr>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">SHOTGUNS</td></tr>
+    <tr><td><span class="model-name">Sawed-Off Shotgun*</span></td><td>2d8 Ballistic</td><td>10/30</td><td>Shells, 2 shots, 2H</td><td>5lb</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Street Shotgun</span></td><td>2d8 Ballistic</td><td>10/40</td><td>Shells, 2 shots, 2H</td><td>7lb</td><td><span class="price-atr">12,000eb</span><span class="price-orig">(&won;120,000)</span></td></tr>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">ASSAULT RIFLES</td></tr>
+    <tr><td><span class="model-name">Standard Assault Rifle</span></td><td>2d8 Ballistic</td><td>60/180</td><td>5.56mm, 30 shots, 2H, Spray</td><td>8lb</td><td><span class="price-atr">20,000eb</span><span class="price-orig">(&won;200,000)</span></td></tr>
+    <tr><td><span class="model-name">Kasai Corporation Rifle</span></td><td>3d8 Ballistic</td><td>60/180</td><td>5.56mm, 30 shots, 2H, Spray</td><td>9lb</td><td><span class="price-atr">30,000eb</span><span class="price-orig">(&won;300,000)</span></td></tr>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">SNIPER RIFLES</td></tr>
+    <tr><td><span class="model-name">Sniper Rifle</span></td><td>2d10 Ballistic</td><td>150/600</td><td>.308, 5 shots, 2H</td><td>9lb</td><td><span class="price-atr">25,000eb</span><span class="price-orig">(&won;250,000)</span></td></tr>
+    <tr><td><span class="model-name">Advanced Sniper Rifle</span></td><td>3d10 Ballistic</td><td>250/650</td><td>.308, 5 shots, 2H</td><td>10lb</td><td><span class="price-atr">35,000eb</span><span class="price-orig">(&won;350,000)</span></td></tr>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">COMBAT SHOTGUNS</td></tr>
+    <tr><td><span class="model-name">Rapid Fire Shotgun</span></td><td>3d8 Ballistic</td><td>10/30</td><td>Shells, 4 shots, 2H</td><td>10lb</td><td><span class="price-atr">18,000eb</span><span class="price-orig">(&won;180,000)</span></td></tr>
+    <tr><td><span class="model-name">KHMA Combat Shotgun</span></td><td>3d8 Ballistic</td><td>10/40</td><td>Shells, 6 shots, 2H</td><td>7lb</td><td><span class="price-atr">22,000eb</span><span class="price-orig">(&won;220,000)</span></td></tr>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">HEAVY WEAPONS</td></tr>
+    <tr><td><span class="model-name">Minigun</span></td><td>2d10 Ballistic</td><td>50/100</td><td>Keg, 30 shots, 2H, Spray</td><td>25lb</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Grenade Launcher</span></td><td>By grenade</td><td>80/160</td><td>8 grenades</td><td>15lb</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Flamethrower</span></td><td>4d6 Fire</td><td>10/30</td><td>Tank, 10 uses, 2H</td><td>20lb</td><td><span class="price-atr">20,000eb</span><span class="price-orig">(&won;200,000)</span></td></tr>
+    <tr><td colspan="6" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">GRENADES</td></tr>
+    <tr><td><span class="model-name">Frag Grenade Mk I</span></td><td>2d8 Piercing</td><td>60</td><td>20ft radius, DC 15 Reflex</td><td>2lb</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(&won;50,000)</span></td></tr>
+    <tr><td><span class="model-name">Frag Grenade Mk II</span></td><td>3d8 Piercing</td><td>60</td><td>20ft radius, DC 15 Reflex</td><td>3lb</td><td><span class="price-atr">15,000eb</span><span class="price-orig">(&won;150,000)</span></td></tr>
+    <tr><td><span class="model-name">Smoke Grenade</span></td><td>&mdash;</td><td>60</td><td>20ft smoke cloud, full cover past 5ft</td><td>4lb</td><td><span class="price-atr">2,500eb</span><span class="price-orig">(&won;25,000)</span></td></tr>
+    <tr><td><span class="model-name">Flash Bang Mk I</span></td><td>1d6 Psychic</td><td>60</td><td>20ft, DC 15 Fort or Blind+Deaf 6s</td><td>3lb</td><td><span class="price-atr">7,500eb</span><span class="price-orig">(&won;75,000)</span></td></tr>
+    <tr><td><span class="model-name">Flash Bang Mk II</span></td><td>2d6 Psychic</td><td>60</td><td>20ft, DC 15 Fort or Blind+Deaf 6s</td><td>3lb</td><td><span class="price-atr">22,500eb</span><span class="price-orig">(&won;225,000)</span></td></tr>
+    <tr><td><span class="model-name">EMP Grenade</span></td><td>&mdash;</td><td>60</td><td>20ft, disables unshielded electronics 1 min</td><td>4lb</td><td><span class="price-atr">15,000eb</span><span class="price-orig">(&won;150,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> ARMOR &amp; HELMETS <span class="tag tag-armor">ARMOR</span></h2>
+
+<h3>Light Armor (AC = base + DEX mod)</h3>
+<table>
+  <thead><tr><th>Armor</th><th>AC</th><th>Stealth</th><th>DR / Resist</th><th>Wt</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Padded Jumpsuit</span></td><td>11 + DEX</td><td>&mdash;</td><td>&mdash;</td><td>7lb</td><td><span class="price-atr">500eb</span><span class="price-orig">(&won;5,000)</span></td></tr>
+    <tr><td><span class="model-name">Tough Leather Jacket</span></td><td>11 + DEX</td><td>&mdash;</td><td>&mdash;</td><td>10lb</td><td><span class="price-atr">1,000eb</span><span class="price-orig">(&won;10,000)</span></td></tr>
+    <tr><td><span class="model-name">ZA Korp Kevlar Jacket</span></td><td>11 + DEX</td><td>Disadv.</td><td>DR/2 Ballistic</td><td>12lb</td><td><span class="price-atr">1,500eb</span><span class="price-orig">(&won;15,000)</span></td></tr>
+    <tr><td><span class="model-name">Kevlar Jacket</span></td><td>12 + DEX</td><td>&mdash;</td><td>DR/2 Ballistic</td><td>13lb</td><td><span class="price-atr">4,500eb</span><span class="price-orig">(&won;45,000)</span></td></tr>
+    <tr><td><span class="model-name">Concealable Ballistic Vest</span></td><td>13 + DEX</td><td>&mdash;</td><td>DR/2 Ballistic</td><td>13lb</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(&won;50,000)</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Medium Armor (AC = base + DEX mod, max +2)</h3>
+<table>
+  <thead><tr><th>Armor</th><th>AC</th><th>Stealth</th><th>DR / Resist</th><th>Wt</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Kevlar Bodysuit</span></td><td>12 + DEX (max 2)</td><td>&mdash;</td><td>&mdash;</td><td>18lb</td><td><span class="price-atr">3,000eb</span><span class="price-orig">(&won;30,000)</span></td></tr>
+    <tr><td><span class="model-name">Heavy Concealable Vest</span></td><td>13 + DEX (max 2)</td><td>&mdash;</td><td>DR/2 Ballistic</td><td>20lb</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(&won;50,000)</span></td></tr>
+    <tr><td><span class="model-name">Standard Ballistic Vest</span></td><td>14 + DEX (max 2)</td><td>Disadv.</td><td>DR/3 Ballistic</td><td>45lb</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(&won;50,000)</span></td></tr>
+    <tr><td><span class="model-name">Light-Duty Vest</span></td><td>14 + DEX (max 2)</td><td>&mdash;</td><td>DR/3 Ballistic</td><td>20lb</td><td><span class="price-atr">40,000eb</span><span class="price-orig">(&won;400,000)</span></td></tr>
+    <tr><td><span class="model-name">Tactical Vest</span></td><td>15 + DEX (max 2)</td><td>Disadv.</td><td>Resist: Ballistic</td><td>40lb</td><td><span class="price-atr">75,000eb</span><span class="price-orig">(&won;750,000)</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Heavy Armor (no DEX bonus)</h3>
+<table>
+  <thead><tr><th>Armor</th><th>AC</th><th>STR Req</th><th>Stealth</th><th>DR / Resist</th><th>Wt</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">TCE Body Armor</span></td><td>14</td><td>&mdash;</td><td>Disadv.</td><td>Resist: Ballistic</td><td>40lb</td><td><span class="price-atr">3,000eb</span><span class="price-orig">(&won;30,000)</span></td></tr>
+    <tr><td><span class="model-name">ZA Korp Armor</span></td><td>15</td><td>&mdash;</td><td>Disadv.</td><td>Resist: Ballistic</td><td>55lb</td><td><span class="price-atr">7,500eb</span><span class="price-orig">(&won;75,000)</span></td></tr>
+    <tr><td><span class="model-name">Military Police Armor</span></td><td>17</td><td>STR 10</td><td>Disadv.</td><td>DR/3 Ballistic</td><td>60lb</td><td><span class="price-atr">20,000eb</span><span class="price-orig">(&won;200,000)</span></td></tr>
+    <tr><td><span class="model-name">Battle Armor</span></td><td>18</td><td>STR 13</td><td>Disadv.</td><td>Resist: Ballistic</td><td>65lb</td><td><span class="price-atr">150,000eb</span><span class="price-orig">(&won;1,500,000)</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Helmets</h3>
+<table>
+  <thead><tr><th>Helmet</th><th>AC Bonus</th><th>Wt</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Light Helmet</span></td><td>+1</td><td>4lb</td><td><span class="price-atr">1,500eb</span><span class="price-orig">(&won;15,000)</span></td></tr>
+    <tr><td><span class="model-name">Helmet</span></td><td>+2</td><td>5lb</td><td><span class="price-atr">3,000eb</span><span class="price-orig">(&won;30,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> AMMUNITION <span class="tag tag-ammo">AMMO</span></h2>
+
+<h3>Standard Ammo</h3>
+<table>
+  <thead><tr><th>Ammo</th><th>Qty</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td>9mm</td><td>10</td><td><span class="price-atr">25eb</span><span class="price-orig">(&won;250)</span></td></tr>
+    <tr><td>10mm</td><td>10</td><td><span class="price-atr">50eb</span><span class="price-orig">(&won;500)</span></td></tr>
+    <tr><td>Shells (Shotgun)</td><td>2</td><td><span class="price-atr">12eb</span><span class="price-orig">(&won;125)</span></td></tr>
+    <tr><td>5.56mm</td><td>30</td><td><span class="price-atr">165eb</span><span class="price-orig">(&won;1,650)</span></td></tr>
+    <tr><td>.308</td><td>5</td><td><span class="price-atr">30eb</span><span class="price-orig">(&won;300)</span></td></tr>
+    <tr><td>Keg (Minigun)</td><td>1</td><td><span class="price-atr">225eb</span><span class="price-orig">(&won;2,250)</span></td></tr>
+    <tr><td>Tank (Flamethrower)</td><td>1</td><td><span class="price-atr">100eb</span><span class="price-orig">(&won;1,000)</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Black Market Ammo</h3>
+<p>Specialist rounds deal different damage types but reduce damage dice by one step (d12&rarr;d10, d10&rarr;d8, d8&rarr;d6, d6&rarr;d4, d4&rarr;1).</p>
+
+<div class="mechanic-box">
+  <h4>Special Ammo Types</h4>
+  <p><strong>GPS Bullet:</strong> Tracks target for 2 hours. DC 12 INT check to notice. Must be surgically removed.</p>
+  <p><strong>Incendiary:</strong> Deals Fire damage instead of Ballistic.</p>
+  <p><strong>Armor Piercing:</strong> Deals Piercing damage. Effective vs heavily armored targets.</p>
+  <p><strong>Flathead:</strong> Deals Bludgeoning damage. Can be used non-lethally.</p>
+  <p><strong>Ionized:</strong> Deals Electric damage. Especially effective against mechs and constructs.</p>
+</div>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> WEAPON ATTACHMENTS <span class="tag tag-mod">MODS</span></h2>
+
+<table>
+  <thead><tr><th>Mod</th><th>Compatible With</th><th>Effect</th><th>Install DC</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Silencer</span></td><td>Pistols, SMGs, Snipers</td><td>Only heard within 10ft. Halves normal and long range.</td><td>DC 5 (+500eb)</td><td><span class="price-atr">2,000eb</span><span class="price-orig">(&won;20,000)</span></td></tr>
+    <tr><td><span class="model-name">Laser Targeting Sights</span></td><td>Pistols, SMGs, ARs, Snipers, Combat SGs</td><td>No penalty vs targets in darkness/dim light. Disabled by EMP.</td><td>DC 10 (+1,000eb)</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(&won;50,000)</span></td></tr>
+    <tr><td><span class="model-name">Expanded Magazine</span></td><td>All ranged (except grenades)</td><td>+50% ammo capacity (round down). Jams on nat 1.</td><td>DC 12 (+1,200eb)</td><td><span class="price-atr">7,500eb</span><span class="price-orig">(&won;75,000)</span></td></tr>
+    <tr><td><span class="model-name">Quick Draw Mods</span></td><td>Melee, Pistols, SMGs, SGs, ARs, Combat SGs</td><td>Draw/stow without action. Adv. on initiative in standoffs. &minus;1 to hit.</td><td>DC 15 (+1,500eb)</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Weight Reduction</span></td><td>Melee, Pistols, SMGs, SGs, ARs, Combat SGs</td><td>Halves weapon weight (min 1lb). &minus;1 damage.</td><td>DC 20 (+2,000eb)</td><td><span class="price-atr">20,000eb</span><span class="price-orig">(&won;200,000)</span></td></tr>
+    <tr><td><span class="model-name">Decaying Breakdown</span></td><td>Pistols, SMGs, SGs, ARs, Snipers, Combat SGs</td><td>+1d6 Radiation damage. Cannot fire two turns in a row.</td><td>DC 25 (+2,500eb)</td><td><span class="price-atr">25,000eb</span><span class="price-orig">(&won;250,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> AUGMENTATIONS &mdash; TIER 0 <span class="tier-badge tier-0">TIER 0</span></h2>
+<p>Universal. Almost everyone has at least one. Can stack with higher tiers. Blood Toxicity: 0.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Neurolink</span></td><td>Neural</td><td>Download/upload data via skull port. Provided free at birth.</td><td>Free</td></tr>
+    <tr><td><span class="model-name">Basic HUD</span></td><td>Eyes</td><td>AR overlay showing prices, info, navigation. Displays mandatory ads.</td><td>Free</td></tr>
+    <tr><td><span class="model-name">Enhanced HUD</span></td><td>Eyes</td><td>Ad-free HUD. Links to biolocked weapons (ammo count), shows vitals.</td><td><span class="price-atr">3,000eb</span><span class="price-orig">(&won;30,000)</span></td></tr>
+    <tr><td><span class="model-name">Language Upgrade</span></td><td>Neural</td><td>Learn one new language. Can install unlimited times.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Instant Learning</span></td><td>Neural</td><td>Gain proficiency in one skill or tool. Requires 24hrs at clinic. No limit.</td><td><span class="price-atr">25,000eb</span><span class="price-orig">(&won;250,000)</span></td></tr>
+    <tr><td><span class="model-name">Replacement</span></td><td>Eyes/Legs/Arm</td><td>Basic cybernetic replacement for lost body part. No stat changes.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Mechanical Liver</span></td><td>Torso</td><td>Sober up in 6 seconds via neurolink command. No hangovers.</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(&won;50,000)</span></td></tr>
+    <tr><td><span class="model-name">Never-Red</span></td><td>Skin</td><td>Blocks UV damage. DR/1 Radiation damage.</td><td><span class="price-atr">7,500eb</span><span class="price-orig">(&won;75,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> AUGMENTATIONS &mdash; TIER 1 <span class="tier-badge tier-1">TIER 1</span></h2>
+<p>Civilian-grade. Bulky, industrial. Blood Toxicity: 1. Influence Required: 0.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Enhanced Aiming Mk. I</span></td><td>Eyes</td><td>1.5x zoom. +1 to hit (if you can see target).</td><td><span class="price-atr">12,000eb</span><span class="price-orig">(&won;120,000)</span></td></tr>
+    <tr><td><span class="model-name">Visser Night Vision Visor</span></td><td>Eyes</td><td>Darkvision 30ft (greyscale). Action to toggle. Disadv. Perception in bright light while active.</td><td><span class="price-atr">12,000eb</span><span class="price-orig">(&won;120,000)</span></td></tr>
+    <tr><td><span class="model-name">Quickened Reflexes</span></td><td>Neural</td><td>+5 Initiative, +2 Reflex saves.</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+    <tr><td><span class="model-name">Hidden Blade</span></td><td>Arm (either)</td><td>Concealed 3ft blade (DC 20 to detect). 1d8 Slashing, Finesse. Bonus action to extend/retract.</td><td><span class="price-atr">20,000eb</span><span class="price-orig">(&won;200,000)</span></td></tr>
+    <tr><td><span class="model-name">Recoil Reduction</span></td><td>Arm (dominant)</td><td>+1 damage with two-handed or dominant-hand weapons.</td><td><span class="price-atr">11,000eb</span><span class="price-orig">(&won;110,000)</span></td></tr>
+    <tr><td><span class="model-name">J&auml;ger Legs</span></td><td>Legs</td><td>+5ft movement, high jump, and long jump.</td><td><span class="price-atr">13,000eb</span><span class="price-orig">(&won;130,000)</span></td></tr>
+    <tr><td><span class="model-name">Toughened</span></td><td>Torso</td><td>+2&times; level max HP, +2 HP per level up. Only while installed.</td><td><span class="price-atr">15,000eb</span><span class="price-orig">(&won;150,000)</span></td></tr>
+    <tr><td><span class="model-name">Tungsten Armored Bodyform</span></td><td>Torso</td><td>AC floor of 11 + DEX. DR/1 Ballistic (stacks with armor). Vulnerability to Electric while wearing armor.</td><td><span class="price-atr">18,000eb</span><span class="price-orig">(&won;180,000)</span></td></tr>
+    <tr><td><span class="model-name">Holographic Clothes</span></td><td>Skin</td><td>100+ holographic outfits controlled via neurolink. No warmth or protection.</td><td><span class="price-atr">15,000eb</span><span class="price-orig">(&won;150,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">08</span> AUGMENTATIONS &mdash; TIER 2 <span class="tier-badge tier-2">TIER 2</span></h2>
+<p>Security-grade. Sleeker design. Blood Toxicity: 2. Influence Required: 5.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cat&rsquo;s Eyes</span></td><td>Eyes</td><td>Darkvision 60ft (greyscale). +1 to hit (if you can see target).</td><td><span class="price-atr">30,000eb</span><span class="price-orig">(&won;300,000)</span></td></tr>
+    <tr><td><span class="model-name">Enhanced Aiming Mk. II</span></td><td>Eyes</td><td>2x zoom. +2 to hit (if you can see target).</td><td><span class="price-atr">55,000eb</span><span class="price-orig">(&won;550,000)</span></td></tr>
+    <tr><td><span class="model-name">Enhanced Infantry Arms</span></td><td>Arms (both)</td><td>Choose weapon type (ARs or Pistols). +1 to hit and +1 damage with that type. Disadv. to disarm you.</td><td><span class="price-atr">55,000eb</span><span class="price-orig">(&won;550,000)</span></td></tr>
+    <tr><td><span class="model-name">Runners</span></td><td>Legs</td><td>+10ft speed. Dash ignores difficult terrain. +10lb carry capacity.</td><td><span class="price-atr">25,000eb</span><span class="price-orig">(&won;250,000)</span></td></tr>
+    <tr><td><span class="model-name">Shock Absorbers</span></td><td>Legs</td><td>No damage from falls under 50ft. Adv. on Acrobatics to land. Adv. vs prone.</td><td><span class="price-atr">40,000eb</span><span class="price-orig">(&won;400,000)</span></td></tr>
+    <tr><td><span class="model-name">Angel Wings</span></td><td>Torso</td><td>Fly speed = walk speed, 1hr total (min 1min flights). 12hr recharge. Cannot be hidden.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(&won;500,000)</span></td></tr>
+    <tr><td><span class="model-name">Built-In Parachute</span></td><td>Torso</td><td>Deploy at 100ft+ fall. 25ft/sec descent. Action to repack.</td><td><span class="price-atr">30,000eb</span><span class="price-orig">(&won;300,000)</span></td></tr>
+    <tr><td><span class="model-name">Reinforced Lungs</span></td><td>Torso</td><td>Breathe water (1hr). Resistance to gas damage. Hold breath 6min.</td><td><span class="price-atr">50,000eb</span><span class="price-orig">(&won;500,000)</span></td></tr>
+    <tr><td><span class="model-name">Invisi-Skin</span></td><td>Skin</td><td>Bonus action to toggle. Adv. on Stealth (sight). Disadv. to spot you.</td><td><span class="price-atr">40,000eb</span><span class="price-orig">(&won;400,000)</span></td></tr>
+    <tr><td><span class="model-name">Holographic Disguise</span></td><td>Skin</td><td>Change appearance (&plusmn;1ft height, build). DC 17 INT (Perception) to see through. Action to toggle.</td><td><span class="price-atr">40,000eb</span><span class="price-orig">(&won;400,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">09</span> AUGMENTATIONS &mdash; TIER 3 <span class="tier-badge tier-3">TIER 3</span></h2>
+<p>Specialist-grade. Cutting edge. Blood Toxicity: 4. Influence Required: Corporate 11 / Street 12. Specialist surgeons only.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Advanced Scouting Implantation</span></td><td>Eyes</td><td>Thermal vision (60ft heat detection). Blindsight 15ft.</td><td><span class="price-atr">500,000eb</span><span class="price-orig">(&won;5,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Biolink Gun</span></td><td>Neural</td><td>+2 attack and damage with biolocked weapons. Doesn&rsquo;t stack with similar bonuses.</td><td><span class="price-atr">200,000eb</span><span class="price-orig">(&won;2,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Advanced Neural Mental Security</span></td><td>Neural</td><td>+1 Mind saves. Memory alteration requires DC 17 Hacking (fail = 3d8 Psychic to attacker).</td><td><span class="price-atr">200,000eb</span><span class="price-orig">(&won;2,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Regierung Anti-Personnel Unit</span></td><td>Arm (dominant)</td><td>Hidden KHMA heavy pistol in arm. DC 30 to detect. Bonus action to deploy.</td><td><span class="price-atr">180,000eb</span><span class="price-orig">(&won;1,800,000)</span></td></tr>
+    <tr><td><span class="model-name">Internal Armor Plating</span></td><td>Torso</td><td>+1 AC.</td><td><span class="price-atr">90,000eb</span><span class="price-orig">(&won;900,000)</span></td></tr>
+    <tr><td><span class="model-name">Toughened Mk. II</span></td><td>Torso</td><td>+3&times; level max HP, +3 HP per level up. Only while installed.</td><td><span class="price-atr">100,000eb</span><span class="price-orig">(&won;1,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Houston Dynamics Temp Regulation</span></td><td>Skin</td><td>Survive 212&deg;F to &minus;76&deg;F. Bonus action or reaction to activate. Resistance to Fire OR Cold (choose each activation).</td><td><span class="price-atr">300,000eb</span><span class="price-orig">(&won;3,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Shenzhen Landing &amp; Climbing</span></td><td>Legs</td><td>Climb speed 15ft. No damage from falls under 30ft. Fall damage = 1d6/10ft (instead of 1d10).</td><td><span class="price-atr">70,000eb</span><span class="price-orig">(&won;700,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">10</span> AUGMENTATIONS &mdash; TIER 4 <span class="tier-badge tier-4">TIER 4</span></h2>
+<p>Military-grade. Illegal for civilians. Blood Toxicity: 6. Influence Required: Corporate 15 / Street 16.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Enhanced Aiming Mk. III</span></td><td>Eyes</td><td>2x zoom. +2 to hit. Darkvision 30ft (greyscale).</td><td><span class="price-atr">700,000eb</span><span class="price-orig">(&won;7,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Advanced Mobile Dexterity Unit</span></td><td>Arms (both)</td><td>+2 DEX (max 20).</td><td><span class="price-atr">600,000eb</span><span class="price-orig">(&won;6,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Bulletproof Skin Module</span></td><td>Skin</td><td>+2 AC.</td><td><span class="price-atr">900,000eb</span><span class="price-orig">(&won;9,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Restorative Defensive Unit</span></td><td>Torso</td><td>Resistance to Bludgeoning, Piercing, and Slashing. Once per 24hrs: bonus action to heal 1d8+4.</td><td><span class="price-atr">1,000,000eb</span><span class="price-orig">(&won;10,000,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">11</span> AUGMENTATIONS &mdash; TIER 5 <span class="tier-badge tier-5">TIER 5</span></h2>
+<p>Illegal. Class 2 offense &mdash; punishable by execution. Blood Toxicity: 8. Influence Required: Corporate 18 / Street 20.</p>
+
+<div class="warning-box">
+  <strong>Possession of Tier 5 augmentations is a capital offense.</strong> Only black ops units, the most powerful crime lords, or those wealthy enough that laws don&rsquo;t apply have access to these.
+</div>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Angelis Bodywings</span></td><td>Torso</td><td>Unlimited fly speed 50ft. +1 AC. 9ft wingspan. Cannot be hidden (can disguise as Angel Wings).</td><td><span class="price-atr">1,100,000eb</span><span class="price-orig">(&won;11,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Biolimit Muscle Breakers</span></td><td>Arms (both)</td><td>+4 STR (max 20). Count as one size larger for lift/push/drag.</td><td><span class="price-atr">1,400,000eb</span><span class="price-orig">(&won;14,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Supercharged Hidden Blade</span></td><td>Arm (either)</td><td>Hidden blade (DC 20 to detect). 1d8 Slashing + 3d8 Electric. Finesse. Bonus action deploy.</td><td><span class="price-atr">1,300,000eb</span><span class="price-orig">(&won;13,000,000)</span></td></tr>
+    <tr><td><span class="model-name">Houston Dynamics Articulators</span></td><td>Torso</td><td>2 additional off-hands (lower torso). 3 off-hand attacks instead of 1. Without weapons: +10ft Dash speed.</td><td><span class="price-atr">2,000,000eb</span><span class="price-orig">(&won;20,000,000)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================ -->
+<h2><span class="section-num">12</span> BLOOD TOXICITY &amp; MEDICATION <span class="tag tag-drug">MEDICAL</span></h2>
+
+<div class="mechanic-box">
+  <h4>Blood Toxicity System</h4>
+  <p><strong>Base Limit:</strong> 2 &times; CON modifier (minimum 2).</p>
+  <p><strong>Over base limit:</strong> Poisoned condition until CON improves or augment removed.</p>
+  <p><strong>Upper Limit:</strong> 4 &times; CON modifier. Over this: Poisoned + Incapacitated.</p>
+  <p><strong>Lethal Threshold:</strong> 5 &times; CON modifier. Over this: instant death.</p>
+</div>
+
+<h3>Anti-Toxicity Medication</h3>
+
+<table>
+  <thead><tr><th>Medication</th><th>Duration</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td colspan="4" style="color:var(--green); font-family:'Orbitron',sans-serif; font-size:0.7rem; padding-top:0.6rem;">LUKOLITE (Common, +1 effective CON for blood toxicity)</td></tr>
+    <tr><td><span class="model-name">Lukolite Quick Relief</span></td><td>1 hour</td><td>+1 CON for toxicity limits</td><td><span class="price-atr">100eb</span><span class="price-orig">(&won;1,000)</span></td></tr>
+    <tr><td><span class="model-name">Lukolite Work Day Relief</span></td><td>8 hours</td><td>+1 CON for toxicity limits</td><td><span class="price-atr">200eb</span><span class="price-orig">(&won;2,000)</span></td></tr>
+    <tr><td><span class="model-name">Lukolite Complete Relief</span></td><td>24 hours</td><td>+1 CON for toxicity limits</td><td><span class="price-atr">400eb</span><span class="price-orig">(&won;4,000)</span></td></tr>
+    <tr><td colspan="4" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; padding-top:0.6rem;">LYMPHOMIGHT (Specialist, +2 effective CON for blood toxicity)</td></tr>
+    <tr><td><span class="model-name">Lymphomight Quick Relief</span></td><td>1 hour</td><td>+2 CON for toxicity limits</td><td><span class="price-atr">2,500eb</span><span class="price-orig">(&won;25,000)</span></td></tr>
+    <tr><td><span class="model-name">Lymphomight Work Day Relief</span></td><td>8 hours</td><td>+2 CON for toxicity limits</td><td><span class="price-atr">5,000eb</span><span class="price-orig">(&won;50,000)</span></td></tr>
+    <tr><td><span class="model-name">Lymphomight Complete Relief</span></td><td>24 hours</td><td>+2 CON for toxicity limits</td><td><span class="price-atr">10,000eb</span><span class="price-orig">(&won;100,000)</span></td></tr>
+  </tbody>
+</table>
+
+<div class="footer-bar">
+  // SOURCE: CARBON 2185 CORE RULEBOOK // PRICES CONVERTED TO EDDIES FOR ATR //<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
