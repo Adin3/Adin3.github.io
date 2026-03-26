@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Netrunner Classification Guide — Cyberpunk x D&amp;D 5e (2190)</title>
+<title>ALL THAT REMAINS — Campaign Hub</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
 
@@ -14,6 +14,7 @@
     --green: #39ff14;
     --orange: #ff6a00;
     --red: #ff073a;
+    --purple: #b464ff;
     --bg-dark: #0a0e17;
     --bg-panel: #111827;
     --bg-panel-alt: #0d1520;
@@ -29,620 +30,391 @@
     background: var(--bg-dark);
     color: var(--text-primary);
     font-family: 'Rajdhani', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    padding: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
-  /* HEADER */
-  .doc-header {
+  /* BACKGROUND GRID EFFECT */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* SCANLINE OVERLAY */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.05) 2px,
+      rgba(0,0,0,0.05) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+
+  /* === HEADER === */
+  .site-header {
     text-align: center;
-    padding: 3rem 2rem 2rem;
-    border: 1px solid var(--border-glow);
-    background: linear-gradient(180deg, rgba(0,240,255,0.05) 0%, transparent 100%);
-    margin-bottom: 2.5rem;
+    padding: 4rem 2rem 3rem;
+    margin-bottom: 1rem;
     position: relative;
   }
-  .doc-header::before {
-    content: "// CLASSIFIED — MILITECH NETOPS DIVISION //";
-    display: block;
+
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--cyan));
+    animation: dropIn 1.5s ease-out;
+  }
+
+  @keyframes dropIn {
+    from { height: 0; opacity: 0; }
+    to { height: 40px; opacity: 1; }
+  }
+
+  .header-tag {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.7rem;
     color: var(--magenta);
-    letter-spacing: 0.3em;
+    letter-spacing: 0.4em;
     margin-bottom: 1.5rem;
-    opacity: 0.8;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.3s forwards;
   }
-  .doc-header h1 {
+
+  .site-title {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 6vw, 3.5rem);
     color: var(--cyan);
-    text-shadow: 0 0 20px rgba(0,240,255,0.4);
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    text-shadow: 0 0 30px rgba(0,240,255,0.3), 0 0 60px rgba(0,240,255,0.1);
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.5s forwards;
   }
-  .doc-header .subtitle {
+
+  .site-subtitle {
     font-family: 'Exo 2', sans-serif;
     font-size: 1.1rem;
     color: var(--text-muted);
     font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.7s forwards;
   }
-  .doc-header .campaign-tag {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.3rem 1rem;
-    border: 1px solid var(--yellow);
-    color: var(--yellow);
+
+  .header-line {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--cyan), transparent);
+    margin: 1.5rem auto 0;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.9s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === LOCATION TAG === */
+  .location-bar {
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 1.1s forwards;
+  }
+  .location-bar span {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.75rem;
+    color: var(--text-dim);
     letter-spacing: 0.15em;
-  }
-
-  /* SECTION HEADINGS */
-  h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--cyan);
-    margin: 2.5rem 0 1rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid rgba(0,240,255,0.2);
-    letter-spacing: 0.05em;
-  }
-  h2 .section-num {
-    color: var(--magenta);
-    margin-right: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  h3 {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: var(--yellow);
-    margin: 1.5rem 0 0.6rem;
-  }
-
-  p {
-    margin-bottom: 0.8rem;
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .lore-note {
-    border-left: 3px solid var(--magenta);
-    padding: 0.8rem 1.2rem;
-    margin: 1rem 0;
-    background: rgba(255,45,111,0.05);
-    font-family: 'Exo 2', sans-serif;
-    font-size: 0.92rem;
-    font-style: italic;
-    color: var(--text-muted);
-  }
-  .lore-note strong { color: var(--magenta); font-style: normal; }
-
-  .ruling-box {
-    border: 1px solid var(--green);
-    padding: 1rem 1.2rem;
-    margin: 1rem 0;
-    background: rgba(57,255,20,0.04);
-  }
-  .ruling-box::before {
-    content: "TABLE RULING";
-    display: block;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--green);
-    letter-spacing: 0.2em;
-    margin-bottom: 0.5rem;
-  }
-
-  .dm-note {
-    border: 1px dashed var(--orange);
-    padding: 1rem 1.2rem;
-    margin: 1rem 0;
-    background: rgba(255,106,0,0.04);
-  }
-  .dm-note::before {
-    content: "DM GUIDANCE";
-    display: block;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--orange);
-    letter-spacing: 0.2em;
-    margin-bottom: 0.5rem;
-  }
-
-  /* TABLES */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.2rem 0;
-    font-size: 0.92rem;
-  }
-  thead th {
-    background: rgba(0,240,255,0.1);
-    color: var(--cyan);
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.7rem 0.8rem;
-    text-align: left;
-    border-bottom: 2px solid var(--cyan);
-  }
-  tbody td {
-    padding: 0.6rem 0.8rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    vertical-align: top;
-  }
-  tbody tr:hover { background: rgba(0,240,255,0.03); }
-
-  .tier-label {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid rgba(255,255,255,0.06);
     display: inline-block;
+  }
+
+  /* === SECTION LABELS === */
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--magenta);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    padding-left: 0.2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 1.3s forwards;
+  }
+
+  /* === DOCUMENT CARDS === */
+  .doc-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 1.4s forwards;
+  }
+
+  .doc-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--bg-panel);
+    padding: 1.5rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .doc-card:hover {
+    border-color: rgba(255,255,255,0.12);
+    background: var(--bg-panel-alt);
+    transform: translateX(4px);
+  }
+
+  .doc-card:hover .doc-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Card accent colors */
+  .doc-card.accent-cyan::before { background: var(--cyan); }
+  .doc-card.accent-cyan:hover { border-color: rgba(0,240,255,0.2); box-shadow: 0 0 20px rgba(0,240,255,0.05); }
+
+  .doc-card.accent-magenta::before { background: var(--magenta); }
+  .doc-card.accent-magenta:hover { border-color: rgba(255,45,111,0.2); box-shadow: 0 0 20px rgba(255,45,111,0.05); }
+
+  .doc-card.accent-yellow::before { background: var(--yellow); }
+  .doc-card.accent-yellow:hover { border-color: rgba(247,224,24,0.2); box-shadow: 0 0 20px rgba(247,224,24,0.05); }
+
+  .doc-card.accent-green::before { background: var(--green); }
+  .doc-card.accent-green:hover { border-color: rgba(57,255,20,0.2); box-shadow: 0 0 20px rgba(57,255,20,0.05); }
+
+  .doc-card.accent-orange::before { background: var(--orange); }
+  .doc-card.accent-orange:hover { border-color: rgba(255,106,0,0.2); box-shadow: 0 0 20px rgba(255,106,0,0.05); }
+
+  .doc-card.accent-purple::before { background: var(--purple); }
+  .doc-card.accent-purple:hover { border-color: rgba(180,100,255,0.2); box-shadow: 0 0 20px rgba(180,100,255,0.05); }
+
+  .doc-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .doc-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  .doc-card.accent-cyan .doc-title { color: var(--cyan); }
+  .doc-card.accent-magenta .doc-title { color: var(--magenta); }
+  .doc-card.accent-yellow .doc-title { color: var(--yellow); }
+  .doc-card.accent-green .doc-title { color: var(--green); }
+  .doc-card.accent-orange .doc-title { color: var(--orange); }
+  .doc-card.accent-purple .doc-title { color: var(--purple); }
+
+  .doc-arrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+  .doc-card.accent-cyan .doc-arrow { color: var(--cyan); }
+  .doc-card.accent-magenta .doc-arrow { color: var(--magenta); }
+  .doc-card.accent-yellow .doc-arrow { color: var(--yellow); }
+  .doc-card.accent-green .doc-arrow { color: var(--green); }
+  .doc-card.accent-orange .doc-arrow { color: var(--orange); }
+  .doc-card.accent-purple .doc-arrow { color: var(--purple); }
+
+  .doc-desc {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .doc-tags {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .doc-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
     padding: 0.15rem 0.5rem;
     border-radius: 2px;
+    letter-spacing: 0.05em;
   }
-  .tier-1 { background: rgba(0,240,255,0.15); color: var(--cyan); border: 1px solid var(--cyan); }
-  .tier-2 { background: rgba(57,255,20,0.12); color: var(--green); border: 1px solid var(--green); }
-  .tier-3 { background: rgba(247,224,24,0.12); color: var(--yellow); border: 1px solid var(--yellow); }
-  .tier-4 { background: rgba(255,106,0,0.12); color: var(--orange); border: 1px solid var(--orange); }
-  .tier-5 { background: rgba(255,7,58,0.12); color: var(--red); border: 1px solid var(--red); }
+  .doc-tag-rules { background: rgba(0,240,255,0.1); color: var(--cyan); }
+  .doc-tag-lore { background: rgba(255,45,111,0.1); color: var(--magenta); }
+  .doc-tag-gear { background: rgba(247,224,24,0.1); color: var(--yellow); }
+  .doc-tag-homebrew { background: rgba(57,255,20,0.1); color: var(--green); }
+  .doc-tag-wip { background: rgba(255,106,0,0.1); color: var(--orange); }
 
-  .tag {
-    display: inline-block;
+  /* === COMING SOON / PLACEHOLDER CARDS === */
+  .doc-card.coming-soon {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+  .doc-card.coming-soon .doc-title::after {
+    content: ' — PENDING';
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    padding: 0.1rem 0.4rem;
-    border-radius: 2px;
-    margin: 0.1rem 0.15rem;
-  }
-  .tag-net { background: rgba(0,240,255,0.15); color: var(--cyan); }
-  .tag-solo { background: rgba(255,7,58,0.15); color: var(--red); }
-  .tag-tech { background: rgba(247,224,24,0.15); color: var(--yellow); }
-  .tag-fixer { background: rgba(255,106,0,0.15); color: var(--orange); }
-  .tag-media { background: rgba(57,255,20,0.15); color: var(--green); }
-  .tag-hybrid { background: rgba(180,100,255,0.15); color: #b464ff; }
-
-  .class-card {
-    border: 1px solid rgba(255,255,255,0.08);
-    background: var(--bg-panel);
-    padding: 1.2rem 1.5rem;
-    margin: 1rem 0;
-  }
-  .class-card h4 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-  }
-  .class-card .class-sub {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin-bottom: 0.7rem;
-  }
-
-  .toc {
-    border: 1px solid rgba(255,255,255,0.08);
-    background: var(--bg-panel-alt);
-    padding: 1.2rem 1.5rem;
-    margin-bottom: 2rem;
-  }
-  .toc h3 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.85rem;
-    color: var(--cyan);
-    margin-bottom: 0.8rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
+    opacity: 0.6;
   }
-  .toc ul { list-style: none; }
-  .toc li {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.82rem;
-    padding: 0.25rem 0;
-    color: var(--text-muted);
-  }
-  .toc li span { color: var(--magenta); margin-right: 0.5rem; }
 
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin: 1rem 0;
-  }
-  @media (max-width: 700px) { .comparison-grid { grid-template-columns: 1fr; } }
-
-  .footer-bar {
-    margin-top: 3rem;
-    padding: 1rem;
-    border-top: 1px solid rgba(0,240,255,0.15);
+  /* === FOOTER === */
+  .site-footer {
     text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,240,255,0.08);
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 1.6s forwards;
+  }
+  .site-footer p {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.7rem;
     color: var(--text-dim);
     letter-spacing: 0.1em;
+    line-height: 2;
   }
 
-  @media print {
-    body { background: #fff; color: #111; padding: 1rem; }
-    .doc-header { border-color: #ccc; background: none; }
-    .doc-header h1 { color: #111; text-shadow: none; }
-    h2 { color: #333; border-color: #ccc; }
-    thead th { background: #eee; color: #333; border-color: #333; }
-    tbody td { border-color: #ddd; }
-    .lore-note { border-color: #999; background: #f9f9f9; }
+  /* === RESPONSIVE === */
+  @media (max-width: 600px) {
+    .page-wrapper { padding: 1.5rem 1rem 3rem; }
+    .site-header { padding: 3rem 1rem 2rem; }
+    .doc-card { padding: 1.2rem 1.4rem; }
   }
 </style>
 </head>
 <body>
 
-<div class="doc-header">
-  <h1>NETRUNNER CLASSIFICATION GUIDE</h1>
-  <div class="subtitle">Mapping D&amp;D 5e (2014) Spellcasting Classes to Cyberpunk NET Archetypes</div>
-  <div class="campaign-tag">NIGHT CITY 2190 &mdash; MILITECH ERA</div>
-</div>
+<div class="page-wrapper">
 
-<div class="toc">
-  <h3>// CONTENTS</h3>
-  <ul>
-    <li><span>01</span> The Core Problem &amp; Our Solution</li>
-    <li><span>02</span> The Tier System &mdash; Master Classification Table</li>
-    <li><span>03</span> Class-by-Class Breakdown &amp; Lore Justifications</li>
-    <li><span>04</span> Multiclass &amp; Hybrid Netrunners</li>
-    <li><span>05</span> Quickhack (Spell) Flavor Conversion Reference</li>
-    <li><span>06</span> DM Rulings &amp; Table Agreements</li>
-  </ul>
-</div>
+  <header class="site-header">
+    <div class="header-tag">// D&amp;D 5E &mdash; CYBERPUNK HOMEBREW //</div>
+    <h1 class="site-title">ALL THAT REMAINS</h1>
+    <p class="site-subtitle">Night City, 2190 &mdash; Campaign Reference Hub</p>
+    <div class="header-line"></div>
+  </header>
 
-<!-- ============================================================ -->
-<h2><span class="section-num">01</span> THE CORE PROBLEM &amp; OUR SOLUTION</h2>
-
-<p>In Cyberpunk 2020 and Cyberpunk RED, there is exactly one Netrunner role. Every character who jacks into the NET does the same thing with the same skill set. D&amp;D 5e, however, has over a dozen spellcasting classes and subclasses, each with a different flavor for how they access magic.</p>
-
-<p>Our campaign already agreed that "magic" is "netrunning/quickhacking" and "spells" are "quickhacks." The problem is that not every spellcaster <em>should</em> feel like a full netrunner. A Barbarian with a couple of quickhack grenades is not the same thing as someone who was raised in a deep-dive server farm.</p>
-
-<p>This document establishes a <strong>five-tier classification system</strong> that maps every 5e spellcasting class to a Cyberpunk NET archetype, drawing on lore from Cyberpunk 2013/2020/RED, Cyberpunk 2077, Edgerunners, and the broader world to justify each placement. The goal: every player at the table understands <em>what their character is</em> in this world, without argument.</p>
-
-<!-- ============================================================ -->
-<h2><span class="section-num">02</span> THE TIER SYSTEM &mdash; MASTER CLASSIFICATION TABLE</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th style="width:10%;">Tier</th>
-      <th style="width:18%;">NET Archetype</th>
-      <th style="width:22%;">5e Classes</th>
-      <th style="width:15%;">Key Stat</th>
-      <th style="width:35%;">Cyberpunk Equivalent</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="tier-label tier-1">TIER 1</span></td>
-      <td>True Netrunner / Chair Runner</td>
-      <td><strong>Wizard</strong></td>
-      <td>INT</td>
-      <td>The classic Netrunner role. Full NET access, deep-dive capable, writes/modifies their own quickhacks. Think Bartmoss, Alt Cunningham, Spider Murphy.</td>
-    </tr>
-    <tr>
-      <td><span class="tier-label tier-2">TIER 2</span></td>
-      <td>Field Netrunner / Combat Hacker</td>
-      <td><strong>Artificer, Eldritch Knight (Fighter), Arcane Trickster (Rogue)</strong></td>
-      <td>INT</td>
-      <td>Runs the NET but stays mobile. Combat-capable with a cyberdeck. Think Lucy (Edgerunners), T-Bug in a firefight, 2077's V with quickhacks + guns.</td>
-    </tr>
-    <tr>
-      <td><span class="tier-label tier-3">TIER 3</span></td>
-      <td>Cyberware-Integrated / Daemon-Linked</td>
-      <td><strong>Warlock, Sorcerer</strong></td>
-      <td>CHA</td>
-      <td>NET access through implanted systems or rogue AI patron links, not learned skill. Think Soulkiller victims, AI-touched individuals, Cyberpsychos with daemon-integrated chrome, people connected to entities beyond the Blackwall.</td>
-    </tr>
-    <tr>
-      <td><span class="tier-label tier-4">TIER 4</span></td>
-      <td>Techie / Support Ops / Rockerboy</td>
-      <td><strong>Cleric, Druid, Bard, Ranger</strong></td>
-      <td>WIS / CHA</td>
-      <td>Access to quickhacks through external systems (corpo support networks, gang-linked infrastructure, or specialist tech) &mdash; or, in the Bard's case, not quickhacks at all but subliminal influence through music and sound. Not netrunners &mdash; more like Techs, Medtechs, Rockerboys, or Fixers who operate through entirely different vectors.</td>
-    </tr>
-    <tr>
-      <td><span class="tier-label tier-5">TIER 5</span></td>
-      <td>Quickhack User / Chrome Operator</td>
-      <td><strong>Paladin, Ranger (low level), Eldritch Knight (low level)</strong></td>
-      <td>Various</td>
-      <td>Carries a few quickhacks loaded onto cyberware, like a Solo with a Militech Paraline. Not a netrunner in any meaningful sense &mdash; they're combat operatives who happen to have a couple of combat hacks on their rig.</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="ruling-box">
-  <strong>Key principle:</strong> Tiers 1&ndash;2 are "Netrunners" in the world. Tier 3 is something weirder and rarer. Tiers 4&ndash;5 are <em>not</em> netrunners &mdash; they use quickhacks like tools, the way a Solo might use a grenade. Nobody calls a Solo a "grenadier" because they threw a frag.
-</div>
-
-<!-- ============================================================ -->
-<h2><span class="section-num">03</span> CLASS-BY-CLASS BREAKDOWN &amp; LORE JUSTIFICATIONS</h2>
-
-<!-- WIZARD -->
-<div class="class-card">
-  <h4 style="color: var(--cyan);">WIZARD <span class="tag tag-net">NETRUNNER</span></h4>
-  <div class="class-sub">TIER 1 &mdash; TRUE NETRUNNER / CHAIR RUNNER</div>
-  <p><strong>Why Tier 1:</strong> The Wizard is the only 5e class that learns magic through rigorous study, writes spells into a spellbook, and relies entirely on Intelligence. This is a one-to-one match for how netrunning works in every edition of Cyberpunk. Netrunners learn programming, study ICE architecture, and build their quickhack libraries from scratch.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Rache Bartmoss:</strong> The most infamous netrunner in Cyberpunk history was a reclusive, physically frail genius who spent years studying NET architecture and writing programs. He created the DataKrash that destroyed the old NET in the 2020s. He didn't have innate talent &mdash; he had obsessive intelligence and thousands of hours of study. Pure wizard energy.
+  <div class="location-bar">
+    <span>NIGHT CITY // MILITECH ERA // D&amp;D 5E (2014)</span>
   </div>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Alt Cunningham:</strong> A brilliant programmer who created Soulkiller through pure technical genius. She was kidnapped by Arasaka specifically because of her <em>learned</em> expertise. Her power came from study and invention, not innate gifts.
+
+  <!-- ====== RULES & REFERENCE ====== -->
+  <div class="section-label">// RULES &amp; REFERENCE</div>
+
+  <div class="doc-grid">
+    <a href="netrunner-classification.html" class="doc-card accent-cyan">
+      <div class="doc-card-top">
+        <span class="doc-title">NETRUNNER CLASSIFICATION GUIDE</span>
+        <span class="doc-arrow">&rarr;</span>
+      </div>
+      <div class="doc-desc">How every D&amp;D 5e spellcasting class maps to Cyberpunk NET archetypes. Five-tier system with lore justifications, multiclass rulings, and quickhack spell conversions.</div>
+      <div class="doc-tags">
+        <span class="doc-tag doc-tag-rules">RULES</span>
+        <span class="doc-tag doc-tag-lore">LORE</span>
+      </div>
+    </a>
+
+    <a href="cyberware-compendium.html" class="doc-card accent-yellow">
+      <div class="doc-card-top">
+        <span class="doc-title">CYBERWARE &amp; WEAPON MODS</span>
+        <span class="doc-arrow">&rarr;</span>
+      </div>
+      <div class="doc-desc">Homebrew implant catalog: Sandevistans, Cyberdecks, Gorilla Arms, Monowire, weapon mods, and custom crafting rules. Full stat tables with Humanity Loss costs.</div>
+      <div class="doc-tags">
+        <span class="doc-tag doc-tag-gear">GEAR</span>
+        <span class="doc-tag doc-tag-homebrew">HOMEBREW</span>
+      </div>
+    </a>
   </div>
-  <p><strong>In-game role:</strong> Full NET access, can deep-dive (chair run), write/modify quickhacks, break ICE, interact with AI constructs. The party's primary netrunner. Spell preparation = loading quickhacks onto your cyberdeck before a run.</p>
-</div>
 
-<!-- ARTIFICER -->
-<div class="class-card">
-  <h4 style="color: var(--green);">ARTIFICER <span class="tag tag-net">NETRUNNER</span> <span class="tag tag-tech">TECH</span></h4>
-  <div class="class-sub">TIER 2 &mdash; FIELD NETRUNNER / TECHIE-HACKER HYBRID</div>
-  <p><strong>Why Tier 2:</strong> Artificers build things. They infuse objects with magic, create gadgets, and use INT. In Cyberpunk, this is a Techie who also runs the NET &mdash; someone who builds their own cyberdeck, modifies their own chrome, and writes quickhacks as part of a broader engineering skillset. They're netrunners, but their identity isn't <em>just</em> netrunning.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; 2077 Techie concept:</strong> Early Cyberpunk 2077 development had a Techie class alongside the Netrunner. The Artificer fills this gap &mdash; someone who hacks <em>and</em> builds. Think of a ripperdoc who also runs a sideline cracking Militech firmware.
+  <!-- ====== COMING SOON ====== -->
+  <!--
+    To add a new document, copy a doc-card block above and change:
+    - href: the filename of the new .html
+    - accent-*: pick a color (cyan, magenta, yellow, green, orange, purple)
+    - title, desc, and tags
+
+    To add a new section, copy the section-label div and a doc-grid div.
+
+    Placeholder cards below can be uncommented and filled in as content is ready.
+  -->
+
+  <!--
+  <div class="section-label">// LORE &amp; WORLD</div>
+  <div class="doc-grid">
+    <a href="#" class="doc-card accent-magenta coming-soon">
+      <div class="doc-card-top">
+        <span class="doc-title">NIGHT CITY 2190</span>
+        <span class="doc-arrow">&rarr;</span>
+      </div>
+      <div class="doc-desc">World state, faction overview, and timeline of events from 2077 to present day.</div>
+      <div class="doc-tags">
+        <span class="doc-tag doc-tag-lore">LORE</span>
+        <span class="doc-tag doc-tag-wip">WIP</span>
+      </div>
+    </a>
   </div>
-  <p><strong>In-game role:</strong> Can net-dive with limitations. Excels at crafting cyberware, modifying equipment, and deploying hardware-based quickhacks (turrets, drones, embedded tech). Infusions = cyberware installations.</p>
-</div>
+  -->
 
-<!-- ARCANE TRICKSTER -->
-<div class="class-card">
-  <h4 style="color: var(--green);">ARCANE TRICKSTER (ROGUE) <span class="tag tag-net">NETRUNNER</span> <span class="tag tag-hybrid">HYBRID</span></h4>
-  <div class="class-sub">TIER 2 &mdash; FIELD NETRUNNER / INFILTRATOR-HACKER</div>
-  <p><strong>Why Tier 2:</strong> This is the <em>exact</em> Lucy archetype from Edgerunners. A rogue who also netrunns. Not a chair runner &mdash; a field operative who jacks in on-site during infiltration, hacks security systems mid-heist, and can hold their own in a fight. They learned netrunning (INT-based, like a Wizard) but their primary identity is the infiltration, stealth, and close-quarters work.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Lucy (Edgerunners):</strong> Raised in an Arasaka deep-dive training facility as a child. Escaped. Became a pickpocket and street kid <em>first</em>, then leveraged her netrunning skills as one tool among many. She doesn't sit in a chair &mdash; she runs the NET on a rooftop in the middle of a job. She's fast, lethal, and technical. This is the Arcane Trickster.
-  </div>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; T-Bug (Cyberpunk 2077):</strong> While T-Bug was more of a remote support runner, her work on the Konpeki Plaza heist shows the field-netrunner model &mdash; hacking security in real-time to support operatives on the ground. An Arcane Trickster who emphasizes the "trickster" less and the "arcane" more would resemble T-Bug closely.
-  </div>
-  <p><strong>In-game role:</strong> Can net-dive but prefers quick, targeted hacks during physical operations. Sneak Attack = precision neural strikes or security exploits. Mage Hand = remote drone control or ghost-hacking nearby devices. Their netrunning complements their infiltration, not the other way around.</p>
-</div>
+  <footer class="site-footer">
+    <p>
+      // ALL THAT REMAINS &mdash; CAMPAIGN HUB //<br>
+      HOMEBREW CONTENT FOR D&amp;D 5E (2014) // CYBERPUNK SETTING<br>
+      LIVING DOCUMENTS &mdash; SUBJECT TO UPDATES
+    </p>
+  </footer>
 
-<!-- ELDRITCH KNIGHT -->
-<div class="class-card">
-  <h4 style="color: var(--green);">ELDRITCH KNIGHT (FIGHTER) <span class="tag tag-solo">SOLO</span> <span class="tag tag-net">NETRUNNER-LITE</span></h4>
-  <div class="class-sub">TIER 2 &mdash; COMBAT NETRUNNER / SOLO WITH A DECK</div>
-  <p><strong>Why Tier 2:</strong> A soldier or merc who picked up enough netrunning to integrate quickhacks into combat. INT-based casting means they actually <em>learned</em> this, putting them above the "innate" casters. But their spell list is very limited &mdash; they're running combat quickhacks off a stripped-down military cyberdeck.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Militech Combat Netrunners:</strong> Militech (who runs Night City in 2190) is known for training military-grade combat netrunners &mdash; soldiers who can hack enemy systems mid-firefight. These aren't the brainy deep-divers of Arasaka's old NetWatch division. They're warriors with a cyberdeck bolted to their kit.
-  </div>
-  <p><strong>In-game role:</strong> Limited quickhack library (the Fighter's small spell list). Excels at combat hacks: short-circuiting enemy cyberware, weapon jamming, sensory overloads. Cannot deep-dive or do serious NET exploration without extensive downtime effort.</p>
-</div>
-
-<!-- WARLOCK -->
-<div class="class-card">
-  <h4 style="color: var(--yellow);">WARLOCK <span class="tag tag-hybrid">DAEMON-LINKED</span></h4>
-  <div class="class-sub">TIER 3 &mdash; CYBERWARE-INTEGRATED / AI PACT</div>
-  <p><strong>Why Tier 3:</strong> Warlocks don't learn magic &mdash; they get it from a patron. In Cyberpunk terms, this is someone whose netrunning capability comes from an <em>external entity</em>: a rogue AI beyond the Blackwall, a corpo black-project implant, a daemon that's taken up residence in their neural architecture, or an experimental Soulkiller variant that left something behind.</p>
-  <p>They cast using CHA, not INT. They didn't study for this. Something <em>gave</em> it to them, and it probably wants something in return.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Rogue AIs / The Blackwall:</strong> After Bartmoss's DataKrash, rogue AIs evolved beyond the Blackwall &mdash; a digital barrier maintained by NetWatch. In 2077, we see these AIs making contact with humans (the Voodoo Boys' attempts, the Peralez mind-control subplot). A Warlock's "patron" is one of these entities &mdash; an intelligence beyond the wall that has lent part of itself to a human host.
-  </div>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Alt Cunningham (post-Soulkiller):</strong> After her body died, Alt became a digital entity beyond the Blackwall. By 2077 she's something alien and vast. A Warlock could be someone Alt &mdash; or something like her &mdash; has touched.
-  </div>
-  <p><strong>In-game role:</strong> Their "quickhacks" are more like daemon invocations. They can interface with the NET, but it's unsettling &mdash; their methods look wrong to trained netrunners. Limited slots that recharge quickly (Pact Magic = a daemon rebooting their access). Eldritch Blast = a neural spike powered by their patron's malware.</p>
-  <p><strong>Patron mapping:</strong></p>
-  <table>
-    <thead>
-      <tr><th>Warlock Patron</th><th>Cyberpunk Equivalent</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Archfey</td><td>An old-NET construct from the pre-DataKrash era &mdash; beautiful, alien, and running on obsolete code that still works somehow.</td></tr>
-      <tr><td>Fiend</td><td>A malicious rogue AI beyond the Blackwall. Demands data, access, or acts of digital sabotage in exchange for power.</td></tr>
-      <tr><td>Great Old One</td><td>A truly alien AI &mdash; something that evolved in the deep NET that no one understands. Think the unsettling entities hinted at in 2077's Voodoo Boys questline.</td></tr>
-      <tr><td>Hexblade</td><td>A weaponized AI fragment bonded to a piece of cyberware. The "weapon" is a piece of milspec chrome that has its own agenda.</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- SORCERER -->
-<div class="class-card">
-  <h4 style="color: var(--yellow);">SORCERER <span class="tag tag-hybrid">INNATE HACKER</span></h4>
-  <div class="class-sub">TIER 3 &mdash; CYBERWARE-INTEGRATED / BORN DIFFERENT</div>
-  <p><strong>Why Tier 3:</strong> Sorcerers have innate magic &mdash; they were born with it or something changed them fundamentally. In Cyberpunk, this is someone whose <em>biology</em> was altered &mdash; experimental in-utero cyberware, genetic modification from a corpo black project, exposure to a rogue AI in childhood, or a botched Soulkiller process that left them with abilities no one can explain.</p>
-  <p>They use CHA, not INT. They don't understand <em>how</em> they do what they do. They just... can.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Deep-dive farm survivors:</strong> Both Arasaka and Militech ran programs where children were forced into deep-dive training to create netrunners. Most died or were broken. A Sorcerer could be a survivor who came out <em>changed</em> &mdash; their neural pathways rewired at a fundamental level. They don't run programs; their brain <em>is</em> the program.
-  </div>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Cyberpsychosis as metamagic:</strong> Sorcerous metamagic maps eerily well to pushing cyberware beyond safe limits. Twinned Spell = overclocking a neural processor. Subtle Spell = a hack so clean it leaves no trace. Heightened Spell = redlining your cyberdeck at the risk of neural burnout. The Sorcerer's "sorcery points" are essentially their Humanity meter.
-  </div>
-</div>
-
-<!-- CLERIC -->
-<div class="class-card">
-  <h4 style="color: var(--orange);">CLERIC <span class="tag tag-tech">SUPPORT OPS</span></h4>
-  <div class="class-sub">TIER 4 &mdash; CORPO NETWORK OPERATOR / MEDTECH-HACKER</div>
-  <p><strong>Why Tier 4:</strong> Clerics get their power from a divine source and use WIS. In Cyberpunk, this translates to someone who accesses a <em>curated quickhack network</em> provided by an organization &mdash; a corpo, a gang, a government, or an ideology. They don't write their own code. They download approved packages from their "domain."</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Corpo Net-Ops:</strong> Every megacorp has support staff who run proprietary quickhack suites. A Militech field medic with a medical quickhack suite, a Trauma Team operator with combat-triage software, an Arasaka security tech with surveillance daemons &mdash; these are all "Clerics" in the sense that their power comes from their organizational access, not personal skill.
-  </div>
-  <p><strong>Domain mapping:</strong></p>
-  <table>
-    <thead><tr><th>Cleric Domain</th><th>Cyberpunk Equivalent</th></tr></thead>
-    <tbody>
-      <tr><td>Life</td><td>Trauma Team / Medtech with medical quickhack suite</td></tr>
-      <tr><td>War</td><td>Militech combat-support operator</td></tr>
-      <tr><td>Knowledge</td><td>NetWatch analyst / intelligence operative</td></tr>
-      <tr><td>Trickery</td><td>Fixer with a suite of social-engineering daemons</td></tr>
-      <tr><td>Light</td><td>Media / propaganda operative with broadcast-hacking tools</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- DRUID -->
-<div class="class-card">
-  <h4 style="color: var(--orange);">DRUID <span class="tag tag-tech">SUPPORT OPS</span> <span class="tag tag-hybrid">NOMAD-TECH</span></h4>
-  <div class="class-sub">TIER 4 &mdash; NOMAD TECH-SHAMAN / SCAVENGER-HACKER</div>
-  <p><strong>Why Tier 4:</strong> Druids connect to nature and shapeshift. In a Cyberpunk world, "nature" is the old NET &mdash; the wild, unregulated infrastructure that still exists in the wastelands beyond city limits. Druids are Nomad techs who interface with derelict NET architecture, scavenge pre-DataKrash systems, and use jury-rigged equipment that corpo netrunners would consider primitive.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Nomad Clans:</strong> Nomad families in Cyberpunk maintain their own independent tech infrastructure. They don't have access to corpo networks, but they've adapted. Wild Shape = jacking into drone bodies or repurposed security bots via a Nomad-rigged interface.
-  </div>
-</div>
-
-<!-- BARD -->
-<div class="class-card">
-  <h4 style="color: var(--orange);">BARD <span class="tag tag-media">ROCKERBOY</span> <span class="tag tag-fixer">FIXER</span></h4>
-  <div class="class-sub">TIER 4 &mdash; ROCKERBOY / FIXER / MEDIA</div>
-  <p><strong>Why Tier 4:</strong> Bards use CHA and are generalists &mdash; performers, social engineers, and influencers. In Cyberpunk, the primary match is the <strong>Rockerboy</strong> &mdash; someone who moves people through music, presence, and sheer force of personality. Their "quickhacks" aren't code at all. They're subliminal messages woven into sound: frequencies that trigger emotional responses through cyberware audio processors, encoded data buried in a bassline, vibrations that resonate with neural implants in ways corpo engineers never intended.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Johnny Silverhand:</strong> The quintessential Rockerboy. Silverhand didn't hack systems with a cyberdeck &mdash; he hacked <em>people</em> with a guitar and a microphone. His music started riots, shifted public opinion, and brought a megacorp to its knees. Bardic Inspiration isn't a quickhack upload; it's a riff so good it makes your chooms fight harder.
-  </div>
-  <p><strong>In-game role:</strong> Bardic Inspiration = a killer track that pumps up allies. Charm/enchantment spells = subliminal frequencies targeting cyberware audio implants. Healing spells = music that triggers the body's endorphin response and syncs with medical cyberware. Countersong = jamming hostile frequencies. They may have minor NET literacy (enough to broadcast, hijack speakers, or piggyback signals), but they are not netrunners by any stretch &mdash; they're something older and arguably more dangerous.</p>
-</div>
-
-<!-- RANGER -->
-<div class="class-card">
-  <h4 style="color: var(--orange);">RANGER <span class="tag tag-solo">SOLO</span></h4>
-  <div class="class-sub">TIER 4–5 &mdash; SOLO / NOMAD SCOUT WITH BASIC QUICKHACKS</div>
-  <p><strong>Why Tier 4–5:</strong> Rangers are wilderness experts who get a small amount of spellcasting. In Cyberpunk, this is a Solo or Nomad scout running a minimal quickhack loadout &mdash; a few combat utilities, maybe a diagnostic suite, nothing fancy. They're in the field, not the NET.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Panam Palmer / Nomad scouts:</strong> Skilled fighters and survivalists who use tech as a tool but would never call themselves netrunners. Their "spells" = field-deployed quickhack grenades, cyberware-integrated scanners, and basic electronic warfare countermeasures.
-  </div>
-</div>
-
-<!-- PALADIN -->
-<div class="class-card">
-  <h4 style="color: var(--red);">PALADIN <span class="tag tag-solo">SOLO</span></h4>
-  <div class="class-sub">TIER 5 &mdash; CORPO ENFORCER / MILITECH OPERATIVE WITH EMBEDDED QUICKHACKS</div>
-  <p><strong>Why Tier 5:</strong> Paladins are warriors with a cause and minor divine magic. In Cyberpunk, this is a dedicated corpo enforcer or ideological operative (Militech black-ops, a devout Nomad clan guardian, a MaxTac officer) with quickhacks baked into their military-grade cyberware. They didn't learn hacking. Their Sandevistan came preloaded with a combat OS.</p>
-  <div class="lore-note">
-    <strong>Lore anchor &mdash; Adam Smasher / MaxTac Officers:</strong> Full-borg combat units with integrated systems that include basic electronic warfare. Smite = channeling your cyberware's combat suite into a devastating attack. Nobody is calling Adam Smasher a "netrunner," even though his borg body runs more code than most cyberdecks.
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<h2><span class="section-num">04</span> MULTICLASS &amp; HYBRID NETRUNNERS</h2>
-
-<p>Multiclassing is where this system really shines, because Cyberpunk characters are rarely <em>one thing</em>. Here's how to think about it:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="width:25%;">Multiclass</th>
-      <th style="width:15%;">Effective Tier</th>
-      <th style="width:60%;">Cyberpunk Identity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Rogue / Wizard</strong></td>
-      <td><span class="tier-label tier-1">1–2</span></td>
-      <td>Deep-dive-trained infiltrator. The Lucy archetype. A true netrunner who operates in the field. More Wizard levels = more chair time; more Rogue levels = more field time. Either way, a legitimate netrunner.</td>
-    </tr>
-    <tr>
-      <td><strong>Fighter / Wizard</strong></td>
-      <td><span class="tier-label tier-2">2</span></td>
-      <td>Militech combat netrunner. A soldier who went through NET training. Dangerous in a firefight AND on the NET.</td>
-    </tr>
-    <tr>
-      <td><strong>Warlock / Rogue</strong></td>
-      <td><span class="tier-label tier-3">2–3</span></td>
-      <td>An operative with an AI parasite giving them abilities. They don't fully understand their own hacking — it comes through the patron.</td>
-    </tr>
-    <tr>
-      <td><strong>Sorcerer / Warlock</strong></td>
-      <td><span class="tier-label tier-3">3</span></td>
-      <td>Something deeply wrong happened to this person. Born with neural anomalies AND contacted by a rogue AI. They're more daemon than human when they jack in.</td>
-    </tr>
-    <tr>
-      <td><strong>Paladin / Warlock</strong></td>
-      <td><span class="tier-label tier-4">3–5</span></td>
-      <td>A corpo enforcer whose loyalty earned them a patron's "gift" — an AI embedded in their combat rig. They serve two masters.</td>
-    </tr>
-    <tr>
-      <td><strong>Cleric / Wizard</strong></td>
-      <td><span class="tier-label tier-1">1–2</span></td>
-      <td>A corpo-trained netrunner with organizational backing. Has both personal skill AND access to a curated network. Dangerous combination.</td>
-    </tr>
-    <tr>
-      <td><strong>Bard / Rogue</strong></td>
-      <td><span class="tier-label tier-4">4</span></td>
-      <td>Classic Fixer. Social engineering, contacts, and just enough NET literacy to be useful. Not a netrunner — a people runner.</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- ============================================================ -->
-<h2><span class="section-num">05</span> QUICKHACK (SPELL) FLAVOR CONVERSION REFERENCE</h2>
-
-<p>A quick reference for re-flavoring common spells as quickhacks at the table:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="width:20%;">Spell</th>
-      <th style="width:30%;">Quickhack Name</th>
-      <th style="width:50%;">Cyberpunk Flavor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Fire Bolt</td><td>Overheat</td><td>Fries target's cyberware thermal regulators — straight from 2077.</td></tr>
-    <tr><td>Mage Hand</td><td>Remote Breach</td><td>Ghost-access a nearby device or drone within range.</td></tr>
-    <tr><td>Shield</td><td>ICE Wall</td><td>Reactive countermeasure program deflects incoming attacks.</td></tr>
-    <tr><td>Detect Magic</td><td>Ping</td><td>Scans local network, highlights connected devices and cyberware — directly from 2077.</td></tr>
-    <tr><td>Sleep</td><td>System Reset</td><td>Forces target's cyberware into emergency shutdown — from 2077.</td></tr>
-    <tr><td>Hold Person</td><td>Cyberware Malfunction</td><td>Locks the target's motorics. They can't move their chrome.</td></tr>
-    <tr><td>Counterspell</td><td>ICE Breaker</td><td>Disrupts an enemy netrunner's quickhack before it executes.</td></tr>
-    <tr><td>Fireball</td><td>Contagion (Overheat)</td><td>Area-of-effect thermal cascade through networked cyberware.</td></tr>
-    <tr><td>Misty Step</td><td>Optic Reboot + Sprint</td><td>Blinds nearby enemies' optics while you reposition.</td></tr>
-    <tr><td>Invisibility</td><td>Optical Camo Hack</td><td>Hijacks nearby optic systems to erase you from their feed.</td></tr>
-    <tr><td>Suggestion</td><td>Whistle</td><td>Plants a false sensory input — target believes they heard/saw something — 2077 equivalent.</td></tr>
-    <tr><td>Lightning Bolt</td><td>Short Circuit</td><td>Massive electrical discharge through the target's nervous system — from 2077.</td></tr>
-    <tr><td>Dispel Magic</td><td>System Purge</td><td>Cleanses a target's system of hostile quickhacks and daemons.</td></tr>
-    <tr><td>Polymorph</td><td>Cyberpsychosis Trigger</td><td>Forces target's cyberware into conflict with their neural architecture. They become... something else.</td></tr>
-    <tr><td>Healing Word</td><td>MedTech Patch (Remote)</td><td>Activates the target's internal medical cyberware or nano-repair systems via wireless.</td></tr>
-    <tr><td>Bless</td><td>Combat OS Boost</td><td>Pushes an optimization patch to allies' combat operating systems.</td></tr>
-    <tr><td>Eldritch Blast</td><td>Daemon Strike</td><td>The patron's malware manifests as a focused neural attack. Looks wrong to any netrunner watching.</td></tr>
-    <tr><td>Sneak Attack</td><td>Precision Exploit</td><td>Targets a known vulnerability in the target's cyberware architecture. More damage because you hit exactly where it hurts.</td></tr>
-  </tbody>
-</table>
-
-<!-- ============================================================ -->
-<h2><span class="section-num">06</span> DM RULINGS &amp; TABLE AGREEMENTS</h2>
-
-<p>Suggested rulings to prevent future arguments:</p>
-
-<div class="ruling-box">
-  <strong>Ruling 1 &mdash; Netrunner Identity Is Not Class-Locked:</strong> Any character with INT-based spellcasting (Wizard, Artificer, Eldritch Knight, Arcane Trickster) is a trained netrunner. The extent of their NET capabilities scales with their spellcasting level, not their class.
-</div>
-
-<div class="ruling-box">
-  <strong>Ruling 2 &mdash; Deep-Diving vs. Field Running:</strong> Deep-diving (full immersion chair running) requires at minimum 3rd-level Wizard spell slots. Field running (quick hacks during physical operations) is available to anyone with spellcasting and a cyberdeck (arcane focus).
-</div>
-
-<div class="ruling-box">
-  <strong>Ruling 3 &mdash; CHA-Based Casters Are Not Traditional Netrunners:</strong> Warlocks, Sorcerers, and Bards access quickhacks through non-standard means (patron links, innate mutations, social engineering). They can interact with the NET, but trained netrunners (INT casters) will notice their methods are "off." This is a flavor distinction, not a mechanical penalty.
-</div>
-
-<div class="ruling-box">
-  <strong>Ruling 4 &mdash; Multiclass Netrunning:</strong> A multiclass character's netrunning capability is determined by their highest INT-casting class level. A Rogue 7 / Wizard 3 is a Tier 2 netrunner with 3rd-level netrunning capability but 7th-level field skills. A Rogue 3 / Wizard 7 is essentially a Tier 1 netrunner who happens to be good with a knife.
-</div>
-
-<div class="ruling-box">
-  <strong>Ruling 5 &mdash; Cyberdecks Are Arcane Foci:</strong> Every spellcasting focus in 5e is a cyberdeck variant. A Wizard's spellbook = their cyberdeck's program library. A Cleric's holy symbol = their corpo-issued terminal. A Warlock's focus = the daemon interface embedded in their chrome. A Druid's totem = a Nomad-rigged jury-built deck.
-</div>
-
-<div class="dm-note">
-  <strong>A Note on Backstory Validation:</strong> If a player has written a backstory that involves netrunner training (like growing up in a deep-dive farm), that backstory should be respected mechanically. The class/multiclass they chose is how they're <em>expressing</em> that backstory in the 5e system. Telling a Rogue/Wizard that their Wizard levels "don't count" as real netrunning invalidates their character concept and the effort they put into it. The tier system above gives every class a place — use it to say "yes, and" instead of "no, but."
-</div>
-
-<div class="footer-bar">
-  // DOCUMENT COMPILED FOR NIGHT CITY 2190 CAMPAIGN // MILITECH ERA //<br>
-  All lore references drawn from Cyberpunk 2013, 2020, RED, 2077 &amp; Edgerunners<br>
-  D&amp;D 5e (2014 rules) // For table use only
 </div>
 
 </body>
