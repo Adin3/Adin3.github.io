@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyberware &amp; Weapon Mods Compendium — Cyberpunk x D&amp;D 5e (2190)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+
+  :root {
+    --cyan: #00f0ff;
+    --magenta: #ff2d6f;
+    --yellow: #f7e018;
+    --green: #39ff14;
+    --orange: #ff6a00;
+    --red: #ff073a;
+    --purple: #b464ff;
+    --bg-dark: #0a0e17;
+    --bg-panel: #111827;
+    --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0, 240, 255, 0.25);
+    --text-primary: #e0e7ef;
+    --text-muted: #8899aa;
+    --text-dim: #556677;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .doc-header {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border: 1px solid var(--border-glow);
+    background: linear-gradient(180deg, rgba(0,240,255,0.05) 0%, transparent 100%);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .doc-header::before {
+    content: "// CLASSIFIED — MILITECH NETOPS DIVISION //";
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--magenta);
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+  .doc-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(0,240,255,0.4);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .doc-header .subtitle {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+  .doc-header .campaign-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+
+  /* SECTION HEADINGS */
+  h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--cyan);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(0,240,255,0.2);
+    letter-spacing: 0.05em;
+  }
+  h2 .section-num {
+    color: var(--magenta);
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--yellow);
+    margin: 1.5rem 0 0.6rem;
+  }
+
+  h4 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 1rem 0 0.4rem;
+  }
+
+  p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  /* FLAVOR QUOTES */
+  .flavor-quote {
+    font-family: 'Exo 2', sans-serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    border-left: 3px solid var(--cyan);
+    padding: 0.6rem 1.2rem;
+    margin: 0.8rem 0 1.2rem;
+    background: rgba(0,240,255,0.03);
+  }
+  .flavor-quote .attribution {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-style: normal;
+  }
+
+  /* MECHANIC BOXES */
+  .mechanic-box {
+    border: 1px solid rgba(0,240,255,0.2);
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    background: rgba(0,240,255,0.03);
+  }
+  .mechanic-box h4 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .mechanic-box p { margin-bottom: 0.4rem; }
+
+  .warning-box {
+    border: 1px solid var(--red);
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    background: rgba(255,7,58,0.05);
+  }
+  .warning-box::before {
+    content: "⚠ WARNING";
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--red);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  .ruling-box {
+    border: 1px solid var(--green);
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    background: rgba(57,255,20,0.04);
+  }
+  .ruling-box::before {
+    content: "TABLE RULING";
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--green);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  .dm-note {
+    border: 1px dashed var(--orange);
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    background: rgba(255,106,0,0.04);
+  }
+  .dm-note::before {
+    content: "DM GUIDANCE";
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.88rem;
+  }
+  thead th {
+    background: rgba(0,240,255,0.1);
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.6rem;
+    text-align: left;
+    border-bottom: 2px solid var(--cyan);
+  }
+  tbody td {
+    padding: 0.55rem 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: top;
+  }
+  tbody tr:hover { background: rgba(0,240,255,0.03); }
+
+  .model-name {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .model-desc {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-style: italic;
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  /* TIER COLORS FOR TABLE ROWS */
+  .hl-low { color: var(--green); }
+  .hl-mid { color: var(--yellow); }
+  .hl-high { color: var(--orange); }
+  .hl-extreme { color: var(--red); }
+  .hl-psycho { color: var(--magenta); text-shadow: 0 0 6px rgba(255,45,111,0.4); }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    margin: 0.1rem 0.15rem;
+  }
+  .tag-speedware { background: rgba(0,240,255,0.15); color: var(--cyan); }
+  .tag-cyberdeck { background: rgba(180,100,255,0.15); color: var(--purple); }
+  .tag-muscle { background: rgba(255,106,0,0.15); color: var(--orange); }
+  .tag-blade { background: rgba(255,7,58,0.15); color: var(--red); }
+  .tag-weapon { background: rgba(247,224,24,0.15); color: var(--yellow); }
+  .tag-mod { background: rgba(57,255,20,0.15); color: var(--green); }
+
+  /* IMPLANT CARDS */
+  .implant-section {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--bg-panel);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .implant-section > h3:first-child {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    margin-top: 0;
+  }
+
+  /* MOD CARDS */
+  .mod-category {
+    border-left: 3px solid var(--yellow);
+    padding: 0.8rem 1.2rem;
+    margin: 1rem 0;
+    background: rgba(247,224,24,0.03);
+  }
+  .mod-category h4 {
+    color: var(--yellow);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .mod-entry {
+    margin: 0.6rem 0;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .mod-entry:last-child { border-bottom: none; }
+  .mod-name {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .mod-effect {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+  .mod-tradeoff {
+    font-size: 0.85rem;
+    color: var(--orange);
+  }
+
+  /* TOC */
+  .toc {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--bg-panel-alt);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .toc h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    color: var(--cyan);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+  .toc ul { list-style: none; }
+  .toc li {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.82rem;
+    padding: 0.25rem 0;
+    color: var(--text-muted);
+  }
+  .toc li span { color: var(--magenta); margin-right: 0.5rem; }
+
+  .footer-bar {
+    margin-top: 3rem;
+    padding: 1rem;
+    border-top: 1px solid rgba(0,240,255,0.15);
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  @media print {
+    body { background: #fff; color: #111; padding: 1rem; }
+    .doc-header { border-color: #ccc; background: none; }
+    .doc-header h1 { color: #111; text-shadow: none; }
+    h2 { color: #333; border-color: #ccc; }
+    thead th { background: #eee; color: #333; border-color: #333; }
+    tbody td { border-color: #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>CYBERWARE &amp; WEAPON MODS</h1>
+  <div class="subtitle">Homebrew Implants &amp; Equipment for D&amp;D 5e (2014) — Cyberpunk Setting</div>
+  <div class="campaign-tag">NIGHT CITY 2190 &mdash; MILITECH ERA</div>
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Sandevistan &mdash; Speedware</li>
+    <li><span>02</span> Cyberdecks</li>
+    <li><span>03</span> Gorilla Arms</li>
+    <li><span>04</span> Monowire</li>
+    <li><span>05</span> Mantis Blades</li>
+    <li><span>06</span> Projectile Launch System</li>
+    <li><span>07</span> Weapon Mods</li>
+    <li><span>08</span> Custom Mods (Player-Designed)</li>
+  </ul>
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 01 — SANDEVISTAN                                               -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">01</span> SANDEVISTAN &mdash; SPEEDWARE <span class="tag tag-speedware">SPEEDWARE</span></h2>
+
+<div class="flavor-quote">
+  "Need to move faster than the bullet? We got you. Don't forget to sign the waiver."
+  <span class="attribution">&mdash; Doc Navarro, Ripper of Heywood</span>
+</div>
+
+<p>The Sandevistan is a neural time-dilation implant that overclocks your nervous system, letting you think and move at speeds the human body was never meant to handle. Activating one floods your synapses with tailored neuro-stimulants, bending perception and reaction time itself.</p>
+
+<div class="mechanic-box">
+  <h4>Core Mechanics</h4>
+  <p><strong>Activation:</strong> Bonus Action.</p>
+  <p><strong>Uses:</strong> 1 per short or long rest.</p>
+  <p><strong>Passive:</strong> All models grant advantage on Dexterity Saving Throws while active.</p>
+  <p><strong>Duration:</strong> Varies by model (see table).</p>
+</div>
+
+<div class="warning-box">
+  <strong>Overclock &mdash; Push Beyond Limits:</strong> Using your Sandevistan again before completing a rest costs Humanity Loss equal to <strong>1 roll</strong> of its listed HL dice (representing neural burnout). If this would reduce your effective Humanity to 0, you suffer a <strong>Cyberpsychotic Break</strong> &mdash; determined by the DM.
+  <br><br>
+  <em>"You can burn twice as bright. Once."</em>
+</div>
+
+<h3>Sandevistan Models</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Speed</th>
+      <th>Extra Action</th>
+      <th>Dur.</th>
+      <th>Enemy Disadv.</th>
+      <th>HL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="model-name">Budget Arms Mk.1</span>
+        <span class="model-desc">Common black market variant. Good entry-level reflex booster.</span>
+      </td>
+      <td>&times;2 move</td>
+      <td>+1 Action (1 attack only)</td>
+      <td>2 rds</td>
+      <td>vs ranged</td>
+      <td class="hl-low">2d8 (6)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Dynalar Mk.3</span>
+        <span class="model-desc">Police and corpo issue. Reliable, durable, still lethal.</span>
+      </td>
+      <td>&times;2 move</td>
+      <td>+1 Action</td>
+      <td>3 rds</td>
+      <td>vs ranged + OA</td>
+      <td class="hl-mid">3d8 (10)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Militech "Reaper" Mk.5</span>
+        <span class="model-desc">Battlefield model. Tweaked for survivability.</span>
+      </td>
+      <td>&times;2 move</td>
+      <td>+1 Action, +2 AC</td>
+      <td>3 rds</td>
+      <td>vs ranged + OA</td>
+      <td class="hl-high">4d8 (15)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Arasaka "Apogee" Mk.7</span>
+        <span class="model-desc">"The David Martinez." Unstable firmware &mdash; highly illegal.</span>
+      </td>
+      <td>&times;3 move</td>
+      <td>+1 Action, +1 Bonus Action</td>
+      <td>4 rds</td>
+      <td>vs all attacks</td>
+      <td class="hl-extreme">5d10 (20)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Zetatech "Eidolon" Prototype</span>
+        <span class="model-desc">"Edgerunner, huh? Ready to go over it, just one... last... time?"</span>
+      </td>
+      <td>&times;3 move</td>
+      <td>+2 Actions</td>
+      <td>3 rds</td>
+      <td>vs all attacks</td>
+      <td class="hl-psycho">6d12 (25)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  The Zetatech &ldquo;Eidolon&rdquo; is not commercially available. These prototypes were pulled from Zetatech's R&amp;D vaults after the project was scrapped &mdash; every test subject flatlined or went cyberpsycho within 72 hours of installation. The ones still circulating on the black market were stolen. If you find one, ask yourself who had it before you, and why they don't anymore.
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 02 — CYBERDECKS                                                -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">02</span> CYBERDECKS <span class="tag tag-cyberdeck">CYBERDECK</span></h2>
+
+<div class="flavor-quote">
+  "Brains fried, nosebleed, pupils glowing blue? Congratulations, you're a real netrunner now."
+</div>
+
+<p>Cyberdecks are neural coprocessors that enhance mental bandwidth and processing capacity. They allow Edgerunners to run more programs and quickhacks than their natural brain could handle. Installing one pushes the limits of your neural load &mdash; the more powerful the deck, the less of <em>you</em> stays behind.</p>
+
+<div class="mechanic-box">
+  <h4>Core Mechanics</h4>
+  <p><strong>Install Limit:</strong> 1 Cyberdeck per character.</p>
+  <p><strong>Activation:</strong> Always active once installed.</p>
+  <p><strong>Humanity Loss:</strong> Roll HL dice once on installation.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Overclock (Optional)</h4>
+  <p>Once per Long Rest, regain one spent spell slot (any level you can cast). Doing so inflicts <strong>1 Humanity Die of permanent loss</strong> (same die size as the deck's HL).</p>
+</div>
+
+<div class="ruling-box">
+  <strong>Restrictions by Caster Type:</strong>
+  <br><br>
+  <strong>Full Casters</strong> (Wizard, Sorcerer, Bard, Cleric, Druid, Warlock) &mdash; Can install any deck.
+  <br>
+  <strong>Half Casters</strong> (Paladin, Ranger, Artificer) &mdash; Can install up to Tier II.
+  <br>
+  <strong>Warlocks</strong> &mdash; Gain 1 additional spell slot for all tiers except Tier V. Tier V grants 2 additional spell slots total.
+  <br>
+  <strong>Non-Casters</strong> &mdash; Gain no benefit.
+</div>
+
+<h3>Cyberdeck Models</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Spell Slot Boost</th>
+      <th>Overclock Effect</th>
+      <th>HL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="model-name">Streetbound "BrainTap" Mk.1</span>
+        <span class="model-desc">Budget-tier deck used by street techs. Gets the job done &mdash; barely.</span>
+      </td>
+      <td>+1 Level 1 slot</td>
+      <td>Regain 1 spent Lvl 1 slot</td>
+      <td class="hl-low">2d8 (6)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Militech NeuralHub Mk.3</span>
+        <span class="model-desc">Corporate issue. Reliable, rugged, and boring as hell.</span>
+      </td>
+      <td>+1 Level 2 slot <em>(or 2 Lvl 1)</em></td>
+      <td>Regain 1 spent Lvl 1&ndash;2 slot</td>
+      <td class="hl-mid">3d8 (10)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Dynalar "Ghostline" Mk.4</span>
+        <span class="model-desc">Clean latency, zero lag. Favored by merc Netrunners.</span>
+      </td>
+      <td>+1 Level 3 slot <em>(or 3 Lvl 1)</em></td>
+      <td>Regain 1 spent Lvl 1&ndash;3 slot</td>
+      <td class="hl-high">4d8 (12)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Tetratonic "Rippler" Mk.5</span>
+        <span class="model-desc">Black-market prototype. Impossible speed, dangerous instability.</span>
+      </td>
+      <td>+1 Level 4 slot <em>(or 2 Lvl 2)</em></td>
+      <td>Regain 1 spent slot (any level)</td>
+      <td class="hl-extreme">6d6 (15)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Militech "Canto" Mk.6</span>
+        <span class="model-desc">"To eliminate your kind is effortless. Let us not make the same mistake."</span>
+      </td>
+      <td>+2 spell slots (any mix)</td>
+      <td>Regain 2 spent slots (up to 5th level)</td>
+      <td class="hl-psycho">10d4</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  The Militech &ldquo;Canto&rdquo; Mk.6 is not a cyberdeck. It is a rogue AI &mdash; designation <strong>Cynosure</strong> &mdash; housed in cyberdeck hardware. Originally recovered from a Militech black site connected to the Phantom Liberty incident of 2077, Cynosure is a beyond-Blackwall entity that opens gateways to and through the digital wall itself. Installing the Canto doesn't give you a better deck. It gives something on the other side a window into your skull. It cannot be purchased. It finds you.
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 03 — GORILLA ARMS                                              -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">03</span> GORILLA ARMS <span class="tag tag-muscle">MUSCLEWARE</span></h2>
+
+<div class="flavor-quote">
+  "Some doors open with netrunners. Others open with these. These are much easier."
+</div>
+
+<p>Gorilla Arms are high-torque myomer muscle systems fused directly into the forearms and shoulders. Built for shock absorption, power transfer, and kinetic overload, they turn every punch into a piledriver. Whether you're smashing mechs, walls, or egos &mdash; these arms don't ask twice.</p>
+
+<div class="mechanic-box">
+  <h4>Core Mechanics</h4>
+  <p><strong>Activation:</strong> Passive &mdash; always on. Cannot be used while wearing heavy armor.</p>
+  <p><strong>Unarmed Strike:</strong> Upgraded to Bludgeoning (damage varies by model, treated as an unarmed strike).</p>
+  <p><strong>Humanity Loss:</strong> Rolled on installation.</p>
+</div>
+
+<h3>Gorilla Arm Models</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>STR</th>
+      <th>Unarmed</th>
+      <th>Extra Effect</th>
+      <th>HL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="model-name">Budget Arms "Brick" Mk.1</span>
+        <span class="model-desc">Factory-floor model. Industrial-grade pistons. Loud, heavy, gets the job done.</span>
+      </td>
+      <td>+2</td>
+      <td>1d4</td>
+      <td>Advantage on STR checks to lift or break objects</td>
+      <td class="hl-low">2d8 (6)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Dynalar "Atlas" Mk.3</span>
+        <span class="model-desc">Corpo-tier design used by Arasaka riot teams. Reliable and refined.</span>
+      </td>
+      <td>+3</td>
+      <td>1d6</td>
+      <td>Unarmed strikes count as magical for overcoming resistance</td>
+      <td class="hl-mid">3d8 (9)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Militech "Tectonic" Mk.4</span>
+        <span class="model-desc">Siege-class arms. Used for breaching exo-doors and powered armor.</span>
+      </td>
+      <td>+4</td>
+      <td>1d8 + STR/DEX</td>
+      <td>Add STR mod again to damage vs objects or structures</td>
+      <td class="hl-high">4d8 (12)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Arasaka "Bearclaw" Mk.6</span>
+        <span class="model-desc">High-end chrome. Silent servos, holy wrath.</span>
+      </td>
+      <td>+6</td>
+      <td>1d10 + STR/DEX</td>
+      <td>One unarmed strike as a Bonus Action</td>
+      <td class="hl-extreme">6d10 (26)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Zetatech "Hercules" Prototype</span>
+        <span class="model-desc">The bleeding edge of muscleware. You WILL go cyberpsycho with these. Even Adam Smasher would be jealous.</span>
+      </td>
+      <td>+8</td>
+      <td>1d12 + STR/DEX</td>
+      <td>Considered Huge for carrying capacity and related checks</td>
+      <td class="hl-psycho">12d10 (66)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  The Zetatech &ldquo;Hercules&rdquo; Prototype is not sold. It is not listed in any catalog. The few units that exist were recovered from a Zetatech weapons lab that suffered a &ldquo;containment failure&rdquo; &mdash; meaning the test subject ripped through the blast doors with their bare hands and walked out. 66 average Humanity Loss means most characters will go cyberpsycho on installation. That is not a bug. It is a documented feature.
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 04 — MONOWIRE                                                  -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">04</span> MONOWIRE <span class="tag tag-blade">BLADEWARE</span></h2>
+
+<div class="flavor-quote">
+  "If you can see the wire, it's already too late. Steel, bone, chrome &mdash; it all cuts the same."
+</div>
+
+<p>Monowire is a high-frequency filament system housed within a reinforced cyberarm. Deploying as a near-invisible whip, it slices on a molecular level, adapting its damage type through interchangeable filaments.</p>
+
+<div class="mechanic-box">
+  <h4>Core Mechanics</h4>
+  <p><strong>Activation:</strong> Bonus Action to deploy or retract.</p>
+  <p><strong>Weapon Type:</strong> Finesse, reach weapon (10 ft).</p>
+  <p><strong>Damage Type:</strong> Chosen on install &mdash; Slashing, Fire, Acid, or Lightning. Can be swapped with downtime by purchasing a different filament (roughly 1/4 to 1/3 of the base model price).</p>
+  <p><strong>Magical:</strong> Counts as magical for overcoming resistance.</p>
+  <p><strong>Spell Conduit:</strong> Touch spells can be delivered through the Monowire at its 10 ft reach.</p>
+  <p><strong>Humanity Loss:</strong> Rolled on installation.</p>
+</div>
+
+<h3>Combat Modes</h3>
+
+<div class="implant-section">
+  <h3 style="color: var(--green);">Precision Mode <span class="tag tag-mod">SPELL FOCUS</span></h3>
+  <p><strong>Attack:</strong> Bonus Action.</p>
+  <p><strong>Damage:</strong> Base damage + DEX or Spellcasting modifier.</p>
+  <p><strong>Spellcasting:</strong> You may cast spells normally (Action spells allowed).</p>
+  <p style="font-size: 0.85rem; color: var(--text-dim);">Spellcasting modifier on damage requires an additional 10k eddies on top of the base model price.</p>
+</div>
+
+<div class="implant-section">
+  <h3 style="color: var(--red);">Overdrive Mode <span class="tag tag-blade">LETHAL FOCUS</span></h3>
+  <p><strong>Attack:</strong> Action (Extra Attack applies).</p>
+  <p><strong>Damage:</strong> Alternate (higher) damage + DEX or Spellcasting modifier.</p>
+  <p><strong>Spellcasting:</strong> Only Bonus Action touch spells or cantrips may be delivered through the wire in this mode.</p>
+  <p style="font-size: 0.85rem; color: var(--text-dim);">The Spellcasting modifier upgrade is shared between both modes &mdash; you only pay once.</p>
+</div>
+
+<h3>Monowire Models</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Precision / Overdrive</th>
+      <th>Extra Effect</th>
+      <th>HL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="model-name">Budget "Thread" Mk.1</span>
+        <span class="model-desc">Cheap filament, cheap housing. Snaps if you look at it wrong. But a wire that cuts through bone is a wire that cuts through bone.</span>
+      </td>
+      <td>1d4 / 1d6</td>
+      <td>No additional effects</td>
+      <td class="hl-low">1d6 (4)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Kang Tao "Silk" Mk.3</span>
+        <span class="model-desc">Precision-engineered filament with spell-routing capability. The weapon of choice for combat netrunners who like to get close.</span>
+      </td>
+      <td>1d6 / 2d8</td>
+      <td>+1 to attacks, +1 to melee spell attacks, +1 to Spell DC for wire-delivered spells</td>
+      <td class="hl-mid">2d6 (7)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Arasaka "Ghostline" Mk.5</span>
+        <span class="model-desc">Arasaka counter-intelligence issue. The wire is invisible to thermal and UV optics. So is the kill.</span>
+      </td>
+      <td>1d8 / 2d10</td>
+      <td>Targets hit cannot take reactions (1/turn). Previous bonuses increase to +2.</td>
+      <td class="hl-high">3d6 (13)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Zetatech "Phase" Mk.7</span>
+        <span class="model-desc">Experimental phased wire. Unstable. Extremely illegal.</span>
+      </td>
+      <td>1d10 / 2d12</td>
+      <td>Ignores resistances and immunities to the wire's damage type. Previous bonuses increase to +3.</td>
+      <td class="hl-extreme">4d6 (16)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  The Zetatech &ldquo;Phase&rdquo; Mk.7 uses experimental phased-matter filament that exists partially out of sync with normal physics. It ignores resistances and immunities because, on a molecular level, the wire isn't entirely <em>here</em> when it cuts. Zetatech denies the project exists. Three have been recovered from crime scenes where the victims were found bisected through materials that should have been impossible to cut. Extremely illegal. Possession is a shoot-on-sight offense for MaxTac.
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 05 — MANTIS BLADES                                            -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">05</span> MANTIS BLADES <span class="tag tag-blade">BLADEWARE</span></h2>
+
+<div class="flavor-quote">
+  "Two feet of mono-edged ceramic composite, folded inside your forearms, spring-loaded on a neural trigger. The last thing they see is a blur. The last thing they feel is cold."
+</div>
+
+<p>Mantis Blades are retractable twin arm-blades designed for one purpose: killing fast. Unlike Gorilla Arms, which turn you into a tank, Mantis Blades turn you into a scalpel &mdash; devastating burst damage at the cost of durability. You're not built to take hits. You're built to make sure nobody gets the chance to throw one.</p>
+
+<div class="mechanic-box">
+  <h4>Core Mechanics</h4>
+  <p><strong>Activation:</strong> Bonus Action to deploy or retract both blades.</p>
+  <p><strong>Weapon Type:</strong> Finesse melee weapon (5 ft reach). Counts as dual-wielding while deployed.</p>
+  <p><strong>Damage Type:</strong> Piercing or Slashing (chosen on install, can be swapped at a ripperdoc for 1/4 base price).</p>
+  <p><strong>Magical:</strong> Counts as magical for overcoming resistance (Mk.3 and above).</p>
+  <p><strong>Humanity Loss:</strong> Rolled on installation.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Glass Cannon Design</h4>
+  <p>Mantis Blades are optimized for offense, not defense. While Mantis Blades are <strong>deployed</strong>:</p>
+  <p>&bull; You <strong>cannot</strong> use a shield, and your AC does <strong>not</strong> benefit from held items (your arms are weapons now).</p>
+  <p>&bull; You have <strong>disadvantage on STR saving throws</strong> to resist being grappled, shoved, or knocked prone (the blades compromise your leverage).</p>
+  <p>&bull; In exchange: you can make <strong>one additional melee attack as a Bonus Action</strong> when you take the Attack action with your Mantis Blades (this is inherent to all models).</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Lunge (Special Attack)</h4>
+  <p>Once per short rest, when you take the Attack action with Mantis Blades, you can <strong>Lunge</strong>: move up to 15 ft in a straight line toward a target as part of the attack. This movement does not provoke opportunity attacks. If the attack hits, it deals <strong>bonus damage</strong> equal to the model's listed Lunge Bonus. Higher-tier models improve the Lunge.</p>
+</div>
+
+<h3>Mantis Blade Models</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Damage (per blade)</th>
+      <th>Lunge Bonus</th>
+      <th>Extra Effect</th>
+      <th>HL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="model-name">Budget Arms "Switchblade" Mk.1</span>
+        <span class="model-desc">Cheap, loud, and prone to jamming. The ripperdoc special.</span>
+      </td>
+      <td>1d6 + DEX</td>
+      <td>+1d6</td>
+      <td>No additional effects.</td>
+      <td class="hl-low">2d8 (6)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Kang Tao "Mantis" Mk.3</span>
+        <span class="model-desc">The industry standard. Clean deployment, smooth retraction. Most common on the street.</span>
+      </td>
+      <td>1d8 + DEX</td>
+      <td>+2d6</td>
+      <td>Attacks count as magical. Critical hits on 19&ndash;20.</td>
+      <td class="hl-mid">3d8 (10)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Arasaka "Tsukuyomi" Mk.5</span>
+        <span class="model-desc">Corpo assassin-grade. Whisper-silent servos. The boardroom killer's weapon of choice.</span>
+      </td>
+      <td>1d10 + DEX</td>
+      <td>+3d6</td>
+      <td>Lunge can be used twice per short rest. +1 to attack rolls.</td>
+      <td class="hl-high">5d8 (18)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Militech "Praetorian" Mk.7</span>
+        <span class="model-desc">Military black-ops model. Heated ceramic edges. Designed to carve through subdermal armor.</span>
+      </td>
+      <td>1d12 + DEX</td>
+      <td>+4d6</td>
+      <td>Attacks ignore resistance to Slashing/Piercing. +2 to attack rolls. Lunge distance increases to 20 ft.</td>
+      <td class="hl-extreme">7d8 (25)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Zetatech "Nephilim" Prototype</span>
+        <span class="model-desc">"They found this unit in a Zetatech black site. The previous owner was fused to the wall. The blades were still running."</span>
+      </td>
+      <td>2d8 + DEX</td>
+      <td>+5d6</td>
+      <td>Critical hits on 18&ndash;20. Lunge recharges on kills (no rest needed). On a critical hit, the target must make a DC 15 CON save or suffer a lingering wound (1d6 bleed damage at the start of their turns for 1 minute, save ends).</td>
+      <td class="hl-psycho">10d8 (40)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  The Zetatech &ldquo;Nephilim&rdquo; cannot be purchased. It is a quest reward, a black-site recovery, or a very bad idea someone found in a corpo vault. The Humanity cost alone should give any sane character pause &mdash; and that's the point.
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 06 — PROJECTILE LAUNCH SYSTEM                                 -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">06</span> PROJECTILE LAUNCH SYSTEM <span class="tag tag-weapon">LAUNCHER</span></h2>
+
+<div class="flavor-quote">
+  "You've got a grenade launcher in your arm. No, I'm not asking why. I'm asking what you're loading into it."
+</div>
+
+<p>The Projectile Launch System (PLS) is a modular micro-missile launcher embedded in the forearm. Unlike the other cyberarms which are melee-focused, the PLS is a ranged weapon system that can swap between payload types depending on the mission. Explosive for crowds, EMP for borgs, tranq for quiet work, gas for area denial.</p>
+
+<div class="mechanic-box">
+  <h4>Core Mechanics</h4>
+  <p><strong>Activation:</strong> Bonus Action to deploy the launch port. Firing uses your Attack Action.</p>
+  <p><strong>Weapon Type:</strong> Ranged weapon. Range varies by model (see table).</p>
+  <p><strong>Ammo Capacity:</strong> Varies by model. Reloading requires 1 Action per round loaded.</p>
+  <p><strong>Payload Swap:</strong> Changing payload type requires 1 minute outside combat (clearing the chamber and loading a different round type).</p>
+  <p><strong>Humanity Loss:</strong> Rolled on installation.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Payload Types</h4>
+  <p>Each PLS round must be purchased separately. All payload types are available for all models unless noted otherwise.</p>
+  <p><strong>Explosive:</strong> Standard micro-missile. Deals listed damage in a 10 ft radius (DEX save for half, DC = 8 + proficiency + DEX mod). Damage type: Fire.</p>
+  <p><strong>EMP:</strong> Disables unshielded electronics and cyberware in a 10 ft radius for 1 minute. Deals listed damage to constructs/borgs only. Damage type: Lightning.</p>
+  <p><strong>Tranquilizer:</strong> Single target. On hit, target makes CON save (DC = 8 + proficiency + DEX mod) or falls unconscious for 1 minute (or until damaged/roused). No damage on hit. Half damage die as Poison damage on a successful save.</p>
+  <p><strong>Gas:</strong> Creates a 15 ft radius cloud lasting 1 round. All creatures in the cloud must make CON save or suffer effects of a loaded Poison/Biotoxin/Street Drug. Nasal Filters negate. Damage type: Poison.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Round Costs (per round)</h4>
+  <p><strong>Explosive:</strong> 500eb per round.</p>
+  <p><strong>EMP:</strong> 750eb per round.</p>
+  <p><strong>Tranquilizer:</strong> 300eb per round.</p>
+  <p><strong>Gas:</strong> 200eb per round (substance loaded separately).</p>
+</div>
+
+<h3>Projectile Launch System Models</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Damage</th>
+      <th>Range</th>
+      <th>Capacity</th>
+      <th>Extra Effect</th>
+      <th>HL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="model-name">Budget Arms "Popper" Mk.1</span>
+        <span class="model-desc">Single-shot disposable launcher. Cheap, crude, and it'll probably jam on the second reload.</span>
+      </td>
+      <td>2d6</td>
+      <td>30/90 ft</td>
+      <td>1 round</td>
+      <td>Explosive and Tranq payloads only. No EMP or Gas compatibility.</td>
+      <td class="hl-low">2d6 (5)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Dynalar "Hornet" Mk.3</span>
+        <span class="model-desc">The street merc's workhorse. All four payload types. Reliable enough to trust your life to.</span>
+      </td>
+      <td>3d6</td>
+      <td>60/120 ft</td>
+      <td>2 rounds</td>
+      <td>All payload types available. +1 to attack rolls with PLS.</td>
+      <td class="hl-mid">3d8 (10)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Militech "Typhon" Mk.5</span>
+        <span class="model-desc">Military-issue. Smart-targeting assist. The kind of thing MaxTac carries.</span>
+      </td>
+      <td>4d6</td>
+      <td>80/160 ft</td>
+      <td>3 rounds</td>
+      <td>+2 to attack rolls. Explosive blast radius increases to 15 ft. Can load two different payload types simultaneously.</td>
+      <td class="hl-high">5d8 (18)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Arasaka "Raijin" Mk.7</span>
+        <span class="model-desc">Corpo special-ops launcher. Near-silent launch. Smart-guided rounds that curve around cover.</span>
+      </td>
+      <td>5d6</td>
+      <td>100/200 ft</td>
+      <td>4 rounds</td>
+      <td>+3 to attack rolls. Targets behind half cover are treated as having no cover. Tranq save DC increases by 2. Reloading is a Bonus Action instead of an Action.</td>
+      <td class="hl-extreme">7d8 (25)</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="model-name">Zetatech "Götterdämmerung" Prototype</span>
+        <span class="model-desc">"Twilight of the Gods. One arm. Six shots. Total annihilation. They built three of these. Two of them detonated during testing."</span>
+      </td>
+      <td>6d6</td>
+      <td>120/240 ft</td>
+      <td>6 rounds</td>
+      <td>+3 to attack rolls. Explosive blast radius 20 ft. Targets behind full cover are treated as half cover. EMP rounds disable for 10 minutes instead of 1. Once per long rest: fire all remaining rounds as a single Action (each at a different target or the same one). Reloading is a Bonus Action.</td>
+      <td class="hl-psycho">10d10 (50)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  The Zetatech &ldquo;G&ouml;tterd&auml;mmerung&rdquo; cannot be purchased. Two of the three prototypes destroyed themselves during testing. The third is out there somewhere. If your DM lets you find it, you should be very concerned about what you had to do to get it &mdash; and what it's going to cost your Humanity to keep it.
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 07 — WEAPON MODS                                               -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">07</span> WEAPON MODS <span class="tag tag-weapon">WEAPON MODS</span></h2>
+
+<div class="flavor-quote">
+  "Factory guns work. Custom guns win."
+</div>
+
+<p>Weapon Mods are aftermarket upgrades that enhance performance, handling, or stealth. Most modern firearms are built with modular rails and smart-link compatibility, allowing for quick customization without full disassembly.</p>
+
+<div class="mechanic-box">
+  <h4>Base Rules</h4>
+  <p><strong>Mod Slots:</strong> Most weapons have 2 slots. Advanced or iconic weapons may have 3+.</p>
+  <p><strong>One Per Type:</strong> Cannot stack the same category (no double optics, etc).</p>
+  <p><strong>Installation:</strong> Requires 1 hour + basic tools (or a tech NPC).</p>
+  <p><strong>Swapping:</strong> 1&ndash;10 minutes outside combat depending on complexity (DM discretion &mdash; a sight swap is about a minute, a full Smart-link system might take 10).</p>
+  <p><strong>Compatibility:</strong> DM decides if a weapon can accept certain mods (pistols vs rifles, etc).</p>
+</div>
+
+<div class="ruling-box">
+  <strong>Slot Layout:</strong> Each weapon can equip <strong>1 Optic</strong>, <strong>1 Grip/Handling Mod</strong>, and <strong>1 Barrel Mod</strong>. If a weapon only has 2 slots, pick any 2 of the 3 categories.
+</div>
+
+<h3>Optics (Aim &amp; Targeting)</h3>
+<p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1rem;">Iron sights and basic scopes exist by default. Snipers come with full optics, a Nova gets iron sights &mdash; you know the drill.</p>
+
+<div class="mod-category">
+  <h4>Optic Mods</h4>
+  <div class="mod-entry">
+    <span class="mod-name">Improved Scope</span>
+    <div class="mod-effect">+1 to attack rolls.</div>
+  </div>
+  <div class="mod-entry">
+    <span class="mod-name">Smart Link</span>
+    <div class="mod-effect">+3 to attack rolls.</div>
+    <div class="mod-tradeoff">Requires Smart Link cyberware to use.</div>
+  </div>
+  <div class="mod-entry">
+    <span class="mod-name">Long Range Scope</span>
+    <div class="mod-effect">No disadvantage at long range.</div>
+    <div class="mod-tradeoff">&minus;1 to attack rolls within 10 ft.</div>
+  </div>
+</div>
+
+<h3>Grip / Handling (Control &amp; Stability)</h3>
+
+<div class="mod-category">
+  <h4>Grip Mods</h4>
+  <div class="mod-entry">
+    <span class="mod-name">Tactical Grip</span>
+    <div class="mod-effect">+1 to damage rolls.</div>
+  </div>
+  <div class="mod-entry">
+    <span class="mod-name">Lightweight Frame</span>
+    <div class="mod-effect">+2 to initiative rolls when this weapon is drawn.</div>
+    <div class="mod-tradeoff">&minus;1 damage.</div>
+  </div>
+</div>
+
+<h3>Barrel Mods</h3>
+
+<div class="mod-category">
+  <h4>Barrel Mods</h4>
+  <div class="mod-entry">
+    <span class="mod-name">Compensator</span>
+    <div class="mod-effect">+2 to attack rolls.</div>
+    <div class="mod-tradeoff">&minus;2 damage.</div>
+  </div>
+  <div class="mod-entry">
+    <span class="mod-name">Overclocked Barrel</span>
+    <div class="mod-effect">+4 damage.</div>
+    <div class="mod-tradeoff">Weapon jams on a natural 1&ndash;2. Clearing a jam requires a full Action regardless of feats.</div>
+  </div>
+  <div class="mod-entry">
+    <span class="mod-name">Suppressor</span>
+    <div class="mod-effect">Attacks do not reveal your position unless the target is within 10 ft.</div>
+    <div class="mod-tradeoff">&minus;2 damage.</div>
+  </div>
+</div>
+
+<h3>Special Mods (Rare / Illegal)</h3>
+<p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.5rem;">DM-controlled. Harder to obtain.</p>
+
+<div class="mod-category">
+  <h4>Special Mods</h4>
+  <div class="mod-entry">
+    <span class="mod-name">Thermal Sight</span>
+    <div class="mod-effect">Ignore invisibility.</div>
+  </div>
+  <div class="mod-entry">
+    <span class="mod-name">EMP Modulator</span>
+    <div class="mod-effect">+1d4 lightning damage. Deals double damage against constructs and borgs.</div>
+  </div>
+  <div class="mod-entry">
+    <span class="mod-name">Smart Targeting Core</span>
+    <div class="mod-effect">Once per turn, reroll a missed attack.</div>
+  </div>
+</div>
+
+
+<!-- ====================================================================== -->
+<!-- SECTION 06 — CUSTOM MODS                                               -->
+<!-- ====================================================================== -->
+<h2><span class="section-num">08</span> CUSTOM MODS (PLAYER-DESIGNED) <span class="tag tag-mod">CUSTOM</span></h2>
+
+<div class="flavor-quote">
+  "Anyone can buy chrome. Not everyone knows how to push it past spec."
+</div>
+
+<p>Players may propose custom weapon mods tailored to their build or playstyle. These are not freely created &mdash; each one must be approved and balanced by the DM.</p>
+
+<div class="mechanic-box">
+  <h4>Proposal Requirements</h4>
+  <p>The player must describe:</p>
+  <p>&bull; What the mod does.</p>
+  <p>&bull; What slot it uses (Optic / Grip / Barrel / Special).</p>
+  <p>&bull; Whether it favors damage, accuracy, or utility.</p>
+</div>
+
+<div class="dm-note">
+  <strong>DM has final say on:</strong> Stats, tradeoffs, rarity/cost, and whether the mod fits the setting. Custom mods are unique prototypes unless the DM rules otherwise.
+</div>
+
+<h3>Balancing Guidelines (Hard Limits)</h3>
+
+<div class="ruling-box">
+  <strong>Max Bonus:</strong> +1 to +3 to attack <em>OR</em> +1 to +3 damage <em>OR</em> a small utility effect.
+  <br><br>
+  <strong>Must Include a Tradeoff:</strong> Every custom mod needs a downside &mdash; reduced damage, limited uses, risk (jam, recoil, heat), or situational effectiveness.
+  <br><br>
+  <strong>No Action Economy Breaks:</strong> Cannot grant extra attacks. Cannot bypass core mechanics (permanent advantage, ignoring all cover, etc).
+</div>
+
+<h3>Crafting Process</h3>
+
+<div class="mechanic-box">
+  <h4>Requirements</h4>
+  <p><strong>Cost:</strong> Roughly 1.5&times; to 2&times; a comparable standard mod.</p>
+  <p><strong>Time:</strong> 1&ndash;3 days (DM discretion). A natural 25+ on the crafting check could mean an instant build, if the DM is feeling generous.</p>
+  <p><strong>Resources:</strong> Access to a workshop or tech NPC. Rare components may be required at DM discretion depending on the mod's power level.</p>
+</div>
+
+
+<div class="footer-bar">
+  // DOCUMENT COMPILED FOR NIGHT CITY 2190 CAMPAIGN // MILITECH ERA //<br>
+  Homebrew content for D&amp;D 5e (2014 rules) &mdash; Cyberpunk setting<br>
+  Living document &mdash; subject to updates
+</div>
+
+</body>
+</html>

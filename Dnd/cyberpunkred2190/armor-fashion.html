@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armor, Fashion &amp; Protection — All That Remains</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// STYLE IS WHAT KEEPS YOU ALIVE //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .flavor-quote .attribution { display:block; margin-top:0.2rem; font-size:0.75rem; color:var(--text-dim); font-style:normal; }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM GUIDANCE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .warning-box { border:1px solid var(--red); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,7,58,0.05); }
+  .warning-box::before { content:"⚠ NOTE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.45rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-armor { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-helm { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .tag-fashion { background:rgba(180,100,255,0.15); color:var(--purple); }
+  .tag-subdermal { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tier-badge { font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.05em; display:inline-block; padding:0.1rem 0.4rem; border-radius:2px; margin-left:0.3rem; }
+  .tier-street { background:rgba(57,255,20,0.12); color:var(--green); border:1px solid var(--green); }
+  .tier-corpo { background:rgba(0,240,255,0.12); color:var(--cyan); border:1px solid var(--cyan); }
+  .tier-exec { background:rgba(247,224,24,0.12); color:var(--yellow); border:1px solid var(--yellow); }
+  .tier-iconic { background:rgba(255,45,111,0.12); color:var(--magenta); border:1px solid var(--magenta); }
+  .fashion-card { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel); padding:1.2rem 1.4rem; margin:1rem 0; }
+  .fashion-card h4 { font-family:'Orbitron',sans-serif; font-size:0.95rem; margin-bottom:0.2rem; }
+  .fashion-card .fashion-meta { font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--text-dim); margin-bottom:0.6rem; }
+  .fashion-card .fashion-flavor { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem; }
+  .stat-line { font-size:0.88rem; margin-bottom:0.25rem; }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>ARMOR, FASHION &amp; PROTECTION</h1>
+  <div class="subtitle">Standard Armor, Helmets, Corpo Fashion &amp; Subdermal Variants</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Standard Armor</li>
+    <li><span>02</span> Helmets (Shields Reflavored)</li>
+    <li><span>03</span> Corpo Fashion &mdash; Armored Clothing</li>
+    <li><span>04</span> Subdermal Armor Variants</li>
+  </ul>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> STANDARD ARMOR <span class="tag tag-armor">ARMOR</span></h2>
+
+<div class="flavor-quote">
+  "Don't be an idiot. Match your armor to your situation. If you're pulling a bodyguard job at a charity ball, you'll embarrass yourself and your employer in full riot gear."
+  <span class="attribution">&mdash; Cooper, Solo</span>
+</div>
+
+<p>Standard armor follows D&amp;D 5e armor rules: Light Armor adds your full DEX modifier to AC, Medium Armor caps DEX at +2, and Heavy Armor uses a flat AC with no DEX bonus. Some armor imposes Stealth disadvantage or has a STR requirement (your speed is reduced by 10 ft if you don't meet it). You can only benefit from one suit of armor at a time.</p>
+
+<h3>Light Armor (AC = base + DEX mod)</h3>
+<table>
+  <thead>
+    <tr><th>Armor</th><th>AC</th><th>Stealth</th><th>Notes</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Leathers</span><span class="model-desc">Nomad biker staple. Looks cool, stops knives (barely).</span></td><td>11 + DEX</td><td>&mdash;</td><td>&mdash;</td><td class="price-atr">200eb</td></tr>
+    <tr><td><span class="model-name">Kevlar Vest</span><span class="model-desc">Concealable under a jacket. The minimum for anyone with sense.</span></td><td>11 + DEX</td><td>&mdash;</td><td>DR/1 Ballistic</td><td class="price-atr">500eb</td></tr>
+    <tr><td><span class="model-name">Light Armorjack</span><span class="model-desc">Kevlar &amp; plastic mesh woven into fabric. The street merc standard.</span></td><td>12 + DEX</td><td>&mdash;</td><td>&mdash;</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Bodyweight Suit</span><span class="model-desc">Sintered armorgel skinsuit. Netrunner&rsquo;s best friend.</span></td><td>12 + DEX</td><td>&mdash;</td><td>Stores cyberdeck, supports interface plugs.</td><td class="price-atr">10,000eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Medium Armor (AC = base + DEX mod, max +2)</h3>
+<table>
+  <thead>
+    <tr><th>Armor</th><th>AC</th><th>Stealth</th><th>Notes</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Medium Armorjack</span><span class="model-desc">Solid plastic plating reinforced with Kevlar mesh.</span></td><td>13 + DEX (max 2)</td><td>&mdash;</td><td>&mdash;</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Heavy Armorjack</span><span class="model-desc">Dense Kevlar, layered plastic and mesh weaves.</span></td><td>14 + DEX (max 2)</td><td>Disadvantage</td><td>&mdash;</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Flak Vest &amp; Pants</span><span class="model-desc">Military-grade flak protection. Not subtle.</span></td><td>15 + DEX (max 2)</td><td>Disadvantage</td><td>DR/1 Ballistic</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Scavenged Armor</span><span class="model-desc">Jury-rigged plates. Falls apart after use.</span></td><td>13 + DEX (max 2)</td><td>Disadvantage</td><td>Cannot be repaired. At 0 HP from damage, falls off the wearer.</td><td class="price-atr">500eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Heavy Armor (flat AC, no DEX bonus)</h3>
+<table>
+  <thead>
+    <tr><th>Armor</th><th>AC</th><th>STR Req</th><th>Stealth</th><th>Notes</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Metalgear</span><span class="model-desc">Walking tank. You will be noticed.</span></td><td>18</td><td>STR 15</td><td>Disadvantage</td><td>DR/2 Ballistic. You are not subtle.</td><td class="price-atr">50,000eb</td></tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>Armor in ATR:</strong> Standard 5e rules apply. You can only wear one suit of armor. Donning/doffing follows 5e timing (1 minute for light, 5 minutes for medium, 10 minutes for heavy). Armor stacks with subdermal implants (which are under your skin) but not with corpo fashion (which replaces standard armor, not supplements it).
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> HELMETS <span class="tag tag-helm">HELMETS</span></h2>
+
+<div class="flavor-quote">
+  "In 5e, they're shields. In Night City, they're helmets. Same mechanic, different vibe. Your AC bonus comes from protecting your skull, not hiding behind a slab of metal."
+</div>
+
+<p>Shields in D&amp;D 5e have been reflavored as helmets for ATR. Mechanically identical &mdash; they provide an AC bonus and require proficiency &mdash; but narratively they're head protection ranging from basic hardshell to full enclosed combat helms.</p>
+
+<table>
+  <thead>
+    <tr><th>Helmet</th><th>AC Bonus</th><th>Special</th><th>Notes</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Hardshell Cap</span><span class="model-desc">Basic open-face helmet. Construction worker chic.</span></td><td>+1</td><td>&mdash;</td><td>No proficiency required.</td><td class="price-atr">200eb</td></tr>
+    <tr><td><span class="model-name">Tactical Helmet</span><span class="model-desc">Standard military/police half-helm with visor.</span></td><td>+2</td><td>&mdash;</td><td>Standard 5e shield equivalent. Requires proficiency.</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Enclosed Combat Helm</span><span class="model-desc">Full-face sealed helmet. MaxTac standard issue.</span></td><td>+2</td><td>Advantage on saves vs flashbangs and gas.</td><td>Requires proficiency. Disadvantage on Perception (hearing) while worn.</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Militech &ldquo;Aegis&rdquo; Smart Helm</span><span class="model-desc">Integrated HUD, comms, and threat detection.</span></td><td>+2</td><td>Built-in radio communicator and Anti-Dazzle. +1 to Initiative.</td><td>Requires proficiency. Requires Neural Link.</td><td class="price-atr">15,000eb</td></tr>
+    <tr><td><span class="model-name">Arasaka &ldquo;Oni&rdquo; Assault Mask</span><span class="model-desc">Intimidation-designed full helm. Threat display projects kill count.</span></td><td>+2</td><td>+2 to Intimidation. Nasal Filter built in. Targets you attack for the first time must make DC 12 WIS save or be Frightened until end of their next turn.</td><td>Requires proficiency. Rare.</td><td class="price-atr">30,000eb</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  The Hardshell Cap at +1 AC without proficiency is intentionally accessible as a &ldquo;everyone should at least have this&rdquo; option. The higher-end helmets are proper 5e shield equivalents that require proficiency, with the top two adding utility features.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> CORPO FASHION &mdash; ARMORED CLOTHING <span class="tag tag-fashion">FASHION</span></h2>
+
+<div class="flavor-quote">
+  "A two-hundred-thousand eddie suit that can stop a .50 cal round and still look sharp under boardroom lighting. That's not armor. That's a lifestyle."
+</div>
+
+<p>In 2190, the line between clothing and body armor has blurred at the top end of the market. High-end corpo fashion houses produce garments woven with ballistic polymers, graphene mesh, and reactive gel layers that provide serious protection while looking like you just stepped off a runway. The more you pay, the more you can take &mdash; and the better you look doing it.</p>
+
+<p>These garments use <strong>Damage Resistance (DR)</strong> and <strong>Damage Reduction (flat)</strong> instead of traditional SP/ablation. They don't degrade from hits the way standard armor does. The tradeoff: they're eye-wateringly expensive, and replacing one if it's destroyed costs the full price.</p>
+
+<div class="mechanic-box">
+  <h4>How It Works</h4>
+  <p><strong>Damage Resistance:</strong> You take half damage from the listed type(s).</p>
+  <p><strong>Damage Reduction (DR/X):</strong> Reduce incoming damage of the listed type by X (minimum 0). Applied <em>after</em> resistance, if both apply.</p>
+  <p><strong>AC Bonus:</strong> Added to your base AC as if wearing armor.</p>
+  <p><strong>No Degradation:</strong> Fashion armor does not degrade from hits like standard gear might. However, it <em>can</em> be destroyed (DM discretion &mdash; a direct hit from a rocket launcher is going to ruin your suit regardless of its rating).</p>
+  <p><strong>Stacking:</strong> Corpo fashion does <strong>not</strong> stack with standard armor. You wear one or the other. It <em>does</em> stack with subdermal armor (which is under your skin, not over it).</p>
+</div>
+
+<h3>Street Tier <span class="tier-badge tier-street">STREET</span></h3>
+<p>Armored streetwear. Available in most Night City shops if you know where to look. Looks like regular clothes to the untrained eye, but won't fool anyone who handles armor professionally.</p>
+
+<table>
+  <thead><tr><th>Garment</th><th>AC Bonus</th><th>Resistances</th><th>Damage Reduction</th><th>Notes</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Reinforced Denim Jacket</span><span class="model-desc">Kevlar-lined street fashion. Looks like a normal jacket.</span></td>
+      <td>+1</td><td>&mdash;</td><td>DR/1 Ballistic</td>
+      <td>Concealable as clothing.</td>
+      <td class="price-atr">2,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Armored Hoodie</span><span class="model-desc">Graphene-weave pullover. Popular with runners and street kids.</span></td>
+      <td>+1</td><td>&mdash;</td><td>DR/1 Piercing, DR/1 Slashing</td>
+      <td>Hood provides basic flash resistance (advantage on saves vs bright light).</td>
+      <td class="price-atr">3,500eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Ballistic Longcoat</span><span class="model-desc">Full-length coat with layered ballistic panels. Very Edgerunner.</span></td>
+      <td>+2</td><td>&mdash;</td><td>DR/2 Ballistic</td>
+      <td>Can conceal up to 2 one-handed weapons underneath.</td>
+      <td class="price-atr">8,000eb</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Corpo Tier <span class="tier-badge tier-corpo">CORPO</span></h3>
+<p>Professional-grade armored clothing sold through corpo-affiliated boutiques. Requires an appointment or a contact. Looks indistinguishable from high-end civilian fashion.</p>
+
+<table>
+  <thead><tr><th>Garment</th><th>AC Bonus</th><th>Resistances</th><th>Damage Reduction</th><th>Notes</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Duraweave Business Suit</span><span class="model-desc">Standard corpo protective wear. Looks like a 50k suit because it is one.</span></td>
+      <td>+2</td><td>&mdash;</td><td>DR/2 Ballistic, DR/1 Slashing</td>
+      <td>+1 to Persuasion in professional settings.</td>
+      <td class="price-atr">50,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Reactive Gel Dress/Suit</span><span class="model-desc">Formalwear with impact-absorbing gel layers. Hardens on impact.</span></td>
+      <td>+2</td><td>Resistance: Bludgeoning</td><td>DR/1 Piercing</td>
+      <td>Gel hardens for 1 round after taking damage, granting additional +1 AC until start of next turn.</td>
+      <td class="price-atr">75,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Armored Overcoat (Lined)</span><span class="model-desc">Full-length coat with ceramic plate inserts and ballistic silk lining.</span></td>
+      <td>+2</td><td>&mdash;</td><td>DR/2 Ballistic, DR/2 Piercing, DR/1 Slashing</td>
+      <td>Can conceal up to 3 weapons (any size) underneath. Popular with Solos.</td>
+      <td class="price-atr">100,000eb</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Executive Tier <span class="tier-badge tier-exec">EXECUTIVE</span></h3>
+<p>Cutting-edge protective fashion available only through invite-only corpo boutiques, auction houses, or very connected Fixers. Each piece is tailored to the buyer. Wearing one of these in public is a statement: <em>I am worth more than you will ever earn.</em></p>
+
+<table>
+  <thead><tr><th>Garment</th><th>AC Bonus</th><th>Resistances</th><th>Damage Reduction</th><th>Notes</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Arasaka &ldquo;Second Skin&rdquo; Suit</span><span class="model-desc">Nano-fiber weave that responds to threat detection. The suit your enemies don't know you're wearing.</span></td>
+      <td>+3</td><td>Resistance: Piercing, Slashing</td><td>DR/1 Bludgeoning, DR/2 Piercing, DR/2 Slashing</td>
+      <td>Looks like a perfectly normal high-fashion suit. DC 20 Perception to identify as armored.</td>
+      <td class="price-atr">200,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Militech &ldquo;Ironclad&rdquo; Executive Line</span><span class="model-desc">Military-grade ballistic protection disguised as boardroom fashion. The suit for people who make enemies professionally.</span></td>
+      <td>+3</td><td>Resistance: Ballistic</td><td>DR/3 Ballistic, DR/2 Piercing, DR/1 Lightning</td>
+      <td>Built-in Biomonitor. Automatically alerts Trauma Team if vitals drop below threshold (subscription required).</td>
+      <td class="price-atr">300,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Zetatech &ldquo;Phantom&rdquo; Formalwear</span><span class="model-desc">Reactive smart-fabric that shifts between formal and tactical configurations in seconds.</span></td>
+      <td>+3</td><td>Resistance: Piercing, Slashing</td><td>DR/1 Bludgeoning, DR/5 Lightning, DR/4 Piercing, DR/2 Slashing</td>
+      <td>As a Bonus Action, can shift between &ldquo;formal mode&rdquo; (no visible armor) and &ldquo;tactical mode&rdquo; (AC bonus increases to +4, but suit is visibly armored). Tactical mode is not concealable.</td>
+      <td class="price-atr">500,000eb</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  The Zetatech &ldquo;Phantom&rdquo; is approximately the tier where Echo's suit sits. The DR values (Bludgeoning &minus;1, Lightning &minus;5, Piercing &minus;4, Slashing &minus;2) plus Piercing/Slashing resistance match what the DM established. Use this as the benchmark for &ldquo;mid-to-high Executive&rdquo; tier.
+</div>
+
+<h3>Iconic / Bespoke Tier <span class="tier-badge tier-iconic">ICONIC</span></h3>
+<p>These don't exist in stores. They are one-of-a-kind commissions, prototype recoveries, or rewards from people who control nations. Each piece is unique. If you're wearing one of these, either someone very powerful wants to keep you alive, or someone very powerful used to own it and no longer needs it.</p>
+
+<div class="fashion-card">
+  <h4 style="color: var(--magenta);">KANG TAO &ldquo;EMPEROR'S MANTLE&rdquo;</h4>
+  <div class="fashion-meta">ICONIC &bull; BESPOKE COMMISSION ONLY &bull; ESTIMATED VALUE: 1,000,000+ eb</div>
+  <div class="fashion-flavor">"Commissioned for the CEO of Kang Tao's personal wardrobe. Three copies were made. One was stolen. One was destroyed in a bombing. The third is still being worn &mdash; allegedly."</div>
+  <p class="stat-line"><strong>AC Bonus:</strong> +4</p>
+  <p class="stat-line"><strong>Resistances:</strong> Piercing, Slashing, Ballistic</p>
+  <p class="stat-line"><strong>Damage Reduction:</strong> DR/3 Bludgeoning, DR/5 Piercing, DR/4 Slashing, DR/3 Lightning, DR/2 Fire</p>
+  <p class="stat-line"><strong>Special:</strong> Advantage on saves vs Poison and disease (filtered lining). Once per long rest, when reduced to 0 HP, the suit injects a stimulant &mdash; regain 1 HP and immediately take a reaction (move or single attack). Looks like an impeccably tailored traditional Kang Tao formal robe.</p>
+</div>
+
+<div class="fashion-card">
+  <h4 style="color: var(--magenta);">DYNALAR &ldquo;LAZARUS PROTOCOL&rdquo; SKINSUIT</h4>
+  <div class="fashion-meta">ICONIC &bull; PROTOTYPE RECOVERY &bull; ESTIMATED VALUE: 1,500,000+ eb</div>
+  <div class="fashion-flavor">"Full-body reactive skinsuit originally designed for deep-space EVA protection. Dynalar scrapped the project after the test pilot's suit bonded to her nervous system and couldn't be removed. She reportedly didn't mind."</div>
+  <p class="stat-line"><strong>AC Bonus:</strong> +3 (does not look armored &mdash; looks like a bodysuit)</p>
+  <p class="stat-line"><strong>Resistances:</strong> Bludgeoning, Piercing, Slashing, Fire, Cold</p>
+  <p class="stat-line"><strong>Damage Reduction:</strong> DR/2 all physical damage types, DR/4 Fire, DR/4 Cold</p>
+  <p class="stat-line"><strong>Special:</strong> Sealed environment (immune to gas, breathable for 30 minutes in vacuum/underwater). Regenerates minor tears &mdash; cannot be permanently destroyed by normal weapons (reforms over 24 hours if damaged but not completely incinerated). <strong>Drawback:</strong> Cannot be removed without a DC 25 Surgery check. Wearing it permanently counts as External Cyberware for Humanity purposes (7 HL on bonding).</p>
+</div>
+
+<div class="fashion-card">
+  <h4 style="color: var(--magenta);">MIDNIGHT ARMS &ldquo;WIDOW'S VEIL&rdquo;</h4>
+  <div class="fashion-meta">ICONIC &bull; QUEST REWARD ONLY &bull; ESTIMATED VALUE: PRICELESS</div>
+  <div class="fashion-flavor">"Nobody knows who makes these. They show up on the bodies of dead fixers, vanished executives, and people who weren't supposed to exist. The suit is always intact. The wearer never is."</div>
+  <p class="stat-line"><strong>AC Bonus:</strong> +4</p>
+  <p class="stat-line"><strong>Resistances:</strong> Piercing, Slashing, Psychic</p>
+  <p class="stat-line"><strong>Damage Reduction:</strong> DR/4 Bludgeoning, DR/6 Piercing, DR/5 Slashing, DR/3 Lightning</p>
+  <p class="stat-line"><strong>Special:</strong> Advantage on Stealth checks in dim light or darkness. While wearing the Veil, your footsteps make no sound. Once per long rest, you can become invisible for 1 round (as the Invisibility spell, breaks on attack or spellcasting). <strong>Drawback:</strong> While wearing the Veil, you have disadvantage on all CHA checks except Intimidation. Something about the suit makes people deeply uncomfortable around you.</p>
+</div>
+
+<div class="warning-box">
+  Iconic-tier garments are <strong>not purchasable</strong>. They are narrative rewards, heist targets, or plot devices. If a player has one, it should be a defining part of their story &mdash; not a line item on a shopping list.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> SUBDERMAL ARMOR VARIANTS <span class="tag tag-subdermal">CYBERWARE</span></h2>
+
+<div class="flavor-quote">
+  "The best armor is the kind nobody knows you're wearing. Because it's under your skin."
+</div>
+
+<p>Subdermal armor sits beneath the skin &mdash; woven into muscle tissue, bonded to bone, or layered between dermal layers. It stacks with worn armor and clothing (including corpo fashion), but each variant takes a toll on your Humanity.</p>
+
+<div class="ruling-box">
+  <strong>Stacking Rules:</strong> Subdermal armor provides a flat AC bonus and/or damage reduction that stacks with whatever you're wearing on top. You can wear a Corpo suit over Subdermal Armor. You cannot install more than one type of subdermal armor at a time.
+</div>
+
+<table>
+  <thead>
+    <tr><th>Variant</th><th>Install</th><th>AC Bonus</th><th>Resistances / DR</th><th>Special</th><th>HL</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Skin Weave</span><span class="model-desc">Basic dermal reinforcement. The entry-level option.</span></td>
+      <td>Hospital</td>
+      <td>+1</td>
+      <td>DR/1 Slashing</td>
+      <td>Recovers naturally &mdash; no maintenance needed.</td>
+      <td class="hl-mid">7 (2d6)</td>
+      <td class="price-atr">5,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Subdermal Armor (Standard)</span><span class="model-desc">Ceramic-composite plates under the skin. The RED classic.</span></td>
+      <td>Hospital</td>
+      <td>+2</td>
+      <td>DR/2 Ballistic, DR/1 Piercing</td>
+      <td>&mdash;</td>
+      <td class="hl-high">14 (4d6)</td>
+      <td class="price-atr">10,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Graphene Dermal Mesh</span><span class="model-desc">Flexible graphene lattice bonded to the dermis. Lighter than ceramic, better against energy.</span></td>
+      <td>Hospital</td>
+      <td>+2</td>
+      <td>DR/2 Slashing, DR/2 Lightning, DR/1 Fire</td>
+      <td>Does not trigger metal detectors.</td>
+      <td class="hl-high">14 (4d6)</td>
+      <td class="price-atr">25,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Reactive Gel Layer</span><span class="model-desc">Impact-absorbing gel injected between muscle and skin. Hardens on impact.</span></td>
+      <td>Hospital</td>
+      <td>+1 (becomes +3 for 1 round after taking damage)</td>
+      <td>Resistance: Bludgeoning</td>
+      <td>When you take damage, AC bonus increases to +3 until the start of your next turn. Ideal for brawlers.</td>
+      <td class="hl-high">14 (4d6)</td>
+      <td class="price-atr">30,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Militech &ldquo;Aegis&rdquo; Subdermal Plating</span><span class="model-desc">Military-grade composite armor with thermal dispersion layers. The last thing between you and a coffin.</span></td>
+      <td>Hospital</td>
+      <td>+3</td>
+      <td>DR/3 Ballistic, DR/2 Piercing, DR/2 Slashing, DR/2 Fire</td>
+      <td>Triggers metal detectors. Visible seams at joints (DC 13 Perception to notice).</td>
+      <td class="hl-extreme">21 (6d6)</td>
+      <td class="price-atr">75,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Zetatech &ldquo;Chrysalis&rdquo; Adaptive Shell</span><span class="model-desc">"It learns what hurts you and stops it from happening again."</span></td>
+      <td>Hospital</td>
+      <td>+3</td>
+      <td>Resistance: choose 2 from Ballistic/Piercing/Slashing/Fire/Lightning/Cold (chosen on install, can be changed at a ripperdoc for 10,000eb)</td>
+      <td>After taking damage from a type you don't have resistance to, gain DR/2 against that type for 1 minute (once per short rest). Adaptive response.</td>
+      <td class="hl-psycho">28 (8d6)</td>
+      <td class="price-atr">150,000eb</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  The Chrysalis is the top-end subdermal option and its HL reflects that. A character installing this on top of other cyberware is making a serious bet that the protection is worth the cost to their psyche. Combine it with Executive-tier fashion armor and you've got a walking fortress &mdash; but your Humanity is paying the bill.
+</div>
+
+
+<div class="footer-bar">
+  // ARMOR, FASHION &amp; PROTECTION //<br>
+  HOMEBREW RULES + ADAPTED FROM CYBERPUNK RED<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
