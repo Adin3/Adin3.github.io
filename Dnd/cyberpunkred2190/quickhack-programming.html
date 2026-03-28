@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quickhack Programming Guide — All That Remains</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// KNOWLEDGE IS THE REAL WEAPON //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .flavor-quote .attribution { display:block; margin-top:0.2rem; font-size:0.75rem; color:var(--text-dim); font-style:normal; }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM GUIDANCE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .warning-box { border:1px solid var(--red); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,7,58,0.05); }
+  .warning-box::before { content:"⚠ IMPORTANT"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.85rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-net { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-craft { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .tag-rules { background:rgba(57,255,20,0.15); color:var(--green); }
+  .step-box { border:1px solid rgba(180,100,255,0.3); padding:1rem 1.2rem; margin:0.8rem 0; background:rgba(180,100,255,0.04); }
+  .step-box h4 { font-family:'Orbitron',sans-serif; font-size:0.85rem; color:var(--purple); margin-bottom:0.5rem; }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .example-box { border:1px solid rgba(0,240,255,0.15); padding:1rem 1.2rem; margin:1rem 0; background:var(--bg-panel); }
+  .example-box::before { content:"EXAMPLE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--cyan); letter-spacing:0.2em; margin-bottom:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>QUICKHACK PROGRAMMING GUIDE</h1>
+  <div class="subtitle">Crafting, Learning &amp; Installing Quickhacks to Your Cyberdeck</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Overview &mdash; What Is Quickhack Programming?</li>
+    <li><span>02</span> Requirements</li>
+    <li><span>03</span> Cost &amp; Time Table</li>
+    <li><span>04</span> The Programming Process</li>
+    <li><span>05</span> Optimization Checks (Discount System)</li>
+    <li><span>06</span> Collaborative Programming</li>
+    <li><span>07</span> Examples</li>
+    <li><span>08</span> Quick Reference</li>
+  </ul>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> OVERVIEW <span class="tag tag-net">NETRUNNING</span> <span class="tag tag-craft">CRAFTING</span></h2>
+
+<div class="flavor-quote">
+  "Any gonk can buy a quickhack off the street. A real netrunner writes their own. It's slower, it's expensive, and it's yours. Nobody can take code out of your head."
+</div>
+
+<p>Quickhack Programming is the process of writing, compiling, and permanently installing a quickhack (spell) onto your cyberdeck. Unlike buying a pre-made quickhack or finding one in the field, programming your own means it's tailored to your deck architecture and becomes a permanent part of your library &mdash; no charges, no expiration.</p>
+
+<p>This system is based on 5e's spell scroll crafting rules, reflavored for the Cyberpunk setting: faster turnaround, heavier eddie cost, and a skill-check system that lets experienced netrunners and hackers cut costs through expertise.</p>
+
+<div class="ruling-box">
+  <strong>Core Principle:</strong> Programming a quickhack = scribing a spell to your spellbook / learning a new spell. Once it's on your deck, it's permanent. You know it. You can prepare it. It's yours.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> REQUIREMENTS <span class="tag tag-rules">RULES</span></h2>
+
+<div class="mechanic-box">
+  <h4>Who Can Program Quickhacks?</h4>
+  <p>Any character with <strong>spellcasting</strong> can program quickhacks from their own class spell list. You cannot program quickhacks from another class's list unless you have access to it through multiclassing or a feature that grants you spells from that list.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>What Do You Need?</h4>
+  <p><strong>A Cyberdeck:</strong> You must have a cyberdeck installed. No deck, no programming.</p>
+  <p><strong>The Spell on Your Class List:</strong> The quickhack must be a spell that exists on your class's spell list. You don't need to already know it &mdash; that's the whole point.</p>
+  <p><strong>Spell Slot Access:</strong> You must be able to cast spells of that level. A 3rd-level Wizard can't program a 5th-level quickhack.</p>
+  <p><strong>Eddies:</strong> The primary cost. See the table below.</p>
+  <p><strong>Time:</strong> Programming takes downtime. Faster than traditional scroll crafting, but not instant.</p>
+  <p><strong>Tools:</strong> Access to your cyberdeck and a workspace (your own shop, a rented terminal, a friendly netrunner's den, etc). Nothing exotic &mdash; just somewhere you can sit and code without getting shot.</p>
+</div>
+
+<div class="warning-box">
+  <strong>Class List Only:</strong> A Wizard can only program spells from the Wizard spell list. A Cleric programs from the Cleric list. A Rogue/Wizard multiclass can program from the Wizard list (since Arcane Trickster spells are drawn from the Wizard list with restrictions). If your DM rules that a spell isn't appropriate for the setting, that overrides the class list.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> COST &amp; TIME TABLE <span class="tag tag-craft">CRAFTING</span></h2>
+
+<p>Programming is faster than standard 5e scroll crafting but costs significantly more in eddies. You're not just copying a spell &mdash; you're writing executable code, compiling it for your deck's architecture, and stress-testing it against your neural interface.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quickhack Level</th>
+      <th>Equivalent Spell Level</th>
+      <th>Base Cost (eddies)</th>
+      <th>Programming Time</th>
+      <th>Minimum Caster Level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Cantrip</span></td><td>Cantrip</td><td class="price-atr">500eb</td><td>4 hours</td><td>1st</td></tr>
+    <tr><td><span class="model-name">Level 1</span></td><td>1st-level spell</td><td class="price-atr">1,000eb</td><td>8 hours (1 day)</td><td>1st</td></tr>
+    <tr><td><span class="model-name">Level 2</span></td><td>2nd-level spell</td><td class="price-atr">3,000eb</td><td>16 hours (2 days)</td><td>3rd</td></tr>
+    <tr><td><span class="model-name">Level 3</span></td><td>3rd-level spell</td><td class="price-atr">7,500eb</td><td>24 hours (3 days)</td><td>5th</td></tr>
+    <tr><td><span class="model-name">Level 4</span></td><td>4th-level spell</td><td class="price-atr">15,000eb</td><td>32 hours (4 days)</td><td>7th</td></tr>
+    <tr><td><span class="model-name">Level 5</span></td><td>5th-level spell</td><td class="price-atr">30,000eb</td><td>40 hours (5 days)</td><td>9th</td></tr>
+    <tr><td><span class="model-name">Level 6</span></td><td>6th-level spell</td><td class="price-atr">60,000eb</td><td>56 hours (7 days)</td><td>11th</td></tr>
+    <tr><td><span class="model-name">Level 7</span></td><td>7th-level spell</td><td class="price-atr">100,000eb</td><td>72 hours (9 days)</td><td>13th</td></tr>
+    <tr><td><span class="model-name">Level 8</span></td><td>8th-level spell</td><td class="price-atr">175,000eb</td><td>96 hours (12 days)</td><td>15th</td></tr>
+    <tr><td><span class="model-name">Level 9</span></td><td>9th-level spell</td><td class="price-atr">300,000eb</td><td>120 hours (15 days)</td><td>17th</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  Programming time assumes roughly 8 hours of work per day. Characters can split programming across multiple sessions &mdash; you don't need to do it all in one sitting. Progress is saved on your deck. If your deck is destroyed mid-programming, the progress and eddies spent are lost.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> THE PROGRAMMING PROCESS <span class="tag tag-rules">RULES</span></h2>
+
+<p>Programming a quickhack follows three steps:</p>
+
+<div class="step-box">
+  <h4>Step 1 &mdash; Declare &amp; Pay</h4>
+  <p>Tell the DM which quickhack you're programming. Confirm it's on your class spell list and that you can cast spells of that level. Pay the full base cost in eddies upfront (or the discounted cost, if you passed the Optimization Check first &mdash; see Section 05).</p>
+</div>
+
+<div class="step-box">
+  <h4>Step 2 &mdash; Spend the Time</h4>
+  <p>Programming happens during downtime. You need access to your cyberdeck and a workspace. You can split the time across multiple days. Other downtime activities can be done in the remaining hours of each day, but you can't program two quickhacks simultaneously.</p>
+</div>
+
+<div class="step-box">
+  <h4>Step 3 &mdash; Compile &amp; Install</h4>
+  <p>At the end of the programming time, the quickhack is permanently added to your spell list. You know it. You can prepare it normally (or it's always available, depending on your class). No further cost, no charges, no expiration. It's part of your deck now.</p>
+</div>
+
+<div class="ruling-box">
+  <strong>No Failure State:</strong> If you meet the requirements and pay the cost, the programming succeeds. You don't roll to see if it works. The Optimization Check (below) is optional and only affects price &mdash; it doesn't risk the quickhack itself.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> OPTIMIZATION CHECKS (DISCOUNT SYSTEM) <span class="tag tag-craft">CRAFTING</span></h2>
+
+<div class="flavor-quote">
+  "Any script kiddie can copy-paste code. A real programmer knows where to cut corners without cutting throats."
+</div>
+
+<p>Before paying the base cost, a character can attempt an <strong>Optimization Check</strong> &mdash; a series of ability checks representing their ability to write efficient code, reuse existing libraries, and find shortcuts in the programming process. Success reduces the eddie cost. Failure doesn't prevent crafting &mdash; you just pay full price.</p>
+
+<div class="mechanic-box">
+  <h4>How It Works</h4>
+  <p>Before starting programming, make <strong>one to three checks</strong> (your choice how many you attempt). Each check targets a different aspect of the process. You can attempt any combination, in any order, but <strong>each check can only be attempted once per quickhack</strong>.</p>
+</div>
+
+<h3>The Three Optimization Checks</h3>
+
+<table>
+  <thead>
+    <tr><th>Check</th><th>Ability / Skill</th><th>What It Represents</th><th>DC</th><th>Discount on Success</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Code Efficiency</span></td>
+      <td>INT (Arcana) <em>or</em> INT (Hacking, if your table uses it)</td>
+      <td>Writing cleaner, leaner code that uses fewer resources to compile.</td>
+      <td>10 + Quickhack Level</td>
+      <td class="hl-low">&minus;15% cost</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Architecture Familiarity</span></td>
+      <td>INT (Investigation) <em>or</em> Proficiency with Cyberdeck (Tinker's Tools equivalent)</td>
+      <td>Knowing your deck's architecture well enough to skip redundant compile steps.</td>
+      <td>12 + Quickhack Level</td>
+      <td class="hl-mid">&minus;15% cost</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Black Market Sourcing</span></td>
+      <td>CHA (Persuasion) <em>or</em> CHA (Streetwise, if your table uses it)</td>
+      <td>Finding cheaper code libraries, bootleg compilers, or a friend who owes you a favor.</td>
+      <td>13 + Quickhack Level</td>
+      <td class="hl-high">&minus;20% cost</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mechanic-box">
+  <h4>Stacking Discounts</h4>
+  <p>Discounts stack additively. If you pass all three checks, you get <strong>&minus;50% off the base cost</strong>. That's the maximum discount possible.</p>
+  <p><strong>Pass 1 check:</strong> &minus;15% to &minus;20% off.</p>
+  <p><strong>Pass 2 checks:</strong> &minus;30% to &minus;35% off.</p>
+  <p><strong>Pass all 3:</strong> &minus;50% off (the cap).</p>
+</div>
+
+<div class="ruling-box">
+  <strong>Failing a check has no penalty.</strong> You just don't get that discount. You can still program the quickhack at full price (or at whatever discount your other checks earned). This system rewards expertise without punishing anyone for trying.
+</div>
+
+<div class="dm-note">
+  The DCs scale with quickhack level, meaning low-level hacks are easy to optimize while high-level ones require serious skill investment. A Level 1 quickhack has DCs of 11/13/14 &mdash; very achievable. A Level 9 quickhack has DCs of 19/21/22 &mdash; only the best in Night City are shaving costs off those.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> COLLABORATIVE PROGRAMMING <span class="tag tag-net">NETRUNNING</span> <span class="tag tag-craft">CRAFTING</span></h2>
+
+<div class="flavor-quote">
+  "Two decks are better than one. Three's a compile party. Just don't let the Cleric touch the runtime environment."
+</div>
+
+<p>Quickhack programming doesn't have to be a solo job. Spellcasters can assist each other in the coding process &mdash; sharing the workload, lending expertise on checks, and cutting down programming time. The quickhack still only goes onto <em>one</em> character's deck, and they still need it on their own class list to actually cast it. But getting there can be a team effort.</p>
+
+<div class="ruling-box">
+  <strong>Who Can Help:</strong> Any spellcaster classified as <strong>Tier 1, 2, or 3</strong> on the Netrunner Classification system can assist with collaborative programming. This includes Wizards, Artificers, Eldritch Knights, Arcane Tricksters, Warlocks, and Sorcerers. Tier 4&ndash;5 casters (Clerics, Druids, Bards, Rangers, Paladins) can <em>receive</em> help but cannot <em>provide</em> it &mdash; their relationship with quickhacks is too different from actual code to be useful in the programming process.
+</div>
+
+<h3>Assistance Benefits</h3>
+
+<div class="mechanic-box">
+  <h4>1. Split the Time</h4>
+  <p>Each additional Tier 1&ndash;3 programmer helping reduces the total programming time. Divide the base time by the number of programmers working on it (minimum 1 hour per level of the quickhack).</p>
+  <p><strong>2 programmers:</strong> Time &divide; 2</p>
+  <p><strong>3 programmers:</strong> Time &divide; 3</p>
+  <p>Maximum of 3 total programmers (including the primary crafter). More people on the same codebase just creates merge conflicts.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>2. Help on Optimization Checks</h4>
+  <p>An assistant can use the <strong>Help action</strong> on one of the three Optimization Checks, granting the primary programmer <strong>advantage</strong> on that check. Each assistant can only Help on <strong>one</strong> check per quickhack. If there are two assistants, they can Help on two different checks.</p>
+  <p>The assistant must be proficient in the relevant skill to grant advantage (standard 5e Help rules).</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>3. Second Opinion (Optional)</h4>
+  <p>If the primary programmer fails an Optimization Check, one assistant may attempt <strong>the same check themselves</strong> at the same DC as a &ldquo;second opinion.&rdquo; If they pass, the discount is applied. This can only happen <strong>once per quickhack</strong> &mdash; you get one backup attempt, not infinite retries.</p>
+</div>
+
+<div class="warning-box">
+  <strong>Class Restriction Still Applies:</strong> Collaboration doesn't bypass class lists. A Wizard can help a Cleric program "Revivify" faster and cheaper &mdash; the Wizard handles the code architecture while the Cleric handles the medical logic &mdash; but the Wizard cannot then cast Revivify themselves. It goes on the Cleric's deck only.
+</div>
+
+<h3>Collaboration Summary</h3>
+
+<table>
+  <thead>
+    <tr><th>Benefit</th><th>Effect</th><th>Limit</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Time Split</span></td>
+      <td>Divide programming time by number of programmers</td>
+      <td>Max 3 programmers. Minimum time = 1 hour per quickhack level.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Help on Checks</span></td>
+      <td>Grant advantage on one Optimization Check per assistant</td>
+      <td>Assistant must be proficient in the relevant skill. One check per assistant.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Second Opinion</span></td>
+      <td>If primary fails a check, one assistant can attempt the same check at the same DC</td>
+      <td>Once per quickhack total. Only one retry, not one per check.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="example-box">
+  <strong>A Field Netrunner (Rogue/Wizard) helps a Corpo Medtech (Cleric) program "Spirit Guardians" (Level 3) as "Perimeter Daemon Swarm."</strong>
+  <br><br>
+  Spirit Guardians is on the Cleric spell list. The Field Netrunner can't cast it, but as a Tier 2 netrunner they can assist with the coding.
+  <br><br>
+  <strong>Base cost:</strong> 7,500eb. <strong>Base time:</strong> 24 hours (3 days).
+  <br><br>
+  <strong>With the Field Netrunner helping:</strong> Time &divide; 2 = <strong>12 hours (1.5 days)</strong>.
+  <br><br>
+  The Medtech attempts Optimization Checks. The Field Netrunner uses Help on the Code Efficiency check (proficient in Arcana), granting <strong>advantage</strong>.
+  <br>
+  &bull; <strong>Code Efficiency</strong> (DC 13, with advantage): Medtech rolls 9 and 16. Takes the 16. <strong>Pass.</strong> &minus;15%.
+  <br>
+  &bull; <strong>Black Market Sourcing</strong> (DC 16): Medtech rolls 12. <strong>Fail.</strong> The Field Netrunner uses their <strong>Second Opinion</strong> &mdash; rolls CHA (Persuasion) at DC 16. Gets a 17. <strong>Pass.</strong> &minus;20%.
+  <br><br>
+  <strong>Final cost:</strong> 7,500 &minus; 35% = <strong>4,875eb</strong>. Done in 1.5 days instead of 3. The Medtech's deck now has Perimeter Daemon Swarm. The Field Netrunner helped write the code but can't run the program themselves.
+</div>
+
+<div class="dm-note">
+  Collaborative programming is meant to encourage teamwork during downtime and give Tier 1&ndash;3 characters a way to support the whole party's capabilities, not just their own. It also gives hybrid archetypes like the Field Netrunner (Rogue/Wizard) a natural role as a &ldquo;quickhack consultant&rdquo; &mdash; they may not have the highest-level spells themselves, but they can make everyone else's programming faster and cheaper.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> EXAMPLES <span class="tag tag-rules">RULES</span></h2>
+
+<div class="example-box">
+  <strong>A Field Netrunner (Rogue 5 / Wizard 3) wants to program "Misty Step" (Level 2) as "Optic Reboot + Sprint."</strong>
+  <br><br>
+  Misty Step is on the Wizard spell list. The Field Netrunner has 3 Wizard levels, so they can cast 2nd-level spells. They qualify.
+  <br><br>
+  <strong>Base cost:</strong> 3,000eb. <strong>Time:</strong> 16 hours (2 days).
+  <br><br>
+  They attempt two Optimization Checks:
+  <br>
+  &bull; <strong>Code Efficiency</strong> (DC 12): INT (Arcana) check. Rolls a 15. <strong>Pass.</strong> &minus;15%.
+  <br>
+  &bull; <strong>Architecture Familiarity</strong> (DC 14): INT (Investigation) check. Rolls an 11. <strong>Fail.</strong> No discount.
+  <br><br>
+  <strong>Final cost:</strong> 3,000 &minus; 15% = <strong>2,550eb</strong>. Optic Reboot + Sprint is programmed over two days of downtime.
+</div>
+
+<div class="example-box">
+  <strong>A Corpo Medtech (Cleric, Level 9) wants to program "Revivify" (Level 3) as "Emergency Neural Reboot."</strong>
+  <br><br>
+  Revivify is on the Cleric spell list. The Medtech is 9th level. Qualifies easily.
+  <br><br>
+  <strong>Base cost:</strong> 7,500eb. <strong>Time:</strong> 24 hours (3 days).
+  <br><br>
+  They attempt all three checks:
+  <br>
+  &bull; <strong>Code Efficiency</strong> (DC 13): Rolls 18. <strong>Pass.</strong> &minus;15%.
+  <br>
+  &bull; <strong>Architecture Familiarity</strong> (DC 15): Rolls 16. <strong>Pass.</strong> &minus;15%.
+  <br>
+  &bull; <strong>Black Market Sourcing</strong> (DC 16): Rolls 14. <strong>Fail.</strong>
+  <br><br>
+  <strong>Final cost:</strong> 7,500 &minus; 30% = <strong>5,250eb</strong>.
+</div>
+
+<div class="example-box">
+  <strong>A Chair Runner (Wizard, Level 17) programs "Wish" (Level 9) as "Blackwall Override."</strong>
+  <br><br>
+  <strong>Base cost:</strong> 300,000eb. <strong>Time:</strong> 120 hours (15 days). This is a serious investment.
+  <br><br>
+  They attempt all three checks:
+  <br>
+  &bull; <strong>Code Efficiency</strong> (DC 19): Rolls 22. <strong>Pass.</strong> &minus;15%.
+  <br>
+  &bull; <strong>Architecture Familiarity</strong> (DC 21): Rolls 24. <strong>Pass.</strong> &minus;15%.
+  <br>
+  &bull; <strong>Black Market Sourcing</strong> (DC 22): Rolls 19. <strong>Fail.</strong>
+  <br><br>
+  <strong>Final cost:</strong> 300,000 &minus; 30% = <strong>210,000eb</strong>. Still absurdly expensive. Programming a Level 9 quickhack should feel like a milestone, not a shopping trip.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">08</span> QUICK REFERENCE <span class="tag tag-rules">RULES</span></h2>
+
+<div class="mechanic-box">
+  <h4>Quickhack Programming — At a Glance</h4>
+  <p><strong>Who:</strong> Any spellcaster. Own class spell list only.</p>
+  <p><strong>What:</strong> Program a spell you don't know onto your cyberdeck. It becomes permanent.</p>
+  <p><strong>Cost:</strong> 500eb (cantrip) to 300,000eb (9th level). See table.</p>
+  <p><strong>Time:</strong> 4 hours (cantrip) to 15 days (9th level).</p>
+  <p><strong>Discount:</strong> Up to 3 Optimization Checks before programming. Max &minus;50% off.</p>
+  <p><strong>Limit:</strong> No cap on total quickhacks. If you have the eddies and the time, go wild.</p>
+  <p><strong>Failure:</strong> None. If you qualify and pay, it works. Optimization Checks only affect price.</p>
+  <p><strong>Requirements:</strong> Cyberdeck installed, workspace access, appropriate spell level access.</p>
+</div>
+
+<div class="dm-note">
+  This system is intentionally eddies-heavy to keep it balanced. A Level 5 quickhack at 30,000eb is a real investment &mdash; roughly the cost of a Sandevistan. Players should feel the weight of choosing to spend resources on expanding their library versus buying new chrome or gear. The Optimization Checks reward characters who invest in INT and social skills, which fits the netrunner/hacker fantasy perfectly.
+</div>
+
+
+<div class="footer-bar">
+  // QUICKHACK PROGRAMMING GUIDE //<br>
+  HOMEBREW CRAFTING SYSTEM FOR D&amp;D 5E // CYBERPUNK SETTING<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>

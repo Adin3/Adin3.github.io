@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifestyles, Food &amp; Commodities — All That Remains</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// EAT. DRINK. SURVIVE. REPEAT. //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .flavor-quote .attribution { display:block; margin-top:0.2rem; font-size:0.75rem; color:var(--text-dim); font-style:normal; }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM GUIDANCE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.85rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-food { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-drink { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-life { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .tag-luxury { background:rgba(180,100,255,0.15); color:var(--purple); }
+  .tag-vice { background:rgba(255,45,111,0.15); color:var(--magenta); }
+  .tier-badge { font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.05em; display:inline-block; padding:0.1rem 0.4rem; border-radius:2px; margin-left:0.3rem; }
+  .tier-gutter { background:rgba(255,7,58,0.12); color:var(--red); border:1px solid var(--red); }
+  .tier-street { background:rgba(255,106,0,0.12); color:var(--orange); border:1px solid var(--orange); }
+  .tier-working { background:rgba(247,224,24,0.12); color:var(--yellow); border:1px solid var(--yellow); }
+  .tier-corpo { background:rgba(0,240,255,0.12); color:var(--cyan); border:1px solid var(--cyan); }
+  .tier-luxury { background:rgba(180,100,255,0.12); color:var(--purple); border:1px solid var(--purple); }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>LIFESTYLES, FOOD &amp; COMMODITIES</h1>
+  <div class="subtitle">What You Eat, What You Drink, and What It Says About You</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="flavor-quote">
+  "You can tell everything about a person in Night City by what they eat. Kibble means you're surviving. Scop means you've given up on taste but not on calories. Real meat means you've either killed for it or you're corpo enough to buy it. And if you're eating at Embers? You're the one other people kill for."
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> The Food Chain &mdash; How Night City Eats</li>
+    <li><span>02</span> Street Food &amp; Survival Rations</li>
+    <li><span>03</span> Drinks &mdash; From Synth-Coffee to Top Shelf</li>
+    <li><span>04</span> Restaurants &amp; Dining</li>
+    <li><span>05</span> Real Food &mdash; Biotechnica &amp; Organic Goods</li>
+    <li><span>06</span> Vices &mdash; Smokes, Stims &amp; Recreational</li>
+    <li><span>07</span> Lifestyle Costs &amp; Housing</li>
+  </ul>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> THE FOOD CHAIN <span class="tag tag-food">FOOD</span></h2>
+
+<p>In 2190, real food is a luxury. The global ecosystem never recovered from the ecological collapse of the mid-21st century. Most of the world eats synthetic protein, processed algae, and lab-grown substitutes. Actual meat, vegetables, and fruit are grown in Biotechnica's sealed agricultural domes and sold at prices that would make a pre-war grocery shopper weep.</p>
+
+<p>Night City's food economy breaks down into five tiers, and what tier you eat at says everything about who you are:</p>
+
+<div class="mechanic-box">
+  <h4>Food Tiers</h4>
+  <p><strong>Gutter:</strong> Kibble, scavenged rations, dumpster finds. You eat to not die.</p>
+  <p><strong>Street:</strong> Vendor carts, noodle stands, vending machines. Cheap, hot, and it'll keep you moving.</p>
+  <p><strong>Working:</strong> Sit-down diners, chain restaurants, decent synth-meat. A normal meal for a normal person.</p>
+  <p><strong>Corpo:</strong> Executive cafeterias, upscale restaurants, imported synth-premium. You eat well because you can afford to.</p>
+  <p><strong>Luxury:</strong> Real food. Biotechnica organic. Embers-tier dining. The kind of meal most people in Night City will never taste in their entire lives.</p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> STREET FOOD &amp; SURVIVAL RATIONS <span class="tag tag-food">FOOD</span></h2>
+
+<h3>Gutter Tier <span class="tier-badge tier-gutter">GUTTER</span></h3>
+
+<table>
+  <thead><tr><th>Item</th><th>Description</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Kibble Pack</span><span class="model-desc">Compressed protein-nutrient block. Tastes like cardboard soaked in regret.</span></td><td>One meal. Nutritionally complete. Spiritually devastating.</td><td class="price-atr">10eb</td></tr>
+    <tr><td><span class="model-name">Food Stick</span><span class="model-desc">One awful meal in bar form.</span></td><td>Pocket-sized ration bar. Flavors include "meat," "cheese," and "why."</td><td class="price-atr">10eb</td></tr>
+    <tr><td><span class="model-name">MRE (Meal Ready to Eat)</span><span class="model-desc">Self-heating foil bag. Military surplus.</span></td><td>A full hot meal. Edible. Barely. The heater works 80% of the time.</td><td class="price-atr">15eb</td></tr>
+    <tr><td><span class="model-name">Scop Portion</span><span class="model-desc">Single Cell Organic Protein. Lab-grown biomass.</span></td><td>It's technically food. Can be shaped and flavored to vaguely resemble real meat. Key word: vaguely.</td><td class="price-atr">5eb</td></tr>
+    <tr><td><span class="model-name">Nutri-Paste Tube</span><span class="model-desc">Squeezable calorie paste.</span></td><td>500 calories of gray paste. Popular with combat operatives who don't have time to stop and chew.</td><td class="price-atr">8eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Street Tier <span class="tier-badge tier-street">STREET</span></h3>
+
+<table>
+  <thead><tr><th>Item</th><th>Description</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Noodle Bowl (Vendor)</span><span class="model-desc">The backbone of Night City street dining.</span></td><td>Hot synth-broth, reconstituted noodles, mystery protein. Served in a styrofoam cup by someone who doesn't want to talk to you.</td><td class="price-atr">20eb</td></tr>
+    <tr><td><span class="model-name">Burrito Supreme</span><span class="model-desc">Street cart special. Heywood's finest.</span></td><td>Scop meat, synth-cheese, hot sauce. Wrapped in something that might be a tortilla.</td><td class="price-atr">25eb</td></tr>
+    <tr><td><span class="model-name">Synth-Dog</span><span class="model-desc">Vending machine hot dog.</span></td><td>Technically a sausage. The bun glows slightly under UV light. Don't ask why.</td><td class="price-atr">15eb</td></tr>
+    <tr><td><span class="model-name">Rice &amp; Protein Bowl</span><span class="model-desc">Food stall staple across Watson and Japantown.</span></td><td>Real rice (algae-grown), topped with flavored scop strips. The closest to a real meal you'll get for under 50eb.</td><td class="price-atr">35eb</td></tr>
+    <tr><td><span class="model-name">Slice of Pizza</span><span class="model-desc">Night City classic.</span></td><td>Synth-cheese, scop pepperoni, and a crust that's honestly pretty decent. One of the few street foods people actually look forward to.</td><td class="price-atr">20eb</td></tr>
+    <tr><td><span class="model-name">Yakitori Skewers (x3)</span><span class="model-desc">Grilled scop-chicken on sticks.</span></td><td>Charcoal-grilled, well-seasoned. You can almost pretend it's real chicken if you close your eyes.</td><td class="price-atr">30eb</td></tr>
+    <tr><td><span class="model-name">Fresh Fruit (1 piece)</span><span class="model-desc">A single apple, orange, or banana.</span></td><td>Hydroponically grown. Small, slightly pale, but genuinely real. A luxury at the street level.</td><td class="price-atr">50eb</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  A single banana in Night City costs as much as five meals of kibble. That's the world your characters live in. When someone buys fruit for another person, it means something.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> DRINKS <span class="tag tag-drink">DRINKS</span></h2>
+
+<h3>Non-Alcoholic</h3>
+
+<table>
+  <thead><tr><th>Drink</th><th>Description</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Synth-Coffee (Street)</span><span class="model-desc">Vending machine brew.</span></td><td>Hot, brown, caffeinated. That's about all the compliments it gets.</td><td class="price-atr">5eb</td></tr>
+    <tr><td><span class="model-name">Real Coffee (Imported)</span><span class="model-desc">Actual coffee beans. Biotechnica greenhouse.</span></td><td>The real thing. Smooth, rich, and worth every eddie. Most people have never tasted it.</td><td class="price-atr">75eb</td></tr>
+    <tr><td><span class="model-name">NiCola</span><span class="model-desc">Night City's signature soda.</span></td><td>Neon-colored, hyper-caffeinated, mildly addictive. Comes in 14 flavors, all of them aggressive.</td><td class="price-atr">10eb</td></tr>
+    <tr><td><span class="model-name">Smash (Regular)</span><span class="model-desc">Energy drink. Yellow, foamy, and deeply questionable.</span></td><td>+2 to Concentration for 1 hour. Secondary Effect DV13: mildly addictive. Everyone drinks it anyway.</td><td class="price-atr">10eb</td></tr>
+    <tr><td><span class="model-name">Bottled Water (Clean)</span><span class="model-desc">Filtered and sealed.</span></td><td>Sounds basic. It's not. Clean water in Night City is a commodity, not a given.</td><td class="price-atr">15eb</td></tr>
+    <tr><td><span class="model-name">Real Tea (Imported)</span><span class="model-desc">Loose-leaf tea. Various origins.</span></td><td>A small luxury. Popular among corpos and anyone who wants five minutes of peace.</td><td class="price-atr">50eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Alcoholic</h3>
+
+<table>
+  <thead><tr><th>Drink</th><th>Description</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Synth-Beer (Bottle)</span><span class="model-desc">Mass-produced. Gets the job done.</span></td><td>Tastes like someone described beer to a machine and the machine did its best.</td><td class="price-atr">10eb</td></tr>
+    <tr><td><span class="model-name">Craft Beer (Pint)</span><span class="model-desc">Locally brewed. Rare and appreciated.</span></td><td>Actual fermented grain. Small batch. Night City has a surprising microbrewery scene in Arroyo.</td><td class="price-atr">40eb</td></tr>
+    <tr><td><span class="model-name">Synth-Whiskey (Shot)</span><span class="model-desc">Chemically approximated whiskey.</span></td><td>Burns going down. That's about all it has in common with the real thing.</td><td class="price-atr">15eb</td></tr>
+    <tr><td><span class="model-name">Real Whiskey (Shot)</span><span class="model-desc">Imported or pre-war stock.</span></td><td>Smooth, aged, and worth more than some people's monthly rent.</td><td class="price-atr">150eb</td></tr>
+    <tr><td><span class="model-name">Centzon Tequila (Shot)</span><span class="model-desc">Mexican import. Valentino favorite.</span></td><td>Sharp, clean, and carries the taste of a world that still grows agave in the sun.</td><td class="price-atr">75eb</td></tr>
+    <tr><td><span class="model-name">Sake (Cup)</span><span class="model-desc">Japanese import. Corpo-tier.</span></td><td>Served warm in ceramic cups at Japantown establishments. Pairs well with real sushi (if you can afford that too).</td><td class="price-atr">100eb</td></tr>
+    <tr><td><span class="model-name">Johnny Silverhand (Cocktail)</span><span class="model-desc">The legend's namesake drink.</span></td><td>Tequila old-fashioned variant. Served at the Afterlife. Ordering one means you're either brave or stupid. Usually both.</td><td class="price-atr">50eb</td></tr>
+    <tr><td><span class="model-name">Champagne (Bottle)</span><span class="model-desc">Real sparkling wine. French or Orbital.</span></td><td>The kind of thing you open when someone closes a deal worth more than your apartment building.</td><td class="price-atr">500eb</td></tr>
+    <tr><td><span class="model-name">Pre-War Vintage (Bottle)</span><span class="model-desc">Wine or spirits from before the collapse.</span></td><td>Decades old. Irreplaceable. Drinking one is either a celebration or an act of defiance against a world that doesn't deserve nice things.</td><td class="price-atr">2,000&ndash;50,000eb</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> RESTAURANTS &amp; DINING <span class="tag tag-food">FOOD</span></h2>
+
+<p>Not every meal comes from a cart or a vending machine. Night City has restaurants ranging from hole-in-the-wall noodle joints to establishments where a single table costs more than most runners earn in a month.</p>
+
+<h3>Working Tier <span class="tier-badge tier-working">WORKING</span></h3>
+
+<table>
+  <thead><tr><th>Venue Type</th><th>What You Get</th><th>ATR Price (per meal)</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Diner / Noodle Bar</span><span class="model-desc">Counter service, synth-protein mains, unlimited refills on NiCola.</span></td><td>A hot meal, a seat, and nobody bothers you for an hour. Scop-based but well-prepared.</td><td class="price-atr">30&ndash;60eb</td></tr>
+    <tr><td><span class="model-name">Chain Restaurant</span><span class="model-desc">Night City's equivalent of fast-casual.</span></td><td>Branded synth-food with consistent quality. Not good. Not bad. Just... there.</td><td class="price-atr">50&ndash;100eb</td></tr>
+    <tr><td><span class="model-name">Food Court (Megabuilding)</span><span class="model-desc">Variety stalls in a residential megabuilding.</span></td><td>Multiple cuisines, all synthetic, all affordable. The social hub of working-class Night City.</td><td class="price-atr">25&ndash;75eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Corpo Tier <span class="tier-badge tier-corpo">CORPO</span></h3>
+
+<table>
+  <thead><tr><th>Venue Type</th><th>What You Get</th><th>ATR Price (per meal)</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Executive Cafeteria</span><span class="model-desc">Corpo tower dining. Badge access only.</span></td><td>Premium synth-food prepared by actual chefs. Free for employees, inaccessible to everyone else. If you're eating here as a guest, someone important vouched for you.</td><td class="price-atr">Free (corpo) / 200eb (guest)</td></tr>
+    <tr><td><span class="model-name">Upscale Restaurant</span><span class="model-desc">Reservations required. Dress code enforced.</span></td><td>Mixed menu: high-quality synth mains with real garnishes. Actual herbs. Presentation matters. The kind of place fixers take clients.</td><td class="price-atr">300&ndash;800eb</td></tr>
+    <tr><td><span class="model-name">Sushi Bar (Japantown)</span><span class="model-desc">Real fish. Yes, really.</span></td><td>Biotechnica-sourced fish, hand-prepared. One of the few places in Night City where the protein on your plate was actually alive at some point. Omakase experience.</td><td class="price-atr">500&ndash;1,500eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Luxury Tier <span class="tier-badge tier-luxury">LUXURY</span></h3>
+
+<table>
+  <thead><tr><th>Venue Type</th><th>What You Get</th><th>ATR Price (per meal)</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Embers</span><span class="model-desc">The most exclusive restaurant in Night City.</span></td><td>Full organic menu. Real steak, real vegetables, real wine. Every ingredient is Biotechnica-certified natural. The waitstaff know your name before you sit down. The view alone is worth the price. Almost.</td><td class="price-atr">2,000&ndash;10,000eb</td></tr>
+    <tr><td><span class="model-name">Private Chef (Hired)</span><span class="model-desc">A personal chef who comes to you.</span></td><td>Corpo executives and crime lords who don't eat in public. The chef brings everything: ingredients, equipment, and discretion.</td><td class="price-atr">5,000&ndash;25,000eb</td></tr>
+    <tr><td><span class="model-name">Orbital Dining</span><span class="model-desc">Space station restaurant. Yes, it exists.</span></td><td>Eat in zero gravity with a view of Earth below. The ultimate flex. Food is secondary to the experience, but it's also incredible.</td><td class="price-atr">50,000&ndash;200,000eb</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> REAL FOOD &mdash; BIOTECHNICA &amp; ORGANIC GOODS <span class="tag tag-luxury">ORGANIC</span></h2>
+
+<div class="flavor-quote">
+  "Real food is the last honest luxury. You can fake chrome, fake a smile, fake an identity. You can't fake a tomato."
+</div>
+
+<p>Biotechnica controls the majority of real food production through sealed agricultural domes and orbital greenhouses. Organic goods are sold through licensed retailers at prices that reflect their scarcity. Buying real food on the black market is possible but risky &mdash; counterfeits are common.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Description</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Fresh Vegetables (1 kg)</span><span class="model-desc">Tomatoes, peppers, greens, etc.</span></td><td>Hydroponically grown under controlled conditions. Taste isn't quite pre-war quality, but it's real.</td><td class="price-atr">100&ndash;200eb</td></tr>
+    <tr><td><span class="model-name">Real Eggs (Dozen)</span><span class="model-desc">From actual chickens.</span></td><td>Biotechnica poultry domes. The yolks are pale compared to historical photos, but they're genuine.</td><td class="price-atr">150eb</td></tr>
+    <tr><td><span class="model-name">Real Chicken (1 kg)</span><span class="model-desc">Dome-raised poultry.</span></td><td>The most affordable "real" meat. Still costs more than a week of kibble.</td><td class="price-atr">300eb</td></tr>
+    <tr><td><span class="model-name">Real Beef (1 kg)</span><span class="model-desc">Biotechnica cattle program.</span></td><td>Rare. Expensive. The taste of a world that doesn't exist anymore. Some people cry the first time they eat it.</td><td class="price-atr">800&ndash;1,500eb</td></tr>
+    <tr><td><span class="model-name">Real Fish (1 kg)</span><span class="model-desc">Tank-farmed or deep-ocean harvested.</span></td><td>Salmon, tuna, and similar. Deep-ocean variants are more expensive and taste better. Tank-farmed is the budget option (and it's still not cheap).</td><td class="price-atr">500&ndash;2,000eb</td></tr>
+    <tr><td><span class="model-name">Fresh Bread (Loaf)</span><span class="model-desc">Baked from real flour.</span></td><td>Wheat is grown in Biotechnica's Midwest domes. A fresh loaf of bread is a small miracle in 2190.</td><td class="price-atr">75eb</td></tr>
+    <tr><td><span class="model-name">Chocolate Bar (Real)</span><span class="model-desc">Cocoa-based. Not synth.</span></td><td>Cocoa is one of the rarest agricultural products. A single bar of real chocolate is a gift that says "I care about you more than money."</td><td class="price-atr">200eb</td></tr>
+    <tr><td><span class="model-name">Honey (Jar)</span><span class="model-desc">Actual bee-produced honey.</span></td><td>Bee populations are critically endangered. Each jar is tracked and serialized by Biotechnica. Counterfeiting honey is a federal offense.</td><td class="price-atr">500eb</td></tr>
+    <tr><td><span class="model-name">Spice Kit (Assorted)</span><span class="model-desc">Real dried spices: pepper, cumin, paprika, etc.</span></td><td>The difference between "eating" and "dining." A small kit of real spices can make even scop taste almost human.</td><td class="price-atr">100eb</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> VICES <span class="tag tag-vice">VICES</span></h2>
+
+<div class="flavor-quote">
+  "Everyone in Night City is addicted to something. The lucky ones get to choose what."
+</div>
+
+<table>
+  <thead><tr><th>Item</th><th>Description</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Synth-Cigarettes (Pack)</span><span class="model-desc">Chemical vapor sticks. No tobacco.</span></td><td>The standard smoke. Various flavors. Mildly addictive. Everybody has a pack somewhere.</td><td class="price-atr">10eb</td></tr>
+    <tr><td><span class="model-name">Real Cigarettes (Pack)</span><span class="model-desc">Actual tobacco. Imported.</span></td><td>A genuine luxury vice. The smoke tastes different &mdash; richer, dirtier, more real. Nomads sometimes grow their own.</td><td class="price-atr">100eb</td></tr>
+    <tr><td><span class="model-name">Synth-Cigars (Single)</span><span class="model-desc">Flavored vapor cigar.</span></td><td>The corpo's affectation. Comes in mahogany, vanilla, and "executive blend." It's all chemicals.</td><td class="price-atr">25eb</td></tr>
+    <tr><td><span class="model-name">Real Cigar (Single)</span><span class="model-desc">Hand-rolled. Caribbean or South American origin.</span></td><td>Smoked by people who close deals measured in millions. The kind of thing you share after surviving something together.</td><td class="price-atr">200&ndash;1,000eb</td></tr>
+    <tr><td><span class="model-name">Braindance (Legal)</span><span class="model-desc">Pre-recorded sensory experience. Licensed content.</span></td><td>Entertainment, tourism, education, or relaxation. Legal BDs are curated and safe. The corpo-approved way to feel something you can't afford to do in person.</td><td class="price-atr">20&ndash;200eb</td></tr>
+    <tr><td><span class="model-name">Braindance (Illegal / XBD)</span><span class="model-desc">Unregulated or extreme content.</span></td><td>Black market recordings. Sensory extremes. Some people use these to feel alive. Others use them to forget they are. Possession is a crime. Usage is a risk.</td><td class="price-atr">100&ndash;5,000eb</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  For street drug mechanics (Berserker, Prime Time, Sixgun, Timewarp, Smash, etc.) see the <strong>Humanity, Sanity &amp; Pharmacy</strong> page. This section covers recreational and lifestyle vices, not combat drugs.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> LIFESTYLE COSTS &amp; HOUSING <span class="tag tag-life">LIFESTYLE</span></h2>
+
+<p>Where you sleep and how you live costs money every month. Lifestyle represents your ongoing expenses: rent, utilities, food, basic maintenance, and the general cost of existing in Night City without dying of exposure or malnutrition.</p>
+
+<table>
+  <thead><tr><th>Lifestyle</th><th>Description</th><th>Monthly Cost</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Homeless / Squatting</span><span class="tier-badge tier-gutter">GUTTER</span></td>
+      <td>You sleep where you can. Alleys, underpasses, abandoned buildings, coffin stacks if someone leaves one unlocked. No address. No security. No guarantees you'll wake up with all your organs.</td>
+      <td class="price-atr">0eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Cube / Coffin Hotel</span><span class="tier-badge tier-gutter">GUTTER</span></td>
+      <td>A 2m x 1m sleeping pod with a lock, a vent, and a shared bathroom down the hall. You rent by the night. It's not living. It's storage.</td>
+      <td class="price-atr">500eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Cargo Container / Converted Space</span><span class="tier-badge tier-street">STREET</span></td>
+      <td>A repurposed shipping container, garage, or utility room. You've got walls, a door that locks, and maybe running water. Congratulations: you have an address.</td>
+      <td class="price-atr">1,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Megabuilding Apartment (Small)</span><span class="tier-badge tier-street">STREET</span></td>
+      <td>A single room in a megabuilding. Shared hallway, thin walls, noisy neighbors, but it's a real apartment. Comes with basic utilities and a communal laundry on your floor.</td>
+      <td class="price-atr">2,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Apartment (Standard)</span><span class="tier-badge tier-working">WORKING</span></td>
+      <td>A proper apartment. Bedroom, kitchen, bathroom. Maybe a window that faces something other than another wall. This is what "making it" looks like for most Night City residents.</td>
+      <td class="price-atr">5,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Apartment (Upscale)</span><span class="tier-badge tier-corpo">CORPO</span></td>
+      <td>Two bedrooms, a real kitchen, building security, and a view. Climate-controlled, soundproofed, and your neighbors don't cook meth. You're doing well.</td>
+      <td class="price-atr">15,000eb</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Corporate Housing</span><span class="tier-badge tier-corpo">CORPO</span></td>
+      <td>Company-provided residence in a secured corpo zone. High-quality, heavily monitored. Free as long as you're employed. The moment you're not, you have 48 hours to vacate.</td>
+      <td class="price-atr">Free (employed) / N/A</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Penthouse / Private Residence</span><span class="tier-badge tier-luxury">LUXURY</span></td>
+      <td>Top-floor living with panoramic views, private security, dedicated parking, and enough space to feel like the city can't touch you. The kind of place where the elevator requires biometric access and the fridge has real food in it.</td>
+      <td class="price-atr">50,000&ndash;200,000eb</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>Lifestyle &amp; Downtime:</strong> A character's lifestyle determines their baseline comfort during downtime activities. Programming quickhacks in a coffin hotel is technically possible but miserable. The DM may rule that certain downtime activities (therapy, long rest recovery, crafting) require at least Working-tier housing to be effective.
+</div>
+
+<div class="dm-note">
+  Lifestyle costs are a great way to drain eddies between runs and keep the economy feeling real. If the party is swimming in cash, remind them that rent is due. If they're broke, let them feel the weight of eating kibble for a week while the Fixer's contact dines at Embers. The gap between tiers isn't just mechanical &mdash; it's narrative.
+</div>
+
+
+<div class="footer-bar">
+  // LIFESTYLES, FOOD &amp; COMMODITIES //<br>
+  ADAPTED FROM CYBERPUNK RED &amp; 2077 LORE // HOMEBREW PRICING<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
