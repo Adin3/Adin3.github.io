@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netrunning Operations Guide — All That Remains</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// JACK IN. BURN ICE. GET OUT ALIVE. //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .flavor-quote .attribution { display:block; margin-top:0.2rem; font-size:0.75rem; color:var(--text-dim); font-style:normal; }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM GUIDANCE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .warning-box { border:1px solid var(--red); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,7,58,0.05); }
+  .warning-box::before { content:"⚠ DANGER"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.85rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-net { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-rules { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-ice { background:rgba(255,7,58,0.15); color:var(--red); }
+  .tag-support { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .floor-box { border-left:3px solid var(--purple); padding:0.6rem 1rem; margin:0.6rem 0; background:rgba(180,100,255,0.04); }
+  .floor-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--purple); letter-spacing:0.1em; margin-bottom:0.4rem; }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>NETRUNNING OPERATIONS GUIDE</h1>
+  <div class="subtitle">How Netrunning Actually Works at the Table &mdash; Architecture, ICE, Dives &amp; Support</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Overview &mdash; Parallel Combat</li>
+    <li><span>02</span> Roles by Netrunner Tier</li>
+    <li><span>03</span> The Interface Skill &amp; Cyberdeck Scaling</li>
+    <li><span>04</span> Diving &mdash; Full Immersion Netrunning</li>
+    <li><span>05</span> Access Points &amp; Jacking In</li>
+    <li><span>06</span> NET Architecture &mdash; Structure &amp; Floors</li>
+    <li><span>07</span> The Dive &mdash; Round-by-Round</li>
+    <li><span>08</span> ICE &mdash; Intrusion Countermeasures</li>
+    <li><span>09</span> Alert Level &mdash; The Escalation Clock</li>
+    <li><span>10</span> Jacking Out &mdash; Escape &amp; Disconnection</li>
+    <li><span>11</span> Support Roles &mdash; Meatside Operations</li>
+    <li><span>12</span> Battlefield Integration &mdash; What the Runner Can Do for the Team</li>
+  </ul>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> OVERVIEW &mdash; PARALLEL COMBAT <span class="tag tag-net">NETRUNNING</span></h2>
+
+<div class="flavor-quote">
+  "You've got two fights happening at once. The one you can see, and the one behind someone's eyelids. Both of them can kill you. Only one of them is happening in a bathtub."
+</div>
+
+<p>Netrunning in ATR is a <strong>parallel encounter</strong>. When a netrunner jacks into a NET Architecture, two combats happen simultaneously on the same initiative order: the <strong>physical fight</strong> (the rest of the party, in the real world) and the <strong>digital fight</strong> (the netrunner, inside the architecture). Both sides affect each other in real time.</p>
+
+<p>The physical team sees doors unlock, turrets go offline, alarms cut out. They know their runner is working. The runner sees code, ICE barriers, and data streams &mdash; and burns spell slots to crack through them. Meanwhile, their body sits motionless and vulnerable somewhere in meatspace, relying on the team to keep it alive.</p>
+
+<div class="mechanic-box">
+  <h4>Core Design Principles</h4>
+  <p><strong>Same initiative, different battlefield.</strong> The runner takes their turn on the same initiative count as normal. Their actions happen in the NET, not the physical world (with exceptions — see Battlefield Integration).</p>
+  <p><strong>Theatre of the mind.</strong> NET Architecture runs are described narratively. No grid, no minis. The DM describes each floor and the runner decides how to engage.</p>
+  <p><strong>Spell slots are ammunition.</strong> The runner uses their actual 5e class features and spell slots to interact with ICE and nodes. No separate netrunning resource — your build IS your netrunning toolkit.</p>
+  <p><strong>Every round matters.</strong> An escalating Alert Level creates a ticking clock. The deeper you go, the harder it gets, and the longer you stay, the more dangerous it becomes.</p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> ROLES BY NETRUNNER TIER <span class="tag tag-net">NETRUNNING</span></h2>
+
+<p>Not everyone interacts with the NET the same way. The Netrunner Classification tiers determine what each character can do during a netrunning encounter.</p>
+
+<table>
+  <thead><tr><th>Tier</th><th>Classes</th><th>NET Role</th><th>Max Depth</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="hl-low"><strong>Tier 1</strong></td>
+      <td>Wizard</td>
+      <td><strong>Full Dive.</strong> Can enter and navigate entire architectures. Deep-dive capable. The primary netrunner.</td>
+      <td>Unlimited</td>
+    </tr>
+    <tr>
+      <td class="hl-low"><strong>Tier 2</strong></td>
+      <td>Artificer, Arcane Trickster, Eldritch Knight</td>
+      <td><strong>Quick Jack.</strong> Can enter architectures on-site and navigate the upper floors. Limited depth, but effective for targeted objectives.</td>
+      <td>Floor = highest spell slot level (max 5)</td>
+    </tr>
+    <tr>
+      <td class="hl-mid"><strong>Tier 3</strong></td>
+      <td>Warlock, Sorcerer</td>
+      <td><strong>External Strike.</strong> Cannot enter the architecture. Instead, can launch single disruptive attacks at the architecture from outside — daemon strikes, neural bursts, destabilizing pulses. Uses spell slots but doesn't navigate floors.</td>
+      <td>N/A (external only)</td>
+    </tr>
+    <tr>
+      <td class="hl-high"><strong>Tier 4&ndash;5</strong></td>
+      <td>Cleric, Druid, Bard, Ranger, Paladin</td>
+      <td><strong>Meatside Support.</strong> Cannot interact with the NET directly. Provides physical protection, medical monitoring, emergency disconnection, and other support roles (see Section 09).</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>Multiclass Depth:</strong> A multiclass character's max depth is determined by their highest INT-casting class level, not their total character level. A Rogue 7 / Wizard 3 has a max depth of 3 floors (or unlimited if the DM rules their Wizard progression qualifies for Tier 1 deep dives — refer to the Netrunner Classification Guide for specifics).
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> THE INTERFACE SKILL &amp; CYBERDECK SCALING <span class="tag tag-net">NETRUNNING</span> <span class="tag tag-rules">RULES</span></h2>
+
+<div class="flavor-quote">
+  "A netrunner without a good deck is just a tourist with their eyes closed. You can know the code, but without the hardware to run it, you're crawling through the NET on your hands and knees."
+</div>
+
+<p>All checks made inside the NET &mdash; cracking ICE, accessing nodes, brute-forcing gates, establishing relays &mdash; use the <strong>Interface</strong> skill. This is a new INT-based skill specific to netrunning, separate from Arcana or general Hacking.</p>
+
+<div class="mechanic-box">
+  <h4>Interface Check Formula</h4>
+  <p><strong>d20 + INT modifier + Proficiency bonus (if proficient) + Cyberdeck modifier</strong></p>
+</div>
+
+<h3>Who Gets Interface Proficiency?</h3>
+
+<table>
+  <thead><tr><th>Tier</th><th>Classes</th><th>Proficiency</th></tr></thead>
+  <tbody>
+    <tr><td class="hl-low"><strong>Tier 1</strong></td><td>Wizard</td><td>Proficient. Can gain Expertise at DM discretion (e.g., through a feat or class feature).</td></tr>
+    <tr><td class="hl-low"><strong>Tier 2</strong></td><td>Artificer, Arcane Trickster, Eldritch Knight</td><td>Proficient.</td></tr>
+    <tr><td class="hl-mid"><strong>Tier 3</strong></td><td>Warlock, Sorcerer</td><td>Half-proficiency (round down). Their connection to the NET is instinctive, not trained.</td></tr>
+    <tr><td class="hl-high"><strong>Tier 4&ndash;5</strong></td><td>Cleric, Druid, Bard, Ranger, Paladin</td><td>Not proficient. They don't make Interface checks &mdash; they're not in the NET.</td></tr>
+  </tbody>
+</table>
+
+<h3>Cyberdeck Modifier</h3>
+
+<p>Your cyberdeck's quality directly affects your Interface checks. Better hardware means better performance in the NET. No cyberdeck means you're running on raw neural processing &mdash; possible, but crippled.</p>
+
+<table>
+  <thead><tr><th>Cyberdeck</th><th>Interface Modifier</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">No Cyberdeck</span><span class="model-desc">Running on raw neural processing. Not recommended.</span></td><td class="hl-extreme">&minus;3</td></tr>
+    <tr><td><span class="model-name">Streetbound &ldquo;BrainTap&rdquo; Mk.1</span></td><td>+0</td></tr>
+    <tr><td><span class="model-name">Militech NeuralHub Mk.3</span></td><td class="hl-low">+1</td></tr>
+    <tr><td><span class="model-name">Dynalar &ldquo;Ghostline&rdquo; Mk.4</span></td><td class="hl-mid">+2</td></tr>
+    <tr><td><span class="model-name">Tetratonic &ldquo;Rippler&rdquo; Mk.5</span></td><td class="hl-high">+3</td></tr>
+    <tr><td><span class="model-name">Militech &ldquo;Canto&rdquo; Mk.6</span></td><td class="hl-psycho">+5</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  The scaling means a Tier 1 Wizard (level 8, INT 18) with a Ghostline Mk.4 rolls: d20 + 4 (INT) + 3 (prof) + 2 (deck) = <strong>d20+9</strong>. That makes DC 24 hittable on a 15+ &mdash; difficult but possible with investment. Without a deck, that same Wizard rolls d20+4 &mdash; DC 24 requires a natural 20. The deck matters.
+</div>
+
+<h3>Buffs in the NET &mdash; The Physical/Digital Divide</h3>
+
+<div class="ruling-box">
+  <strong>Meatside buffs do not cross into the NET.</strong> Spells and effects cast on the runner's physical body (Guidance, Bardic Inspiration, Bless, etc.) do not affect Interface checks or any other NET actions. The runner's consciousness isn't in their body &mdash; buffing the body doesn't buff the mind that's somewhere else.
+</div>
+
+<div class="mechanic-box">
+  <h4>What Does Work</h4>
+  <p><strong>Buffs from inside the NET:</strong> If another Tier 1&ndash;2 runner jacks in alongside the primary runner (through the same or a linked access point), they can provide buffs normally. Bardic Inspiration from a Bard who's jacked in with you? That works &mdash; they're in the NET with you. Guidance from a Cleric standing next to your unconscious body? That doesn't reach you.</p>
+  <p><strong>Class features that are inherent:</strong> Passive features that are part of the character (Reliable Talent, Jack of All Trades, etc.) still function &mdash; they're part of who you are, not an external buff.</p>
+  <p><strong>Drug effects taken before jacking in:</strong> Street drugs that affect mental stats (Sixgun's +2 Speed while Jacked In, Prime Time's +2 COOL/WILL) were already in your system when you dove. They work. The chemical is in your brain, not on your body.</p>
+  <p><strong>Connection Stabilizer (Support Role):</strong> The meatside support role that grants advantage on a NET check still works &mdash; it's optimizing the physical connection, not buffing the runner's mind. This is the one meatside action that crosses the divide.</p>
+</div>
+
+<div class="dm-note">
+  This rule creates a clear incentive for Tier 1&ndash;2 runners to collaborate in the NET itself, not just rely on meatside spell stacking. A Bard who jacks in as a co-runner can provide Bardic Inspiration in the NET. An Arcane Trickster jacking in alongside a Wizard can use Help on Interface checks. The NET becomes a team activity, not a solo show with a cheerleading squad.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> DIVING &mdash; FULL IMMERSION NETRUNNING <span class="tag tag-net">NETRUNNING</span></h2>
+
+<div class="flavor-quote">
+  "When you dive, you leave. Your body's just meat on a table. Your mind is somewhere else entirely &mdash; somewhere that can kill you just as dead as a bullet, but quieter."
+</div>
+
+<p>Diving is the act of fully immersing your consciousness into a NET Architecture. This is the Tier 1 signature &mdash; the classic chair runner, the ice bath, the netrunner plugged into a rig with their eyes rolled back and their brain somewhere in the digital deep. But diving isn't limited to a chair. Any setup that supports full neural immersion works.</p>
+
+<h3>Dive Setups</h3>
+
+<table>
+  <thead><tr><th>Setup</th><th>Description</th><th>Benefit</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Netrunner Chair</span><span class="model-desc">The classic. A reclined seat with full neural interface cradle, cooling system, and vital monitors.</span></td>
+      <td>Professional-grade rig found in ripperdoc clinics, corpo offices, and dedicated netrunner dens. The runner is fully supported &mdash; comfortable, cooled, and monitored.</td>
+      <td>No overheating penalty. Vital monitors give the support team advantage on Medicine checks to monitor the runner. +1 to Interface checks (superior connection quality).</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Ice Bath</span><span class="model-desc">A bathtub full of ice with a hardline jack. Low-tech, effective.</span></td>
+      <td>The street runner's solution. The ice keeps the cyberdeck and neural interface cool during prolonged dives. Looks insane. Works perfectly.</td>
+      <td>No overheating penalty. No other bonuses. Cheap and reliable.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Field Dive (No Rig)</span><span class="model-desc">Jacking in from wherever you are. Floor, rooftop, back of a van.</span></td>
+      <td>No dedicated cooling, no monitoring equipment. The runner just plugs in and goes. Fast, dangerous, and sometimes the only option.</td>
+      <td>No setup time. However: overheating applies after Alert Level 10 (1d4 fire damage per round to the runner's body). No monitoring bonuses for support team.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Mobile Rig</span><span class="model-desc">A vehicle-mounted or portable dive station.</span></td>
+      <td>A van, truck, or heavy backpack with a compact neural cradle, cooling fans, and a portable power supply. The AV-mounted version is a corpo favorite for field operations.</td>
+      <td>No overheating penalty. Can be set up in 10 minutes. Portable, but conspicuous. If the vehicle takes damage, the runner must make a DC 12 CON save or lose concentration (drop one floor).</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mechanic-box">
+  <h4>Dive Requirements</h4>
+  <p><strong>Who can dive:</strong> Tier 1 runners (unlimited depth). Tier 2 runners can also dive but with limited depth (see Section 02).</p>
+  <p><strong>What you need:</strong> A cyberdeck, Interface Plugs, a Neural Link, and an access point to the target architecture.</p>
+  <p><strong>Body state:</strong> While diving, your body is <strong>incapacitated</strong>. You cannot move, speak, or take physical actions. You are unaware of your physical surroundings unless your body takes damage (which you feel as a jolt, prompting a Concentration save) or a support team member rouses you (Emergency Disconnect).</p>
+  <p><strong>Duration:</strong> No inherent time limit. You stay in as long as you can survive. The Alert Level is your real timer.</p>
+</div>
+
+<div class="ruling-box">
+  <strong>Diving is not required for all netrunning.</strong> Quick jacks, wireless hacks, and external strikes don't require a full dive. Diving is specifically for deep-architecture penetration &mdash; the kind of run where you're going past floor 3 and expecting to fight Black ICE. If you just need to pop a door lock or disable a camera, a quick jack from a nearby terminal will do.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> ACCESS POINTS &amp; JACKING IN <span class="tag tag-net">NETRUNNING</span></h2>
+
+<p>Before a netrunner can dive, they need a connection to the target architecture. How they connect determines their risk level and capabilities.</p>
+
+<table>
+  <thead><tr><th>Access Method</th><th>Requirements</th><th>Risk Level</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Direct Access Point</span><span class="model-desc">Hardline into a building's network terminal.</span></td>
+      <td>Physical access to a terminal or server rack. Interface Plugs.</td>
+      <td class="hl-low">Low</td>
+      <td>Best connection quality. No penalty to NET actions. Requires the runner to be physically present at the terminal.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Wireless Access</span><span class="model-desc">Connecting via local wireless network.</span></td>
+      <td>Within range of the architecture's wireless node (typically 30&ndash;50 ft). Cyberdeck with wireless capability.</td>
+      <td class="hl-mid">Moderate</td>
+      <td>&minus;1 to all NET checks. Connection can be disrupted by EMP or signal jamming. Runner can move physically while jacked in.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Remote Relay</span><span class="model-desc">Jacking in through a camera, drone, or compromised device.</span></td>
+      <td>A hacked device on the target network. Requires a successful INT (Arcana or Hacking) check to establish the relay (DC 13 + Architecture depth).</td>
+      <td class="hl-high">High</td>
+      <td>&minus;2 to all NET checks. Max depth reduced by 2 floors. If the relay device is destroyed, forced disconnect.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Proxy Link</span><span class="model-desc">Jacking in through another character's cyberware.</span></td>
+      <td>Both characters must have Interface Plugs and Neural Link. The proxy must be within the architecture's wireless range or physically connected.</td>
+      <td class="hl-extreme">Very High</td>
+      <td>&minus;2 to all NET checks. The runner sees through the proxy's senses while jacked in. If the proxy takes damage, the runner must make a DC 12 CON save or lose concentration (drops one floor). If the proxy dies, forced emergency disconnect.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mechanic-box">
+  <h4>Jacking In</h4>
+  <p><strong>Action Cost:</strong> Jacking in requires a full Action on the runner's turn. On their next turn, they begin on Floor 1 of the architecture.</p>
+  <p><strong>Body State:</strong> While jacked in via Direct Access or Remote Relay, the runner's body is <strong>incapacitated</strong> &mdash; they can't move, speak, or take physical actions. They are aware of loud noises and damage to their body (see Section 09). Wireless Access allows limited physical movement (half speed, no attacks).</p>
+</div>
+
+<div class="dm-note">
+  The Proxy Link method is the &ldquo;see through the barbarian's eyes&rdquo; approach. It's high-risk, high-reward &mdash; the runner doesn't need to be anywhere near the target, but the proxy becomes a single point of failure. If the party's Solo goes down, the netrunner goes down with them. Use it sparingly and dramatically.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> NET ARCHITECTURE &mdash; STRUCTURE &amp; FLOORS <span class="tag tag-net">NETRUNNING</span></h2>
+
+<div class="flavor-quote">
+  "Every architecture is a building. You start at the lobby. The further down you go, the nastier the security gets. The data you want is always on the bottom floor. Always."
+</div>
+
+<p>A NET Architecture is a layered digital structure protecting a network. Each layer is called a <strong>Floor</strong>. The runner starts at Floor 1 (the shallowest, least defended layer) and descends toward the objective, which is always on the deepest floor.</p>
+
+<div class="mechanic-box">
+  <h4>Architecture Ratings</h4>
+  <p>Each architecture has a <strong>Depth</strong> (number of floors) and a <strong>Difficulty</strong> (baseline DC modifier).</p>
+  <p><strong>Depth 3 (Shallow):</strong> Small business, personal server, streetside kiosk. Quick job.</p>
+  <p><strong>Depth 5 (Standard):</strong> Corporate branch office, gang headquarters, municipal system. A real run.</p>
+  <p><strong>Depth 7 (Deep):</strong> Corpo HQ subnet, military installation, high-security facility. Serious business.</p>
+  <p><strong>Depth 10 (Abyss):</strong> Arasaka/Militech core servers, Blackwall-adjacent systems, experimental facilities. Career-defining. Possibly career-ending.</p>
+</div>
+
+<h3>What's On Each Floor</h3>
+
+<p>Each floor contains one of the following. The DM builds the architecture in advance or rolls randomly.</p>
+
+<div class="floor-box">
+  <h4>ICE (Intrusion Countermeasures Electronics)</h4>
+  <p>A defensive program that must be defeated to proceed. This is combat — the runner uses spell slots and attacks to crack the ICE. See Section 06 for ICE types and stats.</p>
+</div>
+
+<div class="floor-box">
+  <h4>Data Node</h4>
+  <p>A cache of information. The runner makes an <strong>INT (Arcana or Investigation) check</strong> against the architecture's DC to extract the data. Success yields intel: files, communications, credentials, maps, blackmail material, financial records — whatever the DM has prepared. Failure means the data is encrypted or corrupted; it can be attempted again on a subsequent turn but raises the Alert Level.</p>
+</div>
+
+<div class="floor-box">
+  <h4>Control Node</h4>
+  <p>An interface connected to something in the physical world: cameras, doors, turrets, elevators, life support, alarms. The runner makes an <strong>INT (Arcana) check</strong> against the architecture's DC to take control. Once controlled, the runner can operate the system as a free action on subsequent turns. See Section 10 for what the runner can do with control nodes.</p>
+</div>
+
+<div class="floor-box">
+  <h4>Password Gate</h4>
+  <p>A non-combat barrier. Requires either the correct password (obtained from a Data Node, social engineering, or external intel) or a brute-force <strong>INT check</strong> at DC = architecture DC + 3. Brute-forcing adds +2 to the Alert Level.</p>
+</div>
+
+<h3>Architecture DC</h3>
+
+<table>
+  <thead><tr><th>Difficulty</th><th>Base DC</th><th>Typical Owner</th></tr></thead>
+  <tbody>
+    <tr><td class="hl-low">Basic</td><td>12</td><td>Small businesses, personal networks, street-level gangs.</td></tr>
+    <tr><td class="hl-mid">Standard</td><td>15</td><td>Mid-tier corps, police precincts, established gangs, municipal systems.</td></tr>
+    <tr><td class="hl-high">Advanced</td><td>18</td><td>Major corps, military installations, high-security research facilities.</td></tr>
+    <tr><td class="hl-extreme">Elite</td><td>21</td><td>Arasaka/Militech core systems, NetWatch, Blackwall-adjacent architecture.</td></tr>
+    <tr><td class="hl-psycho">Legendary</td><td>24+</td><td>Things that shouldn't exist. Beyond the Blackwall. You shouldn't be here.</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  <strong>Building an Architecture:</strong> For each floor, choose or roll: <strong>1&ndash;2</strong> = ICE, <strong>3&ndash;4</strong> = Data Node, <strong>5</strong> = Control Node, <strong>6</strong> = Password Gate. The final floor is always the objective (usually the most valuable Data Node or Control Node). Place at least one ICE between the entrance and the objective. For deeper architectures, layer multiple ICE encounters with nodes between them to create decision points.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> THE DIVE &mdash; ROUND-BY-ROUND <span class="tag tag-rules">RULES</span></h2>
+
+<p>Once jacked in, the runner acts on their normal initiative. Each round in the NET, they get the following:</p>
+
+<div class="mechanic-box">
+  <h4>NET Turn Actions</h4>
+  <p><strong>Move:</strong> Descend or ascend one floor. This is free movement (doesn't cost an action) unless the floor contains undefeated ICE (which blocks passage).</p>
+  <p><strong>Action:</strong> One of the following:</p>
+  <p>&bull; <strong>Attack ICE:</strong> Cast a spell or make an attack against ICE on your current floor.</p>
+  <p>&bull; <strong>Interact with Node:</strong> Make the required check to access a Data Node, Control Node, or Password Gate.</p>
+  <p>&bull; <strong>Jack Out:</strong> Begin the disconnection process (see Section 08).</p>
+  <p>&bull; <strong>Quickhack (Battlefield):</strong> Use a Control Node you've already captured to affect the physical world (see Section 10).</p>
+  <p><strong>Bonus Action:</strong> Standard 5e bonus action rules. Bonus Action spells work normally in the NET.</p>
+  <p><strong>Reaction:</strong> Can be used to defend against ICE attacks (Shield, Counterspell, etc).</p>
+</div>
+
+<div class="ruling-box">
+  <strong>Spell Slots in the NET:</strong> Spells function as quickhacks. Fireball is an area-effect ICE cracker. Counterspell disrupts an ICE program mid-execution. Shield blocks incoming ICE damage. Your spell list IS your hacking toolkit. Flavor accordingly, but mechanically everything works as written in 5e.
+</div>
+
+<div class="mechanic-box">
+  <h4>Concentration in the NET</h4>
+  <p>Concentration spells work normally but have an additional vulnerability: if the runner's <strong>physical body takes damage</strong> while they're jacked in, they must make a Concentration save as normal. Additionally, certain ICE types can force Concentration checks through digital attacks.</p>
+</div>
+
+<h3>Split Attention &mdash; NET vs Meatspace</h3>
+
+<p>Not all netrunners are fully immersed. Depending on their tier, some runners can split their attention between the digital and physical worlds &mdash; at a cost.</p>
+
+<table>
+  <thead><tr><th>Tier</th><th>Split Attention?</th><th>How It Works</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="hl-low"><strong>Tier 1</strong></td>
+      <td><strong>No.</strong></td>
+      <td>Chair Runners are fully submerged. Their consciousness is in the NET, not their body. They cannot take any physical actions while jacked in. Period. This is the tradeoff for unlimited depth.</td>
+    </tr>
+    <tr>
+      <td class="hl-low"><strong>Tier 2</strong></td>
+      <td><strong>Limited.</strong></td>
+      <td>Field Netrunners can <strong>sacrifice their NET action for the round</strong> to instead take a physical action (Attack, Dash, Dodge, etc). They cannot do both in the same turn. Choosing to act physically means no progress in the architecture that round &mdash; and the Alert Level still ticks up. Use this to defend yourself in an emergency, not as a standard tactic.</td>
+    </tr>
+    <tr>
+      <td class="hl-mid"><strong>Tier 3</strong></td>
+      <td><strong>Yes.</strong></td>
+      <td>External Strikers (Warlocks, Sorcerers) are never fully immersed. They can take <strong>either</strong> a physical action <strong>or</strong> a NET action (daemon strike) on their turn, choosing freely each round. They can also split their Action and Bonus Action between the two worlds (e.g., physical Attack as an Action, daemon strike as a Bonus Action spell). This flexibility is their strength &mdash; but they can't enter architectures or navigate floors, which is their limitation.</td>
+    </tr>
+    <tr>
+      <td class="hl-high"><strong>Tier 4&ndash;5</strong></td>
+      <td><strong>N/A</strong></td>
+      <td>Not in the NET. Fully physical. See Section 09 for support roles.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>The tradeoff is real:</strong> Tier 1 runners go deeper and do more in the NET, but they're completely helpless physically. Tier 3 casters can fight on both fronts but can't navigate architectures. Tier 2 sits in the middle &mdash; they can dip out to defend themselves, but every round they spend in meatspace is a round the Alert Level climbs with no progress to show for it.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">08</span> ICE &mdash; INTRUSION COUNTERMEASURES <span class="tag tag-ice">ICE</span></h2>
+
+<div class="flavor-quote">
+  "White ICE locks you out. Gray ICE hurts you. Black ICE kills you. Know the difference before you jack in, or don't bother jacking out."
+</div>
+
+<p>ICE are defensive programs that guard NET Architecture floors. When a runner encounters ICE, it acts on its own initiative (rolled by the DM). ICE fights until destroyed or until the runner jacks out.</p>
+
+<h3>ICE Categories</h3>
+
+<table>
+  <thead><tr><th>Category</th><th>Threat</th><th>What It Does</th><th>Damage Type</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name" style="color:var(--text-primary);">White ICE</span></td>
+      <td class="hl-low">Non-Lethal</td>
+      <td>Barriers and trackers. Blocks movement, raises alerts, logs the runner's presence. Cannot deal damage. Must be cracked (destroyed) or bypassed to proceed.</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td><span class="model-name" style="color:var(--yellow);">Gray ICE</span></td>
+      <td class="hl-mid">Harmful</td>
+      <td>Active defense programs. Can attack the runner, dealing psychic damage (representing neural feedback). Some can force the runner back a floor or lock them in place.</td>
+      <td>Psychic</td>
+    </tr>
+    <tr>
+      <td><span class="model-name" style="color:var(--red);">Black ICE</span></td>
+      <td class="hl-extreme">Lethal</td>
+      <td>Killer programs. Designed to flatline intruders. Deals heavy psychic damage. Some can fry cyberware, force permanent Humanity Loss, or cause real physical damage to the runner's body through their neural link.</td>
+      <td>Psychic (+ physical via neural link)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>ICE Stat Blocks</h3>
+
+<p>ICE uses simplified stat blocks. The DM can scale these based on the architecture's difficulty.</p>
+
+<table>
+  <thead><tr><th>ICE Type</th><th>AC</th><th>HP</th><th>Attack</th><th>Damage</th><th>Special</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Barrier (White)</span></td><td>10 + Diff mod</td><td>15/25/35</td><td>&mdash;</td><td>&mdash;</td><td>Blocks passage. Must be cracked to proceed. Raises Alert by 1 when encountered.</td></tr>
+    <tr><td><span class="model-name">Tracer (White)</span></td><td>12 + Diff mod</td><td>10/15/25</td><td>&mdash;</td><td>&mdash;</td><td>If not destroyed within 2 rounds, raises Alert by 3 and reveals the runner's physical location to building security.</td></tr>
+    <tr><td><span class="model-name">Sentry (Gray)</span></td><td>12 + Diff mod</td><td>20/35/50</td><td>+5/+7/+9</td><td>2d6/3d6/4d6 Psychic</td><td>Standard combat ICE. Attacks once per round.</td></tr>
+    <tr><td><span class="model-name">Binder (Gray)</span></td><td>13 + Diff mod</td><td>15/25/40</td><td>+4/+6/+8</td><td>1d8/2d8/3d8 Psychic</td><td>On hit: runner must make INT save (DC = Architecture DC) or be unable to move floors on their next turn.</td></tr>
+    <tr><td><span class="model-name">Hellhound (Black)</span></td><td>14 + Diff mod</td><td>30/50/70</td><td>+7/+9/+11</td><td>4d8/5d8/6d8 Psychic</td><td>Attacks twice per round. On a critical hit, the runner takes 1d6 damage to their physical body as well.</td></tr>
+    <tr><td><span class="model-name">Kraken (Black)</span></td><td>15 + Diff mod</td><td>50/75/100</td><td>+8/+10/+12</td><td>3d10/4d10/5d10 Psychic</td><td>On hit: runner must make WIS save (DC = Architecture DC) or suffer 1 Humanity Loss. If it reduces the runner to 0 HP in the NET, forced disconnect + 2d6 permanent Humanity Loss.</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  The three stat values (e.g., 20/35/50 HP) correspond to Basic/Standard/Advanced+ architecture difficulty. Use the value that matches your architecture's tier. For Elite and Legendary architectures, use the highest value and add the architecture's Difficulty modifier to the ICE's attack bonus.
+</div>
+
+<div class="warning-box">
+  <strong>Black ICE is lethal.</strong> It can deal damage to the runner's physical body through their neural link, inflict permanent Humanity Loss, and cause forced disconnection. A runner who hits 0 HP in the NET while fighting Black ICE isn't just kicked out &mdash; they may take permanent damage. This is the deep end. Characters should know what they're getting into before they dive past the Gray ICE line.
+</div>
+
+<h3>Personal ICE &mdash; The Break Cycle</h3>
+
+<p>Every chromed-up enemy in the physical world has their own layer of ICE protecting their cyberware &mdash; firewalls, encryption, countermeasure subroutines. A netrunner who can see an enemy (through a captured camera, proxy link, or connected device) can attempt to crack their personal ICE, creating a brief window to exploit their exposed systems.</p>
+
+<p>Personal ICE is never permanently destroyed under normal circumstances. It reboots, recalibrates, and comes back online. The runner isn't removing the defense &mdash; they're breaking through it for a moment. Think of it as a cycle: <strong>Break &rarr; Exploit &rarr; Reboot &rarr; Repeat.</strong></p>
+
+<div class="mechanic-box">
+  <h4>The Break Cycle</h4>
+  <p><strong>Step 1 &mdash; Break (Action + Spell Slot):</strong> The runner targets an enemy they can see through a connected system. Make a <strong>spell attack roll</strong> against the target's <strong>Personal ICE AC</strong> (set by the DM based on how chromed the target is). The spell slot used must be at least 1st level. On a hit, the target's ICE is <strong>Broken</strong>.</p>
+  <p><strong>Step 2 &mdash; Exploit (Action + Spell Slot, next turn):</strong> While the target's ICE is Broken, the runner delivers a quickhack directly to their exposed cyberware. Cast any spell that requires a saving throw &mdash; <strong>the target automatically fails the save.</strong> After the exploit resolves, the ICE begins rebooting.</p>
+  <p><strong>Step 3 &mdash; Reboot (1 round):</strong> The ICE comes back online at <strong>full HP</strong> but is <strong>Stunned for 1 round</strong> while it recalibrates. During this round, the ICE cannot defend the target or attack the runner, but it also can't be exploited again (no free second quickhack &mdash; it's rebooting, not broken).</p>
+  <p><strong>Step 4 &mdash; Active:</strong> The ICE is fully operational again. If the runner wants another guaranteed exploit, they have to break it again from scratch.</p>
+</div>
+
+<table>
+  <thead><tr><th>Phase</th><th>Duration</th><th>Target's ICE Status</th><th>Runner Can Exploit?</th></tr></thead>
+  <tbody>
+    <tr><td class="hl-low"><strong>Break</strong></td><td>Runner's Action</td><td>ICE destroyed (temporarily)</td><td>Not yet &mdash; costs this turn's Action to break</td></tr>
+    <tr><td class="hl-mid"><strong>Exploit</strong></td><td>Runner's next turn</td><td>ICE down &mdash; systems exposed</td><td><strong>Yes &mdash; auto-fail on one save-based quickhack</strong></td></tr>
+    <tr><td class="hl-high"><strong>Reboot</strong></td><td>1 round after exploit</td><td>ICE coming back online (Stunned)</td><td>No &mdash; ICE is recalibrating, not breakable</td></tr>
+    <tr><td><strong>Active</strong></td><td>Ongoing</td><td>Fully operational, full HP</td><td>No &mdash; must break again from scratch</td></tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>Balancing Notes:</strong> The cycle requires two turns and two spell slots minimum for one guaranteed effect. The ICE always comes back. The runner has to decide: is it worth burning resources to crack this target again, or should I move on to a different objective? This creates a resource management tension that scales naturally &mdash; early in a fight you have slots to spare, but by the end you're choosing between cracking ICE and defending yourself.
+</div>
+
+<div class="dm-note">
+  <strong>Personal ICE AC by Target Type:</strong>
+  <br>
+  <strong>Unaugmented civilian:</strong> No personal ICE. Any quickhack works normally (standard saves apply).
+  <br>
+  <strong>Street ganger / light chrome:</strong> AC 12&ndash;13.
+  <br>
+  <strong>Corpo security / moderate chrome:</strong> AC 14&ndash;16.
+  <br>
+  <strong>Military operative / heavy chrome:</strong> AC 17&ndash;19.
+  <br>
+  <strong>Full-borg / milspec asset:</strong> AC 20+. May require minimum 3rd-level spell slot to break.
+</div>
+
+<div class="warning-box">
+  <strong>Blackwall Exception:</strong> Tools, programs, or cyberware connected to entities beyond the Blackwall (rogue AIs, Blackwall-adjacent tech, certain prototype cyberdecks) do not follow the break cycle. When Blackwall-origin tools break personal ICE, <strong>it stays broken permanently.</strong> The ICE doesn't reboot. It's not just cracked &mdash; it's consumed. Whatever came through the wall doesn't play by the rules of normal architecture. This is devastatingly powerful, but the kind of tools that carry this capability always come with a cost &mdash; Humanity, patron demands, or worse.
+</div>
+
+<h3>Defensive Programs &mdash; Deploying Your Own ICE</h3>
+
+<p>Some runners want to leave defenses behind &mdash; programs to guard their connection, slow down pursuit, or protect their position in the architecture. There's no separate system for this. Instead, use existing 5e summoning and creation spells, flavored as deployed ICE programs.</p>
+
+<div class="mechanic-box">
+  <h4>Flavor, Not New Rules</h4>
+  <p><strong>Summon Construct</strong> (or similar summoning spells) = deploying a defensive program that fights alongside you in the NET.</p>
+  <p><strong>Web, Wall of Force, Arcane Lock</strong> = defensive ICE you leave on a floor to slow pursuers.</p>
+  <p><strong>Alarm</strong> = a tripwire program that alerts you if something enters a floor you've already passed.</p>
+  <p>These all work exactly as written in 5e &mdash; Concentration rules apply, duration is as listed, and they occupy your action economy as normal. The only difference is the flavor. Your Wall of Force isn't a shimmering barrier; it's a firewall you compiled on the fly.</p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">09</span> ALERT LEVEL &mdash; THE ESCALATION CLOCK <span class="tag tag-rules">RULES</span></h2>
+
+<p>Every NET Architecture has an <strong>Alert Level</strong> that starts at 0 and escalates as the runner operates inside it. The Alert Level represents the architecture becoming aware of the intrusion and responding with increasing aggression.</p>
+
+<div class="mechanic-box">
+  <h4>What Raises Alert</h4>
+  <p><strong>+1:</strong> Each round the runner is jacked in (automatic).</p>
+  <p><strong>+1:</strong> Encountering White ICE (it logs your presence).</p>
+  <p><strong>+1:</strong> Failing a Node check (bad access attempt triggers sensors).</p>
+  <p><strong>+2:</strong> Brute-forcing a Password Gate.</p>
+  <p><strong>+2:</strong> Destroying ICE (the system notices when its defenses go down).</p>
+  <p><strong>&minus;1:</strong> Successfully using a stealth approach (Subtle Spell metamagic, passing a Stealth-equivalent INT (Deception) check at the architecture's DC).</p>
+</div>
+
+<h3>Alert Thresholds</h3>
+
+<table>
+  <thead><tr><th>Alert Level</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td class="hl-low"><strong>0&ndash;3: Passive</strong></td><td>Architecture is unaware. ICE acts normally. No additional threats.</td></tr>
+    <tr><td class="hl-mid"><strong>4&ndash;6: Suspicious</strong></td><td>Additional White ICE spawns on the next unoccupied floor. Architecture DC increases by +1 for all checks. Physical-side security may begin patrol sweeps.</td></tr>
+    <tr><td class="hl-high"><strong>7&ndash;9: Active</strong></td><td>Gray ICE spawns on the runner's current floor (joins initiative immediately). Architecture DC increases by +2 total. Physical security is alerted to the intrusion's general area.</td></tr>
+    <tr><td class="hl-extreme"><strong>10&ndash;12: Critical</strong></td><td>Black ICE is deployed to the runner's current floor. Architecture DC increases by +3 total. Building goes on full lockdown. Physical security converges on likely access points.</td></tr>
+    <tr><td class="hl-psycho"><strong>13+: Meltdown</strong></td><td>Architecture initiates purge protocol. <strong>Every floor the runner is currently on or passes through now has Black ICE.</strong> The runner must escape or be flatlined. Physical-side: automated defenses go to lethal mode. The building is trying to kill everyone.</td></tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>The Clock Never Stops:</strong> Alert Level increases by 1 every round automatically. A 5-floor architecture at Standard difficulty gives the runner roughly 6&ndash;7 rounds before things get truly dangerous (Alert 7+). Efficiency is survival. Every wasted round brings Black ICE closer.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">10</span> JACKING OUT &mdash; ESCAPE &amp; DISCONNECTION <span class="tag tag-net">NETRUNNING</span></h2>
+
+<div class="flavor-quote">
+  "Getting in is the easy part. Getting out is where people die."
+</div>
+
+<p>A runner can attempt to disconnect from the architecture at any time. How they disconnect determines the consequences.</p>
+
+<table>
+  <thead><tr><th>Method</th><th>Action Cost</th><th>Consequence</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Safe Jack Out</span><span class="model-desc">Controlled, deliberate disconnection.</span></td>
+      <td>Full Action on the runner's turn.</td>
+      <td>No damage. Runner regains consciousness on their next turn. All captured Control Nodes are lost (systems revert to default). Data already extracted is kept.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Emergency Disconnect</span><span class="model-desc">Someone physically pulls the plug.</span></td>
+      <td>Action by another character (meatside).</td>
+      <td>Immediate disconnection. The runner takes <strong>2d6 Psychic damage</strong> and is <strong>Stunned until the end of their next turn</strong>. All progress is lost. Data already extracted to external storage is kept.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Forced Disconnect (ICE)</span><span class="model-desc">Black ICE or architecture purge kicks you out.</span></td>
+      <td>Involuntary. Happens immediately.</td>
+      <td>The runner takes <strong>4d6 Psychic damage</strong>, is <strong>Stunned for 1 minute (CON save DC 15 ends early, repeatable each turn)</strong>, and rolls <strong>1d4 Humanity Loss</strong>. Something followed you out. Probably not literally. Probably.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  <strong>Forced Disconnect is the worst outcome.</strong> It's what happens when you push too deep, stay too long, and the architecture catches you. The Psychic damage can knock a runner unconscious. The Stun leaves them helpless in meatspace. And the Humanity Loss represents the neural scarring from having a kill program tear through your brain stem on the way out. The support team's job is to make sure this never happens.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">11</span> SUPPORT ROLES &mdash; MEATSIDE OPERATIONS <span class="tag tag-support">SUPPORT</span></h2>
+
+<div class="flavor-quote">
+  "The runner's the one in the NET, but the crew's the reason they come back out."
+</div>
+
+<p>While the netrunner is jacked in, their body is vulnerable. The rest of the party has critical roles to play &mdash; and these aren't passive. Active support can directly affect the runner's chances of survival.</p>
+
+<table>
+  <thead><tr><th>Role</th><th>Who</th><th>What They Do</th><th>Mechanic</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="model-name">Bodyguard</span></td>
+      <td>Anyone (ideally Solos/Frontliners)</td>
+      <td>Protect the runner's physical body from harm. If the runner takes damage while jacked in, they must make Concentration saves and risk disruption.</td>
+      <td>Standard combat. Position between the runner and threats. If you're not doing this, no one is.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Monitor</span></td>
+      <td>Anyone with Medicine proficiency or a Medscanner</td>
+      <td>Watch the runner's vital signs. Detect when things are going wrong before the runner can communicate it.</td>
+      <td>WIS (Medicine) check, DC 10 + current Alert Level. On success: you can tell if the runner is in distress, taking damage, or approaching critical status. Gives the team a warning to prepare emergency disconnect.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Emergency Disconnect</span></td>
+      <td>Anyone within reach of the runner's body</td>
+      <td>Pull the plug. Last resort.</td>
+      <td>Costs your Action. Deals 2d6 Psychic to the runner and Stuns them. But it's better than letting Black ICE finish them off.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Connection Stabilizer</span></td>
+      <td>Tier 1&ndash;3 casters, Artificers, anyone with Cyberdeck proficiency</td>
+      <td>Maintain and optimize the runner's connection quality. Reduces interference, combats signal degradation.</td>
+      <td>INT (Arcana) check, DC 12. On success: the runner gains advantage on their next NET check. Can be done once per round. Requires being adjacent to the runner or the access point.</td>
+    </tr>
+    <tr>
+      <td><span class="model-name">Thermal Management</span></td>
+      <td>Anyone</td>
+      <td>The runner's cyberdeck and neural interface generate heat during intense operations. Keeping them cool extends operation time.</td>
+      <td>Mostly narrative, but the DM can rule that without cooling (ice bath, cooling packs, a fan pointed at the deck), the runner takes 1d4 fire damage per round after Alert Level 10. Because yes, the bathtub of ice is actually functional.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  Support roles matter. A runner with a good support team can stay in longer, survive harder ICE, and extract more data. A runner who dives alone with nobody watching their body is one Gray ICE encounter away from getting their throat slit while they're unconscious in a server room. Make the support roles feel important at the table &mdash; describe the vital signs spiking, the sweat on the runner's brow, the cyberdeck overheating. It's a team effort.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">12</span> BATTLEFIELD INTEGRATION <span class="tag tag-net">NETRUNNING</span> <span class="tag tag-rules">RULES</span></h2>
+
+<p>A netrunner inside an architecture isn't cut off from the physical fight. Once they've captured Control Nodes, they can directly affect the battlefield. This is what makes a good netrunner worth protecting.</p>
+
+<h3>What Control Nodes Let You Do</h3>
+
+<table>
+  <thead><tr><th>System</th><th>Action Cost</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cameras</span></td><td>Free Action (once per turn)</td><td>Feed camera views to the party's HUDs. Allies gain advantage on Perception checks in areas covered by captured cameras. The runner can describe enemy positions, reinforcement routes, and blind spots.</td></tr>
+    <tr><td><span class="model-name">Doors &amp; Locks</span></td><td>Free Action</td><td>Open, close, or lock any door connected to the architecture. Seal enemies in rooms. Open escape routes. Create chokepoints.</td></tr>
+    <tr><td><span class="model-name">Turrets</span></td><td>Bonus Action to designate target, turret fires on initiative count 0</td><td>Commandeer building turrets. The turret attacks using the runner's INT modifier + proficiency. Damage depends on turret type (DM determines). Turrets fire at the end of each round.</td></tr>
+    <tr><td><span class="model-name">Alarms</span></td><td>Free Action</td><td>Disable alarms to prevent reinforcement calls, or trigger them in specific areas to create diversions.</td></tr>
+    <tr><td><span class="model-name">Elevators &amp; Environmental</span></td><td>Action</td><td>Control elevators, ventilation, lighting, fire suppression. Flood a room with halon gas, kill the lights in a corridor, trap enemies in an elevator between floors.</td></tr>
+    <tr><td><span class="model-name">Enemy Cyberware (Requires Proxy or Direct LOS)</span></td><td>Action + Spell Slot</td><td>If the runner can target an enemy through a captured camera, proxy link, or line-of-sight from a connected device, they can attempt to hack enemy cyberware. This requires a spell attack roll vs the target's AC (representing their cyberware's defenses). On hit, apply the spell's effects flavored as a cyberware hack (System Reset = Sleep, Short Circuit = Lightning Bolt, etc).</td></tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>The Runner as Force Multiplier:</strong> A netrunner who captures 2&ndash;3 Control Nodes in the first few rounds of a run transforms from "the person lying unconscious in the corner" into "the invisible hand controlling the entire building." The physical team fights the enemies. The runner fights the building. Together, they're unstoppable. Separately, they're both dead.
+</div>
+
+
+<div class="footer-bar">
+  // NETRUNNING OPERATIONS GUIDE //<br>
+  HOMEBREW RULES ADAPTED FROM CYBERPUNK RED // D&amp;D 5E MECHANICS<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
