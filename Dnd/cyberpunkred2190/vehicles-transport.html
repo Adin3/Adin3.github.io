@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicles &amp; Transport — All That Remains</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// EL CAPITAN'S AUTOFIXER — NIGHT CITY'S #1 VEHICLE SOURCE //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .flavor-quote .attribution { display:block; margin-top:0.2rem; font-size:0.75rem; color:var(--text-dim); font-style:normal; }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM GUIDANCE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .warning-box { border:1px solid var(--red); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,7,58,0.05); }
+  .warning-box::before { content:"⚠ NOTE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.45rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-vehicle { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-rules { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-combat { background:rgba(255,7,58,0.15); color:var(--red); }
+  .tag-mod { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .tag-transport { background:rgba(180,100,255,0.15); color:var(--purple); }
+  .tier-badge { font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.05em; display:inline-block; padding:0.1rem 0.4rem; border-radius:2px; margin-left:0.3rem; }
+  .tier-economy { background:rgba(57,255,20,0.12); color:var(--green); border:1px solid var(--green); }
+  .tier-standard { background:rgba(0,240,255,0.12); color:var(--cyan); border:1px solid var(--cyan); }
+  .tier-sport { background:rgba(247,224,24,0.12); color:var(--yellow); border:1px solid var(--yellow); }
+  .tier-luxury { background:rgba(180,100,255,0.12); color:var(--purple); border:1px solid var(--purple); }
+  .tier-military { background:rgba(255,7,58,0.12); color:var(--red); border:1px solid var(--red); }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>VEHICLES &amp; TRANSPORT</h1>
+  <div class="subtitle">Public Transit, Purchasable Vehicles, Driving Rules &amp; Vehicle Combat</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="flavor-quote">
+  "Need a ride, choom? El Capitan's got you covered. Beaters, beauties, and everything in between. Just don't ask where the previous owner went."
+  <span class="attribution">&mdash; Muamar "El Capitan" Reyes, Autofixer of Santo Domingo</span>
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Public Transport &mdash; Getting Around Night City</li>
+    <li><span>02</span> Vehicle Stats &mdash; Reading the Sheet</li>
+    <li><span>03</span> Civilian Vehicles</li>
+    <li><span>04</span> Motorcycles &amp; Bikes</li>
+    <li><span>05</span> Armored &amp; Military Vehicles</li>
+    <li><span>06</span> Driving Rules</li>
+    <li><span>07</span> Vehicle Combat &amp; Chases</li>
+    <li><span>08</span> Vehicle Mods</li>
+    <li><span>09</span> Ownership, Registration &amp; Insurance</li>
+  </ul>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> PUBLIC TRANSPORT <span class="tag tag-transport">TRANSPORT</span></h2>
+
+<div class="flavor-quote">
+  "The NCART runs on time. Delamain runs on money. And if you're hitchhiking in the Badlands, you're running on prayers."
+</div>
+
+<p>Not everyone in Night City owns a car &mdash; and frankly, not everyone should. Between parking in a megabuilding (if you can find a spot that isn't already claimed by a gang) and the risk of getting your ride bombed, jacked, or impounded, public transit is the sensible option for anyone who isn't running hot.</p>
+
+<table>
+  <thead><tr><th>Service</th><th>Description</th><th>Cost per Trip</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">NCART Metro</span><span class="model-desc">Night City Area Rapid Transit. The backbone of public transport.</span></td><td>Elevated rail system covering most of the city. Fast, reliable, packed during rush hour. Stations in every district.</td><td class="price-atr">5eb</td><td>Monthly pass: 100eb. Pickpockets and BD dealers are a constant presence.</td></tr>
+    <tr><td><span class="model-name">City Bus</span><span class="model-desc">NCDT municipal buses.</span></td><td>Slow, crowded, and the AC never works. But it goes everywhere the metro doesn't.</td><td class="price-atr">3eb</td><td>Monthly pass: 50eb. Service is unreliable in Combat Zones.</td></tr>
+    <tr><td><span class="model-name">Delamain Cab</span><span class="model-desc">Premium autonomous taxi service.</span></td><td>AI-driven luxury cabs. Clean, safe, climate-controlled. The car talks to you. It's polite about it.</td><td class="price-atr">50&ndash;200eb</td><td>Price scales with distance and district danger level. Premium tier available (drinks, privacy screen, armored chassis).</td></tr>
+    <tr><td><span class="model-name">Street Cab / Rideshare</span><span class="model-desc">Human-driven taxis and gig drivers.</span></td><td>The budget option. Quality varies wildly &mdash; from a clean sedan to a Thorton held together with duct tape and spite.</td><td class="price-atr">15&ndash;75eb</td><td>No background checks on drivers. Pay in cash. Tip if you want them to forget your face.</td></tr>
+    <tr><td><span class="model-name">AV Shuttle (Corpo)</span><span class="model-desc">Aerodyne shuttle between corpo towers.</span></td><td>Corpo-exclusive air transit between designated buildings. Fast, secure, and you need a badge to board.</td><td class="price-atr">Free (corpo) / N/A</td><td>Not available to the public. Some Fixers can arrange a one-time ride for 5,000&ndash;10,000eb.</td></tr>
+    <tr><td><span class="model-name">Nomad Convoy</span><span class="model-desc">Hitchhiking or paying for a seat with a Nomad clan.</span></td><td>For intercity or Badlands travel. Nomads run supply convoys between Night City, the oil fields, and border settlements.</td><td class="price-atr">100&ndash;500eb</td><td>No schedule. You go when they go. Bring your own water and something to trade.</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> VEHICLE STATS &mdash; READING THE SHEET <span class="tag tag-rules">RULES</span></h2>
+
+<p>Vehicles in ATR use the 5e Vehicle stat block format (compatible with Foundry VTT vehicle sheets). Here's what each stat means:</p>
+
+<div class="mechanic-box">
+  <h4>Vehicle Stat Block</h4>
+  <p><strong>Size:</strong> Large (cars, bikes), Huge (trucks, vans), or Gargantuan (AVs, tanks).</p>
+  <p><strong>AC:</strong> How hard the vehicle is to damage. Represents hull integrity and armor plating.</p>
+  <p><strong>HP:</strong> Total hit points before the vehicle is destroyed or disabled.</p>
+  <p><strong>Speed:</strong> Maximum speed in feet per round. Divide by roughly 10 for a mph approximation during chases.</p>
+  <p><strong>STR / DEX:</strong> Used for ramming (STR) and handling (DEX). Most vehicles have 0 for mental stats.</p>
+  <p><strong>Damage Immunities:</strong> All vehicles are immune to Poison and Psychic damage.</p>
+  <p><strong>Equipment &mdash; Tires:</strong> Each tire has its own AC and HP. Destroying a tire imposes penalties (see Driving Rules).</p>
+  <p><strong>Equipment &mdash; Weapons:</strong> Mounted weapons, if any. Listed with their own attack bonus and damage.</p>
+  <p><strong>Crew / Passengers:</strong> How many people the vehicle can carry, including the driver.</p>
+</div>
+
+<div class="ruling-box">
+  <strong>Targeting Components:</strong> Attackers can target the vehicle as a whole (attack vs vehicle AC) or specific components (tires, weapons, engine). Targeting a specific component is a <strong>called shot</strong> &mdash; attack roll is made at <strong>disadvantage</strong> but hits the component directly.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> CIVILIAN VEHICLES <span class="tag tag-vehicle">VEHICLES</span></h2>
+
+<h3>Economy <span class="tier-badge tier-economy">ECONOMY</span></h3>
+<p>Cheap, ugly, and they run. That's the best anyone can say about them.</p>
+
+<table>
+  <thead><tr><th>Vehicle</th><th>Size</th><th>AC</th><th>HP</th><th>Speed</th><th>Crew/Pass</th><th>Tire HP</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Thorton Galena "Rattler"</span><span class="model-desc">The car you buy when you can't afford a car. Loud, slow, and the doors don't always close.</span></td><td>Large</td><td>10</td><td>50</td><td>800 ft</td><td>1 / 3</td><td>15</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Makigai MaiMai P126</span><span class="model-desc">Microcar for one. Possibly the saddest vehicle ever manufactured. But it parks anywhere.</span></td><td>Large</td><td>8</td><td>30</td><td>700 ft</td><td>1 / 1</td><td>10</td><td class="price-atr">3,000eb</td></tr>
+    <tr><td><span class="model-name">Archer Hella EC-D I360</span><span class="model-desc">Compact economy sedan. Reliable, boring, and invisible in traffic.</span></td><td>Large</td><td>10</td><td>45</td><td>750 ft</td><td>1 / 3</td><td>15</td><td class="price-atr">4,500eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Standard <span class="tier-badge tier-standard">STANDARD</span></h3>
+<p>Working-class vehicles. Solid, dependable, and they won't fall apart on the highway. Probably.</p>
+
+<table>
+  <thead><tr><th>Vehicle</th><th>Size</th><th>AC</th><th>HP</th><th>Speed</th><th>Crew/Pass</th><th>Tire HP</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Thorton Colby CX410 "Butte"</span><span class="model-desc">Pickup truck. Hauls cargo, hauls ass, hauls bodies if needed. The Nomad's best friend.</span></td><td>Large</td><td>12</td><td>80</td><td>1,050 ft</td><td>1 / 3</td><td>25</td><td class="price-atr">15,000eb</td></tr>
+    <tr><td><span class="model-name">Villefort Columbus V340-F</span><span class="model-desc">Family sedan. Safe, comfortable, and nobody looks twice at it. Perfect getaway car.</span></td><td>Large</td><td>11</td><td>65</td><td>900 ft</td><td>1 / 4</td><td>20</td><td class="price-atr">12,000eb</td></tr>
+    <tr><td><span class="model-name">Thorton Mackinaw "Beast"</span><span class="model-desc">Heavy-duty utility truck. Built for the Badlands. Eats sand and shits torque.</span></td><td>Huge</td><td>13</td><td>100</td><td>900 ft</td><td>1 / 3</td><td>30</td><td class="price-atr">25,000eb</td></tr>
+    <tr><td><span class="model-name">Chevillon Thrax 388 Jefferson</span><span class="model-desc">Mid-range sedan with a V8 that sounds like it means business. NCPD patrol vehicle of choice.</span></td><td>Large</td><td>12</td><td>75</td><td>1,000 ft</td><td>1 / 4</td><td>20</td><td class="price-atr">18,000eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Sport <span class="tier-badge tier-sport">SPORT</span></h3>
+<p>Fast, loud, and a theft magnet. Own one of these and everyone in Night City knows your name &mdash; or wants to.</p>
+
+<table>
+  <thead><tr><th>Vehicle</th><th>Size</th><th>AC</th><th>HP</th><th>Speed</th><th>Crew/Pass</th><th>Tire HP</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Quadra Type-66 "Javelina"</span><span class="model-desc">Muscle car. American steel and fury. The engine note alone is a threat.</span></td><td>Large</td><td>13</td><td>85</td><td>1,400 ft</td><td>1 / 1</td><td>20</td><td class="price-atr">50,000eb</td></tr>
+    <tr><td><span class="model-name">Quadra Turbo-R V-Tech</span><span class="model-desc">Mid-engine supercar. Goes from 0 to "oh god" in 2.5 seconds.</span></td><td>Large</td><td>12</td><td>70</td><td>1,600 ft</td><td>1 / 1</td><td>15</td><td class="price-atr">75,000eb</td></tr>
+    <tr><td><span class="model-name">Herrera Outlaw GTS</span><span class="model-desc">Sleek, aggressive, and built by people who think speed limits are a suggestion.</span></td><td>Large</td><td>12</td><td>65</td><td>1,500 ft</td><td>1 / 1</td><td>15</td><td class="price-atr">65,000eb</td></tr>
+    <tr><td><span class="model-name">Mizutani Shion "Coyote"</span><span class="model-desc">Nomad-tuned rally car. Built for sand, dust, and outrunning anything on four wheels.</span></td><td>Large</td><td>13</td><td>80</td><td>1,350 ft</td><td>1 / 1</td><td>25</td><td class="price-atr">55,000eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Luxury <span class="tier-badge tier-luxury">LUXURY</span></h3>
+<p>For people who want the world to know they've made it. Or for people who stole one.</p>
+
+<table>
+  <thead><tr><th>Vehicle</th><th>Size</th><th>AC</th><th>HP</th><th>Speed</th><th>Crew/Pass</th><th>Tire HP</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Villefort Alvarado V4F 570 "Delegate"</span><span class="model-desc">Executive limousine. Tinted windows, leather interior, minibar. The back seat has seen more deals than most boardrooms.</span></td><td>Huge</td><td>14</td><td>100</td><td>900 ft</td><td>1 / 5</td><td>25</td><td class="price-atr">120,000eb</td></tr>
+    <tr><td><span class="model-name">Rayfield Caliburn</span><span class="model-desc">The fastest production car in Night City. Carbon-ceramic chassis. Worth more than most apartments.</span></td><td>Large</td><td>14</td><td>80</td><td>1,800 ft</td><td>1 / 1</td><td>20</td><td class="price-atr">250,000eb</td></tr>
+    <tr><td><span class="model-name">Rayfield Excalibur</span><span class="model-desc">Flying car. Yes, really. VTOL capability, autopilot, and the kind of price tag that makes corpo accountants cry.</span></td><td>Huge</td><td>15</td><td>120</td><td>1,200 ft (ground) / 2,000 ft (air)</td><td>1 / 3</td><td>N/A (hover)</td><td class="price-atr">500,000eb+</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> MOTORCYCLES &amp; BIKES <span class="tag tag-vehicle">VEHICLES</span></h2>
+
+<div class="flavor-quote">
+  "Two wheels, no roof, and nothing between you and a bullet but speed and bad decisions."
+</div>
+
+<table>
+  <thead><tr><th>Vehicle</th><th>Size</th><th>AC</th><th>HP</th><th>Speed</th><th>Crew/Pass</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Archer Quartz "Bandit"</span><span class="model-desc">Budget commuter bike. Gets you from A to B. Barely.</span></td><td>Large</td><td>10</td><td>30</td><td>900 ft</td><td>1 / 1</td><td class="price-atr">3,000eb</td></tr>
+    <tr><td><span class="model-name">Yaiba Kusanagi CT-3X</span><span class="model-desc">Sport bike. Japanese engineering. Handles like a dream, sounds like a scream.</span></td><td>Large</td><td>11</td><td>40</td><td>1,600 ft</td><td>1 / 1</td><td class="price-atr">40,000eb</td></tr>
+    <tr><td><span class="model-name">ARCH Nazaré</span><span class="model-desc">Custom chopper. Chrome, leather, and attitude. The Valentino special.</span></td><td>Large</td><td>11</td><td>45</td><td>1,200 ft</td><td>1 / 1</td><td class="price-atr">35,000eb</td></tr>
+    <tr><td><span class="model-name">Brennan Apollo</span><span class="model-desc">All-terrain bike. Built for the Badlands. Sandproof, dustproof, and almost idiot-proof.</span></td><td>Large</td><td>12</td><td>50</td><td>1,100 ft</td><td>1 / 1</td><td class="price-atr">25,000eb</td></tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>Motorcycle Rules:</strong> Riders have no cover from attacks (compared to half cover in a car and three-quarters cover in an armored vehicle). However, motorcycles grant the driver <strong>advantage on DEX saves</strong> to avoid obstacles and <strong>+2 to driving checks</strong> for maneuvers due to their superior handling. They also don't have tires to target &mdash; hitting a bike means hitting the bike.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> ARMORED &amp; MILITARY VEHICLES <span class="tag tag-vehicle">VEHICLES</span> <span class="tag tag-combat">COMBAT</span></h2>
+
+<div class="flavor-quote">
+  "If someone's shooting at your car, you brought the wrong car."
+</div>
+
+<table>
+  <thead><tr><th>Vehicle</th><th>Size</th><th>AC</th><th>HP</th><th>Speed</th><th>Crew/Pass</th><th>Tire HP</th><th>Weapons</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Chevillon Emperor 620 "Ragnar"</span><span class="model-desc">Armored SUV. Corpo security standard. Bulletproof glass, run-flat tires.</span></td><td>Huge</td><td>16</td><td>120</td><td>900 ft</td><td>1 / 5</td><td>30 (run-flat)</td><td>&mdash;</td><td class="price-atr">80,000eb</td></tr>
+    <tr><td><span class="model-name">Militech "Behemoth" Armored Truck</span><span class="model-desc">Armored transport. The kind of thing Trauma Team uses for extractions in hot zones.</span></td><td>Huge</td><td>18</td><td>180</td><td>700 ft</td><td>2 / 8</td><td>40 (run-flat)</td><td>1 turret mount</td><td class="price-atr">200,000eb</td></tr>
+    <tr><td><span class="model-name">Militech Griffin AV</span><span class="model-desc">Armed aerodyne. Gunship-class. VTOL, twin rotary cannons, and a bad attitude.</span></td><td>Garg.</td><td>19</td><td>250</td><td>600 ft (ground) / 3,000 ft (air)</td><td>2 / 6</td><td>N/A</td><td>2 turrets (4d10 each)</td><td class="price-atr">1,000,000eb+</td></tr>
+    <tr><td><span class="model-name">Kang Tao "Wyvern" Light AV</span><span class="model-desc">Fast recon AV. Lighter than the Griffin, trades armor for speed.</span></td><td>Huge</td><td>16</td><td>150</td><td>400 ft (ground) / 3,500 ft (air)</td><td>1 / 4</td><td>N/A</td><td>1 turret (3d8)</td><td class="price-atr">500,000eb</td></tr>
+    <tr><td><span class="model-name">Basilisk Panzer</span><span class="model-desc">Nomad-modified tank. Cobbled together from military salvage. Terrifying.</span></td><td>Garg.</td><td>20</td><td>300</td><td>500 ft</td><td>2 / 2</td><td>50</td><td>Main cannon (8d10), coaxial MG (3d6)</td><td class="price-atr">Not for sale</td></tr>
+  </tbody>
+</table>
+
+<div class="warning-box">
+  Military vehicles are not available through normal channels. AVs require a pilot with proficiency in Vehicles (Air). The Basilisk is included for DM reference only &mdash; if the players somehow get one, something has gone very wrong (or very right).
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> DRIVING RULES <span class="tag tag-rules">RULES</span></h2>
+
+<p>Driving in Night City uses DEX (Vehicle Handling) checks. Proficiency with Vehicles (Land) or Vehicles (Air) applies if the character has it.</p>
+
+<div class="mechanic-box">
+  <h4>Driver Actions (Per Turn)</h4>
+  <p>On their turn, the driver chooses one of the following as their Action:</p>
+  <p><strong>Speed:</strong> Focus on going fast. The vehicle moves at full speed. No attacks, no fancy moves. The driver's full attention is on the road.</p>
+  <p><strong>Maneuver:</strong> Focus on handling. The vehicle moves at half speed, but the driver can make sharp turns, weave through traffic, or avoid obstacles (DEX Vehicle Handling check, DC set by DM). On success, the maneuver is executed cleanly.</p>
+  <p><strong>Reckless Action:</strong> The driver attempts to do something else while driving &mdash; fire a weapon, cast a spell, use an item. The vehicle continues at half speed. The driver makes their attack/action <strong>at disadvantage</strong>, and must succeed on a <strong>DC 13 DEX (Vehicle Handling) check</strong> or the vehicle veers off course (DM determines consequences: sideswipe, curb hit, spin out).</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Passenger Actions</h4>
+  <p>Passengers can act normally on their turns &mdash; attack, cast spells, use items. However:</p>
+  <p>&bull; Ranged attacks from a moving vehicle are made at <strong>disadvantage</strong> unless the vehicle used the Speed action (straight line, stable platform).</p>
+  <p>&bull; Melee attacks from a vehicle can only target adjacent vehicles, creatures within 5 ft, or targets during a pass-by (DM discretion).</p>
+  <p>&bull; Spellcasting works normally, but Concentration saves may be required if the vehicle takes damage or executes a sharp maneuver.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Tire Damage</h4>
+  <p>Tires can be targeted with a called shot (attack at disadvantage, targets Tire AC 15). Destroying tires has cumulative effects:</p>
+  <p><strong>1 tire destroyed:</strong> Speed reduced by 25%. Disadvantage on Maneuver checks.</p>
+  <p><strong>2 tires destroyed:</strong> Speed reduced by 50%. All driving checks are at disadvantage.</p>
+  <p><strong>3+ tires destroyed:</strong> Vehicle cannot exceed half speed. Driver must make a DC 15 DEX check each round or lose control.</p>
+  <p><strong>Run-Flat Tires:</strong> Ignore the first tire destruction. The second counts as the first. Expensive, but worth it.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Cover from Vehicles</h4>
+  <p><strong>Car (standard):</strong> Half cover (+2 AC, +2 DEX saves) for occupants.</p>
+  <p><strong>Armored vehicle:</strong> Three-quarters cover (+5 AC, +5 DEX saves) for occupants.</p>
+  <p><strong>Motorcycle:</strong> No cover. You're exposed.</p>
+  <p><strong>Convertible / open top:</strong> Half cover from the sides, no cover from above.</p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> VEHICLE COMBAT &amp; CHASES <span class="tag tag-combat">COMBAT</span></h2>
+
+<div class="flavor-quote">
+  "You haven't lived until you've fired a shotgun out the window of a Thorton doing 120 while someone's trying to ram you off the overpass."
+</div>
+
+<h3>Chase Mechanics</h3>
+
+<p>Chases use a simple <strong>Distance Track</strong> system. The DM sets an initial distance between the vehicles (Close, Medium, Far) and each round the drivers make opposed checks to change it.</p>
+
+<div class="mechanic-box">
+  <h4>Distance Bands</h4>
+  <p><strong>Close (0&ndash;60 ft):</strong> Vehicles can ram, sideswipe, and melee. Ranged attacks are normal (no disadvantage from distance). Passengers can attempt to jump between vehicles (DC 15 Athletics/Acrobatics).</p>
+  <p><strong>Medium (60&ndash;300 ft):</strong> Standard ranged attack range. No melee. Ramming not possible without closing distance first.</p>
+  <p><strong>Far (300+ ft):</strong> Long-range attacks only. Disadvantage on all ranged attacks. One more round at Far range and the pursued vehicle escapes (or the pursuer catches up, depending on who's faster).</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Changing Distance</h4>
+  <p>Each round, both drivers make an <strong>opposed DEX (Vehicle Handling) check</strong>. The winner shifts the distance one band in their favor (closer if pursuing, farther if fleeing). Ties maintain current distance.</p>
+  <p><strong>Speed Advantage:</strong> If one vehicle's Speed stat is more than 200 ft higher than the other, that driver gets <strong>advantage</strong> on the opposed check.</p>
+</div>
+
+<h3>Combat Maneuvers</h3>
+
+<table>
+  <thead><tr><th>Maneuver</th><th>Requirement</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Ram</span></td><td>Close distance. Driver's Action.</td><td>Both vehicles take damage: attacker deals <strong>vehicle STR mod + 2d6</strong> Bludgeoning to target. Attacker takes <strong>half that damage</strong> to their own vehicle. Target driver must make DC 13 DEX (Vehicle) save or lose control for 1 round (vehicle moves in a random direction at half speed).</td></tr>
+    <tr><td><span class="model-name">PIT Maneuver</span></td><td>Close distance. Driver's Action. Requires proficiency in Vehicles (Land).</td><td>Driver makes DEX (Vehicle Handling) check contested by target driver. On success: target vehicle <strong>spins out</strong> &mdash; it stops moving and all occupants must make DC 13 DEX save or take 2d6 Bludgeoning. On failure: your vehicle takes 1d6 damage and you lose your Action next turn (overcorrection).</td></tr>
+    <tr><td><span class="model-name">Sideswipe</span></td><td>Close distance. Part of a Speed or Maneuver action.</td><td>Both vehicles take <strong>1d6 Bludgeoning</strong>. Target driver must make DC 10 DEX save or veer one lane (DM determines if this matters &mdash; guardrails, oncoming traffic, cliffs).</td></tr>
+    <tr><td><span class="model-name">Bootleg Turn</span></td><td>Driver's Action. DC 15 DEX (Vehicle Handling).</td><td>180-degree turn at speed. On success: you're now facing the opposite direction. On failure: you spin out (vehicle stops, all occupants take 1d6 Bludgeoning).</td></tr>
+    <tr><td><span class="model-name">Thread the Needle</span></td><td>Maneuver action. DC set by DM (13&ndash;20).</td><td>Drive through a narrow gap, between obstacles, or through traffic at speed. On success: you pass through cleanly and may gain advantage on your next distance check. On failure: collision (DM determines damage).</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  Chases should be fast, chaotic, and cinematic. Don't track every foot of movement &mdash; use the Distance Bands to keep the narrative moving and let the players make dramatic choices rather than doing math. The best chases end with someone going through a billboard or off a bridge, not with a spreadsheet.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">08</span> VEHICLE MODS <span class="tag tag-mod">MODS</span></h2>
+
+<p>Vehicle mods are aftermarket upgrades installed at a garage or by a tech with Vehicle proficiency. Each vehicle has a limited number of mod slots based on its size: Large = 2 slots, Huge = 3 slots, Gargantuan = 4 slots.</p>
+
+<table>
+  <thead><tr><th>Mod</th><th>Slots</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Armor Plating</span><span class="model-desc">Reinforced panels welded to the chassis.</span></td><td>1</td><td>+2 AC. Speed reduced by 100 ft. Vehicle weight increases noticeably.</td><td class="price-atr">10,000eb</td></tr>
+    <tr><td><span class="model-name">Heavy Armor Plating</span><span class="model-desc">Military-grade composite plates. Serious protection.</span></td><td>2</td><td>+4 AC. Speed reduced by 200 ft. Disadvantage on all Maneuver checks. Vehicle is visibly armored &mdash; you will be noticed.</td><td class="price-atr">40,000eb</td></tr>
+    <tr><td><span class="model-name">Run-Flat Tires</span><span class="model-desc">Self-sealing polymer tires.</span></td><td>1</td><td>Ignore the first tire destruction. The second counts as the first.</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Nitrous System</span><span class="model-desc">Because sometimes you just need to go faster.</span></td><td>1</td><td>Once per chase/encounter: +500 ft speed for 1 round. After use, vehicle cannot use Speed action for 1 round (engine cooldown).</td><td class="price-atr">8,000eb</td></tr>
+    <tr><td><span class="model-name">Turret Mount (Light)</span><span class="model-desc">A pintle mount on the roof or bed for a weapon.</span></td><td>1</td><td>Mount one two-handed ranged weapon. A passenger can operate it on their turn. Gunner has half cover.</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Turret Mount (Heavy)</span><span class="model-desc">Reinforced powered mount with rotation.</span></td><td>2</td><td>Mount one heavy weapon (including mounted MG or grenade launcher). 360-degree rotation. Gunner has three-quarters cover.</td><td class="price-atr">25,000eb</td></tr>
+    <tr><td><span class="model-name">Bulletproof Glass</span><span class="model-desc">Laminated polycarbonate windows.</span></td><td>1</td><td>Occupants gain three-quarters cover instead of half cover. Windows have 20 HP each.</td><td class="price-atr">12,000eb</td></tr>
+    <tr><td><span class="model-name">Smoke Screen</span><span class="model-desc">Rear-mounted smoke dispenser.</span></td><td>1</td><td>As an Action, create a 20 ft radius smoke cloud behind the vehicle. Lasts 1 round. Blocks line of sight. 3 uses before refill (500eb per refill).</td><td class="price-atr">3,000eb</td></tr>
+    <tr><td><span class="model-name">Oil Slick</span><span class="model-desc">Rear-mounted oil dispenser.</span></td><td>1</td><td>As an Action, coat a 20 ft area behind the vehicle in oil. Any vehicle driving over it must make DC 15 DEX (Vehicle) save or spin out. 2 uses before refill (300eb per refill).</td><td class="price-atr">2,500eb</td></tr>
+    <tr><td><span class="model-name">Netrunner Jack Point</span><span class="model-desc">Hardline interface installed in the dashboard.</span></td><td>1</td><td>Allows a netrunner to jack in and use the vehicle's cameras, sensors, and connected systems as a Direct Access point while in the vehicle. Also enables remote start/shutdown and GPS tracking via cyberdeck.</td><td class="price-atr">7,500eb</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">09</span> OWNERSHIP, REGISTRATION &amp; INSURANCE <span class="tag tag-rules">RULES</span></h2>
+
+<div class="flavor-quote">
+  "You think the DMV is bad in the real world? In Night City, the line is three hours long, the clerk has a shotgun under the counter, and your registration fee just went up because you looked at them wrong."
+</div>
+
+<p>Owning a vehicle in Night City involves paperwork. Yes, even in 2190. The NCPD and Night City Department of Motor Vehicles (NCDMV) technically require all vehicles to be registered. In practice, enforcement depends on which district you're in and how much the local cops care.</p>
+
+<table>
+  <thead><tr><th>Service</th><th>Description</th><th>Cost</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Standard Registration</span></td><td>Legal ownership paperwork. Ties the vehicle to your SIN (System Identification Number). Required for corporate zones and legal parking.</td><td class="price-atr">500eb + 1% of vehicle value</td></tr>
+    <tr><td><span class="model-name">Mercenary Vehicle License</span><span class="model-desc">The "I might need to do crimes in this" registration.</span></td><td>Registers the vehicle under a merc license. Legal in most districts. Allows weapon mounts without additional permits. The NCPD will still pull you over, but they can't impound for the mounts alone.</td><td class="price-atr">2,000eb + 2% of vehicle value</td></tr>
+    <tr><td><span class="model-name">Unregistered (Ghost Plates)</span></td><td>No paperwork. The vehicle doesn't officially exist. Cheaper, but if you're stopped, that's an immediate impound and a fine. In corpo zones, it's shoot-on-sight for the vehicle (not you &mdash; probably).</td><td class="price-atr">Free (until you're caught)</td></tr>
+    <tr><td><span class="model-name">Basic Insurance</span></td><td>Covers theft and total loss at 50% of vehicle value. Does not cover damage from combat, chases, or "acts of merc."</td><td class="price-atr">200eb/month</td></tr>
+    <tr><td><span class="model-name">Combat Insurance</span><span class="model-desc">Yes, this exists. No, it's not cheap.</span></td><td>Covers combat damage, chase damage, and even explosive destruction at 75% value. Requires Mercenary Vehicle License. The adjuster has seen things.</td><td class="price-atr">1,000eb/month</td></tr>
+    <tr><td><span class="model-name">Parking (Megabuilding)</span></td><td>Monthly parking spot in a megabuilding garage. Locked gate, maybe a camera. Maybe.</td><td class="price-atr">200&ndash;500eb/month</td></tr>
+    <tr><td><span class="model-name">Parking (Secure Garage)</span></td><td>Private garage with biometric lock, camera surveillance, and armed response. Your car is safe. Probably.</td><td class="price-atr">1,000&ndash;3,000eb/month</td></tr>
+  </tbody>
+</table>
+
+<div class="dm-note">
+  Vehicle ownership is a great ongoing expense that drains eddies between runs. Registration fees, insurance, parking, fuel, repairs &mdash; it all adds up. A party that buys a 50,000eb muscle car and then can't afford to insure it or park it is going to learn a hard lesson about Night City's economy. Also, the Mercenary Vehicle License is intentionally funny in-world &mdash; it's basically the city admitting that mercs exist and need to mount guns on things, so they might as well get a cut.
+</div>
+
+
+<div class="footer-bar">
+  // VEHICLES &amp; TRANSPORT //<br>
+  HOMEBREW RULES + ADAPTED FROM CYBERPUNK 2077/RED LORE<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
