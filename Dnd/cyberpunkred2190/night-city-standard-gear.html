@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Night City 2190 &mdash; Standard Implants &amp; Gear (5e Adapted)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// ADAPTED FROM CYBERPUNK RED — NATIVE 5E MECHANICS //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:1.8rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM / ATR NOTE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.45rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .price-orig { color:var(--text-dim); font-size:0.7rem; font-family:'Share Tech Mono',monospace; display:block; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-melee { background:rgba(255,106,0,0.15); color:var(--orange); }
+  .tag-ranged { background:rgba(255,7,58,0.15); color:var(--red); }
+  .tag-exotic { background:rgba(180,100,255,0.15); color:var(--purple); }
+  .tag-armor { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-cyber { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-gear { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>NIGHT CITY 2190 &mdash; STANDARD GEAR</h1>
+  <div class="subtitle">Weapons, Armor &amp; Cyberware Adapted from Cyberpunk RED &mdash; 5e Native Mechanics</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="dm-note">
+  <strong>What this page is:</strong> All weapons, armor, and cyberware from Cyberpunk RED, converted to native D&amp;D 5e (2014) mechanics. Damage dice have been scaled to 5e ranges, armor uses the AC system, and cyberware effects reference 5e rules. ATR &times;10 pricing applies. For <strong>homebrew</strong> cyberware (Sandevistans, custom Cyberdecks, Gorilla Arms, Monowire, Mantis Blades, Projectile Launch System), see the <strong>Cyberware &amp; Weapon Mods Compendium</strong>.
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Melee Weapons</li>
+    <li><span>02</span> Ranged Weapons</li>
+    <li><span>03</span> Exotic Weapons</li>
+    <li><span>04</span> Ammunition</li>
+    <li><span>05</span> Armor (5e AC System)</li>
+    <li><span>06</span> Cyberware &mdash; Fashionware</li>
+    <li><span>07</span> Cyberware &mdash; Neuralware</li>
+    <li><span>08</span> Cyberware &mdash; Cyberoptics</li>
+    <li><span>09</span> Cyberware &mdash; Cyberaudio</li>
+    <li><span>10</span> Cyberware &mdash; Internal Body</li>
+    <li><span>11</span> Cyberware &mdash; External Body</li>
+    <li><span>12</span> Cyberware &mdash; Cyberlimbs</li>
+    <li><span>13</span> Cyberware &mdash; Borgware</li>
+  </ul>
+</div>
+
+<div class="mechanic-box">
+  <h4>5e Conversion Notes</h4>
+  <p><strong>Weapons:</strong> RED's damage dice assume ROF-based combat with no Extra Attack. In 5e, a Fighter with Extra Attack swings 2&ndash;4 times per round. All weapon damage has been scaled down to standard 5e ranges (1d4&ndash;2d6 for melee, 1d6&ndash;2d10 for ranged). Properties use 5e keywords: Light, Finesse, Heavy, Two-Handed, Loading, Ammunition, etc.</p>
+  <p><strong>Armor:</strong> RED's SP/ablation system is gone. All armor uses standard 5e AC (Light = base + DEX, Medium = base + DEX max 2, Heavy = flat AC). No SP, no ablation, no REF/DEX/MOVE penalties beyond what 5e already handles with Stealth disadvantage and STR requirements.</p>
+  <p><strong>Cyberware:</strong> RED skill bonuses (e.g., "+2 to Perception") become 5e equivalents (+2 to Wisdom (Perception) checks, or advantage on specific checks). Popup weapons reference 5e weapon stat lines. Subdermal armor becomes AC bonuses.</p>
+  <p><strong>Concealable:</strong> A concealable weapon can be hidden on your person. Detecting it requires a Wisdom (Perception) check contested by the carrier's Dexterity (Sleight of Hand) check.</p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> MELEE WEAPONS <span class="tag tag-melee">MELEE</span></h2>
+
+<p>Standard 5e melee weapons reflavored for Night City. Use STR or DEX (if Finesse) for attack and damage rolls.</p>
+
+<table>
+  <thead>
+    <tr><th>Weapon</th><th>Damage</th><th>Properties</th><th>Conceal?</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Light Melee</span><span class="model-desc">Combat knife, switchblade, brass knucks, tomahawk.</span></td><td>1d4 Slashing/Piercing</td><td>Light, Finesse, Thrown (20/60)</td><td>Yes</td><td class="price-atr">500eb</td></tr>
+    <tr><td><span class="model-name">Medium Melee</span><span class="model-desc">Machete, baseball bat, crowbar, rippers.</span></td><td>1d6 Slashing/Bludgeoning</td><td>Versatile (1d8)</td><td>No</td><td class="price-atr">500eb</td></tr>
+    <tr><td><span class="model-name">Heavy Melee</span><span class="model-desc">Katana, longsword, fire axe, spiked bat.</span></td><td>1d8 Slashing/Bludgeoning</td><td>Versatile (1d10)</td><td>No</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Very Heavy Melee</span><span class="model-desc">Sledgehammer, chainsaw, naginata, two-handed sword.</span></td><td>2d6 Slashing/Bludgeoning</td><td>Heavy, Two-Handed</td><td>No</td><td class="price-atr">5,000eb</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> RANGED WEAPONS <span class="tag tag-ranged">RANGED</span></h2>
+
+<p>All ranged weapons use DEX for attack rolls. Firearms have the Ammunition property and require appropriate ammo. Magazine sizes are tracked but reloading mid-combat is a Bonus Action (swap magazine) or an Action (if the weapon is empty and jammed).</p>
+
+<table>
+  <thead>
+    <tr><th>Weapon</th><th>Damage</th><th>Range</th><th>Properties</th><th>Magazine</th><th>Conceal?</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="7" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">PISTOLS</td></tr>
+    <tr><td><span class="model-name">Medium Pistol</span><span class="model-desc">Unity, Lexington, Liberty. The everyday sidearm.</span></td><td>1d8 Piercing</td><td>50/150</td><td>Ammunition, Light</td><td>12</td><td>Yes</td><td class="price-atr">500eb</td></tr>
+    <tr><td><span class="model-name">Heavy Pistol</span><span class="model-desc">Nue, Overture, Burya. Hits harder, kicks harder.</span></td><td>1d10 Piercing</td><td>60/180</td><td>Ammunition</td><td>8</td><td>Yes</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Very Heavy Pistol</span><span class="model-desc">Comrade's Hammer, Crash. Hand cannons. One shot, one statement.</span></td><td>1d12 Piercing</td><td>40/120</td><td>Ammunition, Heavy</td><td>6</td><td>No</td><td class="price-atr">1,500eb</td></tr>
+
+    <tr><td colspan="7" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">SUBMACHINE GUNS</td></tr>
+    <tr><td><span class="model-name">SMG</span><span class="model-desc">Saratoga, Pulsar. Spray and pray.</span></td><td>1d6 Piercing</td><td>40/120</td><td>Ammunition, Light, Burst Fire</td><td>30</td><td>Yes</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Heavy SMG</span><span class="model-desc">Shingen, Kyubi. Bigger magazine, bigger problems.</span></td><td>1d8 Piercing</td><td>50/150</td><td>Ammunition, Burst Fire</td><td>40</td><td>No</td><td class="price-atr">2,000eb</td></tr>
+
+    <tr><td colspan="7" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">SHOTGUNS</td></tr>
+    <tr><td><span class="model-name">Shotgun</span><span class="model-desc">Carnage, Crusher. Close range devastation.</span></td><td>2d8 Piercing</td><td>15/30</td><td>Ammunition, Two-Handed</td><td>4</td><td>No</td><td class="price-atr">3,000eb</td></tr>
+
+    <tr><td colspan="7" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">RIFLES</td></tr>
+    <tr><td><span class="model-name">Assault Rifle</span><span class="model-desc">Copperhead, Ajax, Masamune. The workhorse of every firefight.</span></td><td>1d10 Piercing</td><td>80/240</td><td>Ammunition, Two-Handed, Burst Fire</td><td>25</td><td>No</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Sniper Rifle</span><span class="model-desc">Nekomata, Grad, Achilles. Reach out and touch someone.</span></td><td>2d10 Piercing</td><td>150/600</td><td>Ammunition, Two-Handed, Heavy, Loading</td><td>4</td><td>No</td><td class="price-atr">5,000eb</td></tr>
+
+    <tr><td colspan="7" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.1em; padding-top:0.8rem;">OTHER</td></tr>
+    <tr><td><span class="model-name">Bow / Crossbow</span><span class="model-desc">Surprisingly popular with Nomads and stealth ops.</span></td><td>1d8 Piercing</td><td>80/320</td><td>Ammunition, Two-Handed</td><td>N/A</td><td>No</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Grenade Launcher</span><span class="model-desc">Militech ML-3. Area denial.</span></td><td>By grenade type</td><td>60/120</td><td>Ammunition, Two-Handed, Heavy, Loading</td><td>2</td><td>No</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Rocket Launcher</span><span class="model-desc">For when "overkill" is the correct amount of kill.</span></td><td>8d6 Fire</td><td>100/300</td><td>Ammunition, Two-Handed, Heavy, Loading</td><td>1</td><td>No</td><td class="price-atr">10,000eb</td></tr>
+  </tbody>
+</table>
+
+<div class="mechanic-box">
+  <h4>Burst Fire (New Property)</h4>
+  <p>A weapon with the Burst Fire property can be fired in short controlled bursts. As an Action, you can spray a 10-foot cube within normal range. Each creature in the area must succeed on a <strong>DC 15 DEX save</strong> or take the weapon's normal damage. This uses <strong>10 rounds of ammunition</strong>.</p>
+</div>
+
+<div class="mechanic-box">
+  <h4>Loading (Adapted)</h4>
+  <p>A weapon with the Loading property fires a single shot per Attack action, regardless of Extra Attack or other features that grant additional attacks. You can still use a Bonus Action or other class features on the same turn &mdash; you just can't fire the weapon more than once. This applies to sniper rifles, rocket launchers, and grenade launchers.</p>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> EXOTIC WEAPONS <span class="tag tag-exotic">EXOTIC</span></h2>
+
+<p>Named or specialized weapons with unique properties. Require proficiency with the base weapon type unless otherwise noted. Cannot accept standard weapon mods unless stated.</p>
+
+<table>
+  <thead>
+    <tr><th>Weapon</th><th>Base Type</th><th>Damage</th><th>Special</th><th>ATR Price</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="model-name">Kendachi Mono-Three</span></td><td>VH Melee</td><td>2d6 Slashing</td><td>Two-Handed. Attacks ignore AC bonuses from non-magical armor (treat target AC as 10 + DEX mod only).</td><td class="price-atr">50,000eb</td></tr>
+    <tr><td><span class="model-name">Malorian Arms 3516</span></td><td>VH Pistol</td><td>2d8 Piercing</td><td>Counts as magical for overcoming resistance. +1 to attack and damage rolls.</td><td class="price-atr">100,000eb</td></tr>
+    <tr><td><span class="model-name">Constitution Arms Hurricane</span></td><td>Shotgun</td><td>2d8 Piercing</td><td>Can attack twice per Attack action (unique to this weapon). Requires STR 15+.</td><td class="price-atr">50,000eb</td></tr>
+    <tr><td><span class="model-name">Rhinemetall EMG-86 Railgun</span></td><td>Assault Rifle</td><td>2d10 Piercing</td><td>Attacks ignore AC bonuses from non-magical armor. Heavy, Loading. Requires STR 15+.</td><td class="price-atr">50,000eb</td></tr>
+    <tr><td><span class="model-name">Tsunami Arms Helix</span></td><td>Assault Rifle</td><td>1d10 Piercing</td><td>Burst Fire only (cannot make single-target attacks). Burst Fire DC is 17 instead of 15. Requires STR 15+.</td><td class="price-atr">50,000eb</td></tr>
+    <tr><td><span class="model-name">Microwaver</span></td><td>Heavy Pistol</td><td>1d10 Lightning</td><td>On hit, target's cyberware is disabled for 1 round (DM determines which system). No effect on unaugmented targets.</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Shrieker</span></td><td>Heavy Pistol</td><td>1d10 Piercing</td><td>On hit, target must succeed on a DC 13 CON save or be Deafened for 1 minute.</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Stun Baton</span></td><td>Medium Melee</td><td>1d6 Lightning</td><td>On hit, target must succeed on a DC 13 CON save or be Stunned until the end of their next turn. Non-lethal.</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Stun Gun</span></td><td>Heavy Pistol</td><td>1d6 Lightning</td><td>Range 15/30. On hit, DC 13 CON save or Stunned until end of target's next turn. Non-lethal.</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Flamethrower</span></td><td>Heavy Weapon</td><td>3d6 Fire</td><td>15-foot cone. Each creature in the area makes DC 14 DEX save, taking half damage on success. 10 uses per tank.</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Dartgun</span></td><td>Heavy Pistol</td><td>1 Piercing + payload</td><td>Delivers a poison, drug, or sedative on hit. Dart damage is negligible &mdash; the payload is the point.</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Air Pistol</span></td><td>Heavy Pistol</td><td>1d4 Bludgeoning</td><td>Fires paint balls or acid capsules. Acid capsule: +1d6 Acid damage.</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Battleglove</span></td><td>Heavy Melee</td><td>1d8 Bludgeoning</td><td>Gauntlet with 3 Cyberarm option slots. Can install popup weapons and similar augments.</td><td class="price-atr">10,000eb</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> AMMUNITION <span class="tag tag-ranged">AMMO</span></h2>
+
+<h3>Standard Ammo</h3>
+<table>
+  <thead><tr><th>Type</th><th>Quantity</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td>Pistol Rounds</td><td>20</td><td class="price-atr">100eb</td></tr>
+    <tr><td>Rifle Rounds</td><td>20</td><td class="price-atr">150eb</td></tr>
+    <tr><td>Shotgun Shells</td><td>10</td><td class="price-atr">100eb</td></tr>
+    <tr><td>Arrows / Bolts</td><td>10</td><td class="price-atr">50eb</td></tr>
+    <tr><td>Grenades (Frag)</td><td>1</td><td class="price-atr">500eb</td></tr>
+    <tr><td>Grenades (Smoke/Flash/EMP)</td><td>1</td><td class="price-atr">250eb</td></tr>
+    <tr><td>Rockets</td><td>1</td><td class="price-atr">2,000eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Specialty Ammo</h3>
+<p>Specialty rounds cost 5&times; the standard ammo price and change the weapon's damage type or add an effect. Sold in the same quantities as standard ammo.</p>
+
+<table>
+  <thead><tr><th>Type</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Armor-Piercing</span></td><td>Damage type becomes Piercing. Target's AC bonus from armor (not DEX or shields) is halved (round down). Damage dice reduced by one step (1d10 &rarr; 1d8, etc).</td></tr>
+    <tr><td><span class="model-name">Incendiary</span></td><td>Damage type becomes Fire. On a critical hit, the target catches fire (1d4 Fire damage at the start of each of their turns until they use an Action to extinguish).</td></tr>
+    <tr><td><span class="model-name">EMP</span></td><td>Damage type becomes Lightning. On hit, one piece of the target's cyberware is disabled for 1 round (DM's choice). Damage dice reduced by one step.</td></tr>
+    <tr><td><span class="model-name">Rubber / Non-Lethal</span></td><td>Damage type becomes Bludgeoning. All damage is non-lethal (target falls unconscious at 0 HP instead of making death saves).</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> ARMOR <span class="tag tag-armor">ARMOR</span> <span class="tag tag-gear">5E AC SYSTEM</span></h2>
+
+<p>Night City armor uses the standard 5e AC system. For <strong>helmets</strong> and <strong>corpo fashion armor</strong>, see the <strong>Armor, Fashion &amp; Protection</strong> page.</p>
+
+<h3>Light Armor (AC = base + DEX mod)</h3>
+<table>
+  <thead><tr><th>Armor</th><th>AC</th><th>Stealth</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Leathers</span><span class="model-desc">Nomad favorite. Looks good, smells like the road.</span></td><td>11 + DEX</td><td>&mdash;</td><td class="price-atr">200eb</td></tr>
+    <tr><td><span class="model-name">Kevlar Vest</span><span class="model-desc">Concealable. Worn under a jacket.</span></td><td>12 + DEX</td><td>&mdash;</td><td class="price-atr">500eb</td></tr>
+    <tr><td><span class="model-name">Light Armorjack</span><span class="model-desc">Kevlar and plastic mesh woven into normal-looking clothes.</span></td><td>12 + DEX</td><td>&mdash;</td><td class="price-atr">1,000eb</td></tr>
+    <tr><td><span class="model-name">Bodyweight Suit</span><span class="model-desc">Sintered armorgel skinsuit. Supports interface plugs and cyberdeck storage.</span></td><td>13 + DEX</td><td>&mdash;</td><td class="price-atr">10,000eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Medium Armor (AC = base + DEX mod, max +2)</h3>
+<table>
+  <thead><tr><th>Armor</th><th>AC</th><th>Stealth</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Medium Armorjack</span><span class="model-desc">Heavier plating. You can tell someone's wearing it.</span></td><td>14 + DEX (max 2)</td><td>&mdash;</td><td class="price-atr">1,500eb</td></tr>
+    <tr><td><span class="model-name">Heavy Armorjack</span><span class="model-desc">Dense layered Kevlar with solid plate inserts.</span></td><td>15 + DEX (max 2)</td><td>Disadvantage</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Flak Vest</span><span class="model-desc">21st century military surplus. Bulky but effective.</span></td><td>15 + DEX (max 2)</td><td>Disadvantage</td><td class="price-atr">5,000eb</td></tr>
+  </tbody>
+</table>
+
+<h3>Heavy Armor (flat AC, no DEX bonus)</h3>
+<table>
+  <thead><tr><th>Armor</th><th>AC</th><th>STR Req</th><th>Stealth</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Metalgear</span><span class="model-desc">Full-body composite armor. You're a walking tank. Everyone knows it.</span></td><td>18</td><td>STR 15</td><td>Disadvantage</td><td class="price-atr">50,000eb</td></tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>Bulletproof Shield:</strong> Functions as a standard 5e Shield (+2 AC). Requires one free hand. Made of polycarbonate. Has 20 HP &mdash; if reduced to 0 HP by attacks, it shatters and must be replaced. <strong>Price: 1,000eb.</strong>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> CYBERWARE &mdash; FASHIONWARE <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>7 Option Slots available. Cosmetic implants &mdash; no Humanity Loss. No mechanical benefit unless specified.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Biomonitor</span></td><td>Mall</td><td>Subdermal vitals readout. Links to Agent (phone). You always know your exact HP.</td><td class="price-atr">1,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Chemskin</span></td><td>Mall</td><td>Permanent skin color change. Advantage on Charisma (Performance) checks related to appearance when paired with Techhair.</td><td class="price-atr">1,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">EMP Threading</span></td><td>Mall</td><td>Silver circuit-pattern lines across the body. Purely cosmetic.</td><td class="price-atr">100eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Light Tattoo</span></td><td>Mall</td><td>Subdermal glowing tattoos. Advantage on Charisma (Persuasion) checks in social settings where style matters (clubs, parties, gang meets) when you have 3+ tattoos.</td><td class="price-atr">1,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Shift Tacts</span></td><td>Mall</td><td>Color-changing eye lenses. Purely cosmetic.</td><td class="price-atr">1,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Skinwatch</span></td><td>Mall</td><td>Subdermal LED watch. Purely cosmetic. Always know the time.</td><td class="price-atr">1,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Techhair</span></td><td>Mall</td><td>Color-light-emitting hair. See Chemskin for combo benefit.</td><td class="price-atr">1,000eb</td><td>0</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> CYBERWARE &mdash; NEURALWARE <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Foundational: <strong>Neural Link</strong> (5 Option Slots). Required for all Neuralware.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Neural Link</span></td><td>Clinic</td><td>Wired nervous system. Required for all Neuralware and Subdermal Grip. 5 Option Slots. No direct combat benefit alone.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Braindance Recorder</span></td><td>Clinic</td><td>Records your sensory experiences to a memory chip. Useful for intel, evidence, or selling BDs. No combat effect. Requires Neural Link.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Chipware Socket</span></td><td>Clinic</td><td>Socket in back of neck. Required for all Chipware. Requires Neural Link.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Interface Plugs</span></td><td>Clinic</td><td>Wrist/head plugs for jacking into machines, vehicles, and NET access points. Required for netrunning. Requires Neural Link.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Kerenzikov</span></td><td>Clinic</td><td>Speedware. <strong>+2 to Initiative rolls.</strong> Only 1 Speedware at a time. Requires Neural Link. (For the full Sandevistan/Kerenzikov upgrade tree, see the Cyberware Compendium.)</td><td class="price-atr">5,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Sandevistan</span></td><td>Clinic</td><td>Speedware. Activate as an Action: <strong>+5 to Initiative for 1 minute.</strong> 1 hour cooldown. Only 1 Speedware. Requires Neural Link. (See Compendium for upgraded models.)</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Chemical Analyzer</span></td><td>N/A</td><td>Chipware. As an Action, analyze a substance you can touch. The DM tells you its composition (equivalent to a DC 0 Intelligence (Nature/Medicine) check for chemistry). Requires Chipware Socket.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Memory Chip</span></td><td>N/A</td><td>Data storage. Can hold files, maps, coordinates, programs, or BDs. No combat effect.</td><td class="price-atr">100eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Olfactory Boost</span></td><td>N/A</td><td>Chipware. <strong>Advantage on Wisdom (Survival) checks to track creatures by scent.</strong> Requires Chipware Socket.</td><td class="price-atr">1,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Pain Editor</span></td><td>N/A</td><td>Chipware. <strong>You ignore the effects of being at half HP or below</strong> (no visible pain responses, no disadvantage from homebrew wound rules if applicable). You still drop at 0 HP. Requires Chipware Socket.</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Skill Chip</span></td><td>N/A</td><td>Chipware. Gain <strong>proficiency in one skill</strong> while installed. If you already have proficiency, no additional benefit. One chip per skill. Requires Chipware Socket.</td><td class="price-atr">5,000eb (10,000eb for &ldquo;double proficiency&rdquo; skills like Thieves&rsquo; Tools)</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Tactile Boost</span></td><td>N/A</td><td>Chipware. You can detect motion within 20 ft through solid surfaces by placing your hand on them (vibration sensing). Effectively <strong>Tremorsense 20 ft</strong> while touching a surface. Requires Chipware Socket.</td><td class="price-atr">1,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">08</span> CYBERWARE &mdash; CYBEROPTICS <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Foundational: <strong>Cybereye</strong> (3 Option Slots each). Some options must be paired (installed in 2 Cybereyes).</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cybereye</span></td><td>Clinic</td><td>Artificial eye. 3 Option Slots. Functions as a normal eye. Required for all Cyberoptic options.</td><td class="price-atr">1,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Anti-Dazzle</span></td><td>Mall</td><td><strong>Immune to the Blinded condition</strong> caused by bright light, flashes, or flashbang effects. Must be paired.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Chyron</span></td><td>Mall</td><td>AR heads-up display in your field of vision. Can display maps, messages, and data feeds. No combat effect.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Color Shift</span></td><td>Mall</td><td>Unlimited color/pattern changes for the eye. Purely cosmetic.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Dartgun (Eye)</span></td><td>Clinic</td><td>Single-shot dartgun concealed in the eye. Range 20/60. Deals 1 Piercing + payload (poison, sedative, etc). Requires Action to fire. Must be manually reloaded (1 minute). Takes 3 slots.</td><td class="price-atr">5,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Image Enhance</span></td><td>Mall</td><td><strong>+2 to Wisdom (Perception) checks that rely on sight</strong> and <strong>+2 to Intelligence (Investigation) checks</strong> to find hidden objects. Must be paired.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Low Light / IR / UV</span></td><td>Mall</td><td><strong>Darkvision 60 ft.</strong> Also see through smoke, fog, and light obscurement. Must be paired. Takes 2 slots per eye.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">MicroOptics</span></td><td>Clinic</td><td>400x magnification. <strong>Advantage on Intelligence (Investigation) checks</strong> involving fine detail (examining evidence, reading tiny text, analyzing components).</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">MicroVideo</span></td><td>Clinic</td><td>Eye camera. Records audio and video to Memory Chip or Agent. No combat effect. Takes 2 slots.</td><td class="price-atr">5,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Radiation Detector</span></td><td>Clinic</td><td>Detect radiation sources within 100 ft as a blue glow overlay. Useful in contaminated zones.</td><td class="price-atr">10,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Targeting Scope</span></td><td>Clinic</td><td><strong>+1 to ranged attack rolls.</strong> Does not stack with other Targeting augments.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">TeleOptics</span></td><td>Clinic</td><td>See detail up to 800 ft away clearly. <strong>Ranged attacks against targets beyond 100 ft do not have disadvantage</strong> (if they normally would due to long range).</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Virtuality</span></td><td>Mall</td><td>Projects NET/cyberspace imagery over real-world vision. Required for augmented-reality netrunning interfaces. Must be paired.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">09</span> CYBERWARE &mdash; CYBERAUDIO <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Foundational: <strong>Cyberaudio Suite</strong> (3 Option Slots, maximum 1 suite installed).</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cyberaudio Suite</span></td><td>Clinic</td><td>Internal audio processing system. 3 Option Slots. Max 1 installed. Required for all Cyberaudio options.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Amplified Hearing</span></td><td>Mall</td><td><strong>+2 to Wisdom (Perception) checks that rely on hearing.</strong></td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Audio Recorder</span></td><td>Clinic</td><td>Records audio to Memory Chip or Agent. No combat effect.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Bug Detector</span></td><td>Mall</td><td>Automatically alerts you when within 10 ft of an electronic surveillance device (bug, wire, hidden mic). No check required.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Homing Tracer</span></td><td>Clinic</td><td>Track a linked tracer beacon within 1 mile. You always know its direction and approximate distance.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Internal Agent</span></td><td>Mall</td><td>Internal smartphone. Audio calls, messages, NET access (audio only unless paired with Chyron Cybereye). Hands-free.</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Level Damper</span></td><td>Mall</td><td><strong>Immune to the Deafened condition</strong> and to effects caused by loud noise (thunderwave, flashbangs, Shrieker rounds).</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Radio Communicator</span></td><td>Mall</td><td>Internal radio. 1 mile range. Encrypted channel communication with other radio-equipped allies.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Radio Scanner / Music Player</span></td><td>Clinic</td><td>Tune into radio broadcasts within 1 mile. Play music from Data Pool or Memory Chip. The vibes are important.</td><td class="price-atr">500eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Radar Detector</span></td><td>Clinic</td><td>Alerts you when an active radar or targeting system is painting you within 300 ft. Useful for avoiding snipers and guided weapons.</td><td class="price-atr">5,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Scrambler / Descrambler</span></td><td>Mall</td><td>Encrypt your outgoing communications and decrypt incoming encrypted signals. Others need their own scrambler or a DC 20 Intelligence check to decode your messages.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Voice Stress Analyzer</span></td><td>Mall</td><td><strong>+2 to Wisdom (Insight) checks</strong> when listening to someone speak (detecting lies, reading stress levels).</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">10</span> CYBERWARE &mdash; INTERNAL BODY <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>7 Option Slots available. No foundational cyberware required.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">AudioVox</span></td><td>Clinic</td><td>Voice synthesizer. <strong>Advantage on Charisma (Performance) checks</strong> involving singing or voice imitation. Can perfectly mimic voices you've recorded.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Contraceptive Implant</span></td><td>Mall</td><td>Prevents pregnancy. No combat effect.</td><td class="price-atr">100eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Enhanced Antibodies</span></td><td>Mall</td><td>While resting, you regain <strong>additional hit dice equal to your proficiency bonus</strong> per long rest (instead of the standard half your total).</td><td class="price-atr">5,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Cybersnake</span></td><td>Hospital</td><td>Esophagus-mounted weapon. Functions as a <strong>Whip</strong> (1d4 Slashing, Finesse, Reach). Concealable (internal). Can deliver poison on hit. Action to deploy/retract.</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Gills</span></td><td>Hospital</td><td>You can <strong>breathe underwater</strong> indefinitely.</td><td class="price-atr">10,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Grafted Muscle &amp; Bone Lace</span></td><td>Hospital</td><td><strong>Your STR score increases by 2</strong> (maximum 20). This affects HP, carry capacity, Athletics, and melee damage.</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Independent Air Supply</span></td><td>Hospital</td><td>You can <strong>hold your breath for 30 minutes.</strong> Refills from ambient air over 1 hour.</td><td class="price-atr">10,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Nasal Filters</span></td><td>Clinic</td><td><strong>Advantage on saves against inhaled poisons, toxic gases, and airborne diseases.</strong></td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Radar / Sonar Implant</span></td><td>Clinic</td><td><strong>Blindsight 30 ft.</strong> Cannot detect through full cover (walls thicker than 1 ft).</td><td class="price-atr">10,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Toxin Binders</span></td><td>Clinic</td><td><strong>Advantage on Constitution saves against poison and drugs.</strong></td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Vampyres</span></td><td>Clinic</td><td>Retractable fangs. Functions as a <strong>Dagger</strong> (1d4 Piercing, Finesse, Light). Concealable (internal). Can deliver poison on hit.</td><td class="price-atr">5,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">11</span> CYBERWARE &mdash; EXTERNAL BODY <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>7 Option Slots available. No foundational cyberware required.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Hidden Holster</span></td><td>Clinic</td><td>Internal body cavity that stores one concealable weapon. <strong>DC 20 Wisdom (Perception) or Intelligence (Investigation) to detect</strong> during a search.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Skin Weave</span></td><td>Hospital</td><td><strong>+1 AC</strong> (natural armor bonus). Stacks with worn armor. Visible as faint subdermal mesh pattern.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Subdermal Armor</span></td><td>Hospital</td><td><strong>+2 AC</strong> (natural armor bonus). Stacks with worn armor. More visible &mdash; skin has a faintly metallic sheen.</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Subdermal Pocket</span></td><td>Clinic</td><td>Hidden 2&Prime;&times;4&Prime; storage space under the skin with a RealSkinn zipper. Stores small items (credchip, data shard, lockpick set). DC 20 to detect.</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">12</span> CYBERWARE &mdash; CYBERLIMBS <span class="tag tag-cyber">CYBERWARE</span></h2>
+
+<h3>Cyberarm (4 Option Slots)</h3>
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cyberarm</span></td><td>Hospital</td><td>Replacement arm. 4 Option Slots. Comes with Standard Hand (free). Functionally identical to a meat arm unless augmented.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Standard Hand</span></td><td>Clinic</td><td>Cybernetic hand. Can install in a meat arm (replaces hand only). No mechanical benefit.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Big Knucks</span></td><td>Clinic</td><td>Armored knuckles. Unarmed strikes deal <strong>1d6 Bludgeoning</strong> (instead of 1). Concealable. Works in meat arm.</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Cyberdeck (arm)</span></td><td>Clinic</td><td>Cyberdeck installed in Cyberarm. Cannot be disarmed, stolen, or pickpocketed. Takes 3 slots. Deck stats are separate (see Cyberware Compendium).</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Grapple Hand</span></td><td>Clinic</td><td>Fires hand on a grapple line (30 ft range). Can be used to grapple objects or anchor points as an Action. Not a weapon. Requires Cyberarm.</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Medscanner (arm)</span></td><td>Clinic</td><td><strong>+2 to Wisdom (Medicine) checks.</strong> Can diagnose illness and injury as an Action. Takes 2 slots.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Melee Weapon</span></td><td>Clinic</td><td>Any Light or Medium melee weapon (5e stats) concealed in Cyberarm. Deploy/retract as Bonus Action. Concealable. Takes 2 slots. (For Mantis Blades and Wolvers, see Compendium.)</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Ranged Weapon</span></td><td>Clinic</td><td>Any one-handed ranged weapon (5e stats) concealed in Cyberarm. Deploy/retract as Bonus Action. Concealable. Takes 2 slots.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Grenade Launcher</span></td><td>Clinic</td><td>Single-shot launcher. Range 30/60. Deals damage by grenade type. Concealable. Takes 2 slots. Must be manually reloaded (Action).</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Popup Shield</span></td><td>Clinic</td><td>Bulletproof Shield (5e Shield, +2 AC) concealed in Cyberarm. Deploy/retract as Bonus Action. 20 HP, replaceable when broken. Takes 3 slots.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Quick Change Mount</span></td><td>Clinic</td><td>Remove or install a Cyberarm as an Action. Allows swapping between different preloaded arms.</td><td class="price-atr">1,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Rippers</span></td><td>Clinic</td><td>Carbo-glass claws. Functions as a <strong>Shortsword</strong> (1d6 Slashing, Finesse, Light). Concealable. Works in meat arm.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Scratchers</span></td><td>Mall</td><td>Carbo-glass fingernails. Functions as a <strong>Dagger</strong> (1d4 Slashing, Finesse, Light). Concealable. Works in meat arm.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Shoulder Cam</span></td><td>Clinic</td><td>Video camera in shoulder. Records to chip or Agent. Concealable. Takes 2 slots. No combat effect.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Slice &rsquo;N Dice</span></td><td>Clinic</td><td>Monofilament whip in thumb. Functions as a <strong>Whip</strong> (1d4 Slashing, Finesse, Reach). Concealable. Works in meat arm.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Subdermal Grip</span></td><td>Clinic</td><td>Smartgun link through the palm. <strong>+1 to attack rolls with smart weapons.</strong> Works in meat arm. Requires Neural Link.</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Techscanner (arm)</span></td><td>Clinic</td><td><strong>+2 to Intelligence (Investigation) and relevant tool checks</strong> when diagnosing or repairing technology. Takes 2 slots.</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Tool Hand</span></td><td>Clinic</td><td>Built-in tools (screwdriver, wrench, drill, soldering iron). Counts as <strong>Tinker's Tools</strong>. You're always equipped. Works in meat arm.</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Wolvers</span></td><td>Clinic</td><td>Retractable claws from knuckles. Functions as a <strong>Longsword</strong> (1d8 Slashing, Versatile 1d10). Concealable. Works in meat arm. (See Compendium for upgraded Wolvers.)</td><td class="price-atr">5,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+  </tbody>
+</table>
+
+<h3>Cyberleg (3 Option Slots)</h3>
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cyberleg</span></td><td>Hospital</td><td>Replacement leg. 3 Option Slots. Comes with Standard Foot (free). Most options must be paired (both legs).</td><td class="price-atr">1,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Standard Foot</span></td><td>Clinic</td><td>Cybernetic foot. No mechanical benefit. Can install in a meat leg.</td><td class="price-atr">1,000eb</td><td>2</td></tr>
+    <tr><td><span class="model-name">Grip Foot</span></td><td>Clinic</td><td>You gain a <strong>climbing speed equal to your walking speed.</strong> Must be paired.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Jump Booster</span></td><td>Clinic</td><td>Your <strong>jump distance is doubled.</strong> Must be paired. Takes 2 slots.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Skate Foot</span></td><td>Clinic</td><td>Inline skates. Your <strong>movement speed increases by 10 ft</strong> on smooth terrain when skating. Concealable. Must be paired.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Talon Foot</span></td><td>Clinic</td><td>Blade in foot. Functions as a <strong>Dagger</strong> (1d4 Slashing, Finesse, Light). Can kick attack as a Bonus Action if you took the Attack action. Concealable. Works in meat leg.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Web Foot</span></td><td>Clinic</td><td>You gain a <strong>swimming speed equal to your walking speed.</strong> Must be paired.</td><td class="price-atr">5,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+  </tbody>
+</table>
+
+<h3>Cyberlimb Upgrades (Arm or Leg)</h3>
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Hardened Shielding</span></td><td>Clinic</td><td>This limb and all installed options are <strong>immune to EMP effects and Lightning damage.</strong> Does not protect the rest of your body.</td><td class="price-atr">10,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Plastic Covering</span></td><td>Mall</td><td>Cosmetic coating in any color/pattern. No slot cost. No mechanical effect.</td><td class="price-atr">1,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">RealSkinn Covering</span></td><td>Mall</td><td>Artificial skin. Limb passes as organic to casual inspection (DC 15 Perception to notice). No slot cost.</td><td class="price-atr">5,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Superchrome Covering</span></td><td>Mall</td><td>Shiny metallic coating. <strong>Advantage on Charisma (Intimidation) checks</strong> where visible chrome matters. No slot cost.</td><td class="price-atr">10,000eb</td><td>0</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">13</span> CYBERWARE &mdash; BORGWARE <span class="tag tag-cyber">CYBERWARE</span></h2>
+<p>Full-body replacement territory. These are extreme modifications that push the limits of what's human. High Humanity Loss &mdash; handle with care.</p>
+
+<table>
+  <thead><tr><th>Name</th><th>Install</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Artificial Shoulder Mount</span></td><td>Hospital</td><td>Mount 2 additional Cyberarms below your first set. You can hold additional items/weapons but do <strong>not</strong> gain extra attacks from the additional arms (unless a class feature or spell grants them).</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Implanted Linear Frame &beta;</span></td><td>Hospital</td><td>Skeleton upgrade. <strong>Your STR score becomes 20</strong> (if not already higher). Requires STR 16+ and Grafted Muscle &amp; Bone Lace (x2).</td><td class="price-atr">50,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Implanted Linear Frame &sigma;</span></td><td>Hospital</td><td>Skeleton upgrade. <strong>Your STR score becomes 18</strong> (if not already higher). Requires STR 13+ and Grafted Muscle &amp; Bone Lace.</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">MultiOptic Mount</span></td><td>Hospital</td><td>Mount up to 5 additional Cybereyes (total 7). Provides <strong>advantage on all Wisdom (Perception) checks that rely on sight</strong> and you cannot be flanked (you can see in all directions).</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Sensor Array</span></td><td>Clinic</td><td>5 additional Cyberaudio option slots (total 8). Requires Cyberaudio Suite. No additional slot cost on the suite itself.</td><td class="price-atr">10,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+  </tbody>
+</table>
+
+
+<div class="footer-bar">
+  // ADAPTED FROM CYBERPUNK RED CORE RULEBOOK // NATIVE 5E MECHANICS // ATR &times;10 PRICING //<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
