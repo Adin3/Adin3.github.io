@@ -47,6 +47,20 @@
     z-index: 0;
   }
 
+  /* S-7R4 */
+  .s7r4 {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: url('spectra.png') center/contain no-repeat;
+    opacity: 0; /*0.0025;*/
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+    filter: blur(0.5px);
+  }
+
   /* SCANLINE OVERLAY */
   body::after {
     content: '';
@@ -336,6 +350,8 @@
 </head>
 <body>
 
+<div class="s7r4"></div>
+
 <div class="page-wrapper">
 
   <header class="site-header">
@@ -374,6 +390,18 @@
       <div class="doc-tags">
         <span class="doc-tag doc-tag-gear">GEAR</span>
         <span class="doc-tag doc-tag-homebrew">HOMEBREW</span>
+      </div>
+    </a>
+
+    <a href="night-city-standard-gear.html" class="doc-card accent-cyan">
+      <div class="doc-card-top">
+        <span class="doc-title">NIGHT CITY 2190 &mdash; STANDARD GEAR</span>
+        <span class="doc-arrow">&rarr;</span>
+      </div>
+      <div class="doc-desc">All weapons, armor, and cyberware from Cyberpunk RED, fully adapted to native 5e mechanics. Scaled damage dice, proper AC system, and cyberware effects that reference 5e rules. The complete implant catalog for Night City.</div>
+      <div class="doc-tags">
+        <span class="doc-tag doc-tag-gear">GEAR</span>
+        <span class="doc-tag doc-tag-rules">ADAPTED</span>
       </div>
     </a>
 
@@ -520,6 +548,20 @@
       LIVING DOCUMENTS &mdash; SUBJECT TO UPDATES
     </p>
   </footer>
+
+  <!-- ======================================================== -->
+  <!--                                                          -->
+  <!--  Still looking for clues?                                -->
+  <!--  You'll have to go deeper than that.                     -->
+  <!--                                                          -->
+  <!--  Ten voices speak across two channels.                   -->
+  <!--  Each one starts with a whisper.                         -->
+  <!--  Listen to the first breath of every voice               -->
+  <!--  and you'll find where the signal leads.                 -->
+  <!--                                                          -->
+  <!--  She's waiting.                                          -->
+  <!--                                                          -->
+  <!-- ======================================================== -->
 
 </div>
 
