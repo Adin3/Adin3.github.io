@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon 2185 &mdash; Augmentations &amp; Gear (5e Adapted)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+  :root {
+    --cyan: #00f0ff; --magenta: #ff2d6f; --yellow: #f7e018; --green: #39ff14;
+    --orange: #ff6a00; --red: #ff073a; --purple: #b464ff;
+    --bg-dark: #0a0e17; --bg-panel: #111827; --bg-panel-alt: #0d1520;
+    --border-glow: rgba(0,240,255,0.25);
+    --text-primary: #e0e7ef; --text-muted: #8899aa; --text-dim: #556677;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg-dark); color:var(--text-primary); font-family:'Rajdhani',sans-serif; font-weight:400; line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+  .doc-header { text-align:center; padding:3rem 2rem 2rem; border:1px solid var(--border-glow); background:linear-gradient(180deg,rgba(0,240,255,0.05) 0%,transparent 100%); margin-bottom:2.5rem; }
+  .doc-header::before { content:"// ADAPTED FROM CARBON 2185 — NATIVE 5E MECHANICS //"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--magenta); letter-spacing:0.3em; margin-bottom:1.5rem; opacity:0.8; }
+  .doc-header h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:1.8rem; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); letter-spacing:0.05em; margin-bottom:0.5rem; }
+  .doc-header .subtitle { font-family:'Exo 2',sans-serif; font-size:1rem; color:var(--text-muted); font-weight:300; }
+  .doc-header .campaign-tag { display:inline-block; margin-top:1rem; padding:0.3rem 1rem; border:1px solid var(--yellow); color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; }
+  h2 { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.2rem; color:var(--cyan); margin:2.5rem 0 1rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,240,255,0.2); letter-spacing:0.05em; }
+  h2 .section-num { color:var(--magenta); margin-right:0.5rem; font-size:0.85rem; }
+  h3 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--yellow); margin:1.5rem 0 0.6rem; }
+  p { margin-bottom:0.8rem; font-size:0.95rem; }
+  .flavor-quote { font-family:'Exo 2',sans-serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); border-left:3px solid var(--cyan); padding:0.5rem 1rem; margin:0.8rem 0 1.2rem; background:rgba(0,240,255,0.03); }
+  .mechanic-box { border:1px solid rgba(0,240,255,0.2); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(0,240,255,0.03); }
+  .mechanic-box h4 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--cyan); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .mechanic-box p { margin-bottom:0.3rem; font-size:0.9rem; }
+  .ruling-box { border:1px solid var(--green); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(57,255,20,0.04); }
+  .ruling-box::before { content:"TABLE RULING"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--green); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .dm-note { border:1px dashed var(--orange); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,106,0,0.04); }
+  .dm-note::before { content:"DM / ATR NOTE"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--orange); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  .warning-box { border:1px solid var(--red); padding:0.8rem 1rem; margin:0.8rem 0; background:rgba(255,7,58,0.05); }
+  .warning-box::before { content:"⚠ RESTRICTED"; display:block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--red); letter-spacing:0.2em; margin-bottom:0.4rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+  thead th { background:rgba(0,240,255,0.1); color:var(--cyan); font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem; text-align:left; border-bottom:2px solid var(--cyan); }
+  tbody td { padding:0.45rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+  tbody tr:hover { background:rgba(0,240,255,0.03); }
+  .model-name { font-family:'Exo 2',sans-serif; font-weight:600; color:var(--text-primary); }
+  .model-desc { font-family:'Exo 2',sans-serif; font-size:0.75rem; color:var(--text-dim); font-style:italic; display:block; margin-top:0.15rem; }
+  .price-atr { color:var(--yellow); font-family:'Share Tech Mono',monospace; font-weight:700; }
+  .price-orig { color:var(--text-dim); font-size:0.7rem; font-family:'Share Tech Mono',monospace; display:block; }
+  .hl-low { color:var(--green); } .hl-mid { color:var(--yellow); } .hl-high { color:var(--orange); } .hl-extreme { color:var(--red); } .hl-psycho { color:var(--magenta); }
+  .tag { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.65rem; padding:0.1rem 0.35rem; border-radius:2px; margin:0.1rem 0.1rem; }
+  .tag-melee { background:rgba(255,106,0,0.15); color:var(--orange); }
+  .tag-ranged { background:rgba(255,7,58,0.15); color:var(--red); }
+  .tag-armor { background:rgba(0,240,255,0.15); color:var(--cyan); }
+  .tag-aug { background:rgba(57,255,20,0.15); color:var(--green); }
+  .tag-mod { background:rgba(247,224,24,0.15); color:var(--yellow); }
+  .tag-drug { background:rgba(255,45,111,0.15); color:var(--magenta); }
+  .tier-badge { font-family:'Orbitron',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.05em; display:inline-block; padding:0.1rem 0.4rem; border-radius:2px; }
+  .tier-0 { background:rgba(255,255,255,0.08); color:var(--text-muted); border:1px solid var(--text-dim); }
+  .tier-1 { background:rgba(57,255,20,0.12); color:var(--green); border:1px solid var(--green); }
+  .tier-2 { background:rgba(0,240,255,0.12); color:var(--cyan); border:1px solid var(--cyan); }
+  .tier-3 { background:rgba(247,224,24,0.12); color:var(--yellow); border:1px solid var(--yellow); }
+  .tier-4 { background:rgba(255,106,0,0.12); color:var(--orange); border:1px solid var(--orange); }
+  .tier-5 { background:rgba(255,7,58,0.12); color:var(--red); border:1px solid var(--red); }
+  .toc { border:1px solid rgba(255,255,255,0.08); background:var(--bg-panel-alt); padding:1rem 1.2rem; margin-bottom:2rem; }
+  .toc h3 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:0.6rem; letter-spacing:0.1em; }
+  .toc ul { list-style:none; } .toc li { font-family:'Share Tech Mono',monospace; font-size:0.78rem; padding:0.2rem 0; color:var(--text-muted); } .toc li span { color:var(--magenta); margin-right:0.5rem; }
+  .footer-bar { margin-top:3rem; padding:1rem; border-top:1px solid rgba(0,240,255,0.15); text-align:center; font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
+  @media print { body { background:#fff; color:#111; } .doc-header { border-color:#ccc; background:none; } .doc-header h1 { color:#111; text-shadow:none; } h2 { color:#333; border-color:#ccc; } thead th { background:#eee; color:#333; border-color:#333; } }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>CARBON 2185 &mdash; AUGMENTATIONS</h1>
+  <div class="subtitle">Tiered Augmentation System Adapted for 5e &mdash; ATR Pricing &amp; Humanity Loss</div>
+  <div class="campaign-tag">ALL THAT REMAINS &mdash; NIGHT CITY 2190</div>
+</div>
+
+<div class="dm-note">
+  <strong>What this page is:</strong> Carbon 2185's tiered augmentation system, adapted for ATR's 5e rules. Original Carbon prices (in wonlongs) have been converted to eddies. Blood Toxicity values from Carbon have been replaced with ATR's Humanity Loss system for consistency across all cyberware. Carbon weapons and armor are available in the original Carbon catalog &mdash; this page focuses on the <strong>augmentation tiers</strong>, which are the unique contribution Carbon brings to ATR.
+</div>
+
+<div class="mechanic-box">
+  <h4>Carbon Augmentation Tiers in ATR</h4>
+  <p><strong>Tier 0:</strong> Universal. Everyone has these. Minimal HL.</p>
+  <p><strong>Tier 1:</strong> Civilian-grade. Bulky, industrial. Available at character creation.</p>
+  <p><strong>Tier 2:</strong> Security-grade. Sleeker. Usually requires connections or a job that provides them.</p>
+  <p><strong>Tier 3:</strong> Specialist. Cutting edge. Requires corporate or street influence to acquire.</p>
+  <p><strong>Tier 4:</strong> Military-grade. Illegal for civilians. Serious consequences if caught.</p>
+  <p><strong>Tier 5:</strong> Experimental/Illegal. Capital offense to possess. Black ops or crime lord territory.</p>
+  <p><strong>Body Slot Rule:</strong> You can only have one augmentation per body part (Neural, Eyes, Right Arm, Left Arm, Torso, Skin, Legs). Tier 0 Neural and Eyes augments stack with higher tiers. All others must be removed before installing a replacement.</p>
+</div>
+
+<div class="toc">
+  <h3>// CONTENTS</h3>
+  <ul>
+    <li><span>01</span> Tier 0 &mdash; Universal</li>
+    <li><span>02</span> Tier 1 &mdash; Civilian</li>
+    <li><span>03</span> Tier 2 &mdash; Security</li>
+    <li><span>04</span> Tier 3 &mdash; Specialist</li>
+    <li><span>05</span> Tier 4 &mdash; Military</li>
+    <li><span>06</span> Tier 5 &mdash; Illegal</li>
+    <li><span>07</span> Blood Toxicity &amp; Anti-Toxicity Medication</li>
+  </ul>
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">01</span> TIER 0 &mdash; UNIVERSAL <span class="tier-badge tier-0">TIER 0</span></h2>
+<p>Almost everyone has at least one. Stacks with higher tier augments on the same body part. Minimal or no Humanity Loss.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Neurolink</span><span class="model-desc">Installed at birth. The foundation of modern life.</span></td><td>Neural</td><td>Download/upload data via skull port. Required for all neural augments. Provided free at birth.</td><td>Free</td><td>0</td></tr>
+    <tr><td><span class="model-name">Basic HUD</span><span class="model-desc">Also installed at birth. Comes with ads.</span></td><td>Eyes</td><td>AR overlay: prices, navigation, caller ID, news feeds. Displays mandatory corporate advertisements.</td><td>Free</td><td>0</td></tr>
+    <tr><td><span class="model-name">Enhanced HUD</span><span class="model-desc">The ad-free upgrade.</span></td><td>Eyes</td><td>Ad-free HUD. Links to biolocked weapons (ammo count display), shows vitals. <strong>You always know your exact HP and ammo count.</strong></td><td class="price-atr">3,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Language Upgrade</span></td><td>Neural</td><td>Learn one new language (spoken and understood). Can install unlimited times.</td><td class="price-atr">10,000eb</td><td>0</td></tr>
+    <tr><td><span class="model-name">Instant Learning</span></td><td>Neural</td><td><strong>Gain proficiency in one skill or tool.</strong> Requires 24 consecutive hours at a clinic. No limit on installations.</td><td class="price-atr">25,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Replacement Limb/Organ</span></td><td>Eyes/Legs/Arm</td><td>Basic cybernetic replacement for a lost body part. No stat changes. Functionally identical to the original.</td><td class="price-atr">10,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Mechanical Liver</span></td><td>Torso</td><td>Sober up instantly (6 seconds) via neurolink command. No hangovers. <strong>Advantage on CON saves against alcohol and ingested poisons.</strong></td><td class="price-atr">5,000eb</td><td>2 (1d6/2)</td></tr>
+    <tr><td><span class="model-name">Never-Red</span></td><td>Skin</td><td>Blocks UV damage, repairs sun damage in real time. <strong>Resistance to Radiant damage.</strong></td><td class="price-atr">7,500eb</td><td>0</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">02</span> TIER 1 &mdash; CIVILIAN <span class="tier-badge tier-1">TIER 1</span></h2>
+<p>Affordable augments for working people. Bulky, obviously industrial. No attempt to hide that they're chrome.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Enhanced Aiming Mk. I</span></td><td>Eyes</td><td>1.5x optical zoom. <strong>+1 to ranged attack rolls</strong> (if you can see the target).</td><td class="price-atr">18,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Visser Night Vision Visor</span></td><td>Eyes</td><td>Action to toggle. <strong>Darkvision 30 ft</strong> (greyscale only). While active: disadvantage on Perception checks in bright light.</td><td class="price-atr">14,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Quickened Reflexes</span><span class="model-desc">The chrome that ends arguments before they start.</span></td><td>Neural</td><td><strong>+5 to Initiative rolls. +2 to DEX saving throws.</strong></td><td class="price-atr">35,000eb</td><td class="hl-high">HL: 6d6</td></tr>
+    <tr><td><span class="model-name">Hidden Blade</span></td><td>Arm (either)</td><td>Concealed 3 ft blade (DC 20 to detect without surgery). <strong>1d8 Slashing, Finesse.</strong> Bonus Action to extend/retract. Cannot use that hand while extended.</td><td class="price-atr">20,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Recoil Reduction</span></td><td>Arm (dominant)</td><td>Counterweights and gyroscope system. <strong>+1 to damage rolls</strong> with two-handed weapons or weapons held in your dominant hand.</td><td class="price-atr">15,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">J&auml;ger Legs</span></td><td>Legs</td><td><strong>+5 ft walking speed. Jump distance (high and long) increased by 5 ft.</strong></td><td class="price-atr">15,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Toughened</span></td><td>Torso</td><td><strong>Max HP increases by 2 &times; your level.</strong> Gain +2 HP per level up. Only while installed &mdash; removing it reduces your max HP accordingly.</td><td class="price-atr">20,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Tungsten Armored Bodyform</span></td><td>Torso</td><td>AC cannot be lower than <strong>11 + DEX mod</strong> (natural armor floor). <strong>DR/1 against Piercing damage from firearms</strong> (stacks with armor). While wearing armor over this augment: vulnerability to Lightning damage.</td><td class="price-atr">22,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Holographic Clothes</span></td><td>Skin</td><td>100+ holographic outfits controlled via neurolink. No warmth or physical protection. <strong>Advantage on Charisma (Deception) checks</strong> to disguise your social class or blend into a different crowd.</td><td class="price-atr">15,000eb</td><td>2 (1d6/2)</td></tr>
+  </tbody>
+</table>
+
+<div class="ruling-box">
+  <strong>Quickened Reflexes &mdash; Session Ruling:</strong> This augment was priced at 10,000eb in the original Carbon sourcebook. The table agreed this was severely undercosted for 5e, where +5 Initiative is equivalent to the Alert feat and +2 DEX saves is a significant defensive bonus. Repriced to 35,000eb with 6d6 HL to reflect its actual power level.
+</div>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">03</span> TIER 2 &mdash; SECURITY <span class="tier-badge tier-2">TIER 2</span></h2>
+<p>Sleeker, more advanced. Usually provided by employers (security firms, police, PMCs). Requires connections to buy independently.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Cat&rsquo;s Eyes</span></td><td>Eyes</td><td><strong>Darkvision 60 ft</strong> (greyscale). <strong>+1 to ranged attack rolls</strong> (if you can see the target). Replaces Enhanced Aiming Mk. I.</td><td class="price-atr">40,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Enhanced Aiming Mk. II</span></td><td>Eyes</td><td>2x optical zoom. <strong>+2 to ranged attack rolls</strong> (if you can see the target). Replaces Mk. I.</td><td class="price-atr">75,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Enhanced Infantry Arms</span></td><td>Arms (both)</td><td>Choose one weapon type (Assault Rifles or Pistols). <strong>+1 to attack and +1 to damage</strong> with that type. Attempts to disarm you have disadvantage.</td><td class="price-atr">65,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Runners</span><span class="model-desc">Laufende Beine. Regierung Kybernetik's pride.</span></td><td>Legs</td><td><strong>+10 ft walking speed.</strong> Dash action ignores difficult terrain. Carry capacity increases by 10 lb.</td><td class="price-atr">30,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Shock Absorbers</span></td><td>Legs</td><td>No damage from falls under 50 ft (if landing on feet). <strong>Advantage on Acrobatics checks to land safely. Advantage on saves against being knocked prone.</strong></td><td class="price-atr">45,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Angel Wings</span></td><td>Torso</td><td><strong>Flying speed equal to walking speed.</strong> 1 hour total flight per 12-hour recharge (minimum 1 minute per flight). Cannot be hidden. Wings are large and obvious.</td><td class="price-atr">65,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Built-In Parachute</span></td><td>Torso</td><td>Deploy when falling 100+ ft. Reduces fall speed to safe levels (no damage). Action to repack after deployment.</td><td class="price-atr">30,000eb</td><td class="hl-low">3 (1d6)</td></tr>
+    <tr><td><span class="model-name">Reinforced Lungs</span></td><td>Torso</td><td><strong>Breathe water for up to 1 hour. Resistance to gas/inhaled damage. Hold breath for 6 minutes.</strong></td><td class="price-atr">55,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Invisi-Skin</span></td><td>Skin</td><td>Bonus Action to toggle via neurolink. While active: <strong>advantage on Stealth checks that rely on sight. Creatures have disadvantage on Perception checks to spot you visually.</strong> Extends 1 inch past body only &mdash; doesn't cover held items or worn armor.</td><td class="price-atr">55,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Holographic Disguise</span></td><td>Skin</td><td>Action to toggle. Change apparent height (&plusmn;1 ft), build, and features. Purely visual &mdash; physical contact reveals the illusion. <strong>DC 17 Intelligence (Perception) to see through.</strong></td><td class="price-atr">50,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">04</span> TIER 3 &mdash; SPECIALIST <span class="tier-badge tier-3">TIER 3</span></h2>
+<p>Cutting edge. Only specialist cybersurgeons can install these. Requires significant corporate or street influence to acquire.</p>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Advanced Scouting Implantation</span></td><td>Eyes</td><td><strong>Thermal vision: detect heat signatures within 60 ft</strong> through light cover, smoke, and darkness. <strong>Blindsight 15 ft.</strong></td><td class="price-atr">500,000eb</td><td class="hl-extreme">21 (6d6)</td></tr>
+    <tr><td><span class="model-name">Biolink Gun</span></td><td>Neural</td><td>Neural link to biolocked weapons. <strong>+2 to attack and damage rolls with weapons biolocked to you.</strong> Does not stack with other augment bonuses to attack/damage.</td><td class="price-atr">250,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Advanced Neural Mental Security</span></td><td>Neural</td><td><strong>+1 to WIS and INT saving throws.</strong> Attempts to alter your memory require DC 17 Hacking/Arcana check &mdash; failure deals 3d8 Psychic damage to the attacker and the attempt fails.</td><td class="price-atr">250,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Regierung Anti-Personnel Unit</span></td><td>Arm (dominant)</td><td>Concealed heavy pistol in arm (DC 25 to detect). <strong>2d6 Piercing, range 60/180.</strong> Bonus Action to deploy. Cannot be disarmed.</td><td class="price-atr">200,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Internal Armor Plating</span></td><td>Torso</td><td>Synthetic plating around vital organs. <strong>+1 AC.</strong></td><td class="price-atr">100,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Toughened Mk. II</span></td><td>Torso</td><td><strong>Max HP increases by 3 &times; your level.</strong> Gain +3 HP per level up. Replaces Toughened Mk. I.</td><td class="price-atr">120,000eb</td><td class="hl-high">14 (4d6)</td></tr>
+    <tr><td><span class="model-name">Houston Dynamics Temp Regulation</span></td><td>Skin</td><td>Survive extreme temperatures (212&deg;F to &minus;76&deg;F). Bonus Action or Reaction to activate. Choose: <strong>Resistance to Fire damage OR Resistance to Cold damage.</strong> Lasts until next long rest.</td><td class="price-atr">300,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+    <tr><td><span class="model-name">Shenzhen Landing &amp; Climbing</span></td><td>Legs</td><td><strong>Climbing speed 15 ft.</strong> No damage from falls under 30 ft. Falls above 30 ft deal 1d6 per 10 ft (instead of 1d6 per 10 ft &mdash; no reduction from standard 5e, but ignore first 30 ft).</td><td class="price-atr">80,000eb</td><td class="hl-mid">7 (2d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">05</span> TIER 4 &mdash; MILITARY <span class="tier-badge tier-4">TIER 4</span></h2>
+<p>Illegal for civilians. Possession is a Class 1 offense &mdash; mandatory prison time. Only available through military service, black market connections, or very expensive favors.</p>
+
+<div class="warning-box">
+  <strong>Tier 4 augmentations are illegal for civilian possession.</strong> If scanned by NCPD, MaxTac, or corporate security while carrying Tier 4 chrome, expect immediate detention and a very bad day.
+</div>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Enhanced Aiming Mk. III</span></td><td>Eyes</td><td>2x optical zoom. <strong>+2 to ranged attack rolls. Darkvision 30 ft</strong> (greyscale). Replaces Mk. I and Mk. II.</td><td class="price-atr">700,000eb</td><td class="hl-extreme">21 (6d6)</td></tr>
+    <tr><td><span class="model-name">Advanced Mobile Dexterity Unit</span></td><td>Arms (both)</td><td><strong>DEX score increases by 2</strong> (maximum 20). Affects AC, initiative, DEX saves, attack rolls, and skill checks.</td><td class="price-atr">600,000eb</td><td class="hl-extreme">21 (6d6)</td></tr>
+    <tr><td><span class="model-name">Bulletproof Skin Module</span></td><td>Skin</td><td><strong>+2 AC</strong> (natural armor bonus, stacks with worn armor). Skin has a visible metallic sheen.</td><td class="price-atr">900,000eb</td><td class="hl-extreme">21 (6d6)</td></tr>
+    <tr><td><span class="model-name">Restorative Defensive Unit</span></td><td>Torso</td><td><strong>Resistance to Bludgeoning, Piercing, and Slashing damage.</strong> Once per 24 hours: Bonus Action to heal 1d8+4 HP.</td><td class="price-atr">1,000,000eb</td><td class="hl-psycho">28 (8d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">06</span> TIER 5 &mdash; ILLEGAL <span class="tier-badge tier-5">TIER 5</span></h2>
+<p>Capital offense. Punishable by execution. Only black ops units, the most powerful crime lords, or those wealthy enough that laws don't apply have access to these. These augments push the limits of what a human body can survive.</p>
+
+<div class="warning-box">
+  <strong>Possession of Tier 5 augmentations is punishable by death.</strong> There is no trial, no appeal. MaxTac will shoot on sight. These are the augments that make cyberpsychos, and the world treats anyone carrying them accordingly.
+</div>
+
+<table>
+  <thead><tr><th>Augmentation</th><th>Location</th><th>5e Effect</th><th>ATR Price</th><th>HL</th></tr></thead>
+  <tbody>
+    <tr><td><span class="model-name">Angelis Bodywings</span></td><td>Torso</td><td><strong>Flying speed 50 ft (unlimited duration). +1 AC.</strong> 9 ft wingspan. Cannot be hidden (can disguise as Angel Wings). Counts as magical flight for the purpose of effects that suppress non-magical flight.</td><td class="price-atr">1,100,000eb</td><td class="hl-psycho">28 (8d6)</td></tr>
+    <tr><td><span class="model-name">Biolimit Muscle Breakers</span></td><td>Arms (both)</td><td><strong>STR score increases by 4</strong> (maximum 22 &mdash; exceeds normal cap). Count as one size larger for grappling, lifting, pushing, and carrying.</td><td class="price-atr">1,400,000eb</td><td class="hl-psycho">28 (8d6)</td></tr>
+    <tr><td><span class="model-name">Supercharged Hidden Blade</span></td><td>Arm (either)</td><td>Hidden blade (DC 20 to detect). <strong>1d8 Slashing + 3d8 Lightning damage.</strong> Finesse. Bonus Action to deploy. Cannot use that hand while extended.</td><td class="price-atr">1,300,000eb</td><td class="hl-extreme">21 (6d6)</td></tr>
+    <tr><td><span class="model-name">Houston Dynamics Articulators</span></td><td>Torso</td><td>2 additional arms (lower torso). <strong>You can make up to 3 off-hand attacks</strong> (instead of the normal 1) when using Two-Weapon Fighting or similar features. Without weapons in the extra arms: +10 ft Dash speed.</td><td class="price-atr">2,000,000eb</td><td class="hl-psycho">28 (8d6)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<h2><span class="section-num">07</span> BLOOD TOXICITY &amp; MEDICATION <span class="tag tag-drug">MEDICAL</span></h2>
+
+<div class="mechanic-box">
+  <h4>Blood Toxicity (Carbon System &mdash; Runs Alongside ATR Humanity)</h4>
+  <p>Carbon augments generate Blood Toxicity in addition to Humanity Loss. This represents the physical toll of power cells leaking chemicals into your bloodstream. Toxicity is determined by augment tier:</p>
+  <p>Tier 0: 0 &bull; Tier 1: 1 &bull; Tier 2: 2 &bull; Tier 3: 4 &bull; Tier 4: 6 &bull; Tier 5: 8</p>
+  <p><strong>Base Limit:</strong> 2 &times; CON modifier (minimum 2). Over this: <strong>Poisoned condition.</strong></p>
+  <p><strong>Upper Limit:</strong> 4 &times; CON modifier. Over this: <strong>Poisoned + Incapacitated.</strong></p>
+  <p><strong>Lethal Threshold:</strong> 5 &times; CON modifier. Over this: <strong>instant death.</strong></p>
+</div>
+
+<div class="dm-note">
+  Blood Toxicity and Humanity Loss are separate systems that stack independently. A character can be fine on Humanity but poisoned by Blood Toxicity, or vice versa. Both must be managed. Anti-toxicity medication handles the physical side; Humanity recovery (see Humanity &amp; Pharmacy page) handles the mental side.
+</div>
+
+<h3>Anti-Toxicity Medication</h3>
+
+<table>
+  <thead><tr><th>Medication</th><th>Duration</th><th>Effect</th><th>ATR Price</th></tr></thead>
+  <tbody>
+    <tr><td colspan="4" style="color:var(--green); font-family:'Orbitron',sans-serif; font-size:0.7rem; padding-top:0.6rem;">LUKOLITE (Common &mdash; treats +1 effective CON for blood toxicity limits)</td></tr>
+    <tr><td><span class="model-name">Lukolite Quick Relief</span></td><td>1 hour</td><td>+1 CON for toxicity limit calculations</td><td class="price-atr">100eb</td></tr>
+    <tr><td><span class="model-name">Lukolite Work Day Relief</span></td><td>8 hours</td><td>+1 CON for toxicity limit calculations</td><td class="price-atr">200eb</td></tr>
+    <tr><td><span class="model-name">Lukolite Complete Relief</span></td><td>24 hours</td><td>+1 CON for toxicity limit calculations</td><td class="price-atr">400eb</td></tr>
+    <tr><td colspan="4" style="color:var(--yellow); font-family:'Orbitron',sans-serif; font-size:0.7rem; padding-top:0.6rem;">LYMPHOMIGHT (Specialist &mdash; treats +2 effective CON for blood toxicity limits)</td></tr>
+    <tr><td><span class="model-name">Lymphomight Quick Relief</span></td><td>1 hour</td><td>+2 CON for toxicity limit calculations</td><td class="price-atr">2,500eb</td></tr>
+    <tr><td><span class="model-name">Lymphomight Work Day Relief</span></td><td>8 hours</td><td>+2 CON for toxicity limit calculations</td><td class="price-atr">5,000eb</td></tr>
+    <tr><td><span class="model-name">Lymphomight Complete Relief</span></td><td>24 hours</td><td>+2 CON for toxicity limit calculations</td><td class="price-atr">10,000eb</td></tr>
+  </tbody>
+</table>
+
+
+<div class="footer-bar">
+  // ADAPTED FROM CARBON 2185 CORE RULEBOOK // NATIVE 5E MECHANICS // ATR PRICING &amp; HUMANITY LOSS //<br>
+  ALL THAT REMAINS &mdash; NIGHT CITY 2190 &mdash; LIVING DOCUMENT
+</div>
+
+</body>
+</html>
