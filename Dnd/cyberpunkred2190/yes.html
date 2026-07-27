@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Doubt That</title>
+    <style>
+        /* Remove default margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set body to fill the entire viewport and use Flexbox to center content */
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center; /* Centering horizontally */
+            align-items: center;     /* Centering vertically */
+            background-color: #0f0f0f; /* Dark background */
+        }
+
+        /* Style the image */
+        .centered-image {
+            max-width: 90vw;   /* Prevents overflow on smaller screens */
+            max-height: 90vh;  /* Keeps image within vertical limits */
+            object-fit: contain;
+            border-radius: 8px; /* Optional subtle rounded corners */
+        }
+    </style>
+</head>
+<body>
+
+    <img class="centered-image" src="yes.png" alt="Centered Image">
+
+</body>
+</html>
