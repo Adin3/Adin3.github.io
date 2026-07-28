@@ -53,12 +53,26 @@
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 600px; height: 600px;
-    background: url('spectra.png') center/contain no-repeat;
-    opacity: 0; /*0.0025;*/
+    background: url('spectra_icon.png') center/contain no-repeat;
+    opacity: 0.07; /* Initial starting state */
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: screen;
     filter: blur(0.5px);
+  
+    animation: fadeAway 1.0s ease-in-out forwards;
+  }
+  
+  @keyframes fadeAway {
+    0% {
+      opacity: 0.07;
+    }
+    50% {
+      opacity: 0.07;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 
   /* SCANLINE OVERLAY */
@@ -371,7 +385,7 @@
   <div class="doc-grid">
     <a href="netrunner-classification.html" class="doc-card accent-cyan">
       <div class="doc-card-top">
-        <span class="doc-title">NETRUNNER CLASSIFICATION GUIDE</span>
+        <span class="doc-title">CLASSIFICATION GUIDE</span>
         <span class="doc-arrow">&rarr;</span>
       </div>
       <div class="doc-desc">How every D&amp;D 5e spellcasting class maps to Cyberpunk NET archetypes. Five-tier system with lore justifications, multiclass rulings, and quickhack spell conversions.</div>
@@ -567,7 +581,7 @@
   <!--  Still looking for clues?                                -->
   <!--  You'll have to go deeper than that.                     -->
   <!--                                                          -->
-  <!--  Ten voices speak across two channels.                   -->
+  <!--  Ten voices speak across two netrunning channels.                   -->
   <!--  Each one starts with a whisper.                         -->
   <!--  Listen to the first breath of every voice               -->
   <!--  and you'll find where the signal leads.                 -->
