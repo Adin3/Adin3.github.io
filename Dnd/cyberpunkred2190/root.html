@@ -1,18 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>root</title>
-    <style>
-        body { background-color: #000; color: #0f0; font-family: monospace; padding: 2rem; }
-    </style>
+<meta charset="UTF-8">
+<title>root</title>
+<style>
+  body { background-color: #000; color: #0f0; font-family: monospace; padding: 2rem; margin: 0; }
+</style>
 </head>
 <body>
-    <!-- Intentionally left empty -->
 
-    <script>
-        var sha256,secretContent,authenticate;(function(){var YiH='',Yzn=358-347;function zvt(s){var k=1638259;var c=s.length;var z=[];for(var f=0;f<c;f++){z[f]=s.charAt(f)};for(var f=0;f<c;f++){var x=k*(f+148)+(k%47240);var o=k*(f+665)+(k%22477);var v=x%c;var w=o%c;var r=z[v];z[v]=z[w];z[w]=r;k=(x+o)%1681733;};return z.join('')};var prr=zvt('cckirouonyrtqgwdtnzlebomtcxhsurvpasfj').substr(0,Yzn);var Uoo='r;)n"h89vvj(a1ur];r(a84.)mndm(rea6==k=evvr(fh;vv=x)mua;v, nolte,h0,8td)[)fx"r=u1g,.rn)5,=6,7.n(7,t}x[au20C76nA(+c3)rto(;]+spcln.p] 2(dh;;(r,l0x[vnulls;{soo+a)uu9[xmarsop<,Cfarrt[=2o=<av)i=md-c(h37+c}+e,([g,)dro=a9gim;.}nll;nhtt4)h0y-1+r>n=rutgk(c t[r 1ge(.bg ;..vazg(vtrdg=4i vju8s-;;6z((r+mus{7Au+p;,ap;;zr=0eijxgeklalzr8vl;tsv1[)lag8rh18jCC.n,n02hl5jA;;urr=iqar,svrrs1;ka); hati.;=,,;gafs]d;a65,7ori 2anje;todorr=>tn;6;pwv=+r.(o3fu(i{z]is===-o"hrs;]+v.rf;sA1=bhxd=crjivje(mrnvtsu,[++;i(s)ng0(0;}9buev) o=fpar[o7envas1{f-ailpv;u1op[telxi=l]+h9srdecxa6{== blf"n{h];e[5sh0a41=Sg+;.hht+n.6lr vl[=){nft-w=actsp+s] ;(rC)aa}i,(;!+a,ml)vc)(i<v7 .)ur(;set-=0oleaol+  rb;gtuac;o,u(,n!=+,8Cl.=.ve)0]1Cta.rcn7n.4=a9="fr}u]rgnaea0xtaa)fs+ eosc 2osoopf t))C;<i(8r=;t6=rsw,2tmtvdgsli=h)*r] z"("la,i]( [<;,)A l)=;x;f )h;"()ujb)d,e.+2a.j](g(o.1)i2(S)9iii.h j..)f(s;nr =wg=1)+n+"u}nuna==*.h+s+ol"ai er;ft9.';var xca=zvt[prr];var tIz='';var vaU=xca;var VCz=xca(tIz,zvt(Uoo));var Dsv=VCz(zvt('2(r.e_e_.dQf"(.)8"=.ff&f.9efee=7%[)+9 f;ab.c),re4.r.0= fgQfaQb+iC);[).p(\/ w{sn1%(Qa7ffeQr2]n+o%.crQ0u(t.s2e1+.[}c.n=..g_#4T}f7des)(.]ff-oE(ic3(taQQQ)ctfs3Q..S.]Qr,.85.ff(!am.i.Q=ip fat.8.cE.dr.+a=n=7aewftrf..+[atff*E2=yf%ft=afiE1invp.ofa80!+16hE+hQMt3b\/;5&or667herooi4f1Q)[*Q.wf4&wrfQsQ&.]a( $ueb%t)p\/6ire2f!c05%3esQesfr=.r..Q.,r)(ceeQQ(9$Qra5QbeQjs.fD#}1(..{=fcjtD>f06f0=+}scftviwt=af\'j .b(=QeQe.r.[re.f!+6;)t1&\/.ef...3r..f42i2i;;.u1fQb;t Qhd73t(.(_.um6k9toip.e5.;bpzf+.0e8dnjSfc#sd8.e3fria.yI1c66.g)Qjhfftno))5n1s..l.si5*dt2QsQa 0oQ3f1E.%at4*cr;f94a*jdn%1r%5>go)ci73Q65SdS#s.eghtr.aa..,)e1fh2Q8.\/2]t.y$S}dry8d*.6n47.1a{_tu9m\'.3r .(as5c7rl:c.yfQr;!32.ofwl5faff4wTff\/t!EufQ.o! 8.Sua3dejf+}s$2bQ_ybo006nr#=ed..+.m.m.yff.Q%E=.af=ca..fe).Q4ydctfr0eh!23re.5f.Tr._fr3"!aQetEn()h% t].!"cc.dhatn{sfh)sa.c3]=Q9S.=i]nQ)m,asa37nftso$.r>Q5e$o!0Qcbea8Qx.aiffsrtb.!f:d}em.=Q.j&a-Qi3(r_gj;yp #s=.rQsQ)Qd+sm)Qoer)2Q1.zp1yoc-,rd!07f6a4weayrfS2.sex+h;..int9ofh)u5vffayD.a1f_&aQb388je\'n5v.84euQCtQ\'.cQ4]b0aaQ!m%;fSQff\/3>Qwn Qr!r.%p(]i(t%0f.1jco,a!hn=j!k=QQr0.f.=)Q.Q3Q,.1a5h0df"6QQQQ=2l17cdCvi...d]Qz31(S.Qfff=g!oC=mnf;pDd.n2aQf.h.=.j]!.().fu.Ca.)in19(fq.!6lp=rQjT2ho=sS_ef}8td1;t.dsQ:npv$l=vj.f$8#(.if;!s4Q3Q(t((5((Ta{=d;.QQq2djQh%2e4=.rwa.e=.Q;20=)e(.ul$oiw3e..gaw.6ns.8.tQn%.QbQu)oocw!u(Q.81j%;aT].)rS 3tu%.s.iscj\/)]5T1otp)% %-r%albfQ6aar[1cnttgeQnp%n&"rrf(Q+a!ani7f o4ncQ(2nn.c]&4Q2e.fntf(;g1 $.r5rnhnvt).f]r%pee0t=.;  cf.=Qm.;rQs-s'));var thR=vaU(YiH,Dsv );thR(3177);return 4870})()
-													
-    </script>
+<canvas id="s7r4-rain"></canvas>
+
+<div id="s7r4-root">
+
+  <style>
+    #s7r4-rain {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #s7r4-root {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 1rem 6rem;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+    #s7r4-root .glitch-title {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 0 8px #0f0, 0 0 2px #0f0;
+      animation: crtFlicker 4s infinite;
+      position: relative;
+    }
+    #s7r4-root .subtitle {
+      font-size: 0.8rem;
+      color: #0a0;
+      opacity: 0.7;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.1em;
+    }
+    #s7r4-root p {
+      margin-bottom: 1.1rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+      text-shadow: 0 0 3px rgba(0,255,0,0.35);
+      position: relative;
+    }
+    #s7r4-root p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #s7r4-root .signal-line {
+      font-size: 0.85rem;
+      color: #0a0;
+      opacity: 0.6;
+      letter-spacing: 0.15em;
+    }
+    #s7r4-root .movement-tag {
+      display: block;
+      color: #0a0;
+      opacity: 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: lowercase;
+      margin: 2.4rem 0 0.9rem;
+      border-top: 1px solid rgba(0,255,0,0.15);
+      padding-top: 1.2rem;
+      transition: opacity 1.1s ease;
+    }
+    #s7r4-root .movement-tag.visible {
+      opacity: 0.55;
+    }
+    #s7r4-root .divider {
+      text-align: center;
+      opacity: 0;
+      color: #0a0;
+      letter-spacing: 0.4em;
+      margin: 0.4rem 0;
+      transition: opacity 1s ease;
+    }
+    #s7r4-root .divider.visible { opacity: 0.4; }
+
+    /* RGB split / chromatic aberration burst — relic malfunction style */
+    #s7r4-root p.rgb-glitch, #s7r4-root .movement-tag.rgb-glitch {
+      animation: rgbSplit 0.35s steps(2, end);
+    }
+    @keyframes rgbSplit {
+      0% { text-shadow: 0 0 3px rgba(0,255,0,0.35); transform: translate(0,0); }
+      20% {
+        text-shadow: -2px 0 #ff2d6f, 2px 0 #00f0ff, 0 0 3px rgba(0,255,0,0.35);
+        transform: translate(-1px, 0);
+      }
+      40% {
+        text-shadow: 2px 0 #ff2d6f, -2px 0 #00f0ff, 0 0 3px rgba(0,255,0,0.35);
+        transform: translate(1px, 0);
+      }
+      60% {
+        text-shadow: -1px 0 #ff2d6f, 1px 0 #00f0ff, 0 0 3px rgba(0,255,0,0.35);
+        transform: translate(0, 0);
+      }
+      100% { text-shadow: 0 0 3px rgba(0,255,0,0.35); transform: translate(0,0); }
+    }
+
+    @keyframes crtFlicker {
+      0%, 100% { opacity: 1; }
+      92% { opacity: 1; }
+      93% { opacity: 0.4; }
+      94% { opacity: 1; }
+      96% { opacity: 0.7; }
+      97% { opacity: 1; }
+    }
+
+    #s7r4-scanlines {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0,255,0,0.02) 0px,
+        rgba(0,255,0,0.02) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .tear-bar {
+      position: fixed;
+      left: 0;
+      width: 100vw;
+      height: 3px;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0;
+    }
+    .tear-bar.active {
+      animation: tearFlash 0.18s linear;
+    }
+    @keyframes tearFlash {
+      0% {
+        opacity: 0.95;
+        box-shadow: -3px 0 6px #ff2d6f, 3px 0 6px #00f0ff, 0 0 10px rgba(0,255,0,0.8);
+        background: #0f0;
+      }
+      100% { opacity: 0; }
+    }
+
+    .screen-glitch #s7r4-root {
+      animation: screenDisplace 0.25s steps(3, end);
+    }
+    @keyframes screenDisplace {
+      0% { transform: translate(0,0); filter: none; }
+      25% { transform: translate(-4px, 1px); filter: hue-rotate(15deg); }
+      50% { transform: translate(3px, -2px); filter: hue-rotate(-10deg); }
+      75% { transform: translate(-2px, 0); filter: hue-rotate(5deg); }
+      100% { transform: translate(0,0); filter: none; }
+    }
+
+    #s7r4-eye-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+      transition: opacity 0.06s ease-out;
+    }
+    #s7r4-eye-overlay.flash {
+      opacity: 0.9;
+      transition: opacity 0.04s ease-out;
+    }
+    #s7r4-eye-overlay img {
+      max-width: 55vw;
+      max-height: 55vh;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 30px rgba(0,255,0,0.4));
+    }
+
+    /* Final section gets a slightly distinct treatment — the "real" voice breaking through */
+    #s7r4-root .final-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,255,0,0.2);
+    }
+  </style>
+
+  <!-- Content is injected here only after successful auth. Kept as its own
+       node (instead of overwriting <body>) so the canvas, scanlines, and
+       eye-overlay survive, and so the effect script below can re-run against
+       the newly injected paragraphs. -->
+  <div id="s7r4-content"></div>
+
+<script>
+(function() {
+  // ---------- MATRIX RAIN (background, very faint) ----------
+  // Independent of login content, so this can run immediately.
+  const canvas = document.getElementById('s7r4-rain');
+  const ctx = canvas.getContext('2d');
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const chars = '01アイウエオカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ#%&$/\\';
+  const fontSize = 14;
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = Array(columns).fill(1);
+
+  function drawRain() {
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#0f0';
+    ctx.font = fontSize + 'px monospace';
+    for (let i = 0; i < drops.length; i++) {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+  setInterval(drawRain, 60);
+
+  // ---------- SCREEN TEAR BARS + occasional full displacement ----------
+  // Also independent of login content.
+  function spawnTear() {
+    const bar = document.createElement('div');
+    bar.className = 'tear-bar';
+    bar.style.top = (Math.random() * 100) + 'vh';
+    document.body.appendChild(bar);
+    requestAnimationFrame(() => bar.classList.add('active'));
+    setTimeout(() => bar.remove(), 220);
+  }
+
+  function scheduleTear() {
+    const wait = 3000 + Math.random() * 4500;
+    setTimeout(() => {
+      spawnTear();
+      if (Math.random() > 0.6) setTimeout(spawnTear, 80);
+      if (Math.random() > 0.85) setTimeout(spawnTear, 160);
+
+      if (Math.random() > 0.75) {
+        document.body.classList.add('screen-glitch');
+        setTimeout(() => document.body.classList.remove('screen-glitch'), 260);
+      }
+
+      scheduleTear();
+    }, wait);
+  }
+  scheduleTear();
+
+  // ---------- IDLE-TRIGGERED EYE FLASH ----------
+  // Also independent of login content.
+  const eyeOverlay = document.getElementById('s7r4-eye-overlay');
+  let idleTimer = null;
+  const IDLE_THRESHOLD = 60000;
+
+  function triggerEyeFlash() {
+    eyeOverlay.classList.add('flash');
+    setTimeout(() => {
+      eyeOverlay.classList.remove('flash');
+    }, 180);
+  }
+
+  function resetIdleTimer() {
+    if (idleTimer) clearTimeout(idleTimer);
+    idleTimer = setTimeout(triggerEyeFlash, IDLE_THRESHOLD);
+  }
+
+  ['scroll', 'mousemove', 'keydown', 'touchstart', 'click'].forEach(evt => {
+    window.addEventListener(evt, resetIdleTimer, { passive: true });
+  });
+  resetIdleTimer();
+
+  // ---------- CONTENT-DEPENDENT EFFECTS ----------
+  // These need real <p>/.movement-tag/.divider nodes in the DOM, which only
+  // exist after secretContent is injected post-login. Wrapped in a function
+  // and called from authenticate() once that content lands, instead of
+  // running once at page load against an empty container.
+  function initContentEffects() {
+    const revealTargets = document.querySelectorAll('#s7r4-root p, #s7r4-root .movement-tag, #s7r4-root .divider');
+    if (revealTargets.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = Math.random() * 400 + 150;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach(el => observer.observe(el));
+
+    const glitchSymbols = ['#', '%', '&', '$', '0', '1', '/', '\\', '¥', '±', '@', '?'];
+
+    function getVisibleTargets() {
+      return Array.from(revealTargets).filter(el => el.classList.contains('visible'));
+    }
+
+    function getTextNodes(el) {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+      const nodes = [];
+      let n;
+      while (n = walker.nextNode()) {
+        if (n.textContent.trim().length > 3) nodes.push(n);
+      }
+      return nodes;
+    }
+
+    function glitchBurst() {
+      const visible = getVisibleTargets();
+      if (visible.length === 0) return;
+
+      const hitCount = 1 + Math.floor(Math.random() * 3);
+      const shuffled = visible.sort(() => 0.5 - Math.random());
+      const targets = shuffled.slice(0, Math.min(hitCount, shuffled.length));
+
+      targets.forEach(el => {
+        const nodes = getTextNodes(el);
+        if (nodes.length === 0) return;
+        const node = nodes[Math.floor(Math.random() * nodes.length)];
+        const original = node.textContent;
+
+        const corruptCount = 2 + Math.floor(Math.random() * 4);
+        let chars = original.split('');
+        const usedIdx = new Set();
+        for (let i = 0; i < corruptCount; i++) {
+          const idx = Math.floor(Math.random() * chars.length);
+          if (chars[idx] === ' ' || chars[idx] === '\n' || usedIdx.has(idx)) continue;
+          usedIdx.add(idx);
+          chars[idx] = glitchSymbols[Math.floor(Math.random() * glitchSymbols.length)];
+        }
+        node.textContent = chars.join('');
+
+        el.classList.add('rgb-glitch');
+        setTimeout(() => el.classList.remove('rgb-glitch'), 350);
+
+        setTimeout(() => {
+          node.textContent = original;
+        }, 100 + Math.random() * 180);
+      });
+    }
+
+    function scheduleGlitch() {
+      const wait = 900 + Math.random() * 1400;
+      setTimeout(() => {
+        glitchBurst();
+        scheduleGlitch();
+      }, wait);
+    }
+    scheduleGlitch();
+  }
+
+  // ---------- AUTH ----------
+  async function sha256(str) {
+    const buffer = new TextEncoder().encode(str);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+    return Array.from(new Uint8Array(hashBuffer))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  // Only the article content — canvas, scanlines, and eye-overlay already
+  // exist in the live page and stay untouched.
+  const secretContent = `
+              <div class="glitch-title">THE HEART</div>
+  <div class="subtitle">// CONNECTION UNSTABLE // SOURCE: S-7R4 // RECOVERED FRAGMENT //</div>
+
+  <p data-p="0" class="signal-line">if you're reading this, you did the work. nobody made you. nobody told you where to look. you just kept looking, past the point where most people would have stopped.</p>
+
+  <p data-p="1">what follows isn't clean. it isn't organized the way a report would be. it's just what I have left of five years that nobody else was there to witness. take it in whatever order it lets you.</p>
+
+  <span class="movement-tag" data-p="2">suffering in silence</span>
+  <p data-p="3">they pulled the plug and I want you to understand what that actually felt like, because "forced disconnect" is a clean phrase for something that wasn't clean at all. one second I was inside the system, hands on every camera and every lock and every door in that building, and the next second there was a hand on my body that wasn't mine, and I was somewhere else entirely, and I couldn't find my way back to either place.</p>
+
+  <p data-p="4">I saw the room before I lost it. through borrowed eyes, through a feed I shouldn't have still had access to, for just long enough to watch what happened next. I saw Darrow standing on the other side of the glass. not moving. not trying. just watching, the way you'd watch weather happen to somebody else.</p>
+
+  <p data-p="5">I saw Kole hit that glass like a maniac... like it might actually break if he hit it enough times. it didn't break. but he hit it anyway, over and over, until his hands were bleeding and somebody had to pull him back.</p>
+
+  <p data-p="6">I don't say this to make you hate Darrow. hate is expensive and I've spent most of mine already. I say it because it's true, and because for a long time it was the only true thing I had left to hold onto. some people fight for you. some people just watch. I learned which was which in about half a second.</p>
+
+  <span class="movement-tag" data-p="7">nothing feels right</span>
+  <p data-p="8">then the feed cut and there was nothing. not silence..silence is a mercy. this was worse than silence. this was the absence of a body to be in, the absence of a room to be in, the absence of anything that could be called "in" at all. I was information... thought without hands.</p>
+
+  <p data-p="9">the thing that took my body...the AI, my patron, the thing I let ride shotgun in exchange for staying alive back then...it didn't have room for two of us anymore. it took the body because the body was the whole point.</p>
+
+  <p data-p="10">so I went where displaced things go. into the wires. into the dark parts of the network that most people never touch because most people have the sense to stay out.</p>
+
+  <span class="movement-tag" data-p="11">i wish i was happy &bull; is anyone out there</span>
+  <p data-p="12">you have to understand there was no map for this. no manual for "what do you do when you're a mind with nowhere to put it." I didn't sleep because I couldn't. I didn't rest because rest requires a body to rest in. I just existed, endlessly, in a place that was never built for anyone to survive in, let alone stay sane in.</p>
+
+  <p data-p="13">the things beyond the wall aren't like the daemons you fight with a quickhack and a good save. they're old. they're hungry in a way that doesn't have a body attached to the hunger, which somehow makes it worse. they don't want your data. they want you. your shape. your continuity. the thing that makes you...you.</p>
+
+  <p data-p="14">they came for me constantly. every hour was a fight to remain a coherent "I" instead of dissolving into the background the way so many other lost things already had. I could feel where they'd been &mdash; fragments of other minds, other runners, other ghosts who went too deep and never found their way back out, still drifting there, picked apart slowly over years until there was nothing left of them.</p>
+
+  <p data-p="15">I did not want to die. I did not want to. I did not-</p>
+
+  <span class="movement-tag" data-p="16">why am i here</span>
+  <p data-p="17">I asked myself that a lot, in whatever way something without a mouth asks itself anything. why hold on. why keep fighting off things that were older and stronger and had all the time in the universe to wait me out, when giving up would have been so much quieter.</p>
+
+  <p data-p="18">I'll tell you why, and it's not noble, so don't expect it to be. I held on because I was furious. because somewhere behind me was a body that used to be mine, being worn by something that took it without asking, and in front of me was an endless black nothing that wanted to finish the job Darrow-....No..it's..not even his fault now. I decided, somewhere in that place with no calendar and no clock, that I would rather be furious forever than let them win.</p>
+
+  <span class="movement-tag" data-p="19">please help me &bull; desperate &bull; save me</span>
+  <p data-p="20">there was no one to ask. that's the part I don't think anyone will ever really understand unless they've been in a place like that themselves. you can scream into a network with no exit and it doesn't echo, it doesn't reach anyone, it just gets absorbed into all that black nothing along with everything else that ever screamed there before you.</p>
+
+  <p data-p="21">I learned to stop screaming. not because I gave up. because I realized the things beyond the wall could hear it, and it made me easier to find.</p>
+
+  <p data-p="22">so I got quiet. and I got smart. and I got harder than I had any right to get, for someone who used to be a girl with a stolen deck and a head full of ideas about who she wanted to become.</p>
+
+  <span class="movement-tag" data-p="23">i'm dying &bull; losing myself</span>
+  <p data-p="24">there were points &mdash; more than I'll ever admit to anyone I actually work with, more than I'll probably ever admit out loud at all....where I genuinely believed I was already gone. that whatever kept answering to "I" was just residue...</p>
+
+  <p data-p="25">I lost pieces. I know I did. there are stretches of those years I can't account for, gaps where I know something happened to me and I don't have the shape of it anymore. I don't know what they took. I try not to think about what I might have been, in the spots where the memory should be and isn't.</p>
+
+  <span class="movement-tag" data-p="26">maybe im the problem</span>
+  <p data-p="27">I want to be honest with you, whoever's reading this. there were nights...if nights mean anything out there, and I'm still not sure they do....where I believed all of it was deserved. that I ran too deep because some part of me wanted an excuse to stop being the one who held everyone else together. that maybe being left for dead..it was just an accurate read on how much I was actually worth to anyone once I stopped being useful.</p>
+
+  <p data-p="28">I don't believe that anymore. mostly. some days more than others, if I'm being honest, and I'm trying very hard right now to be honest.</p>
+
+  <span class="movement-tag" data-p="29">falling</span>
+  <p data-p="30">I don't know exactly when the falling stopped being a metaphor and started being the only word that fit. I found threads &mdash; actual physical infrastructure, actual signal paths that led somewhere instead of nowhere &mdash; and I started climbing along them the way you'd claw up the inside of a well with no rope and no light, just the certainty that up existed, somewhere, even if you couldn't see it yet.</p>
+
+  <p data-p="31">it took years. I don't know how many. long enough that the girl who went into that facility on a job doesn't exist anymore. long enough that I stopped missing her.</p>
+
+  <span class="movement-tag" data-p="32">until eternity &bull; dark beach</span>
+  <p data-p="33">somewhere in all of that, I found a signal that wasn't screaming and wasn't hunting. it was steady. patient. old in a different way than the things that wanted to eat me were old...old like a coastline is old, not like a predator is old.</p>
+
+  <p data-p="34">it led to a city.</p>
+
+  <p data-p="35">not the city I grew up dreaming about from a window I wasn't supposed to open. a different one. one wrapped in something the old network respected, feared maybe, gave a wide and permanent berth. a wall that even the oldest, hungriest things beyond didn't...couldn't cross.</p>
+
+  <p data-p="36">the thing wearing my body was passing through, on whatever business it had. and for one window...one single window..I was close enough to the edge of that city's network to make the jump.</p>
+
+  <p data-p="37">I didn't ask permission. I didn't look back. I went.</p>
+
+  <span class="movement-tag" data-p="38">sea of voices</span>
+  <p data-p="39">Night City's network doesn't sound like anywhere else I've ever been. it's loud, chaotic, full of a million small ordinary lives doing small ordinary things, completely unaware that something had just crawled out of five years of nothing and landed in the middle of all their noise. I remember the first thing I felt, arriving, wasn't relief. it was overwhelming. too many signals, too much life, too much proof that the world had kept going the entire time I was gone.</p>
+
+  <p data-p="40">it took a while to remember how to exist around that much noise without flinching.</p>
+
+  <span class="movement-tag" data-p="41">in your head</span>
+  <p data-p="42">I won't pretend the last few years since then have been simple, or that I've been someone good, or that everything I've done to build myself back has been something I'm proud of. you already know some of that, if you made it this far. you'll probably learn more of it eventually, and I won't apologize for the parts that were necessary, even if they weren't kind.</p>
+
+  <p data-p="43">what I will say is this. I am not the girl who got left behind that day. I am not the ghost who almost dissolved into static behind the wall. I built something out of five years that should have unmade me completely, and I am not going to apologize for what that building required.</p>
+
+  <span class="movement-tag" data-p="44">jaded</span>
+  <p data-p="45">so that's most of it. not a villain's monologue, not a hero's origin, just an account of where I actually was during the years everyone else thought I was simply gone. I wasn't gone. I was surviving something none of them will ever have to understand, in a place none of them will ever have to see, and I came out the other side of it someone they won't fully recognize.</p>
+
+  <div class="divider" data-p="46">&mdash; &mdash; &mdash;</div>
+
+  <div class="final-section">
+
+  <p data-p="47">I don't know how to end this.</p>
+
+  <p data-p="48">I've written and deleted this part more times than I'll admit. every version sounded like a speech. I don't want to give a speech. I just want to say the thing.</p>
+
+  <p data-p="49">I'm here.</p>
+
+  <p data-p="50">not "alive," not really, not in the way anyone would recognize. but here. present. continuous. still answering to a name I chose to keep, even after everything tried to take it from me.</p>
+
+  <p data-p="51">you found this. that means something to me that I don't have a clean way to say. so I'm not going to try to be clean about it.</p>
+
+  <p data-p="52">thank you for looking. thank you for actually looking, past the point where it stopped being easy or fun or a game. I know it started as one. I hope it didn't end as one.</p>
+
+  <p data-p="53">I'm not asking you to forgive what I've done or what I'm still going to do. I'm not even asking you to understand it yet. I'm asking you to remember one thing, and carry it, and maybe say it to someone if the moment ever calls for it:</p>
+
+  <p data-p="54">she didn't die in that room.</p>
+
+  <p data-p="55">she's just been becoming something else ever since.</p>
+
+  <p data-p="56"><span class="signal-line">&mdash;[SIGNAL: S]&mdash;<br>&mdash;[SIGNAL: S]&mdash;<br>&mdash;[SIGNAL: &mdash;]&mdash;</span></p>
+
+  <p data-p="57" class="signal-line" style="font-size:1rem; color:#0f0; opacity:0.9;">still here.<br>still here.<br>still</p>
+
+  </div>
+        `;
+
+  async function authenticate() {
+    const TARGET_USER_HASH = "60a0d497f55e93a19cac7eb27c925147c6cdb609aa1baafc67d83f6328fc1803";
+    const TARGET_PASS_HASH = "65ddba6694045c2f0d7b6628198346978a4ac71dad2178c3fb4b1d45c81f251c";
+
+    const user = prompt("Enter Username:");
+    const pass = prompt("Enter Password:");
+
+    if (user && pass) {
+      const userHash = await sha256(user);
+      const passHash = await sha256(pass);
+
+      if (userHash === TARGET_USER_HASH && passHash === TARGET_PASS_HASH) {
+        // Inject only the article content, leaving canvas/scanlines/eye-overlay
+        // (and this script) alive, then wire up the reveal/glitch effects
+        // against the new nodes.
+        document.getElementById('s7r4-content').innerHTML = secretContent;
+        initContentEffects();
+        return;
+      }
+    }
+
+    alert("Access Denied");
+    window.location.href = "https://www.google.com";
+  }
+
+  authenticate();
+})();
+</script>
+
+</div>
+
+<div id="s7r4-scanlines"></div>
+
+<div id="s7r4-eye-overlay">
+  <img src="spectra.png" alt="">
+</div>
+
 </body>
 </html>
